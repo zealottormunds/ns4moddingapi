@@ -23,3 +23,6 @@ No need to do anything at all!
 
 ### For modders:
 By default, the API is configured for players instead of modders. This means that the modding console is disabled. To enable it, you need to edit the "config.ini" file located in "/Root folder of Naruto Storm 4/moddingapi/". Open the file and find the property called "EnableConsole=0". Set it as 1, and you're ready to go.
+
+### How to use the API for mods?
+You can find all documentation in the API's wiki.
