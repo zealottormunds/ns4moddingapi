@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://i.imgur.com/NfJf6fi.png">
+</p>
+
 # Naruto: Storm 4 - Modding API by Zealot Tormunds
 
 This API for Naruto Shippuden: Ultimate Ninja Storm 4 expands the possibilities of modding, allowing developers to create better and bigger mods.
