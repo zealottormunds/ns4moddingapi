@@ -1,0 +1,31 @@
+LIBRARY d3dcompiler_47_og.dll
+EXPORTS
+	D3DAssemble=D3DAssemble_wrapper @1
+	D3DCompile=D3DCompile_wrapper @3
+	D3DCompile2=D3DCompile2_wrapper @4
+	D3DCompileFromFile=D3DCompileFromFile_wrapper @5
+	D3DCompressShaders=D3DCompressShaders_wrapper @6
+	D3DCreateBlob=D3DCreateBlob_wrapper @7
+	D3DCreateFunctionLinkingGraph=D3DCreateFunctionLinkingGraph_wrapper @8
+	D3DCreateLinker=D3DCreateLinker_wrapper @9
+	D3DDecompressShaders=D3DDecompressShaders_wrapper @10
+	D3DDisassemble=D3DDisassemble_wrapper @11
+	D3DDisassemble10Effect=D3DDisassemble10Effect_wrapper @12
+	D3DDisassemble11Trace=D3DDisassemble11Trace_wrapper @13
+	D3DDisassembleRegion=D3DDisassembleRegion_wrapper @14
+	D3DGetBlobPart=D3DGetBlobPart_wrapper @15
+	D3DGetDebugInfo=D3DGetDebugInfo_wrapper @16
+	D3DGetInputAndOutputSignatureBlob=D3DGetInputAndOutputSignatureBlob_wrapper @17
+	D3DGetInputSignatureBlob=D3DGetInputSignatureBlob_wrapper @18
+	D3DGetOutputSignatureBlob=D3DGetOutputSignatureBlob_wrapper @19
+	D3DGetTraceInstructionOffsets=D3DGetTraceInstructionOffsets_wrapper @20
+	D3DLoadModule=D3DLoadModule_wrapper @21
+	D3DPreprocess=D3DPreprocess_wrapper @22
+	D3DReadFileToBlob=D3DReadFileToBlob_wrapper @23
+	D3DReflect=D3DReflect_wrapper @24
+	D3DReflectLibrary=D3DReflectLibrary_wrapper @25
+	D3DReturnFailure1=D3DReturnFailure1_wrapper @26
+	D3DSetBlobPart=D3DSetBlobPart_wrapper @27
+	D3DStripShader=D3DStripShader_wrapper @28
+	D3DWriteBlobToFile=D3DWriteBlobToFile_wrapper @29
+	DebugSetMute=DebugSetMute_wrapper @2
