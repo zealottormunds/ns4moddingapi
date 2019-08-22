@@ -35,3 +35,9 @@ By default, the API is configured for players instead of modders. This means tha
 
 ### How to create mods using the API?
 You can find all documentation in the API's wiki: https://github.com/zealottormunds/ns4moddingapi/wiki
+
+## Special thanks:
+* Valant96
+* Kuroha Saenoki
+* Xuan Thai
+* TheLeonX
