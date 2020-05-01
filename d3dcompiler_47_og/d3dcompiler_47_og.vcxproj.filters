@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\MultiMatch">
+      <UniqueIdentifier>{b0166d29-f2f6-4e11-ade7-890e5f6fee6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assembly">
+      <UniqueIdentifier>{039b8eb1-483c-4c9b-9dc7-74078a71ecf3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ccCharacterFunctions.cpp">
@@ -51,6 +57,12 @@
     <ClCompile Include="ccGameProperties.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LuaHook_Commands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiMatch.cpp">
+      <Filter>Source Files\MultiMatch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HookFunctions.h">
@@ -88,6 +100,12 @@
     </ClInclude>
     <ClInclude Include="ccGameProperties.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaHook_Commands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiMatch.h">
+      <Filter>Source Files\MultiMatch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

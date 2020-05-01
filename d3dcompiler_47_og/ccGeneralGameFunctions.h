@@ -25,6 +25,12 @@ namespace moddingApi
 		static int GetGameMoney();
 		static char* MessageToString(char *);
 
+		static void HookLoadXfbin();
+		static void HookLoadXfbin2();
+
+		static void HookCpkLoad();
+		static void HookCpkLoad2();
+
 		// Files
 		static int cpkcount;
 		static uintptr_t Cpk_LoadXfbin(void *);
@@ -46,5 +52,9 @@ namespace moddingApi
 
 		// Gamepad
 		static bool TestButton(WORD);
+
+		static signed __int64 enablePads();
+		static void HookLoadXfbin_C();
+		static void HookTest();
 	};
 }

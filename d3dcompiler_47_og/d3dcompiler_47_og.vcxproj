@@ -30,20 +30,20 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -161,6 +161,8 @@
     <ClCompile Include="d3dcompiler_47_og.cpp" />
     <ClCompile Include="HookFunctions.cpp" />
     <ClCompile Include="LuaHook.cpp" />
+    <ClCompile Include="LuaHook_Commands.cpp" />
+    <ClCompile Include="MultiMatch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="d3dcompiler_47_og.def" />
@@ -181,6 +183,8 @@
     <ClInclude Include="d3dcompiler_47_og.h" />
     <ClInclude Include="HookFunctions.h" />
     <ClInclude Include="LuaHook.h" />
+    <ClInclude Include="LuaHook_Commands.h" />
+    <ClInclude Include="MultiMatch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -39,24 +39,33 @@ void c_ReloadProperties();
 void c_ReloadInit();
 void c_LoadScene();
 void c_ReloadParamFiles();
+void c_EnableAllPad();
+void c_ControlNpc();
+void c_ccGroupBattleEventCameraBegin();
+void c_ccGroupBattleEventCameraMovePosBegin();
+void c_ccGroupBattleEventCameraMoveLookBegin();
+void c_ccGetGpPtr();
+void c_ccMultiMatchShowPlayerStatus();
 
 void API_Console::InitializeConsole()
 {
 	AddCommand("ConvertMessage", (uintptr_t)c_ConvertMessage, 1);
-	AddCommand("GetVersionNumber", (uintptr_t)c_GetVersionNumber, 0);
-	AddCommand("GetVersionString", (uintptr_t)c_GetVersionString, 0);
-	AddCommand("GetVersionStringAPI", (uintptr_t)c_GetVersionStringAPI, 0);
-	AddCommand("GetRyo", (uintptr_t)c_GetRyo, 0);
+	//AddCommand("GetVersionNumber", (uintptr_t)c_GetVersionNumber, 0);
+	//AddCommand("GetVersionString", (uintptr_t)c_GetVersionString, 0);
+	//AddCommand("GetVersionStringAPI", (uintptr_t)c_GetVersionStringAPI, 0);
+	/*AddCommand("GetRyo", (uintptr_t)c_GetRyo, 0);
 	AddCommand("StartLoad", (uintptr_t)c_StartLoad, 0);
-	AddCommand("EndLoad", (uintptr_t)c_EndLoad, 0);
+	AddCommand("EndLoad", (uintptr_t)c_EndLoad, 0);*/
 	AddCommand("ViewMessageConversions", (uintptr_t)c_ViewMessageConversions, 0);
 	AddCommand("Help", (uintptr_t)c_Help, 0);
-	//AddCommand("ViewAwakeningDebug", (uintptr_t)c_ViewAwakeningDebug, 0);
-	//AddCommand("ReloadCharsel", (uintptr_t)c_ReloadCharsel, 0);
-	//AddCommand("ReloadProperties", (uintptr_t)c_ReloadProperties, 0);
-	//AddCommand("ReloadInit", (uintptr_t)c_ReloadInit, 0);
-	//AddCommand("LoadScene", (uintptr_t)c_LoadScene, 1);
-	AddCommand("ReloadParamFiles", (uintptr_t)c_ReloadParamFiles, 0);
+	/*AddCommand("ReloadParamFiles", (uintptr_t)c_ReloadParamFiles, 0);
+	AddCommand("EnableAllPad", (uintptr_t)c_EnableAllPad, 0);
+	AddCommand("ControlNpc", (uintptr_t)c_ControlNpc, 2);
+	AddCommand("ccGroupBattleEventCameraBegin", (uintptr_t)c_ccGroupBattleEventCameraBegin, 0);
+	AddCommand("ccGroupBattleEventCameraMovePosBegin", (uintptr_t)c_ccGroupBattleEventCameraMovePosBegin, 4);
+	AddCommand("ccGroupBattleEventCameraMoveLookBegin", (uintptr_t)c_ccGroupBattleEventCameraMoveLookBegin, 4);
+	AddCommand("ccGetGpPtr", (uintptr_t)c_ccGetGpPtr, 0);
+	AddCommand("ccMultiMatchShowPlayerStatus", (uintptr_t)c_ccMultiMatchShowPlayerStatus, 0);*/
 
 	//cout << std::hex << (d3dcompiler_47_og::moduleBase + 0x1653688) << endl;
 }
@@ -186,6 +195,95 @@ void c_ReloadParamFiles()
 	cout << "Reloading API's parameter files (specialCondParam, partnerSlotParam)..." << endl;
 	ccMain::ReloadParamFiles();
 	cout << "Files reloaded correctly" << endl;
+}
+
+void c_EnableAllPad()
+{
+	ccGeneralGameFunctions::enablePads();
+}
+
+void c_ControlNpc()
+{
+	std::string param1;
+	cout << "CHAR >> ";
+	cin >> param1;
+	char * param1_c = strcpy(new char[param1.length() + 1], param1.c_str());
+
+	std::string param2;
+	cout << "PAD >> ";
+	cin >> param2;
+	char * param2_c = strcpy(new char[param2.length() + 1], param2.c_str());
+
+	//cout << ccGeneralGameFunctions::MessageToString(param1_c);
+	ccCharacterFunctions::EnableControl(stoi(param1), stoi(param2));
+}
+
+#include "LuaHook.h"
+void c_ccGroupBattleEventCameraBegin()
+{
+	LuaHook::ccGroupBattleEventCameraBegin();
+}
+
+void c_ccGroupBattleEventCameraMovePosBegin()
+{
+	std::string param1;
+	cout << "X >> ";
+	cin >> param1;
+	float param1_c = stof(param1);
+
+	std::string param2;
+	cout << "Z >> ";
+	cin >> param2;
+	float param2_c = stof(param2);
+
+	std::string param3;
+	cout << "Y >> ";
+	cin >> param3;
+	float param3_c = stof(param3);
+
+	std::string param4;
+	cout << "A >> ";
+	cin >> param4;
+	float param4_c = stof(param4);
+
+	LuaHook::ccGroupBattleEventCameraMovePosBegin(param1_c, param2_c, param3_c, param4_c);
+}
+
+void c_ccGroupBattleEventCameraMoveLookBegin()
+{
+	std::string param1;
+	cout << "X >> ";
+	cin >> param1;
+	float param1_c = stof(param1);
+
+	std::string param2;
+	cout << "Z >> ";
+	cin >> param2;
+	float param2_c = stof(param2);
+
+	std::string param3;
+	cout << "Y >> ";
+	cin >> param3;
+	float param3_c = stof(param3);
+
+	std::string param4;
+	cout << "A >> ";
+	cin >> param4;
+	float param4_c = stof(param4);
+
+	LuaHook::ccGroupBattleEventCameraMovePosBegin(param1_c, param2_c, param3_c, param4_c);
+}
+
+#include "MultiMatch.h"
+void c_ccGetGpPtr()
+{
+	cout << std::hex << (uintptr_t)MultiMatch::fc_GetGpPtr() << endl;
+}
+
+#include "LuaHook_Commands.h"
+void c_ccMultiMatchShowPlayerStatus()
+{
+	LuaHook_Commands::ccEntryNameTelop("P4 > HP: 100 / CHK: 100", "", 570, 500, 0, 0, 120);
 }
 
 void AddCommand(string command, uintptr_t function, int paramCount)

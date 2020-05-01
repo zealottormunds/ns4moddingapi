@@ -18,10 +18,7 @@ namespace moddingApi
 
 		static bool Hook(void*, void*, int);
 
-		//static vector<string> HookID;
-		//static vector<vector<BYTE>> HookBytes;
-		//static vector<uintptr_t> HookAddress;
-		static void DoHook(void*, void*, int, string);
-		static void UndoHook(string);
+		//static void DoHook(uintptr_t address, void* originalDest, int len, void* funct);
+		//static void UndoHook(uintptr_t address, void* originalDest, int len);
 	};
 }

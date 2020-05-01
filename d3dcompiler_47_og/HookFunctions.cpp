@@ -32,22 +32,24 @@ bool Hook3(void*, void*, int);
 // WRITE ALL THE FUNCTIONS YOU WANT TO HOOK IN HERE
 void HookFunctions::InitializeHooks()
 {
-	ccPlayer::InitAwakening();
+	//ccPlayer::InitAwakening();
 
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x85CC80), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14); // GetVersionString hook
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x85CC80), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14); // GetVersionString hook
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x8607EC), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14);
 
-	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), 19);
+	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19); // Fixed
 	HookFunctions::DoMessageInfoHook();
-	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), 19);
+	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19); // Fixed
 	HookFunctions::DoMessageInfoHook2();
 
-	// Awakening IDS:
-	//ccPlayer::InitAwakening();
-	//ccPlayer::DoGetAwakeningIDHook();
 
-	// Lua Hooks:
-	//cout << "Lua hook done." << endl;
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
+	//LuaHook::HookDeclareFunction();
+	// NOT FIXED YET!
+	
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
+	// NOT FIXED YET!
+	
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450E28), (void*)LuaHook::ccGroupBattleEventCameraMovePosBeginCoop, 14);
 
 	// Hook charsel
 	//ccCharacterFunctions::DoCharacterSelectParamHook();
@@ -64,35 +66,36 @@ void HookFunctions::InitializeHooks()
 	// Game Info Hook
 	//ccGeneralGameFunctions::DoGameInfoHook();
 
-	// Test
+	// Test NOT FIXED YET!!!
 	ccCharacterFunctions::PartnerFunctions();
 	ccCharacterFunctions::SpecialCondFunctions();
+	//ccCharacterFunctions::Hook_COND_BKKX();
 }
 
 void HookFunctions::DoMessageInfoHook()
 {
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), (void*)ccGeneralGameFunctions::Hook_MsgToString, 19);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), (void*)ccGeneralGameFunctions::Hook_MsgToString, 19);
 }
 
 void HookFunctions::UndoMessageInfoHook()
 {
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), 17, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), originalMsgInfo, 19);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), 17, dwOld, &dwOld);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), originalMsgInfo, 19);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19, dwOld, &dwOld);
 }
 
 void HookFunctions::DoMessageInfoHook2()
 {
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), (void*)ccGeneralGameFunctions::Hook_MsgToString_Alt, 19);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), (void*)ccGeneralGameFunctions::Hook_MsgToString_Alt, 19);
 }
 
 void HookFunctions::UndoMessageInfoHook2()
 {
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), 19, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), originalMsgInfo2, 19);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), 19, dwOld, &dwOld);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), originalMsgInfo2, 19);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19, dwOld, &dwOld);
 }
 
 // FUNCTION TO HOOK
@@ -198,7 +201,7 @@ bool Hook2(void * toHook, void * ourFunct, int len)
 vector<string> HookID;
 vector<vector<BYTE>> HookBytes;
 vector<uintptr_t> HookAddress;
-void HookFunctions::DoHook(void* toHook, void* ourFunct, int len, string ID)
+void DoHook(void* toHook, void* ourFunct, int len, string ID)
 {
 	int Count = -1;
 	for (int x = 0; x < HookID.size(); x++)
@@ -229,7 +232,7 @@ void HookFunctions::DoHook(void* toHook, void* ourFunct, int len, string ID)
 		HookFunctions::Hook(toHook, ourFunct, len);
 	}
 }
-void HookFunctions::UndoHook(string ID)
+void UndoHook(string ID)
 {
 	int Count = -1;
 	for (int x = 0; x < HookID.size(); x++)

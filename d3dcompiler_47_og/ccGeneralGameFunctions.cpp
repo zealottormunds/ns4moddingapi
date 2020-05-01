@@ -154,16 +154,16 @@ char* ccGeneralGameFunctions::GetVersionStringAPI()
 	int v = GetVersionNumber();
 
 	char * Version[10] = {
-		"1.00 (Modding API by Zealot Tormunds)",
-		"1.01 (Modding API by Zealot Tormunds)",
-		"1.02 (Modding API by Zealot Tormunds)",
-		"1.03 (Modding API by Zealot Tormunds)",
-		"1.04 (Modding API by Zealot Tormunds)",
-		"1.05 (Modding API by Zealot Tormunds)",
-		"1.06 (Modding API by Zealot Tormunds)",
-		"1.07 (Modding API by Zealot Tormunds)",
-		"1.08 (Modding API by Zealot Tormunds)",
-		"1.09 (Modding API by Zealot Tormunds)",
+		"1.00 (Modding API v1.3 by Zealot Tormunds)",
+		"1.01 (Modding API v1.3 by Zealot Tormunds)",
+		"1.02 (Modding API v1.3 by Zealot Tormunds)",
+		"1.03 (Modding API v1.3 by Zealot Tormunds)",
+		"1.04 (Modding API v1.3 by Zealot Tormunds)",
+		"1.05 (Modding API v1.3 by Zealot Tormunds)",
+		"1.06 (Modding API v1.3 by Zealot Tormunds)",
+		"1.07 (Modding API v1.3 by Zealot Tormunds)",
+		"1.08 (Modding API v1.3 by Zealot Tormunds)",
+		"1.09 (Modding API v1.3 by Zealot Tormunds)",
 	};
 
 	return Version[v];
@@ -192,7 +192,8 @@ typedef char *(__fastcall * message_to_string)(char *);
 message_to_string g_MessageToString;
 char * ccGeneralGameFunctions::MessageToString(char * msg)
 {
-	g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E80A4);
+	//g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E80A4);
+	g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E88F0);
 	return g_MessageToString(msg);
 }
 
@@ -266,6 +267,42 @@ std::string GetModMessage()
 	return st;
 }
 
+void RandomizeBackground()
+{
+	DWORD dwOld = 0;
+	VirtualProtect((void*)(d3dcompiler_47_og::RecalculateAddress(0xEE52B0)), 0x20, PAGE_EXECUTE_READWRITE, &dwOld);
+	char * randomBg = "data/ui/max/bg/bg_freebtl1.xfbin";
+	switch (rand() % 7)
+	{
+	case 0:
+		randomBg = "data/ui/max/bg/bg_freebtl1.xfbin";
+		break;
+	case 1:
+		randomBg = "data/ui/max/bg/bg_freebtl2.xfbin";
+		break;
+	case 2:
+		randomBg = "data/ui/max/bg/bg_freebtl3.xfbin";
+		break;
+	case 3:
+		randomBg = "data/ui/max/bg/bg_freebtl4.xfbin";
+		break;
+	case 4:
+		randomBg = "data/ui/max/bg/bg_freebtl5.xfbin";
+		break;
+	case 5:
+		randomBg = "data/ui/max/bg/bg_freebtl6.xfbin";
+		break;
+	case 6:
+		randomBg = "data/ui/max/bg/bg_freebtl7.xfbin";
+		break;
+	case 7:
+		randomBg = "data/ui/max/bg/bg_freebtl7.xfbin";
+		break;
+	}
+	memcpy((void*)(d3dcompiler_47_og::RecalculateAddress(0xEE52B0)), (void*)(randomBg), 0x20);
+	VirtualProtect((void*)(d3dcompiler_47_og::RecalculateAddress(0xEE52B0)), 0x20, dwOld, &dwOld);
+}
+
 // All custom messageinfo functions
 vector<std::string> ccGeneralGameFunctions::MessageID;
 vector<std::string> ccGeneralGameFunctions::MessageStr;
@@ -273,7 +310,12 @@ BYTE ccGeneralGameFunctions::ViewMessageConversions = 0;
 
 uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 {
-	if (ccGeneralGameFunctions::ViewMessageConversions == 0)
+	//bool showDecode = true;
+	//if ((string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")) showDecode = false;
+
+	//RandomizeBackground();
+
+	if (ccGeneralGameFunctions::ViewMessageConversions == 0 && strlen((char*)MessageToDecode) > 0 && *(char*)MessageToDecode != '+')
 	{
 		HookFunctions::UndoMessageInfoHook();
 		char* result = ccGeneralGameFunctions::MessageToString((char*)MessageToDecode);
@@ -321,6 +363,20 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 	}
 	else
 	{
+		/*if (string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")
+		{
+			cout << "Message: " << (char*)MessageToDecode << endl;
+			string realstr = string((char*)MessageToDecode);
+			char* res = (char*)realstr.substr(4, realstr.length()).c_str();
+
+			return (uintptr_t)res;
+		}*/
+
+		if (*(char*)MessageToDecode == '+')
+		{
+			return (MessageToDecode + 1);
+		}
+
 		return MessageToDecode;
 	}
 }
@@ -330,9 +386,12 @@ message_to_string2 g_MessageToString2;
 
 uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode)
 {
-	g_MessageToString2 = (message_to_string2)(d3dcompiler_47_og::moduleBase + 0xAB4770);
+	g_MessageToString2 = (message_to_string2)(d3dcompiler_47_og::moduleBase + 0xAB7CA0);
 
-	if (ccGeneralGameFunctions::ViewMessageConversions == 0)
+	//bool showDecode = true;
+	//if ((string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")) showDecode = false;
+
+	if (ccGeneralGameFunctions::ViewMessageConversions == 0 && strlen((char*)MessageToDecode) > 0 && *(char*)MessageToDecode != '+')
 	{
 		HookFunctions::UndoMessageInfoHook2();
 		char * result = g_MessageToString2((char*)MessageToDecode);
@@ -380,9 +439,188 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 	}
 	else
 	{
+		/*if (string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")
+		{
+			cout << "Message: " << (char*)MessageToDecode << endl;
+			string realstr = string((char*)MessageToDecode);
+			char* res = (char*)realstr.substr(4, realstr.length()).c_str();
+
+			return (uintptr_t)res;
+		}*/
+
+		if (*(char*)MessageToDecode == '+')
+		{
+			return (MessageToDecode + 1);
+		}
+
 		return MessageToDecode;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+__int64 __fastcall fc_Xfbin_LoadFile(__int64 FilePath);
+BYTE f_LoadXfbin[15];
+
+void ccGeneralGameFunctions::HookLoadXfbin()
+{
+	memcpy(f_LoadXfbin, (void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), 15);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), (void*)(fc_Xfbin_LoadFile), 15);
+}
+
+void UnhookLoadXfbin()
+{
+	DWORD dwOld = 0;
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), 15, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), f_LoadXfbin, 15);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), 15, dwOld, &dwOld);
+}
+
+#include <filesystem>
+typedef __int64(__fastcall * Xfbin_LoadFile)(__int64);
+Xfbin_LoadFile g_Xfbin_LoadFile;
+
+__int64 __fastcall fc_Xfbin_LoadFile(__int64 FilePath)
+{
+	g_Xfbin_LoadFile = (Xfbin_LoadFile)(d3dcompiler_47_og::moduleBase + 0x5341CC);
+
+	string ActualFilePath = string((char*)FilePath);
+	string newFilePath = "disc:data_win32/" + ActualFilePath.substr(5, ActualFilePath.length() - 5);
+	cout << newFilePath << endl;
+
+	__int64 result = 0;
+
+	char ApiPath[_MAX_PATH];
+	GetCurrentDirectory(_MAX_PATH, ApiPath);
+
+	string TestPath = string(ApiPath) + "\\data_win32\\" + ActualFilePath.substr(5, ActualFilePath.length() - 5);
+	cout << "Testing for " << TestPath << endl;
+
+	if (filesystem::exists(TestPath) == true)
+	{
+		UnhookLoadXfbin();
+		result = g_Xfbin_LoadFile((__int64)newFilePath.c_str());
+		//result = g_Xfbin_LoadFile(FilePath);
+		ccGeneralGameFunctions::HookLoadXfbin();
+		cout << "Loaded " << newFilePath << endl;
+	}
+	else
+	{
+		UnhookLoadXfbin();
+		result = g_Xfbin_LoadFile(FilePath);
+		ccGeneralGameFunctions::HookLoadXfbin();
+		cout << "Loaded " << FilePath << endl;
+	}
+
+	return result;
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+__int64 __fastcall fc_Menu_LoadXfbin(__int64 a1, __int64 FilePath);
+BYTE f_Menu_LoadXfbin[16];
+
+void ccGeneralGameFunctions::HookLoadXfbin2()
+{
+	memcpy(f_Menu_LoadXfbin, (void*)(d3dcompiler_47_og::moduleBase + 0x9FEE00), 16);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x9FEE00), (void*)(fc_Menu_LoadXfbin), 16);
+}
+
+void UnhookLoadXfbin2()
+{
+	DWORD dwOld = 0;
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x9FEE00), 16, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x9FEE00), f_Menu_LoadXfbin, 16);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x9FEE00), 16, dwOld, &dwOld);
+}
+
+#include <filesystem>
+typedef __int64(__fastcall * Menu_LoadXfbin)(__int64, __int64);
+Menu_LoadXfbin g_Menu_LoadXfbin;
+
+__int64 __fastcall fc_Menu_LoadXfbin(__int64 a1, __int64 FilePath)
+{
+	g_Menu_LoadXfbin = (Menu_LoadXfbin)(d3dcompiler_47_og::moduleBase + 0x9FEE00);
+
+	string ActualFilePath = string((char*)FilePath);
+	string newFilePath = "disc:data/" + ActualFilePath.substr(5, ActualFilePath.length() - 5);
+	//cout << newFilePath << endl;
+
+	__int64 result = 0;
+
+	char ApiPath[_MAX_PATH];
+	GetCurrentDirectory(_MAX_PATH, ApiPath);
+
+	string TestPath = string(ApiPath) + "\\data\\" + ActualFilePath.substr(5, ActualFilePath.length() - 5);
+	//cout << "Testing for " << TestPath << endl;
+
+	if (filesystem::exists(TestPath) == true)
+	{
+		UnhookLoadXfbin2();
+		//result = g_Menu_LoadXfbin(a1, (__int64)newFilePath.c_str());
+		result = g_Menu_LoadXfbin(a1, FilePath);
+		ccGeneralGameFunctions::HookLoadXfbin2();
+		//cout << "Loaded " << newFilePath << endl;
+	}
+	else
+	{
+		UnhookLoadXfbin2();
+		result = g_Menu_LoadXfbin(a1, FilePath);
+		ccGeneralGameFunctions::HookLoadXfbin2();
+		//cout << "Loaded " << (char*)FilePath << endl;
+	}
+
+	return result;
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+__int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3);
+BYTE loadCpkFunc1[16];
+
+void ccGeneralGameFunctions::HookCpkLoad()
+{
+	memcpy(loadCpkFunc1, (void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), 15);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), (void*)(loadCpkFunc), 15);
+}
+
+void UnhookCpkLoad()
+{
+	DWORD dwOld = 0;
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), 15, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), loadCpkFunc1, 15);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), 15, dwOld, &dwOld);
+}
+
+#include <filesystem>
+typedef __int64(__fastcall * fc_loadCpkFunc)(__int64, __int64, int);
+fc_loadCpkFunc g_loadCpkFunc;
+
+__int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3)
+{
+	g_loadCpkFunc = (fc_loadCpkFunc)(d3dcompiler_47_og::moduleBase + 0x56AA4C);
+
+	cout << std::hex << (uintptr_t)a1 << endl;
+	cout << std::hex << (uintptr_t)a2 << endl;
+	cout << a3 << endl;
+
+	UnhookCpkLoad();
+	__int64 result = g_loadCpkFunc(a1, a2, a3);
+	ccGeneralGameFunctions::HookCpkLoad();
+
+	return result;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
 // GAMEPAD FUNCTIONS
 bool ccGeneralGameFunctions::TestButton(WORD button)
@@ -410,4 +648,13 @@ bool ccGeneralGameFunctions::TestButton(WORD button)
 	}
 
 	return (actualState.Gamepad.wButtons & button) != 0;
+}
+
+typedef signed __int64(__fastcall * fc_enableAllPad_00)();
+fc_enableAllPad_00 enableAllPad_00;
+signed __int64 ccGeneralGameFunctions::enablePads()
+{
+	enableAllPad_00 = (fc_enableAllPad_00)(d3dcompiler_47_og::moduleBase + 0x6582B4);
+
+	return enableAllPad_00();
 }

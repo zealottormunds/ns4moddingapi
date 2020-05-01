@@ -28,5 +28,10 @@ namespace moddingApi
 		static vector<uintptr_t> c_specialCondFunct;
 		static vector<int> c_specialCondCodes;
 		static void SpecialCondFunctions();
+
+		static vector<uintptr_t> charPointer;
+		static vector<long long> charAllocTime;
+		static void Hook_COND_BKKX();
+		static void EnableControl(int character, int pad);
 	};
 }

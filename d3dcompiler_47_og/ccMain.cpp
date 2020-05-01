@@ -131,10 +131,10 @@ void ccMain::ReadApiFiles()
 		{
 			cout << "Enable mod list" << endl;
 			DWORD dwOld = 0;
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E1C4A), 1, PAGE_EXECUTE_READWRITE, &dwOld);
+			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), 1, PAGE_EXECUTE_READWRITE, &dwOld);
 			BYTE a = 0;
-			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x6E1C4A), &a, 1);
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E1C4A), 1, dwOld, &dwOld);
+			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), &a, 1);
+			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), 1, dwOld, &dwOld);
 		}
 		else
 		{
@@ -265,101 +265,12 @@ void ccMain::ReadApiFiles()
 	//g_InitializeGame2 = (initializegame2)(d3dcompiler_47_og::moduleBase + 0x85AE80);
 
 	EnableAPI = true;
-	CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::Loop, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
+	//CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::Loop, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
+	
 }
 
 void ccMain::ReloadParamFiles()
 {
-	/*char ApiPath[_MAX_PATH];
-	GetCurrentDirectory(_MAX_PATH, ApiPath);
-	int ActualLength = strlen(ApiPath);
-
-	strcat(ApiPath, "\\moddingapi\\");
-
-	char ConfigPath[_MAX_PATH];
-	strcpy(ConfigPath, ApiPath);
-	ActualLength = strlen(ConfigPath);
-	strcat(ConfigPath, "config.ini");
-
-	// Start reading mods
-	strcat(ApiPath, "mods\\");
-
-	for (const auto & entry : filesystem::directory_iterator(ApiPath))
-	{
-		std::string s = entry.path().string();
-
-		char ModName[100];
-		int StartIndex = strlen(ApiPath);
-		int Count = s.length() - StartIndex;
-
-		strncpy(ModName, &s[StartIndex], 100);
-
-		std::string ModPath = (std::string)(ApiPath) + (std::string)(ModName);
-		std::string InfoPath = ModPath + "\\info.txt";
-
-		if (filesystem::exists(InfoPath) == true)
-		{
-			BYTE actual = 0;
-			string modName;
-			string modDesc;
-			string modAuth;
-
-			ifstream file;
-			file.open(InfoPath);
-
-			while (file.eof() == false && actual < 3)
-			{
-				char a;
-				switch (actual)
-				{
-				case 0:
-					a = file.get();
-					if (a == '|') actual = 1;
-					else modName = modName + a;
-					break;
-				case 1:
-					a = file.get();
-					if (a == '|') actual = 2;
-					else modDesc = modDesc + a;
-					break;
-				case 2:
-					a = file.get();
-					if (a == '|') actual = 3;
-					else modAuth = modAuth + a;
-					break;
-				}
-			}
-			file.close();
-
-			if (modName != "")
-			{
-				vector<string> files;
-
-				ccCharacterFunctions::c_partnerCodes.clear();
-				ccCharacterFunctions::c_partnerFunctions.clear();
-				ccCharacterFunctions::c_specialCondCodes.clear();
-				ccCharacterFunctions::c_specialCondFunct.clear();
-
-				for (const auto & f : filesystem::directory_iterator(ModPath))
-				{
-					string _file = f.path().string();
-					string _ext = _file.substr(_file.length() - 4, 4);
-
-					if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "partnerSlotParam.xfbin")
-					{
-						ReadPartnerSlotParam(_file);
-						cout << "Read partner slot..." << endl;
-					}
-					else if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "specialCondParam.xfbin")
-					{
-						ReadSpecialConditionParam(_file);
-						cout << "Read special cond..." << endl;
-					}
-				}
-			}
-		}
-	}*/
-
 	// Start reading mods
 	char ApiPath[_MAX_PATH];
 	GetCurrentDirectory(_MAX_PATH, ApiPath);
@@ -737,13 +648,14 @@ void ReadPartnerSlotParam(string _file)
 
 		uintptr_t slotFunct = 0x0;
 
-		if (slotType == "PARTNER_TYPE_2PAR") slotFunct = 0x7EAE8C;
-		else if (slotType == "PARTNER_TYPE_2KKG") slotFunct = 0x7EAEE4;
-		else if (slotType == "PARTNER_TYPE_2AKM") slotFunct = 0x7EAF3C;
-		else if (slotType == "PARTNER_TYPE_2KRS") slotFunct = 0x7EAF94;
-		else if (slotType == "PARTNER_TYPE_1AKM") slotFunct = 0x7EAFEC;
-		else if (slotType == "PARTNER_TYPE_1KRS") slotFunct = 0x7EB044;
-		else if (slotType == "PARTNER_TYPE_2SCX") slotFunct = 0x7EB09C;
+		if (slotType == "PARTNER_TYPE_2PAR") slotFunct = 0x7EE7C8;
+		else if (slotType == "PARTNER_TYPE_2KKG") slotFunct = 0x7EE820;
+		else if (slotType == "PARTNER_TYPE_2AKM") slotFunct = 0x7EE878;
+		else if (slotType == "PARTNER_TYPE_2KRS") slotFunct = 0x7EE8D0;
+		else if (slotType == "PARTNER_TYPE_1AKM") slotFunct = 0x7EE928;
+		else if (slotType == "PARTNER_TYPE_1KRS") slotFunct = 0x7EE980;
+		else if (slotType == "PARTNER_TYPE_2SCX") slotFunct = 0x7EE9D8;
+		else if (slotType == "PARTNER_TYPE_8AEM") slotFunct = 0x7EEA30;
 
 		ccCharacterFunctions::c_partnerFunctions.push_back(d3dcompiler_47_og::RecalculateAddress(slotFunct));
 		ccCharacterFunctions::c_partnerCodes.push_back(slotCharacter);
@@ -782,85 +694,98 @@ void ReadSpecialConditionParam(string _file)
 
 		uintptr_t condFunct = 0x0;
 
-		if (slotType == "COND_2NRT") condFunct = 0x7BE01C;
-		else if (slotType == "COND_2SIK") condFunct = 0x7BE084;
-		else if (slotType == "COND_2HDN") condFunct = 0x7BE0EC;
-		else if (slotType == "COND_2KKS") condFunct = 0x7BE154;
-		else if (slotType == "COND_2CYB") condFunct = 0x7BE1BC;
-		else if (slotType == "COND_2SCO") condFunct = 0x7BE224;
-		else if (slotType == "COND_2DDR") condFunct = 0x7BE28C;
-		else if (slotType == "COND_3HNZ") condFunct = 0x7BE2F4;
-		else if (slotType == "COND_3TOB") condFunct = 0x7BE35C;
-		else if (slotType == "COND_3TYO") condFunct = 0x7BE3C4;
-		else if (slotType == "COND_3MDR_2") condFunct = 0x7BE42C;
-		else if (slotType == "COND_3KBT") condFunct = 0x7BE494;
-		else if (slotType == "COND_2KNK") condFunct = 0x7BE4FC;
-		else if (slotType == "COND_2JRY") condFunct = 0x7BE564;
-		else if (slotType == "COND_ALL_GAARA") condFunct = 0x7BE5CC;
-		else if (slotType == "COND_2ORC") condFunct = 0x7BE634;
-		else if (slotType == "COND_5KGY") condFunct = 0x7BE69C;
-		else if (slotType == "COND_2FOU") condFunct = 0x7BE704;
-		else if (slotType == "COND_2DNZ") condFunct = 0x7BE76C;
-		else if (slotType == "COND_3GUY") condFunct = 0x7BE7D4;
-		else if (slotType == "COND_2KBT") condFunct = 0x7BE83C;
-		else if (slotType == "COND_2MDR") condFunct = 0x7BE8A4;
-		else if (slotType == "COND_JKKS") condFunct = 0x7BE90C;
-		else if (slotType == "COND_2KIB") condFunct = 0x7BE974;
-		else if (slotType == "COND_2KNN") condFunct = 0x7BE9DC;
-		else if (slotType == "COND_2SGT") condFunct = 0x7BEA44;
-		else if (slotType == "COND_4MKG") condFunct = 0x7BEAAC;
-		else if (slotType == "COND_ALL_NARUTO") condFunct = 0x7BEB14;
-		else if (slotType == "COND_2NRX") condFunct = 0x7BEB7C;
-		else if (slotType == "COND_3SSK") condFunct = 0x7BEBE4;
-		else if (slotType == "COND_5TYY") condFunct = 0x7BEC4C;
-		else if (slotType == "COND_5MDR") condFunct = 0x7BECB4;
-		else if (slotType == "COND_5KDM") condFunct = 0x7BED1C;
-		else if (slotType == "COND_BMDR") condFunct = 0x7BED84;
-		else if (slotType == "COND_1KNK") condFunct = 0x7BEDEC;
-		else if (slotType == "COND_2YMT") condFunct = 0x7BEE54;
-		else if (slotType == "COND_3MDR") condFunct = 0x7BEEBC;
-		else if (slotType == "COND_5SKN") condFunct = 0x7BEF24;
-		else if (slotType == "COND_5JRB") condFunct = 0x7BEF8C;
-		else if (slotType == "COND_7BRX") condFunct = 0x7BEFF4;
-		else if (slotType == "COND_7SKD") condFunct = 0x7BF05C;
-		else if (slotType == "COND_7YRI") condFunct = 0x7BF0C4;
-		else if (slotType == "COND_7NRN") condFunct = 0x7BF12C;
-		else if (slotType == "COND_7SSX") condFunct = 0x7BF194;
-		else if (slotType == "COND_7MMS") condFunct = 0x7BF1FC;
-		else if (slotType == "COND_7KIN") condFunct = 0x7BF264;
-		else if (slotType == "COND_7MTK") condFunct = 0x7BF2CC;
-		else if (slotType == "COND_BKRL") condFunct = 0x7BF334;
-		else if (slotType == "COND_BSSN") condFunct = 0x7BF39C;
-		else if (slotType == "COND_BOBT") condFunct = 0x7BF404;
-		else if (slotType == "COND_BKRS") condFunct = 0x7BF46C;
-		else if (slotType == "COND_B3HS") condFunct = 0x7BF4D4;
-		else if (slotType == "COND_BGKT") condFunct = 0x7BF53C;
-		else if (slotType == "COND_BAOD") condFunct = 0x7BF5A4;
-		else if (slotType == "COND_BKTY") condFunct = 0x7BF60C;
-		else if (slotType == "COND_1JBR") condFunct = 0x7BF674;
-		else if (slotType == "COND_2JBR") condFunct = 0x7BF6DC;
-		else if (slotType == "COND_3JBR") condFunct = 0x7BF744;
-		else if (slotType == "COND_4JBR") condFunct = 0x7BF7AC;
-		else if (slotType == "COND_5JBR") condFunct = 0x7BF814;
-		else if (slotType == "COND_6JBR") condFunct = 0x7BF87C;
-		else if (slotType == "COND_BJYD") condFunct = 0x7BF8E4;
-		else if (slotType == "COND_GFSA") condFunct = 0x7BF94C;
-		else if (slotType == "COND_BKKX") condFunct = 0x7BF9B4;
-		else if (slotType == "COND_B5OB") condFunct = 0x7BFA1C;
-		else if (slotType == "COND_B4NR") condFunct = 0x7BFA84;
-		else if (slotType == "COND_B2NR") condFunct = 0x7BFAEC;
-		else if (slotType == "COND_ALL_GROUP") condFunct = 0x7BFB54;
-		else if (slotType == "COND_BGRG") condFunct = 0x7BFBBC;
-		else if (slotType == "COND_GZTU") condFunct = 0x7BFC24;
-		else if (slotType == "COND_BRSK") condFunct = 0x7BFC8C;
-		else if (slotType == "COND_BKMS") condFunct = 0x7BFCF4;
-		else if (slotType == "COND_BKSR") condFunct = 0x7BFD5C;
-		else if (slotType == "COND_BOBK") condFunct = 0x7BFDC4;
-		else if (slotType == "COND_BNRX") condFunct = 0x7BFE2C;
-		else if (slotType == "COND_BSSX") condFunct = 0x7BFE94;
-		else if (slotType == "COND_BISS") condFunct = 0x7BFEFC;
-		else if (slotType == "COND_BMNK") condFunct = 0x7BFF64;
-		else if (slotType == "COND_7MNV") condFunct = 0x7BFFCC;
+		if (slotType == "COND_1CMN") condFunct = 0x7C2C58;
+		else if (slotType == "COND_2SIK") condFunct = 0x7C2CC0;
+		else if (slotType == "COND_2HDN") condFunct = 0x7C2D28;
+		else if (slotType == "COND_2KKS") condFunct = 0x7C2D90;
+		else if (slotType == "COND_2CYB") condFunct = 0x7C2DF8;
+		else if (slotType == "COND_2SCO") condFunct = 0x7C2E60;
+		else if (slotType == "COND_2DDR") condFunct = 0x7C2EC8;
+		else if (slotType == "COND_3HNZ") condFunct = 0x7C2F30;
+		else if (slotType == "COND_3TOB") condFunct = 0x7C2F98;
+		else if (slotType == "COND_3TYO") condFunct = 0x7C3000;
+		else if (slotType == "COND_3MDR_2") condFunct = 0x7C3068;
+		else if (slotType == "COND_3KBT") condFunct = 0x7C30D0;
+		else if (slotType == "COND_2KNK") condFunct = 0x7C3138;
+		else if (slotType == "COND_2JRY") condFunct = 0x7C31A0;
+		else if (slotType == "COND_3GAR") condFunct = 0x7C3208;
+		else if (slotType == "COND_2GAV") condFunct = 0x7C3208;
+		else if (slotType == "COND_2ORC") condFunct = 0x7C3270;
+		else if (slotType == "COND_5KGY") condFunct = 0x7C32D8;
+		else if (slotType == "COND_2FOU") condFunct = 0x7C3340;
+		else if (slotType == "COND_2DNZ") condFunct = 0x7C33A8;
+		else if (slotType == "COND_3GUY") condFunct = 0x7C3410;
+		else if (slotType == "COND_2KBT") condFunct = 0x7C3478;
+		else if (slotType == "COND_2MDR") condFunct = 0x7C34E0;
+		else if (slotType == "COND_JKKS") condFunct = 0x7C3548;
+		else if (slotType == "COND_2KIB") condFunct = 0x7C35B0;
+		else if (slotType == "COND_2KNN") condFunct = 0x7C1460;
+		else if (slotType == "COND_2SGT") condFunct = 0x7C14C8;
+		else if (slotType == "COND_4MKG") condFunct = 0x7C1530;
+		else if (slotType == "COND_2NRT") condFunct = 0x7C1598;
+		else if (slotType == "COND_2NRG") condFunct = 0x7C1598;
+		else if (slotType == "COND_3NRT") condFunct = 0x7C1598;
+		else if (slotType == "COND_2NRX") condFunct = 0x7C1600;
+		else if (slotType == "COND_3SSK") condFunct = 0x7C1668;
+		else if (slotType == "COND_5TYY") condFunct = 0x7C16D0;
+		else if (slotType == "COND_5MDR") condFunct = 0x7C1738;
+		else if (slotType == "COND_5KDM") condFunct = 0x7C17A0;
+		else if (slotType == "COND_BMDR") condFunct = 0x7C1808;
+		else if (slotType == "COND_1KNK") condFunct = 0x7C1870;
+		else if (slotType == "COND_2YMT") condFunct = 0x7C18D8;
+		else if (slotType == "COND_3MDR") condFunct = 0x7C1940;
+		else if (slotType == "COND_5SKN") condFunct = 0x7C19A8;
+		else if (slotType == "COND_5JRB") condFunct = 0x7C1A10;
+		else if (slotType == "COND_7BRX") condFunct = 0x7C1A78;
+		else if (slotType == "COND_7SKD") condFunct = 0x7C1AE0;
+		else if (slotType == "COND_7YRI") condFunct = 0x7C1B48;
+		else if (slotType == "COND_7NRN") condFunct = 0x7C1BB0;
+		else if (slotType == "COND_7SSX") condFunct = 0x7C1C18;
+		else if (slotType == "COND_7MMS") condFunct = 0x7C1C80;
+		else if (slotType == "COND_7KIN") condFunct = 0x7C1CE8;
+		else if (slotType == "COND_7GAR") condFunct = 0x7C3208;
+		else if (slotType == "COND_7MTK") condFunct = 0x7C1D50;
+		else if (slotType == "COND_8MMS") condFunct = 0x7C1DB8;
+		else if (slotType == "COND_8KIN") condFunct = 0x7C1E20;
+		else if (slotType == "COND_8KNK") condFunct = 0x7C1E88;
+		else if (slotType == "COND_8SIK") condFunct = 0x7C1EF0;
+		else if (slotType == "COND_8TYO") condFunct = 0x7C3000;
+		else if (slotType == "COND_BKRL") condFunct = 0x7C1F58;
+		else if (slotType == "COND_BSSN") condFunct = 0x7C1FC0;
+		else if (slotType == "COND_BOBT") condFunct = 0x7C2028;
+		else if (slotType == "COND_BKRS") condFunct = 0x7C2090;
+		else if (slotType == "COND_B3HS") condFunct = 0x7C20F8;
+		else if (slotType == "COND_BGKT") condFunct = 0x7C2160;
+		else if (slotType == "COND_BAOD") condFunct = 0x7C21C8;
+		else if (slotType == "COND_BKTY") condFunct = 0x7C2230;
+		else if (slotType == "COND_1JBR") condFunct = 0x7C2298;
+		else if (slotType == "COND_2JBR") condFunct = 0x7C2300;
+		else if (slotType == "COND_3JBR") condFunct = 0x7C2368;
+		else if (slotType == "COND_4JBR") condFunct = 0x7C23D0;
+		else if (slotType == "COND_5JBR") condFunct = 0x7C2438;
+		else if (slotType == "COND_6JBR") condFunct = 0x7C24A0;
+		else if (slotType == "COND_BJYD") condFunct = 0x7C2508;
+		else if (slotType == "COND_GFSA") condFunct = 0x7C2570;
+		else if (slotType == "COND_BKKX") condFunct = 0x7C25D8;
+		else if (slotType == "COND_B5OB") condFunct = 0x7C2640;
+		else if (slotType == "COND_B4NR") condFunct = 0x7C26A8;
+		else if (slotType == "COND_B2NR") condFunct = 0x7C2710;
+		else if (slotType == "COND_BJB1") condFunct = 0x7C2778;
+		else if (slotType == "COND_BJB2") condFunct = 0x7C2778;
+		else if (slotType == "COND_BJB3") condFunct = 0x7C2778;
+		else if (slotType == "COND_BJB4") condFunct = 0x7C2778;
+		else if (slotType == "COND_GFSA") condFunct = 0x7C2778;
+		else if (slotType == "COND_BGRG") condFunct = 0x7C27E0;
+		else if (slotType == "COND_GZTU") condFunct = 0x7C2848;
+		else if (slotType == "COND_BRSK") condFunct = 0x7C28B0;
+		else if (slotType == "COND_BKMS") condFunct = 0x7C2918;
+		else if (slotType == "COND_BKSR") condFunct = 0x7C2980;
+		else if (slotType == "COND_BOBK") condFunct = 0x7C29E8;
+		else if (slotType == "COND_BNRX") condFunct = 0x7C2A50;
+		else if (slotType == "COND_BSSX") condFunct = 0x7C2AB8;
+		else if (slotType == "COND_BISS") condFunct = 0x7C2B20;
+		else if (slotType == "COND_BMNK") condFunct = 0x7C2B88;
+		else if (slotType == "COND_7MMV") condFunct = 0x7C2BF0;
 
 		ccCharacterFunctions::c_specialCondFunct.push_back(d3dcompiler_47_og::RecalculateAddress(condFunct));
 		ccCharacterFunctions::c_specialCondCodes.push_back(condCharacter);

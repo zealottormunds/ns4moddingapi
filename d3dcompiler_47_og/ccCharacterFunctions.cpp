@@ -99,7 +99,7 @@ void ccCharacterFunctions::PartnerFunctions()
 	int char_funct_end_rip = char_funct_end - (main_malloc + 20);
 	int char_functions_rip = char_functions - (main_malloc + 44);
 
-	uintptr_t jump_to = d3dcompiler_47_og::moduleBase + 0x7EB257;
+	uintptr_t jump_to = d3dcompiler_47_og::moduleBase + 0x7EEBEB;
 
 	void * writeAddress = &function[0];
 
@@ -120,11 +120,11 @@ void ccCharacterFunctions::PartnerFunctions()
 	}
 
 	// Hook original function to jump to our function
-	if(partnerAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7EB224), (void*)main_malloc, 14);
+	if(partnerAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7EEBB8), (void*)main_malloc, 14);
 	else
 	{
 		// Fix address for reload
-		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + 0x7EB224;
+		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + 0x7EEBB8;
 
 		DWORD dwOld = 0;
 		VirtualProtect((void*)placeJump, 14, PAGE_EXECUTE_READWRITE, &dwOld);
@@ -143,6 +143,8 @@ vector<uintptr_t> ccCharacterFunctions::c_specialCondFunct;
 vector<int> ccCharacterFunctions::c_specialCondCodes;
 void ccCharacterFunctions::SpecialCondFunctions()
 {
+	//CustomConditionCreate();
+
 	BYTE function[] = { 0x48, 0x8D, 0x05, 0x48 + 14, 0x00, 0x00, 0x00,
 
 						0x3B, 0x38,
@@ -187,7 +189,7 @@ void ccCharacterFunctions::SpecialCondFunctions()
 	memcpy((void*)(&function[0] + 0x12), &lea_rip_address, 0x4); // fix the lea with rip + address (points to the end of the condition list)
 
 	// create jump back
-	uintptr_t jback = d3dcompiler_47_og::moduleBase + 0x7C106D;
+	uintptr_t jback = d3dcompiler_47_og::moduleBase + 0x7C4651;
 	memcpy((void*)(&function[0] + 0x4E), &jback, 8);
 
 	// Copy function to memory, and make executable
@@ -204,11 +206,11 @@ void ccCharacterFunctions::SpecialCondFunctions()
 	}
 
 	// Hook original function
-	if(condAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7C02AD), (void*)main_malloc, 15);
+	if(condAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7C3891), (void*)main_malloc, 15);
 	else
 	{
 		// Fix address for reload
-		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + 0x7C02AD;
+		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + 0x7C3891;
 
 		DWORD dwOld = 0;
 		VirtualProtect((void*)placeJump, 14, PAGE_EXECUTE_READWRITE, &dwOld);
@@ -216,10 +218,123 @@ void ccCharacterFunctions::SpecialCondFunctions()
 		VirtualProtect((void*)placeJump, 14, dwOld, &dwOld);
 	}
 
-	//cout << "Function: " << std::hex << (uintptr_t)(d3dcompiler_47_og::moduleBase + 0x7C02AD) << endl;
+	//cout << "Function: " << std::hex << (uintptr_t)(d3dcompiler_47_og::moduleBase + 0x7C3891) << endl;
 	//cout << "main_malloc = " << std::hex << main_malloc << endl;
 
 	// Free old piece of code (if there was one)
 	//if (condAlloc != 0) free((void*)condAlloc);
 	condAlloc = main_malloc;
+}
+
+// COND_BKKX FOR COOP
+#include <time.h>
+vector<uintptr_t> ccCharacterFunctions::charPointer;
+vector<long long> ccCharacterFunctions::charAllocTime;
+void Unhook_COND_BKKX();
+uintptr_t asd = 0x6B0E4C;
+typedef signed __int64(__fastcall * test)(uintptr_t a1, uintptr_t a2);
+test Test1;
+BYTE originalasd[20];
+
+signed __int64 COND_BKKX(uintptr_t cptr, uintptr_t a2)
+{
+	if (ccCharacterFunctions::charAllocTime.size() > 0)
+	{
+		time_t timeInSec_;
+		time(&timeInSec_);
+		if ((long long)timeInSec_ - ccCharacterFunctions::charAllocTime[0] > 5)
+		{
+			ccCharacterFunctions::charPointer.clear();
+			ccCharacterFunctions::charAllocTime.clear();
+		}
+	}
+	else
+	{
+		//cout << "no elements in alloc time" << endl;
+	}
+
+	ccCharacterFunctions::charPointer.push_back(cptr);
+	time_t timeInSec;
+	time(&timeInSec);
+	ccCharacterFunctions::charAllocTime.push_back((long long)timeInSec);
+
+	Test1 = (test)(d3dcompiler_47_og::moduleBase + asd);
+	cout << "CHR #" << ccCharacterFunctions::charPointer.size() << ": " << std::hex << cptr << endl;
+	Unhook_COND_BKKX();
+	signed __int64 result = Test1(cptr, a2);
+	ccCharacterFunctions::Hook_COND_BKKX();
+
+	return result;
+	//cout << std::hex << cptr << endl;
+}
+
+void ccCharacterFunctions::Hook_COND_BKKX()
+{
+	memcpy(originalasd, (void*)(d3dcompiler_47_og::moduleBase + 0x6B0E4C), 15);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x6B0E4C), (void*)COND_BKKX, 15);
+}
+
+void Unhook_COND_BKKX()
+{
+	DWORD dwOld = 0;
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6B0E4C), 15, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x6B0E4C), originalasd, 15);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6B0E4C), 15, dwOld, &dwOld);
+}
+
+void ccCharacterFunctions::EnableControl(int character, int pad)
+{
+	DWORD dwOld = 0;
+	VirtualProtect((void*)(ccCharacterFunctions::charPointer[character] + 0xB40), 8, PAGE_EXECUTE_READWRITE, &dwOld);
+
+	BYTE oldBytes[8] = {
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character]),
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character] + 0xB40 + 1),
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character] + 0xB40 + 2),
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character] + 0xB40 + 3),
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character] + 0xB40 + 4),
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character] + 0xB40 + 5),
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character] + 0xB40 + 6),
+		(BYTE)(BYTE*)(ccCharacterFunctions::charPointer[character] + 0xB40 + 7),
+	};
+
+	bool replace = false;
+	for (int x = 0; x < 8; x++) if (oldBytes[x] != 0) replace = true;
+
+	BYTE newBytes[8] = { 0,0,0,0,0,0,0,0 };
+	memcpy((void*)(ccCharacterFunctions::charPointer[character] + 0xB40), newBytes, 8);
+
+	if(replace == false)
+	{
+		cout << "Char " << character << " is already a player." << endl;
+	}
+
+	VirtualProtect((void*)(ccCharacterFunctions::charPointer[character] + 0xB40), 8, dwOld, &dwOld);
+
+	if (replace)
+	{
+		VirtualProtect((void*)(ccCharacterFunctions::charPointer[character] + 0x840), 1, PAGE_EXECUTE_READWRITE, &dwOld);
+		BYTE newbyte[1] = { 0 };
+		
+		switch (pad)
+		{
+		case 0:
+			newbyte[0] = 0;
+			break;
+		case 1:
+			newbyte[0] = 1;
+			break;
+		case 2:
+			newbyte[0] = 2;
+			break;
+		case 3:
+			newbyte[0] = 3;
+			break;
+		}
+
+		memcpy((void*)(ccCharacterFunctions::charPointer[character] + 0x840), newbyte, 1);
+		VirtualProtect((void*)(ccCharacterFunctions::charPointer[character] + 0x840), 1, dwOld, &dwOld);
+
+		cout << "Char " << character << " is now being controlled by pad " << pad << endl;
+	}
 }
