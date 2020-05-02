@@ -435,8 +435,8 @@ void ReadPatchFile(string _file)
 		Address = 0;
 	}
 
-	if (Address > 0x13A38AD) Address = Address + 0x1A00;
-	else if (Address > 0xEA7420) Address = Address + 0xE00;
+	if (Address > 0x13B4DAC) Address = Address + 0x400;
+	else if (Address > 0xEAAFAC) Address = Address + 0x400;
 
 	//cout << std::hex << Address << endl;
 
@@ -462,7 +462,7 @@ void ReadPatchFile(string _file)
 		}
 
 		//cout << "Patch";
-		//cout << std::hex << d3dcompiler_47_og::moduleBase + Address << endl;
+		cout << "Patched .exe at " << hex << Address << " (" << std::hex << d3dcompiler_47_og::moduleBase + Address << ")" << endl;
 		memcpy((void*)(d3dcompiler_47_og::moduleBase + Address), &v, count - 1);
 		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + Address), replace.size(), dwOld, &dwOld);
 	}
@@ -584,8 +584,8 @@ void DoInstruction(string instruction, vector<string> params, string _file)
 			{
 				uintptr_t v1 = strtol(params[0].c_str(), NULL, 16);
 				
-				if (v1 > 0x13A38AD) v1 = v1 + 0x1A00;
-				else if (v1 > 0xEA7420) v1 = v1 + 0xE00;
+				if (v1 > 0x13B4DAC) v1 = v1 + 0x400;
+				else if (v1 > 0xEAAFAC) v1 = v1 + 0x400;
 
 				int v2 = atoi(params[1].c_str());
 

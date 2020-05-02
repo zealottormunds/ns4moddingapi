@@ -43,8 +43,8 @@ uintptr_t d3dcompiler_47_og::RecalculateAddress(uintptr_t a)
 {
 	uintptr_t recalc = d3dcompiler_47_og::moduleBase + a;
 
-	if (a > 0x13A38AD) recalc += 0x1A00;
-	else if (a > 0xEA7420) recalc += 0xE00;
+	if (a > 0x13A38AD) recalc += 0x400;
+	else if (a > 0xEA7420) recalc += 0x400;
 
 	return recalc;
 }
