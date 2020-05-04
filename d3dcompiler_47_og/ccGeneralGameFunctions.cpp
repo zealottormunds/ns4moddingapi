@@ -192,8 +192,7 @@ typedef char *(__fastcall * message_to_string)(char *);
 message_to_string g_MessageToString;
 char * ccGeneralGameFunctions::MessageToString(char * msg)
 {
-	//g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E80A4);
-	g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E88F0);
+	g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E80A4);
 	return g_MessageToString(msg);
 }
 
@@ -313,7 +312,7 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 	//bool showDecode = true;
 	//if ((string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")) showDecode = false;
 
-	//RandomizeBackground();
+	RandomizeBackground();
 
 	if (ccGeneralGameFunctions::ViewMessageConversions == 0 && strlen((char*)MessageToDecode) > 0 && *(char*)MessageToDecode != '+')
 	{
@@ -386,7 +385,7 @@ message_to_string2 g_MessageToString2;
 
 uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode)
 {
-	g_MessageToString2 = (message_to_string2)(d3dcompiler_47_og::moduleBase + 0xAB7CA0);
+	g_MessageToString2 = (message_to_string2)(d3dcompiler_47_og::moduleBase + 0xAB4770);
 
 	//bool showDecode = true;
 	//if ((string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")) showDecode = false;

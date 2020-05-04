@@ -32,23 +32,31 @@ bool Hook3(void*, void*, int);
 // WRITE ALL THE FUNCTIONS YOU WANT TO HOOK IN HERE
 void HookFunctions::InitializeHooks()
 {
-	//ccPlayer::InitAwakening();
+	ccPlayer::InitAwakening();
 
-	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x85CC80), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14); // GetVersionString hook
-	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x8607EC), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x85CC80), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14); // GetVersionString hook
 
-	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19); // Fixed
+	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), 19);
 	HookFunctions::DoMessageInfoHook();
-	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19); // Fixed
+	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), 19);
 	HookFunctions::DoMessageInfoHook2();
 
+	//ccGeneralGameFunctions::HookLoadXfbin_C();
 
-	//LuaHook::HookDeclareFunction();
-	// NOT FIXED YET!
-	
-	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
-	// NOT FIXED YET!
-	
+	//ccGeneralGameFunctions::HookTest();
+
+	//ccGeneralGameFunctions::HookLoadXfbin();
+	//ccGeneralGameFunctions::HookLoadXfbin2();
+
+	// Awakening IDS:
+	//ccPlayer::InitAwakening();
+	//ccPlayer::DoGetAwakeningIDHook();
+
+	// Lua Hooks:
+	//cout << "Lua hook done." << endl;
+	//ccGeneralGameFunctions::HookCpkLoad();
+	LuaHook::HookDeclareFunction();
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
 	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450E28), (void*)LuaHook::ccGroupBattleEventCameraMovePosBeginCoop, 14);
 
 	// Hook charsel
@@ -66,36 +74,36 @@ void HookFunctions::InitializeHooks()
 	// Game Info Hook
 	//ccGeneralGameFunctions::DoGameInfoHook();
 
-	// Test NOT FIXED YET!!!
+	// Test
 	ccCharacterFunctions::PartnerFunctions();
 	ccCharacterFunctions::SpecialCondFunctions();
-	//ccCharacterFunctions::Hook_COND_BKKX();
+	ccCharacterFunctions::Hook_COND_BKKX();
 }
 
 void HookFunctions::DoMessageInfoHook()
 {
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), (void*)ccGeneralGameFunctions::Hook_MsgToString, 19);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), (void*)ccGeneralGameFunctions::Hook_MsgToString, 19);
 }
 
 void HookFunctions::UndoMessageInfoHook()
 {
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), originalMsgInfo, 19);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19, dwOld, &dwOld);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), 17, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), originalMsgInfo, 19);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB46C0), 17, dwOld, &dwOld);
 }
 
 void HookFunctions::DoMessageInfoHook2()
 {
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), (void*)ccGeneralGameFunctions::Hook_MsgToString_Alt, 19);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), (void*)ccGeneralGameFunctions::Hook_MsgToString_Alt, 19);
 }
 
 void HookFunctions::UndoMessageInfoHook2()
 {
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), originalMsgInfo2, 19);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19, dwOld, &dwOld);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), 19, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), originalMsgInfo2, 19);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB4770), 19, dwOld, &dwOld);
 }
 
 // FUNCTION TO HOOK

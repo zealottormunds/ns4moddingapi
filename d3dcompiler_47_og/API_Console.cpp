@@ -50,22 +50,22 @@ void c_ccMultiMatchShowPlayerStatus();
 void API_Console::InitializeConsole()
 {
 	AddCommand("ConvertMessage", (uintptr_t)c_ConvertMessage, 1);
-	//AddCommand("GetVersionNumber", (uintptr_t)c_GetVersionNumber, 0);
-	//AddCommand("GetVersionString", (uintptr_t)c_GetVersionString, 0);
-	//AddCommand("GetVersionStringAPI", (uintptr_t)c_GetVersionStringAPI, 0);
-	/*AddCommand("GetRyo", (uintptr_t)c_GetRyo, 0);
+	AddCommand("GetVersionNumber", (uintptr_t)c_GetVersionNumber, 0);
+	AddCommand("GetVersionString", (uintptr_t)c_GetVersionString, 0);
+	AddCommand("GetVersionStringAPI", (uintptr_t)c_GetVersionStringAPI, 0);
+	AddCommand("GetRyo", (uintptr_t)c_GetRyo, 0);
 	AddCommand("StartLoad", (uintptr_t)c_StartLoad, 0);
-	AddCommand("EndLoad", (uintptr_t)c_EndLoad, 0);*/
+	AddCommand("EndLoad", (uintptr_t)c_EndLoad, 0);
 	AddCommand("ViewMessageConversions", (uintptr_t)c_ViewMessageConversions, 0);
 	AddCommand("Help", (uintptr_t)c_Help, 0);
-	/*AddCommand("ReloadParamFiles", (uintptr_t)c_ReloadParamFiles, 0);
+	AddCommand("ReloadParamFiles", (uintptr_t)c_ReloadParamFiles, 0);
 	AddCommand("EnableAllPad", (uintptr_t)c_EnableAllPad, 0);
 	AddCommand("ControlNpc", (uintptr_t)c_ControlNpc, 2);
 	AddCommand("ccGroupBattleEventCameraBegin", (uintptr_t)c_ccGroupBattleEventCameraBegin, 0);
 	AddCommand("ccGroupBattleEventCameraMovePosBegin", (uintptr_t)c_ccGroupBattleEventCameraMovePosBegin, 4);
 	AddCommand("ccGroupBattleEventCameraMoveLookBegin", (uintptr_t)c_ccGroupBattleEventCameraMoveLookBegin, 4);
 	AddCommand("ccGetGpPtr", (uintptr_t)c_ccGetGpPtr, 0);
-	AddCommand("ccMultiMatchShowPlayerStatus", (uintptr_t)c_ccMultiMatchShowPlayerStatus, 0);*/
+	AddCommand("ccMultiMatchShowPlayerStatus", (uintptr_t)c_ccMultiMatchShowPlayerStatus, 0);
 
 	//cout << std::hex << (d3dcompiler_47_og::moduleBase + 0x1653688) << endl;
 }
