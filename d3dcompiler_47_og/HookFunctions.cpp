@@ -259,13 +259,3 @@ void UndoHook(string ID)
 		cout << "Unhooked function at " << std::hex << HookAddress[Count] << endl;
 	}
 }
-
-//memcpy(originalInit2Info, (void*)(d3dcompiler_47_og::moduleBase + 0x85AE80), 17);
-//HookFunctions::DoInitializeHook2();
-//memcpy(originalInitInfo, (void*)(d3dcompiler_47_og::moduleBase + 0x85175C), 14);
-//HookFunctions::DoInitializeHook();
-//ccPlayer::DoCtrlHook();
-//ccPlayer::DoMovementHook();
-//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x746360), (void*)ccBattleFunctions::Battle_FillChakra, 17); // Battle_FillChakra hook
-//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7463E8), (void*)ccBattleFunctions::Battle_FillSubstitution, 17); // Battle_FillSubstitution hook
-//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x56AA34), (void*)ccGeneralGameFunctions::Cpk_LoadXfbin, 17);

@@ -9,7 +9,8 @@ namespace moddingApi
 	{
 	public:
 		static DWORD WINAPI Main();
-		static DWORD WINAPI Loop();
+		static DWORD WINAPI LoopConsole();
+		static DWORD WINAPI LoopGame();
 		static void ReadApiFiles();
 
 		// Mod list variables:

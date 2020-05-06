@@ -10,26 +10,14 @@ namespace moddingApi
 	class ccPlayer
 	{
 	public:
-		static int AfterCharacterCollision(uintptr_t);
+		static void ccPlayer::Loop();
 
-		static BYTE CtrlBytes[15];
-		static int Ctrl(uintptr_t, uintptr_t);
-		static void DoCtrlHook();
-		static void UndoCtrlHook();
+		static uintptr_t ccPlayer::GetPlayerStatus(int n);
+		static uintptr_t ccPlayer::GetPlayerInfo(int n);
+		static int ccPlayer::GetPlayerStatusNumber(uintptr_t s);
+		static int ccPlayer::GetPlayerInfoNumber(uintptr_t s);
 
-		static int CtrlCounterSimul(uintptr_t);
-		static int Draw(uintptr_t);
-		static int PostCtrl(uintptr_t);
-
-		static void DoMovementHook();
-		static void UndoMovementHook();
-
-		// Awakening funtions:
-		static BYTE OriginalAwakeningFunction[20];
-		static void InitAwakening();
-		static bool AwakeDebugEnabled;
-		static char** GetAwakeningID(int);
-		static void DoGetAwakeningIDHook();
-		static void UndoGetAwakeningIDHook();
+		static float ccPlayer::GetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop);
+		static void ccPlayer::SetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop, float value);
 	};
 }

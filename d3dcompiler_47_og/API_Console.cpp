@@ -159,7 +159,7 @@ void c_Help()
 #include "ccPlayer.h"
 void c_ViewAwakeningDebug()
 {
-	ccPlayer::AwakeDebugEnabled = !ccPlayer::AwakeDebugEnabled;
+	//ccPlayer::AwakeDebugEnabled = !ccPlayer::AwakeDebugEnabled;
 }
 
 #include "ccCharacterFunctions.h"

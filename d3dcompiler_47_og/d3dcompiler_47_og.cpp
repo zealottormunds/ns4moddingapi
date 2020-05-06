@@ -29,6 +29,8 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved, HMO
 
 		d3dcompiler_47_og::st_hModule = (uintptr_t)hModule;
 		d3dcompiler_47_og::moduleBase = (uintptr_t)GetModuleHandle(NULL) + 0xC00;
+
+		// Start API
 		CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::Main, hModule, 0, nullptr));
 	}
 	else if (fdwReason == DLL_PROCESS_DETACH)

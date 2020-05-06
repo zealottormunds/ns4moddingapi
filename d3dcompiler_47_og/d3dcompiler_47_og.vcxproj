@@ -185,6 +185,7 @@
     <ClInclude Include="LuaHook.h" />
     <ClInclude Include="LuaHook_Commands.h" />
     <ClInclude Include="MultiMatch.h" />
+    <ClInclude Include="old_ccPlayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

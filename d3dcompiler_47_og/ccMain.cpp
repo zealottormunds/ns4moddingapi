@@ -6,6 +6,7 @@
 #include <vector>
 #include <filesystem>
 #include <Xinput.h>
+
 #include "ccMain.h"
 #include "API_Console.h"
 #include "d3dcompiler_47_og.h"
@@ -21,17 +22,27 @@ int Console_GetInt(char*);
 char * Console_GetString(char*);
 bool EnableAPI = false;
 
-// Main function of the API
 DWORD WINAPI ccMain::Main()
 {
-	//HookFunctions::InitializeHooks();
+	// Read all the mods and configs
 	ccMain::ReadApiFiles();
+
+	// Initialize the function hooks
 	HookFunctions::InitializeHooks();
-	//ccGeneralGameFunctions::CpkLoadList();
+
+	// Enable API
+	EnableAPI = true;
+
+	// Enable the game thread (this is for player modification in game)
+	CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::LoopGame, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
+
+	// Loop console
+	ccMain::LoopConsole();
+
 	return 0;
 }
 
-DWORD WINAPI ccMain::Loop()
+DWORD WINAPI ccMain::LoopConsole()
 {
 	while (EnableAPI == false)
 	{
@@ -51,6 +62,17 @@ DWORD WINAPI ccMain::Loop()
 		Sleep(100);
 	}
 
+	return 0;
+}
+
+#include "ccPlayer.h"
+DWORD WINAPI ccMain::LoopGame()
+{
+	while (true)
+	{
+		ccPlayer::Loop();
+		Sleep(10);
+	}
 	return 0;
 }
 
@@ -136,11 +158,7 @@ void ccMain::ReadApiFiles()
 			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), &a, 1);
 			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), 1, dwOld, &dwOld);
 		}
-		else
-		{
-			
-		}
-		
+
 		cout << "Config finished..." << endl;
 
 		// Start reading mods
@@ -264,9 +282,8 @@ void ccMain::ReadApiFiles()
 	//g_InitializeGame = (initializegame)(d3dcompiler_47_og::moduleBase + 0x85175C);
 	//g_InitializeGame2 = (initializegame2)(d3dcompiler_47_og::moduleBase + 0x85AE80);
 
-	EnableAPI = true;
+	//EnableAPI = true;
 	//CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::Loop, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
-	
 }
 
 void ccMain::ReloadParamFiles()
@@ -472,6 +489,91 @@ void ReadPatchFile(string _file)
 
 vector<BYTE> var;
 void ReadScriptFile(string _file)
+{
+	ifstream f;
+	f.open(_file);
+
+	BYTE mode = 0;
+	string instruction;
+	BYTE parameterCount;
+
+	vector<string> params;
+	uintptr_t address;
+
+	bool ready = false;
+
+	while (!f.eof())
+	{
+		char a = f.get();
+
+		if (a != '\n')
+		{
+			if (mode == 0)
+			{
+				if (a != '(')
+				{
+					instruction = instruction + a;
+				}
+				else
+				{
+					mode = 1;
+					if (instruction == "Get")
+					{
+						//cout << "Get" << endl;
+						parameterCount = 2;
+						params.push_back("");
+					}
+					else if (instruction == "Write")
+					{
+						//cout << "Write" << endl;
+						parameterCount = 2;
+						params.push_back("");
+					}
+					else if (instruction == "WriteBytes")
+					{
+						parameterCount = 3;
+						params.push_back("");
+					}
+				}
+			}
+			else if (mode == 1)
+			{
+				if (a != ',' && a != ')')
+				{
+					params[params.size() - 1] += a;
+				}
+				else
+				{
+					if (a == ',')
+					{
+						//cout << "Read param " << params[params.size() - 1] << endl;
+						//cout << "Adding param" << endl;
+						params.push_back("");
+					}
+					else if (a == ')')
+					{
+						//cout << "Read param " << params[params.size() - 1] << endl;
+						//cout << "Mode 2" << endl;
+						DoInstruction(instruction, params, _file);
+						mode = 0;
+					}
+				}
+			}
+		}
+		else
+		{
+			mode = 0;
+			instruction = "";
+			params.clear();
+			parameterCount = 0;
+			address = -1;
+		}
+	}
+
+	f.close();
+}
+
+void ReadGameScriptFile(string _file)
 {
 	ifstream f;
 	f.open(_file);

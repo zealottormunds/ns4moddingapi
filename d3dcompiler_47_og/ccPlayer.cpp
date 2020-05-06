@@ -13,168 +13,254 @@
 using namespace std;
 using namespace moddingApi;
 
-int ccPlayer::AfterCharacterCollision(uintptr_t a1)
+#define CHECK_BIT(var,pos) (((var)>>(pos)) & 1)
+int prevFrame = 0;
+int prevBattle = 0;
+
+void ccPlayer::Loop()
 {
-	cout << "AfterCharacterCollision -> " << *(int*)(a1 + 0xB28) << endl;
-	return *(int*)(a1 + 0xB28);
-}
-
-typedef int (__fastcall * g_ccplayer_ctrl)(uintptr_t, uintptr_t);
-g_ccplayer_ctrl g_ccPlayer_Ctrl;
-
-int ccPlayer::Ctrl(uintptr_t a1, uintptr_t a2)
-{
-	g_ccPlayer_Ctrl = (g_ccplayer_ctrl)(d3dcompiler_47_og::moduleBase + 0x76EA50);
-
-	cout << "ccPlayer::Ctrl -> " << std::hex << a1 << ", " << a2 << endl;
-	
-	//ccPlayer::UndoCtrlHook();
-	//int a = g_ccPlayer_Ctrl(a1, a2);
-	//ccPlayer::DoCtrlHook();
-	int a = 0;
-	return a;
-}
-
-BYTE ccPlayer::CtrlBytes[15];
-
-void ccPlayer::DoCtrlHook()
-{
-	memcpy(ccPlayer::CtrlBytes, (void*)(d3dcompiler_47_og::moduleBase + 0x76EA50), 15);
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x76EA50), (void*)ccPlayer::Ctrl, 15);
-}
-
-void ccPlayer::UndoCtrlHook()
-{
-	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x76EA50), 15, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x76EA50), CtrlBytes, 15);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x85175C), 15, dwOld, &dwOld);
-}
-
-int ccPlayer::CtrlCounterSimul(uintptr_t)
-{
-
-}
-
-int ccPlayer::Draw(uintptr_t)
-{
-
-}
-
-int ccPlayer::PostCtrl(uintptr_t)
-{
-
-}
-
-typedef int(__fastcall * g_obj_writepos)(uintptr_t, uintptr_t);
-g_obj_writepos g_Obj_WritePos;
-
-int Test(uintptr_t a1, uintptr_t a2)
-{
-	g_Obj_WritePos = (g_obj_writepos)(d3dcompiler_47_og::moduleBase + 0xABEEF0);
-
-	//if ((*(float*)(a2 + 0x70) > 100.0f && *(float*)(a2 + 0x70) < 200.0f) || (*(float*)(a2 + 0x74) > 100.0f && *(float*)(a2 + 0x74) < 200.0f) || (*(float*)(a2 + 0x78) > 100.0f && *(float*)(a2 + 0x78) < 200.0f) || (*(float*)(a2 + 0x7C) > 100.0f && *(float*)(a2 + 0x7C) < 200.0f))
-	//{
-		cout << "Destination: " << std::hex << a1 << ", Source: " << std::hex << a2 << endl;
-	//}
-
-	ccPlayer::UndoMovementHook();
-	int a = g_Obj_WritePos(a1, a2);
-	ccPlayer::DoMovementHook();
-
-	return a;
-}
-
-BYTE originalBytes[16];
-void ccPlayer::DoMovementHook()
-{
-	memcpy(originalBytes, (void*)(d3dcompiler_47_og::moduleBase + 0xABEEF0), 16);
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xABEEF0), (void*)Test, 16);
-}
-
-void ccPlayer::UndoMovementHook()
-{
-	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xABEEF0), 16, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xABEEF0), originalBytes, 16);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xABEEF0), 16, dwOld, &dwOld);
-}
-
-// Awakening functions
-BYTE ccPlayer::OriginalAwakeningFunction[20];
-typedef char**(__fastcall * fc_getawakeningid)(int a1);
-fc_getawakeningid fc_GetAwakeningID;
-char* ExtraIDs[5] = { "AWAKE_2CMN", "AWAKE_2CMN_REAC", "AWAKE_3CMN", "AWAKE_3CMN_REAC", "ITEMTEST" };
-int Extra = 5;
-uintptr_t FirstPointer = -1;
-void ccPlayer::InitAwakening()
-{
-	FirstPointer = (uintptr_t)malloc(sizeof(uintptr_t) * Extra);
-
-	for (int x = 0; x < Extra; x++)
+	for (int x = 0; x < 2; x++)
 	{
-		*(uintptr_t*)(FirstPointer + (sizeof(uintptr_t) * x)) = (uintptr_t)&ExtraIDs[x];
-	}
-}
+		uintptr_t s = GetPlayerStatus(x);
+		uintptr_t p = GetPlayerInfo(x);
+		if (s == 0 || p == 0) return;
+		float h = GetPlayerFloatProperty(p, s, "health");
 
-bool ccPlayer::AwakeDebugEnabled = false;
-char** ccPlayer::GetAwakeningID(int ActualID)
-{
-	char ** a;
-	//ActualID = 471;
-	if (ccPlayer::AwakeDebugEnabled) cout << ActualID << endl;
+		if (h <= 0) return;
 
-	if (ActualID <= 470)
-	{
-		fc_GetAwakeningID = (fc_getawakeningid)(d3dcompiler_47_og::moduleBase + 0x7693D4);
-
-		//if(ccPlayer::AwakeDebugEnabled) cout << ActualID << endl;
-
-		ccPlayer::UndoGetAwakeningIDHook();
-
-		//cout << "Getting real ID..." << endl;
-
-		a = fc_GetAwakeningID(ActualID);
-		if(ActualID == 470) cout << std::hex << a << endl;
-
-		//cout << "Got ID" << endl;
-
-		ccPlayer::DoGetAwakeningIDHook();
-
-		cout << a << endl;
-
-		//return a;
-	}
-	else
-	{
-		int NewID = ActualID - 470 - 1;
-
-		if (NewID < Extra)
+		float c = GetPlayerFloatProperty(p, s, "chakra");
+		SetPlayerFloatProperty(p, s, "modelscale", c / 100);
+		/*if (GetPlayerFloatProperty(p, s, "health") > 50)
 		{
-			cout << "Getting new ID" << endl;
-			a = (char**)*(uintptr_t*)(FirstPointer + (sizeof(uintptr_t) * NewID));
-			cout << std::hex << a << endl;
+			SetPlayerFloatProperty(p, s,)
+		}*/
+	}
+	//cout << "p: " << hex << p << endl;
+
+	/*if (isOnBattle() != prevBattle)
+	{
+		prevBattle = isOnBattle();
+		if (prevBattle == 0)
+		{
+			cout << "Quit battle" << endl;
+
+			for (int x = 0; x < 2; x++)
+			{
+				DWORD s = GetPlayerStatus(x);
+				if (GetPlayerHealth(s) <= 0) return; // If player is dead or there's no player, stop code
+				DWORD p = GetPlayerInfo(x);
+				if (p == 0) return;
+				int charaid = GetCharaID(p);
+
+				DeleteCharacters(charaid, x);
+			}
 		}
 		else
 		{
-			cout << "Getting dummy ID" << endl;
-			a = ccPlayer::GetAwakeningID(0);
+			cout << "Entered battle" << endl;
+
+			for (int x = 0; x < 2; x++)
+			{
+				DWORD s = GetPlayerStatus(x);
+				if (GetPlayerHealth(s) <= 0) return; // If player is dead or there's no player, stop code
+				DWORD p = GetPlayerInfo(x);
+				if (p == 0) return;
+				int charaid = GetCharaID(p);
+				InitializeCharacters(charaid, x);
+			}
 		}
 	}
 
-	return a;
+	if (isOnBattle() == 0) return;
+
+	for (int x = 0; x < 2; x++)
+	{
+		DWORD s = GetPlayerStatus(x);
+
+		if (GetPlayerHealth(s) <= 0) return; // If player is dead or there's no player, stop code
+
+		DWORD p = GetPlayerInfo(x);
+		cout << "p: " << hex << p << endl;
+
+		if (p == 0) return;
+
+		// Character specific
+		//if (isOnMenu() == false && prevFrame != GetCurrentFrame()) DoCharacterLoop(GetCharaID(p), x);
+	}
+	prevFrame = GetCurrentFrame();*/
 }
 
-void ccPlayer::DoGetAwakeningIDHook()
+uintptr_t ccPlayer::GetPlayerStatus(int n)
 {
-	memcpy(OriginalAwakeningFunction, (void*)(d3dcompiler_47_og::moduleBase + 0x7693D4), 20);
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7693D4), (void*)ccPlayer::GetAwakeningID, 20);
+	uintptr_t p1 = 0;
+	uintptr_t p2 = 0;
+	uintptr_t p3 = 0;
+	uintptr_t p4 = 0;
+
+	switch (n)
+	{
+	default:
+		memcpy(&p1, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x161B738), 8);
+		if (p1 == 0) return 0;
+
+		memcpy(&p2, (void*)(p1 + 0x20), 8);
+		if (p2 == 0) return 0;
+
+		memcpy(&p3, (void*)(p2 + 0x00), 8);
+		if (p3 == 0) return 0;
+
+		p4 = p3 + 0x38;
+		if (p4 == 0) return 0;
+
+		return p4;
+	case 1:
+		memcpy(&p1, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x161B738), 8);
+		if (p1 == 0) return 0;
+
+		memcpy(&p2, (void*)(p1 + 0x20), 8);
+		if (p2 == 0) return 0;
+
+		memcpy(&p3, (void*)(p2 + 0xA0), 8);
+		if (p3 == 0) return 0;
+
+		p4 = p3 + 0x38;
+		if (p4 == 0) return 0;
+		return p4;
+	}
 }
 
-void ccPlayer::UndoGetAwakeningIDHook()
+uintptr_t ccPlayer::GetPlayerInfo(int n)
 {
+	uintptr_t a = ccPlayer::GetPlayerStatus(n);
+	if (a == 0) return 0;
+	uintptr_t b = a - 8;
+	uintptr_t c = 0;
+	memcpy(&c, (void*)b, 8);
+	return c;
+}
+
+int ccPlayer::GetPlayerStatusNumber(uintptr_t s)
+{
+	int n = -1;
+	for (int x = 0; x < 2; x++)
+	{
+		if (s == ccPlayer::GetPlayerStatus(x)) n = x;
+	}
+	return n;
+}
+
+int ccPlayer::GetPlayerInfoNumber(uintptr_t p)
+{
+	int n = -1;
+	for (int x = 0; x < 2; x++)
+	{
+		if (p == ccPlayer::GetPlayerInfo(x)) n = x;
+	}
+	return n;
+}
+
+constexpr unsigned int str2int(const char* str, int h = 0)
+{
+	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
+}
+
+float ccPlayer::GetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop)
+{
+	float result = -1;
+
+	if (s == 0 || p == 0) return result;
+
+	switch (str2int(prop))
+	{
+	case str2int("posx"):
+		memcpy(&result, (void*)(p + 0x70), 4);
+		break;
+	case str2int("posz"):
+		memcpy(&result, (void*)(p + 0x74), 4);
+		break;
+	case str2int("posy"):
+		memcpy(&result, (void*)(p + 0x78), 4);
+		break;
+	case str2int("health"):
+		memcpy(&result, (void*)(s + 0x00), 4);
+		break;
+	case str2int("maxhealth"):
+		memcpy(&result, (void*)(s + 0x04), 4);
+		break;
+	case str2int("chakra"):
+		memcpy(&result, (void*)(s + 0x08), 4);
+		break;
+	case str2int("maxchakra"):
+		memcpy(&result, (void*)(s + 0x0C), 4);
+		break;
+	case str2int("sub"):
+		memcpy(&result, (void*)(s + 0x10), 4);
+		break;
+	case str2int("maxsub"):
+		memcpy(&result, (void*)(s + 0x14), 4);
+		break;
+	case str2int("modelscale"):
+		memcpy(&result, (void*)(p + 0x200), 4);
+		break;
+	case str2int("anmspeed"):
+		memcpy(&result, (void*)(p + 0x214), 4);
+		break;
+	case str2int("movespeed"):
+		memcpy(&result, (void*)(p + 0x14174), 4);
+		break;
+	}
+
+	return result;
+}
+
+void ccPlayer::SetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop, float value)
+{
+	uintptr_t ptr = 0;
+
+	if (s == 0 || p == 0) return;
+
+	switch (str2int(prop))
+	{
+	case str2int("posx"):
+		ptr = p + 0x70;
+		break;
+	case str2int("posz"):
+		ptr = p + 0x74;
+		break;
+	case str2int("posy"):
+		ptr = p + 0x78;
+		break;
+	case str2int("health"):
+		ptr = s + 0x00;
+		break;
+	case str2int("maxhealth"):
+		ptr = s + 0x04;
+		break;
+	case str2int("chakra"):
+		ptr = s + 0x08;
+		break;
+	case str2int("maxchakra"):
+		ptr = s + 0x0C;
+		break;
+	case str2int("sub"):
+		ptr = s + 0x10;
+		break;
+	case str2int("maxsub"):
+		ptr = s + 0x14;
+		break;
+	case str2int("modelscale"):
+		ptr = p + 0x200;
+		break;
+	case str2int("anmspeed"):
+		ptr = p + 0x214;
+		break;
+	case str2int("movespeed"):
+		ptr = p + 0x14174;
+		break;
+	}
+
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x7693D4), 20, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x7693D4), OriginalAwakeningFunction, 20);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x7693D4), 20, dwOld, &dwOld);
+	VirtualProtect((void*)(ptr), 4, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(ptr), &value, 4);
+	VirtualProtect((void*)(ptr), 4, dwOld, &dwOld);
 }
