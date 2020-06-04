@@ -35,7 +35,6 @@ void ccPlayer::Loop()
 
 		// Get the Chakra value of the currently selected player
 		float c = GetPlayerFloatProperty(p, s, "chakra");
-		SetPlayerFloatProperty(p, s, "modelscale", c / 100);
 	}
 
 	/*
@@ -161,8 +160,8 @@ uintptr_t ccPlayer::GetPlayerInfo(int n)
 int ccPlayer::GetPlayerStatusNumber(uintptr_t s) { return LoopForNum(2, s, ccPlayer::GetPlayerStatus); }
 int ccPlayer::GetPlayerInfoNumber(uintptr_t p) { return LoopForNum(2, p, ccPlayer::GetPlayerInfo); }
 
-float ccPlayer::GetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop)
-{
+ float ccPlayer::GetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop)
+{ 
 	// Instantiate variables for memcpy and the return value
 	float result = -1;
 	int offset = -1;
@@ -220,5 +219,5 @@ void ccPlayer::SetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop, floa
 	VirtualProtect((void*)(ptr), 4, PAGE_EXECUTE_READWRITE, &dwOld);
 	memcpy((void*)(ptr), &value, 4);
 	VirtualProtect((void*)(ptr), 4, dwOld, &dwOld);
-}
-#pragma endregion
+} 
+#pragma endregion 
