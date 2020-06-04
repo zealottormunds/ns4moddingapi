@@ -16,6 +16,9 @@ namespace moddingApi
 		static void DoMessageInfoHook2();
 		static void UndoMessageInfoHook2();
 
+		static void DoMessageInfoHook3();
+		static void UndoMessageInfoHook3();
+
 		static bool Hook(void*, void*, int);
 
 		//static void DoHook(uintptr_t address, void* originalDest, int len, void* funct);

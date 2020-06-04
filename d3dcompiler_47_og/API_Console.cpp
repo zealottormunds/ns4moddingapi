@@ -46,6 +46,7 @@ void c_ccGroupBattleEventCameraMovePosBegin();
 void c_ccGroupBattleEventCameraMoveLookBegin();
 void c_ccGetGpPtr();
 void c_ccMultiMatchShowPlayerStatus();
+void c_ccGetCastPointer();
 
 void API_Console::InitializeConsole()
 {
@@ -66,6 +67,7 @@ void API_Console::InitializeConsole()
 	AddCommand("ccGroupBattleEventCameraMoveLookBegin", (uintptr_t)c_ccGroupBattleEventCameraMoveLookBegin, 4);
 	AddCommand("ccGetGpPtr", (uintptr_t)c_ccGetGpPtr, 0);
 	AddCommand("ccMultiMatchShowPlayerStatus", (uintptr_t)c_ccMultiMatchShowPlayerStatus, 0);*/
+	AddCommand("GetCastPointer", (uintptr_t)c_ccGetCastPointer, 1);
 
 	//cout << std::hex << (d3dcompiler_47_og::moduleBase + 0x1653688) << endl;
 }
@@ -284,6 +286,17 @@ void c_ccGetGpPtr()
 void c_ccMultiMatchShowPlayerStatus()
 {
 	LuaHook_Commands::ccEntryNameTelop("P4 > HP: 100 / CHK: 100", "", 570, 500, 0, 0, 120);
+}
+
+void c_ccGetCastPointer()
+{
+	std::string param1;
+
+	cout << "CAST >> ";
+	cin >> param1;
+	char * param1_c = strcpy(new char[param1.length() + 1], param1.c_str());
+
+	cout << "CHAR: " << hex << LuaHook::fc_ccGetCastPointer(param1_c) << endl;
 }
 
 void AddCommand(string command, uintptr_t function, int paramCount)

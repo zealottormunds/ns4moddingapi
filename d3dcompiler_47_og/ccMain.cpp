@@ -14,6 +14,7 @@
 #include "ccCharacterFunctions.h"
 #include "ccBossIAFunctions.h"
 #include "HookFunctions.h"
+#include "ccPlayer.h"
 
 using namespace moddingApi;
 using namespace std;
@@ -21,6 +22,8 @@ using namespace std;
 int Console_GetInt(char*);
 char * Console_GetString(char*);
 bool EnableAPI = false;
+
+void ReadCpk();
 
 DWORD WINAPI ccMain::Main()
 {
@@ -33,6 +36,9 @@ DWORD WINAPI ccMain::Main()
 	// Enable API
 	EnableAPI = true;
 
+	// Read CPK
+	ReadCpk();
+
 	// Enable the game thread (this is for player modification in game)
 	CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::LoopGame, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
 
@@ -42,6 +48,7 @@ DWORD WINAPI ccMain::Main()
 	return 0;
 }
 
+// Process the console
 DWORD WINAPI ccMain::LoopConsole()
 {
 	while (EnableAPI == false)
@@ -65,7 +72,7 @@ DWORD WINAPI ccMain::LoopConsole()
 	return 0;
 }
 
-#include "ccPlayer.h"
+// Process the player
 DWORD WINAPI ccMain::LoopGame()
 {
 	while (true)
@@ -75,6 +82,8 @@ DWORD WINAPI ccMain::LoopGame()
 	}
 	return 0;
 }
+
+// Console base commands
 
 int Console_GetInt(char * CommandPrompt)
 {
@@ -94,19 +103,21 @@ char * Console_GetString(char * CommandPrompt)
 	return a;
 }
 
+// Mod list
+
 int ccMain::ModCount = 0;
 vector<std::string> ccMain::ModList;
 vector<std::string> ccMain::ModDesc;
 vector<std::string> ccMain::ModAuth;
 vector<BYTE> ccMain::ModState;
 
-// INITIALIZE GAME
+// Initialize game functions
 typedef uintptr_t(__fastcall * initializegame)(uintptr_t);
 initializegame g_InitializeGame;
 typedef uintptr_t(__fastcall * initializegame2)(float);
 initializegame2 g_InitializeGame2;
 
-// READ MOD FILES
+// Read all mods
 vector<string> ReadMessageFile(string);
 void ReadPatchFile(string);
 void ReadScriptFile(string);
@@ -213,8 +224,6 @@ void ccMain::ReadApiFiles()
 				}
 				file.close();
 
-				//cout << "heehee" << endl;
-
 				if (modName != "")
 				{
 					// Start reading mod files
@@ -271,19 +280,10 @@ void ccMain::ReadApiFiles()
 			{
 				cout << "Disabling mod \"" << ModName << "\" - No info.txt file found." << endl;
 			}
-
-			//cout << ModName << endl;
 		}
 
 		cout << "Finished reading mods" << endl;
 	}
-
-	//HookFunctions::UndoInitializeHook2();
-	//g_InitializeGame = (initializegame)(d3dcompiler_47_og::moduleBase + 0x85175C);
-	//g_InitializeGame2 = (initializegame2)(d3dcompiler_47_og::moduleBase + 0x85AE80);
-
-	//EnableAPI = true;
-	//CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::Loop, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
 }
 
 void ccMain::ReloadParamFiles()
@@ -927,4 +927,142 @@ vector<BYTE> ReadAllBytes(string _file)
 	f.close();
 
 	return result;
+}
+
+#include "ccGameProperties.h"
+#include "ccMemoryFunctions.h"
+void ReadCpk()
+{
+	BYTE cpkCount = 6;
+
+	char* cpkList[] =
+	{
+		"sim:data/launch/data1.cpk",
+		"sim:data/launch/stage1.cpk",
+		"disc:data/launch/dataRegion.cpk",
+		"sim:data/launch/sound.cpk",
+		"disc:data/launch/adx2.cpk",
+		"disc:data/launch/movie1.cpk",
+		"sim:data/launch/test.cpk"
+	};
+
+	void* cpkMode1v = malloc(8);
+	BYTE cpkMode1[] =
+	{
+		0x01, 0x00, 0x00, 0x00, 0xF6, 0x7F, 0x00, 0x00
+	};
+	memcpy(cpkMode1v, &cpkMode1[0], 8);
+
+	void* cpkMode2v = malloc(8);
+	BYTE cpkMode2[] =
+	{
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	};
+	memcpy(cpkMode2v, &cpkMode2[0], 8);
+
+	void* cpkMode3v = malloc(8);
+	BYTE cpkMode3[] =
+	{
+		0x00, 0x00, 0x00, 0x00, 0xF6, 0x7F, 0x00, 0x00
+	};
+	memcpy(cpkMode3v, &cpkMode3[0], 8);
+
+	void* cpkMode4v = malloc(8);
+	BYTE cpkMode4[] =
+	{
+		0x00, 0x00, 0x00, 0x00, 0x53, 0x00, 0x00, 0x00
+	};
+	memcpy(cpkMode4v, &cpkMode4[0], 8);
+
+	void* arrayMalloc = malloc(0x10 * cpkCount);
+	
+	for (int x = 0; x < cpkCount; x++)
+	{
+		void* actual = (void*)((__int64)arrayMalloc + (x * 0x10));
+		memcpy(actual, &cpkList[x], 0x8);
+	}
+
+	cout << "Address: " << std::hex << arrayMalloc << endl;
+
+	// This will be placed in the game exe, 0x853D6B
+	BYTE jmp_[]
+	{
+		0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // 0x0
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		0x90 // 0x6
+	};
+
+	void* jmp = VirtualAlloc(0, 14, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	memcpy(jmp, &jmp_[0], 14);
+
+	// This is the function that will get executed
+	BYTE function_[]{
+		0x48, 0x8D, 0x1D, 0x13, 0x00, 0x00, 0x00, // 0x0, mov rbx, [rip+0x13]
+		0xBF, cpkCount, 0x00, 0x00, 0x00, // 0x7, mov edi, 6
+		0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // 0xC, jmp
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // 0x12, back to 0x853DC8
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // 0x1A
+	};
+
+	void *function = VirtualAlloc(0, 34 + (cpkCount * 0x10) - 0x10, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	memcpy(function, &function_[0], 34);
+
+	// Paste function address in jmp
+	memcpy((void*)((_int64)jmp + 0x6), &function, 8);
+
+	// Calculate jmp back
+	__int64 back = d3dcompiler_47_og::moduleBase + 0x853DC8;
+
+	// Paste jmp back in function + 0x12
+	memcpy((void*)((__int64)function + 0x12), &back, 8);
+
+	// Paste address of strings in function + 0x1A
+	for (int x = 0; x < cpkCount; x++)
+	{
+		memcpy((void*)((__int64)function + 0x1A + (x * 0x10)), (void*)((__int64)arrayMalloc + (x * 0x10)), 8);
+
+		switch (x)
+		{
+		case 0:
+		case 1:
+		case 2:
+			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode1v, 8);
+			break;
+		case 3:
+			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode2v, 8);
+			break;
+		case 4:
+			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode3v, 8);
+			break;
+		case 5:
+			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode4v, 8);
+			break;
+		case 6:
+		case 7:
+		case 8:
+			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode4v, 8);
+			break;
+		}
+	}
+
+	// Make executable memory
+	DWORD dwOld = 0;
+	VirtualProtect(function, 34, PAGE_EXECUTE_READWRITE, &dwOld);
+
+	// Paste jmp in original function
+	void* test = malloc(1);
+	BYTE test1 = 0x48;
+	memcpy(test, &test1, 1);
+
+	void * oriFunct = (void*)(d3dcompiler_47_og::moduleBase + 0x853D6B);
+
+	DWORD dwOld1 = 0;
+	VirtualProtect(oriFunct, 15, PAGE_EXECUTE_READWRITE, &dwOld1);
+	//memcpy(oriFunct, jmp, 15); // DISABLE CPK READ
+	VirtualProtect(oriFunct, 15, dwOld1, &dwOld1);
+	//ccMemoryFunctions::memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x853D6B), test, 1);
+
+	cout << "stuff" << endl;
+	cout << std::hex << (__int64)(jmp) << endl;
+	cout << std::hex << (__int64)(function) << endl;
 }

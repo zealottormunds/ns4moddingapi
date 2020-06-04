@@ -34,6 +34,36 @@
     <Filter Include="Multimatch Files">
       <UniqueIdentifier>{b0166d29-f2f6-4e11-ade7-890e5f6fee6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Rpg">
+      <UniqueIdentifier>{da8b9b5f-2361-4519-a3ba-837900332178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg">
+      <UniqueIdentifier>{79af97e0-9859-4d1c-9826-6c7bcb10d710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Scenes">
+      <UniqueIdentifier>{3686f04f-f74f-4432-8999-8ef40c63bab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Interactive">
+      <UniqueIdentifier>{625d0ed0-ee23-4623-9985-2e92394375f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Collision">
+      <UniqueIdentifier>{5d42cc7e-7f23-4b46-ab91-cb985f3fc257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Entity">
+      <UniqueIdentifier>{7cdd1fef-7479-4b1c-b617-6b368bbe106f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Game Engine">
+      <UniqueIdentifier>{4e57a3fe-3533-404c-be22-1acd90904b1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{59c4c42a-2c6c-4c3d-bdbb-d4f3f63854d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters">
+      <UniqueIdentifier>{448d3aee-dd1a-4301-84b2-ccd798353436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters">
+      <UniqueIdentifier>{8ca6b072-a40d-4691-b670-abc33a79e602}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MultiMatch.cpp">
@@ -77,6 +107,150 @@
     </ClCompile>
     <ClCompile Include="HookFunctions.cpp">
       <Filter>Source Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractiveMain.cpp">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactive_Examine.cpp">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Source Files\Rpg\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityMain.cpp">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity_Fireball.cpp">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Template.cpp">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldCollision.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ztRpgMain.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioPlayer.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lapi.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lauxlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lbaselib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lcode.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldblib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldebug.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldo.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldump.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lfunc.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lgc.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\linit.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\liolib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\llex.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lmathlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lmem.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\loadlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lobject.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lopcodes.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\loslib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lparser.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lstate.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lstring.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lstrlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ltable.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ltablib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ltm.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lua.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\luac.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lundump.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lvm.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lzio.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\print.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ccPlayerStruct.cpp">
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,8 +296,122 @@
     <ClInclude Include="d3dcompiler_47_og.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="old_ccPlayer.h">
-      <Filter>Header Files\Player</Filter>
+    <ClInclude Include="ztRpgMain.h">
+      <Filter>Header Files\Rpg</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractiveMain.h">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactive_Examine.h">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Source Files\Rpg\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityMain.h">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity_Fireball.h">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Template.h">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldCollision.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioPlayer.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lapi.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lauxlib.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lcode.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ldebug.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ldo.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lfunc.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lgc.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\llex.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\llimits.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lmem.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lobject.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lopcodes.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lparser.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lstate.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lstring.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ltable.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ltm.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lua.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\luaconf.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lualib.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lundump.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lvm.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lzio.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ccPlayerStruct.h">
+      <Filter>Source Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

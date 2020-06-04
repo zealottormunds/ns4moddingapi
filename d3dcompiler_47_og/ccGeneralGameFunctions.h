@@ -56,5 +56,8 @@ namespace moddingApi
 		static signed __int64 enablePads();
 		static void HookLoadXfbin_C();
 		static void HookTest();
+
+		static int GetCurrentFrame();
+		static int GetFPS();
 	};
 }

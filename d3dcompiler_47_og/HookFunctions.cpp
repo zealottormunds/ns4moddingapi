@@ -43,7 +43,7 @@ void HookFunctions::InitializeHooks()
 	HookFunctions::DoMessageInfoHook2();
 
 
-	//LuaHook::HookDeclareFunction();
+	LuaHook::HookDeclareFunction();
 	// NOT FIXED YET!
 	
 	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);

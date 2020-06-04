@@ -17,6 +17,7 @@
 using namespace moddingApi;
 using namespace std;
 
+// This is useless until we figure out a way to load more cpks.
 BYTE ccGeneralGameFunctions::MAX_GAME_VERSION = 9;
 
 // GAME INFO HOOK
@@ -267,6 +268,7 @@ std::string GetModMessage()
 	return st;
 }
 
+// This function doesn't work in 1.08 yet.
 void RandomizeBackground()
 {
 	DWORD dwOld = 0;
@@ -340,7 +342,7 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 
 			if (finished == false)
 			{
-				std::string msg = (std::string)(char*)MessageToDecode;
+				string msg((char*)MessageToDecode);
 
 				if (msg == "network_agreement_select") result = "Press any button to continue";
 				else if (msg == "network_agreement_ok") result = "";
@@ -351,11 +353,11 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 					{
 						if (msg == MessageID[x])
 						{
-							result = (char*)MessageStr[x].c_str();
+							strcpy(result, MessageStr[x].c_str());
+							//result = (char*)(MessageStr[x].c_str());
 						}
 					}
 				}
-				if (msg != (std::string)(char*)MessageToDecode) result = (char*)msg.c_str();
 			}
 		}
 
@@ -416,7 +418,7 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 
 			if (finished == false)
 			{
-				std::string msg = (std::string)(char*)MessageToDecode;
+				string msg((char*)MessageToDecode);
 
 				if (msg == "network_agreement_select") result = "Press any button to continue";
 				else if (msg == "network_agreement_ok") result = "";
@@ -427,11 +429,11 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 					{
 						if (msg == MessageID[x])
 						{
-							result = (char*)MessageStr[x].c_str();
+							strcpy(result, MessageStr[x].c_str());
+							//result = (char*)(MessageStr[x].c_str());
 						}
 					}
 				}
-				if (msg != (std::string)(char*)MessageToDecode) result = (char*)msg.c_str();
 			}
 		}
 
@@ -518,8 +520,6 @@ __int64 __fastcall fc_Xfbin_LoadFile(__int64 FilePath)
 }
 
 ////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
 
 __int64 __fastcall fc_Menu_LoadXfbin(__int64 a1, __int64 FilePath);
 BYTE f_Menu_LoadXfbin[16];
@@ -578,8 +578,6 @@ __int64 __fastcall fc_Menu_LoadXfbin(__int64 a1, __int64 FilePath)
 }
 
 ////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
 
 __int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3);
 BYTE loadCpkFunc1[16];
@@ -599,11 +597,10 @@ void UnhookCpkLoad()
 }
 
 #include <filesystem>
-typedef __int64(__fastcall * fc_loadCpkFunc)(__int64, __int64, int);
-fc_loadCpkFunc g_loadCpkFunc;
-
 __int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3)
 {
+	typedef __int64(__fastcall * fc_loadCpkFunc)(__int64, __int64, int);
+	fc_loadCpkFunc g_loadCpkFunc;
 	g_loadCpkFunc = (fc_loadCpkFunc)(d3dcompiler_47_og::moduleBase + 0x56AA4C);
 
 	cout << std::hex << (uintptr_t)a1 << endl;
@@ -618,8 +615,6 @@ __int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3)
 }
 
 
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
 // GAMEPAD FUNCTIONS
@@ -657,4 +652,20 @@ signed __int64 ccGeneralGameFunctions::enablePads()
 	enableAllPad_00 = (fc_enableAllPad_00)(d3dcompiler_47_og::moduleBase + 0x6582B4);
 
 	return enableAllPad_00();
+}
+
+// Get the current frame of the game
+int ccGeneralGameFunctions::GetCurrentFrame()
+{
+	int frame = 0;
+	memcpy(&frame, (void*)(d3dcompiler_47_og::moduleBase + 0x15AE70C - 0xC00), 4);
+	return frame;
+}
+
+// Get 30 or 60 depending on the settings
+int ccGeneralGameFunctions::GetFPS()
+{
+	int fps = 0;
+	memcpy(&fps, (void*)(d3dcompiler_47_og::moduleBase + 0x155F498), 4);
+	return fps;
 }
