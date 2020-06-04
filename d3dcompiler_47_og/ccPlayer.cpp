@@ -1,3 +1,4 @@
+#pragma warning( disable: 4307 )
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
