@@ -17,6 +17,7 @@
 
 using namespace moddingApi;
 using namespace std;
+using namespace std::experimental;
 
 int Console_GetInt(char*);
 char * Console_GetString(char*);

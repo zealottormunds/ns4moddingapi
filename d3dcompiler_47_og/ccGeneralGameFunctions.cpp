@@ -16,6 +16,7 @@
 
 using namespace moddingApi;
 using namespace std;
+using namespace std::experimental;
 
 BYTE ccGeneralGameFunctions::MAX_GAME_VERSION = 9;
 
