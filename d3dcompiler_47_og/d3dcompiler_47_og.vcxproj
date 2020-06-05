@@ -139,6 +139,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;D3DCOMPILER_47_OG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>E:\Programming\Gev\Gev DLL Mod\d3dcompiler_47_og\lua\test;E:\Programming\Gev\Gev DLL Mod\d3dcompiler_47_og\lua\src;E:\Programming\Gev\Gev DLL Mod\d3dcompiler_47_og\lua\etc;E:\Programming\Gev\Gev DLL Mod\d3dcompiler_47_og\lua\doc;E:\Programming\Gev\Gev DLL Mod\d3dcompiler_47_og\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -153,6 +154,7 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="c1CMN.cpp" />
     <ClCompile Include="API_Console.cpp" />
+    <ClCompile Include="c1NRT.cpp" />
     <ClCompile Include="ccBattleFunctions.cpp" />
     <ClCompile Include="ccCharacterFunctions.cpp" />
     <ClCompile Include="ccBossIAFunctions.cpp" />
@@ -172,9 +174,6 @@
     <ClCompile Include="Interactive_Examine.cpp" />
     <ClCompile Include="LuaHook.cpp" />
     <ClCompile Include="LuaHook_Commands.cpp" />
-    <ClCompile Include="lua\etc\all.c" />
-    <ClCompile Include="lua\etc\min.c" />
-    <ClCompile Include="lua\etc\noparser.c" />
     <ClCompile Include="lua\src\lapi.c" />
     <ClCompile Include="lua\src\lauxlib.c" />
     <ClCompile Include="lua\src\lbaselib.c" />
@@ -221,51 +220,14 @@
     <MASM Include="d3dcompiler_47_og_asm.asm">
       <FileType>Document</FileType>
     </MASM>
-    <None Include="lua\COPYRIGHT" />
-    <None Include="lua\doc\contents.html" />
-    <None Include="lua\doc\lua.1" />
-    <None Include="lua\doc\lua.css" />
-    <None Include="lua\doc\lua.html" />
-    <None Include="lua\doc\luac.1" />
-    <None Include="lua\doc\luac.html" />
-    <None Include="lua\doc\manual.css" />
-    <None Include="lua\doc\manual.html" />
-    <None Include="lua\doc\readme.html" />
-    <None Include="lua\etc\lua.pc" />
-    <None Include="lua\etc\luavs.bat" />
-    <None Include="lua\etc\README" />
-    <None Include="lua\etc\strict.lua" />
-    <None Include="lua\HISTORY" />
-    <None Include="lua\INSTALL" />
-    <None Include="lua\Makefile" />
-    <None Include="lua\README" />
     <None Include="lua\src\Makefile" />
-    <None Include="lua\test\bisect.lua" />
-    <None Include="lua\test\cf.lua" />
-    <None Include="lua\test\echo.lua" />
-    <None Include="lua\test\env.lua" />
-    <None Include="lua\test\factorial.lua" />
-    <None Include="lua\test\fib.lua" />
-    <None Include="lua\test\fibfor.lua" />
-    <None Include="lua\test\globals.lua" />
-    <None Include="lua\test\hello.lua" />
-    <None Include="lua\test\life.lua" />
-    <None Include="lua\test\luac.lua" />
-    <None Include="lua\test\printf.lua" />
-    <None Include="lua\test\README" />
-    <None Include="lua\test\readonly.lua" />
-    <None Include="lua\test\sieve.lua" />
-    <None Include="lua\test\sort.lua" />
-    <None Include="lua\test\table.lua" />
-    <None Include="lua\test\trace-calls.lua" />
-    <None Include="lua\test\trace-globals.lua" />
-    <None Include="lua\test\xd.lua" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioPlayer.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="c1CMN.h" />
     <ClInclude Include="API_Console.h" />
+    <ClInclude Include="c1NRT.h" />
     <ClInclude Include="ccBattleFunctions.h" />
     <ClInclude Include="ccCharacterFunctions.h" />
     <ClInclude Include="ccBossIAFunctions.h" />
@@ -285,7 +247,6 @@
     <ClInclude Include="Interactive_Examine.h" />
     <ClInclude Include="LuaHook.h" />
     <ClInclude Include="LuaHook_Commands.h" />
-    <ClInclude Include="lua\etc\lua.hpp" />
     <ClInclude Include="lua\src\lapi.h" />
     <ClInclude Include="lua\src\lauxlib.h" />
     <ClInclude Include="lua\src\lcode.h" />
@@ -317,12 +278,6 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="WorldCollision.h" />
     <ClInclude Include="ztRpgMain.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="lua\doc\amazon.gif" />
-    <Image Include="lua\doc\cover.png" />
-    <Image Include="lua\doc\logo.gif" />
-    <Image Include="lua\etc\lua.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -159,9 +159,6 @@
     <ClCompile Include="ccPlayerStruct.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="lua\etc\all.c">
-      <Filter>Lua</Filter>
-    </ClCompile>
     <ClCompile Include="lua\src\lapi.c">
       <Filter>Lua</Filter>
     </ClCompile>
@@ -255,14 +252,11 @@
     <ClCompile Include="lua\src\lzio.c">
       <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="lua\etc\min.c">
-      <Filter>Lua</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\etc\noparser.c">
-      <Filter>Lua</Filter>
-    </ClCompile>
     <ClCompile Include="lua\src\print.c">
       <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="c1NRT.cpp">
+      <Filter>Source Files\Player\Characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -359,12 +353,6 @@
     <ClInclude Include="ccPlayerStruct.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="lua\src\lzio.h">
-      <Filter>Lua</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\src\lvm.h">
-      <Filter>Lua</Filter>
-    </ClInclude>
     <ClInclude Include="lua\src\lapi.h">
       <Filter>Lua</Filter>
     </ClInclude>
@@ -419,9 +407,6 @@
     <ClInclude Include="lua\src\lua.h">
       <Filter>Lua</Filter>
     </ClInclude>
-    <ClInclude Include="lua\etc\lua.hpp">
-      <Filter>Lua</Filter>
-    </ClInclude>
     <ClInclude Include="lua\src\luaconf.h">
       <Filter>Lua</Filter>
     </ClInclude>
@@ -431,126 +416,21 @@
     <ClInclude Include="lua\src\lundump.h">
       <Filter>Lua</Filter>
     </ClInclude>
+    <ClInclude Include="lua\src\lvm.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lzio.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="c1NRT.h">
+      <Filter>Header Files\Player\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="d3dcompiler_47_og.def">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="lua\test\bisect.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\cf.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\contents.html">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\COPYRIGHT">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\echo.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\env.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\factorial.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\fib.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\fibfor.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\globals.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\hello.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\HISTORY">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\INSTALL">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\life.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\lua.1">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\lua.css">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\lua.html">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\etc\lua.pc">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\luac.1">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\luac.html">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\luac.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\Makefile">
-      <Filter>Lua</Filter>
-    </None>
     <None Include="lua\src\Makefile">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\manual.css">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\manual.html">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\printf.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\etc\README">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\README">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\README">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\doc\readme.html">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\readonly.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\sieve.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\sort.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\etc\strict.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\table.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\trace-calls.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\trace-globals.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\test\xd.lua">
-      <Filter>Lua</Filter>
-    </None>
-    <None Include="lua\etc\luavs.bat">
       <Filter>Lua</Filter>
     </None>
   </ItemGroup>
@@ -558,19 +438,5 @@
     <MASM Include="d3dcompiler_47_og_asm.asm">
       <Filter>Resource Files</Filter>
     </MASM>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="lua\doc\amazon.gif">
-      <Filter>Lua</Filter>
-    </Image>
-    <Image Include="lua\doc\cover.png">
-      <Filter>Lua</Filter>
-    </Image>
-    <Image Include="lua\doc\logo.gif">
-      <Filter>Lua</Filter>
-    </Image>
-    <Image Include="lua\etc\lua.ico">
-      <Filter>Lua</Filter>
-    </Image>
   </ItemGroup>
 </Project>

@@ -9,11 +9,10 @@
 
 namespace moddingApi
 {
-	class c1CMN
+	class c1NRT
 	{
 	public:
-		c1CMN(int c);
-		static void PreLoop(int pln);
-		static void PostLoop(int pln);
+		c1NRT(int c);
+		static void Loop(int pln);
 	};
 }

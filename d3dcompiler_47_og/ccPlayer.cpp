@@ -22,6 +22,144 @@
 #pragma endregion
 #pragma region Character Imports
 #include "c1CMN.h"
+
+// S1 Character IDs
+#include "c1NRT.h"
+//#include "ccPlayerMain_1SSK.h"
+//#include "ccPlayerMain_1SKR.h"
+//#include "ccPlayerMain_1ROC.h"
+//#include "ccPlayerMain_1NEJ.h"
+//#include "ccPlayerMain_1HNT.h"
+//#include "ccPlayerMain_1GAR.h"
+//#include "ccPlayerMain_1HKG.h"
+//#include "ccPlayerMain_1KMM.h"
+//#include "ccPlayerMain_1ZBZ.h"
+//#include "ccPlayerMain_1HAK.h"
+//#include "ccPlayerMain_1FIR.h"
+//#include "ccPlayerMain_1SEC.h"
+//#include "ccPlayerMain_1TEN.h"
+//#include "ccPlayerMain_1INO.h"
+//#include "ccPlayerMain_1SIK.h"
+//#include "ccPlayerMain_1TYO.h"
+//#include "ccPlayerMain_1KIB.h"
+//#include "ccPlayerMain_1AKM.h"
+//#include "ccPlayerMain_1SIN.h"
+//#include "ccPlayerMain_1TMR.h"
+//#include "ccPlayerMain_1KNK.h"
+//#include "ccPlayerMain_1KRS.h"
+//#include "ccPlayerMain_1KRN.h"
+//#include "ccPlayerMain_1ANK.h"
+//#include "ccPlayerMain_1SZN.h"
+//#include "ccPlayerMain_1JRB.h"
+//#include "ccPlayerMain_1KDM.h"
+//#include "ccPlayerMain_1SKN.h"
+//#include "ccPlayerMain_1TYY.h"
+//
+//// S2 - Gen Character IDs
+//#include "ccPlayerMain_2NRT.h"
+//#include "ccPlayerMain_2NRX.h"
+//#include "ccPlayerMain_2SSK.h"
+//#include "ccPlayerMain_2SSY.h"
+//#include "ccPlayerMain_2SKR.h"
+//#include "ccPlayerMain_2ROC.h"
+//#include "ccPlayerMain_2NEJ.h"
+//#include "ccPlayerMain_2TEN.h"
+//#include "ccPlayerMain_2INO.h"
+//#include "ccPlayerMain_2SIK.h"
+//#include "ccPlayerMain_2TYO.h"
+//#include "ccPlayerMain_2KIB.h"
+//#include "ccPlayerMain_2SIN.h"
+//#include "ccPlayerMain_2HNT.h"
+//#include "ccPlayerMain_2GAR.h"
+//#include "ccPlayerMain_2KNK.h"
+//#include "ccPlayerMain_2TMR.h"
+//#include "ccPlayerMain_2KKS.h"
+//#include "ccPlayerMain_2GUY.h"
+//#include "ccPlayerMain_2ASM.h"
+//#include "ccPlayerMain_2JRY.h"
+//#include "ccPlayerMain_2TND.h"
+//#include "ccPlayerMain_2ORC.h"
+//#include "ccPlayerMain_2KBT.h"
+//#include "ccPlayerMain_2ITC.h"
+//#include "ccPlayerMain_2KSM.h"
+//#include "ccPlayerMain_2CYB.h"
+//#include "ccPlayerMain_2SAI.h"
+//#include "ccPlayerMain_2YMT.h"
+//#include "ccPlayerMain_2SCO.h"
+//#include "ccPlayerMain_2DDR.h"
+//#include "ccPlayerMain_2HDN.h"
+//#include "ccPlayerMain_2KZU.h"
+//#include "ccPlayerMain_2SGT.h"
+//#include "ccPlayerMain_2JUG.h"
+//#include "ccPlayerMain_2KAR.h"
+//#include "ccPlayerMain_2TOB.h"
+//#include "ccPlayerMain_2KNN.h"
+//#include "ccPlayerMain_2PEA.h"
+//#include "ccPlayerMain_2KLB.h"
+//#include "ccPlayerMain_2AKM.h"
+//#include "ccPlayerMain_2KRS.h"
+//#include "ccPlayerMain_2PAR.h"
+//#include "ccPlayerMain_2KKG.h"
+//#include "ccPlayerMain_2FOU.h"
+//#include "ccPlayerMain_2NRG.h"
+//#include "ccPlayerMain_2SSZ.h"
+//#include "ccPlayerMain_2MDR.h"
+//#include "ccPlayerMain_2DNZ.h"
+//#include "ccPlayerMain_2RKG.h"
+//#include "ccPlayerMain_2TKG.h"
+//#include "ccPlayerMain_2MKG.h"
+//#include "ccPlayerMain_2KKX.h"
+//#include "ccPlayerMain_2OBT.h"
+//#include "ccPlayerMain_2KBX.h"
+//#include "ccPlayerMain_2SEE.h"
+//#include "ccPlayerMain_2TJR.h"
+//#include "ccPlayerMain_2AOX.h"
+//#include "ccPlayerMain_2KRT.h"
+//#include "ccPlayerMain_2AKT.h"
+//#include "ccPlayerMain_2FUU.h"
+//#include "ccPlayerMain_2TRN.h"
+//#include "ccPlayerMain_2SCX.h"
+//#include "ccPlayerMain_2SCS.h"
+//#include "ccPlayerMain_2GAV.h"
+//
+//// S3 Character IDs
+//#include "ccPlayerMain_3MDR.h"
+//#include "ccPlayerMain_3DRI.h"
+//#include "ccPlayerMain_3RUS.h"
+//#include "ccPlayerMain_3TOB.h"
+//#include "ccPlayerMain_3YGR.h"
+//#include "ccPlayerMain_3UTK.h"
+//#include "ccPlayerMain_3MFN.h"
+//#include "ccPlayerMain_3HAN.h"
+//#include "ccPlayerMain_3NYG.h"
+//#include "ccPlayerMain_3WHO.h"
+//#include "ccPlayerMain_3KLB.h"
+//#include "ccPlayerMain_3HNZ.h"
+//#include "ccPlayerMain_3NGT.h"
+//#include "ccPlayerMain_3TYO.h"
+//#include "ccPlayerMain_3NRT.h"
+//#include "ccPlayerMain_3SSK.h"
+//#include "ccPlayerMain_3GAR.h"
+//#include "ccPlayerMain_3KKS.h"
+//#include "ccPlayerMain_3KHM.h"
+//#include "ccPlayerMain_3IRK.h"
+//#include "ccPlayerMain_3KBT.h"
+//#include "ccPlayerMain_3OBT.h"
+//#include "ccPlayerMain_3KSN.h"
+//#include "ccPlayerMain_3MNT.h"
+//#include "ccPlayerMain_3HSM.h"
+//#include "ccPlayerMain_3MDR_2.h"
+//
+//// Rev Character IDs
+//#include "ccPlayerMain_4MKG.h"
+//#include "ccPlayerMain_4MUU.h"
+//#include "ccPlayerMain_4RKG.h"
+//#include "ccPlayerMain_4KKG.h"
+//#include "ccPlayerMain_DKCN.h"
+//#include "ccPlayerMain_TNRT.h"
+//#include "ccPlayerMain_4SSI.h"
+//#include "ccPlayerMain_4NRT.h"
+//#include "ccPlayerMain_4MNR.h"
 #pragma endregion
 
 using namespace std;
@@ -150,6 +288,10 @@ uintptr_t ccPlayer::GetPlayerStatus(int n)
 	switch (n)
 	{
 		case 1: offsets = { mb_offset, 0x20, 0xA0 }; break;
+		case 2: offsets = { mb_offset, 0x20, 0x08 }; break;
+		case 3: offsets = { mb_offset, 0x20, 0x10 }; break;
+		case 4: offsets = { mb_offset, 0x20, 0x90 }; break;
+		case 5: offsets = { mb_offset, 0x20, 0x98 }; break;
 		default: offsets = { mb_offset, 0x20, 0x00 }; break;
 	}
 	// Execute memory copy/verification functionalities
@@ -278,40 +420,37 @@ void ccPlayer::SetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop, int va
 void ccPlayer::InitializeCharacter(int c, int plNum)
 {
 	uintptr_t plm = 0;
+
+	c1CMN* cmn = (new c1CMN(plNum));
 	switch (c)
 	{
-		/*case 0x19:
-		{
-			ccPlayerMain_2ITC *c_2itc = (new ccPlayerMain_2ITC(plNum));
-			plm = (DWORD)(c_2itc);
-			plMain[plNum] = plm;
-			break;
-		}*/
+		case 0x2E: c1NRT *c_1nrt = (new c1NRT(plNum)); plm = (DWORD)(c_1nrt); plMain[plNum] = plm; break;
 	}
-	cout << "Created pl at " << hex << plm << "\n";
+	std::cout << "Created pl at " << hex << plm << "\n";
 }
 void ccPlayer::DeleteCharacter(int c, int plNum)
 {
 	uintptr_t plm = plMain[plNum];
+
+	delete &(*(c1CMN*)(plm));
 	switch (c)
 	{
-		/*case 0x19:
-			delete &(*(ccPlayerMain_2ITC*)(plm));
-			break;*/
+		case 0x2E: delete &(*(c1NRT*)(plm)); break;
 	}
-	cout << "Deleted pl at " << hex << plm << "\n";
+	std::cout << "Deleted pl at " << hex << plm << "\n";
 	plMain[plNum] = 0;
 }
 
 void ccPlayer::DoCharacterLoop(int c, int plNum)
 {
 	uintptr_t plm = plMain[plNum];
+
+	(*(c1CMN*)(plm)).PreLoop(plNum);
 	switch (c)
 	{
-	case 0x19:
-		//(*(ccPlayerMain_2ITC*)(plm)).Loop(plNum);
-		break;
+		case 0x2E: (*(c1NRT*)(plm)).Loop(plNum); break;
 	}
+	(*(c1CMN*)(plm)).PostLoop(plNum);
 }
 
 #pragma endregion

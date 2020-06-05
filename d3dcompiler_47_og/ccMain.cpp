@@ -176,7 +176,7 @@ void ccMain::ReadApiFiles()
 		// Start reading mods
 		strcat(ApiPath, "mods\\");
 
-		for (const auto & entry : filesystem::directory_iterator(ApiPath))
+		for (const auto & entry : std::experimental::filesystem::directory_iterator(ApiPath))
 		{
 			std::string s = entry.path().string();
 
@@ -191,7 +191,7 @@ void ccMain::ReadApiFiles()
 
 			//cout << InfoPath << endl;
 
-			if (filesystem::exists(InfoPath) == true)
+			if (std::experimental::filesystem::exists(InfoPath) == true)
 			{
 				BYTE actual = 0;
 				string modName;
@@ -229,7 +229,7 @@ void ccMain::ReadApiFiles()
 				{
 					// Start reading mod files
 					vector<string> files;
-					for (const auto & f : filesystem::directory_iterator(ModPath))
+					for (const auto & f : std::experimental::filesystem::directory_iterator(ModPath))
 					{
 						string _file = f.path().string();
 						string _ext = _file.substr(_file.length() - 4, 4);
@@ -308,7 +308,7 @@ void ccMain::ReloadParamFiles()
 	ccCharacterFunctions::c_specialCondCodes.clear();
 	ccCharacterFunctions::c_specialCondFunct.clear();
 
-	for (const auto & entry : filesystem::directory_iterator(ApiPath))
+	for (const auto & entry : std::experimental::filesystem::directory_iterator(ApiPath))
 	{
 		std::string s = entry.path().string();
 
@@ -323,7 +323,7 @@ void ccMain::ReloadParamFiles()
 
 		//cout << InfoPath << endl;
 
-		if (filesystem::exists(InfoPath) == true)
+		if (std::experimental::filesystem::exists(InfoPath) == true)
 		{
 			BYTE actual = 0;
 			string modName;
@@ -363,7 +363,7 @@ void ccMain::ReloadParamFiles()
 			{
 				// Start reading mod files
 				vector<string> files;
-				for (const auto & f : filesystem::directory_iterator(ModPath))
+				for (const auto & f : std::experimental::filesystem::directory_iterator(ModPath))
 				{
 					string _file = f.path().string();
 					string _ext = _file.substr(_file.length() - 4, 4);

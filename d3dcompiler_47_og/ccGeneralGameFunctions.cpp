@@ -501,7 +501,7 @@ __int64 __fastcall fc_Xfbin_LoadFile(__int64 FilePath)
 	string TestPath = string(ApiPath) + "\\data_win32\\" + ActualFilePath.substr(5, ActualFilePath.length() - 5);
 	cout << "Testing for " << TestPath << endl;
 
-	if (filesystem::exists(TestPath) == true)
+	if (std::experimental::filesystem::exists(TestPath) == true)
 	{
 		UnhookLoadXfbin();
 		result = g_Xfbin_LoadFile((__int64)newFilePath.c_str());
@@ -559,7 +559,7 @@ __int64 __fastcall fc_Menu_LoadXfbin(__int64 a1, __int64 FilePath)
 	string TestPath = string(ApiPath) + "\\data\\" + ActualFilePath.substr(5, ActualFilePath.length() - 5);
 	//cout << "Testing for " << TestPath << endl;
 
-	if (filesystem::exists(TestPath) == true)
+	if (std::experimental::filesystem::exists(TestPath) == true)
 	{
 		UnhookLoadXfbin2();
 		//result = g_Menu_LoadXfbin(a1, (__int64)newFilePath.c_str());
