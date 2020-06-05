@@ -341,6 +341,8 @@ float* ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop)
 		case ccPlayer::str2int("maxchakra"): result = (float*)(s + 0x0C); break;
 		case ccPlayer::str2int("sub"): result = (float*)(s + 0x10); break;
 		case ccPlayer::str2int("maxsub"): result = (float*)(s + 0x10); break;
+		case ccPlayer::str2int("storm"): result = (float*)(s + 0x18); break;
+		case ccPlayer::str2int("maxstorm"): result = (float*)(s + 0x1C); break;
 		case ccPlayer::str2int("armor"): result = (float*)(s + 0x20); break;
 		case ccPlayer::str2int("maxarmor"): result = (float*)(s + 0x24); break;
 		case ccPlayer::str2int("uitem"): result = (float*)(s + 0x30); break;
