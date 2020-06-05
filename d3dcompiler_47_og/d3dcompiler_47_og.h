@@ -7,6 +7,7 @@ namespace moddingApi
 	public:
 		static uintptr_t moduleBase;
 		static uintptr_t st_hModule;
+		static uintptr_t datasection;
 		static uintptr_t RecalculateAddress(uintptr_t);
 	};
 }

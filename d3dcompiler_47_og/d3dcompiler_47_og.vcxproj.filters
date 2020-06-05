@@ -34,6 +34,36 @@
     <Filter Include="Multimatch Files">
       <UniqueIdentifier>{b0166d29-f2f6-4e11-ade7-890e5f6fee6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Player\Characters">
+      <UniqueIdentifier>{f76362a0-200e-44e1-af30-96e9e3b50379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters">
+      <UniqueIdentifier>{aaac83f9-7895-406e-b3a6-2d5478fe5b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rpg">
+      <UniqueIdentifier>{09c66212-8bce-40cc-9cba-5040cabf154e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg">
+      <UniqueIdentifier>{e92e932f-a3fb-4207-8233-4b0cd2d96b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Collision">
+      <UniqueIdentifier>{6c8ee1bf-c9a6-48f5-b8ba-073b7cac29ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Entity">
+      <UniqueIdentifier>{53ffa7d9-830c-4214-b200-2ccf0633106a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Game Engine">
+      <UniqueIdentifier>{88da8c40-a883-4954-93d0-df095ed9eb85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Interactive">
+      <UniqueIdentifier>{7cd642d4-fdb8-4f82-bfc4-a1b52533c37b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Scenes">
+      <UniqueIdentifier>{ccccf8d8-423d-4e4b-84a7-3789d169ef0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{a788ee58-3cc1-4776-9753-755fb0d828ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MultiMatch.cpp">
@@ -77,6 +107,162 @@
     </ClCompile>
     <ClCompile Include="HookFunctions.cpp">
       <Filter>Source Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="c1CMN.cpp">
+      <Filter>Source Files\Player\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Source Files\Rpg\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity_Fireball.cpp">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityMain.cpp">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioPlayer.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldCollision.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ztRpgMain.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractiveMain.cpp">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactive_Examine.cpp">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Template.cpp">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ccPlayerStruct.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\etc\all.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lapi.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lauxlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lbaselib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lcode.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldblib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldebug.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldo.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ldump.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lfunc.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lgc.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\linit.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\liolib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\llex.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lmathlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lmem.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\loadlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lobject.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lopcodes.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\loslib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lparser.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lstate.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lstring.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lstrlib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ltable.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ltablib.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\ltm.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lua.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\luac.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lundump.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lvm.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\lzio.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\etc\min.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\etc\noparser.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\print.c">
+      <Filter>Lua</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,18 +308,269 @@
     <ClInclude Include="d3dcompiler_47_og.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="old_ccPlayer.h">
+    <ClInclude Include="c1CMN.h">
+      <Filter>Header Files\Player\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="ztRpgMain.h">
+      <Filter>Header Files\Rpg</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Source Files\Rpg\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity_Fireball.h">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityMain.h">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioPlayer.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactive_Examine.h">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractiveMain.h">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldCollision.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Template.h">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ccPlayerStruct.h">
       <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lzio.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lvm.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lapi.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lauxlib.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lcode.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ldebug.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ldo.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lfunc.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lgc.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\llex.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\llimits.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lmem.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lobject.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lopcodes.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lparser.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lstate.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lstring.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ltable.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\ltm.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lua.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\etc\lua.hpp">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\luaconf.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lualib.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\src\lundump.h">
+      <Filter>Lua</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="d3dcompiler_47_og.def">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="lua\test\bisect.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\cf.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\contents.html">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\COPYRIGHT">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\echo.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\env.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\factorial.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\fib.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\fibfor.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\globals.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\hello.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\HISTORY">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\INSTALL">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\life.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\lua.1">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\lua.css">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\lua.html">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\etc\lua.pc">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\luac.1">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\luac.html">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\luac.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\Makefile">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\src\Makefile">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\manual.css">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\manual.html">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\printf.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\etc\README">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\README">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\README">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\doc\readme.html">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\readonly.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\sieve.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\sort.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\etc\strict.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\table.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\trace-calls.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\trace-globals.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\test\xd.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lua\etc\luavs.bat">
+      <Filter>Lua</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="d3dcompiler_47_og_asm.asm">
       <Filter>Resource Files</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="lua\doc\amazon.gif">
+      <Filter>Lua</Filter>
+    </Image>
+    <Image Include="lua\doc\cover.png">
+      <Filter>Lua</Filter>
+    </Image>
+    <Image Include="lua\doc\logo.gif">
+      <Filter>Lua</Filter>
+    </Image>
+    <Image Include="lua\etc\lua.ico">
+      <Filter>Lua</Filter>
+    </Image>
   </ItemGroup>
 </Project>

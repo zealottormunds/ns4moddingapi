@@ -1,4 +1,6 @@
 #pragma warning( disable: 4307 )
+#define CHECK_BIT(var,pos) (((var)>>(pos)) & 1)
+#pragma region Standard Imports
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
@@ -9,7 +11,18 @@
 #include "ccPlayer.h"
 #include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
-#define CHECK_BIT(var,pos) (((var)>>(pos)) & 1)
+#include "ccGameProperties.h"
+#include "Input.h"
+#include "LuaHook.h"
+#include "ccMemoryFunctions.h"
+#include "ccPlayerStruct.h"
+#include "Vector3.h"
+#include "ccGeneralGameFunctions.h"
+#include "LuaHook_Commands.h"
+#pragma endregion
+#pragma region Character Imports
+#include "c1CMN.h"
+#pragma endregion
 
 using namespace std;
 using namespace moddingApi;
@@ -17,80 +30,82 @@ using namespace moddingApi;
 int prevFrame = 0;
 int prevBattle = 0;
 
+void ccPlayer::Start()
+{
+	// Currently this function does nothing.
+}
+
+// This function is ran every frame all the time. 
 void ccPlayer::Loop()
 {
-	// Separately loop between both players
+	// Get keyboard keys and update their state. This is useful for using keyboard hooks, like pressing a key to do a certain function.
+	Input::UpdateKeys();
+
+	// If the state of isOnBattle is different, then it means we entered/quitted a battle
+	if (ccGameProperties::isOnBattle() != prevBattle)
+	{
+		prevBattle = ccGameProperties::isOnBattle();
+		if (prevBattle == 0)
+		{
+			// Code for when we quit a battle
+			for (int x = 0; x < 2; x++)
+			{
+				if (plMain[x] != 0)
+				{
+					DeleteCharacter(plMainId[x], x);
+				}
+			}
+		}
+		else
+		{
+			// Code for when we enter a battle
+			for (int x = 0; x < 2; x++)
+			{
+				uintptr_t s = GetPlayerStatus(x);
+				uintptr_t p = GetPlayerInfo(x);
+
+				if (s != 0 && p != 0)
+				{
+					int charaid = GetPlayerIntProperty(p, s, "characode");
+					InitializeCharacter(charaid, x);
+				}
+			}
+		}
+	}
+
+	// If we're not in a battle, stop the code
+	if (ccGameProperties::isOnBattle() == 0) return;
+
+	// This is the loop code for every player.
 	for (int x = 0; x < 2; x++)
 	{
-		// Get the status of the currently selected player
+		// Get player x info
 		uintptr_t s = GetPlayerStatus(x);
 		uintptr_t p = GetPlayerInfo(x);
 
-		// If the player status or info is invalid, stop executing functions for this loop iteration
+		// Get enemy info
+		uintptr_t es = GetPlayerStatus(1 - x);
+		uintptr_t ep = GetPlayerInfo(1 - x);
+
+		// If pointers are null, stop the function.
 		if (s == 0 || p == 0) return;
 
-		// Get the HP value of the currently selected player
+		// If pointers aren't null, let's check the health of the current player.
 		float h = GetPlayerFloatProperty(p, s, "health");
-		if (h <= 0) return;
+		if (h <= 0) return; // If the health is 0 or less than 0, stop the code.
 
-		// Get the Chakra value of the currently selected player
-		float c = GetPlayerFloatProperty(p, s, "chakra");
+		// This disables armor break
+		if (GetPlayerFloatProperty(p, s, "armorbreak") < 45) { SetPlayerFloatProperty(p, s, "armorbreak", 45); }
+
+		// Custom player code in here
+		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
 	}
-
-	/*
-		if (isOnBattle() != prevBattle)
-		{
-			prevBattle = isOnBattle();
-			if (prevBattle == 0)
-			{
-				cout << "Quit battle" << endl;
-
-				for (int x = 0; x < 2; x++)
-				{
-					DWORD s = GetPlayerStatus(x);
-					if (GetPlayerHealth(s) <= 0) return; // If player is dead or there's no player, stop code
-					DWORD p = GetPlayerInfo(x);
-					if (p == 0) return;
-					int charaid = GetCharaID(p);
-
-					DeleteCharacters(charaid, x);
-				}
-			}
-			else
-			{
-				cout << "Entered battle" << endl;
-
-				for (int x = 0; x < 2; x++)
-				{
-					DWORD s = GetPlayerStatus(x);
-					if (GetPlayerHealth(s) <= 0) return; // If player is dead or there's no player, stop code
-					DWORD p = GetPlayerInfo(x);
-					if (p == 0) return;
-					int charaid = GetCharaID(p);
-					InitializeCharacters(charaid, x);
-				}
-			}
-		}
-
-		if (isOnBattle() == 0) return;
-
-		for (int x = 0; x < 2; x++)
-		{
-			DWORD s = GetPlayerStatus(x);
-
-			if (GetPlayerHealth(s) <= 0) return; // If player is dead or there's no player, stop code
-
-			DWORD p = GetPlayerInfo(x);
-			cout << "p: " << hex << p << endl;
-
-			if (p == 0) return;
-
-			// Character specific
-			//if (isOnMenu() == false && prevFrame != GetCurrentFrame()) DoCharacterLoop(GetCharaID(p), x);
-		}
-		prevFrame = GetCurrentFrame();
-	*/
+	// Get next frame
+	prevFrame = ccGeneralGameFunctions::GetCurrentFrame();
 }
+
+uintptr_t ccPlayer::plMain[6] = { 0, 0, 0, 0, 0, 0 };
+int ccPlayer::plMainId[6] = { 0, 0, 0, 0, 0, 0 };
 
 #pragma region General Functions
 vector<uintptr_t> ccPlayer::memcpy_verify(vector<uintptr_t> ptrs, vector<uintptr_t> offsets, size_t size) {
@@ -160,64 +175,143 @@ uintptr_t ccPlayer::GetPlayerInfo(int n)
 int ccPlayer::GetPlayerStatusNumber(uintptr_t s) { return LoopForNum(2, s, ccPlayer::GetPlayerStatus); }
 int ccPlayer::GetPlayerInfoNumber(uintptr_t p) { return LoopForNum(2, p, ccPlayer::GetPlayerInfo); }
 
- float ccPlayer::GetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop)
-{ 
-	// Instantiate variables for memcpy and the return value
-	float result = -1;
-	int offset = -1;
-	uintptr_t ptr = 0;
 
-	// If either pointer is invalid, return -1
-	if (s == 0 || p == 0) return result;
+
+// The function below gets a float pointer from the player.
+float* ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop)
+{
+	float* result;
+
+	if (s == 0 || p == 0) return 0;
+
+	switch (ccGameProperties::str2int(prop))
+	{
+		case ccPlayer::str2int("posx"): result = (float*)(p + 0x70); break;
+		case ccPlayer::str2int("posz"): result = (float*)(p + 0x74); break;
+		case ccPlayer::str2int("posy"): result = (float*)(p + 0x78); break;
+		case ccPlayer::str2int("health"): result = (float*)(s + 0x00); break;
+		case ccPlayer::str2int("maxhealth"): result = (float*)(s + 0x04); break;
+		case ccPlayer::str2int("chakra"): result = (float*)(s + 0x08); break;
+		case ccPlayer::str2int("maxchakra"): result = (float*)(s + 0x0C); break;
+		case ccPlayer::str2int("sub"): result = (float*)(s + 0x10); break;
+		case ccPlayer::str2int("maxsub"): result = (float*)(s + 0x10); break;
+		case ccPlayer::str2int("armorbreak"): result = (float*)(s + 0x20); break;
+		case ccPlayer::str2int("modelscale"): result = (float*)(p + 0x200); break;
+		case ccPlayer::str2int("anmspeed"): result = (float*)(p + 0x210); break;
+		case ccPlayer::str2int("movespeed"): result = (float*)(p + 0x14174); break;
+		case ccPlayer::str2int("armor"): result = (float*)(p + 0x14A60); break;
+	}
+
+	return result;
+}
+
+float ccPlayer::GetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop)
+{
+	float* ptr = GetPlayerFloatPointer(p, s, prop);
+
+	if (ptr == 0) return 0;
+
+	return *ptr;
+}
+
+int* ccPlayer::GetPlayerIntPointer(uintptr_t p, uintptr_t s, char* prop)
+{
+	int* val;
 
 	switch (ccPlayer::str2int(prop))
 	{
-		case ccPlayer::str2int("posx"): offset = 0x70; ptr = p; break;
-		case ccPlayer::str2int("posz"): offset = 0x74; ptr = p; break;
-		case ccPlayer::str2int("posy"): offset = 0x78; ptr = p; break;
-		case ccPlayer::str2int("health"): offset = 0x00; ptr = s; break;
-		case ccPlayer::str2int("maxhealth"): offset = 0x04; ptr = s; break;
-		case ccPlayer::str2int("chakra"): offset = 0x08; ptr = s; break;
-		case ccPlayer::str2int("maxchakra"): offset = 0x0C; ptr = s; break;
-		case ccPlayer::str2int("sub"): offset = 0x10; ptr = s; break;
-		case ccPlayer::str2int("maxsub"): offset = 0x14; ptr = s; break;
-		case ccPlayer::str2int("modelscale"): offset = 0x200; ptr = p; break;
-		case ccPlayer::str2int("anmspeed"): offset = 0x214; ptr = p; break;
-		case ccPlayer::str2int("movespeed"): offset = 0x14174; ptr = p; break;
+		case ccPlayer::str2int("characode"): val = (int*)(p + 0xC8C); break;
+		case ccPlayer::str2int("enablechar"): val = (int*)(p + 0xCA8); break;
+		case ccPlayer::str2int("cancontrol"): val = (int*)(p + 0xCAC); break;
+		case ccPlayer::str2int("enableanm"): val = (int*)(p + 0xCB0); break;
+		case ccPlayer::str2int("displaymdl"): val = (int*)(p + 0xCB8); break;
+		case ccPlayer::str2int("atkid"): val = (int*)(p + 0xCC0); break;
+		case ccPlayer::str2int("prevatkid"): val = (int*)(p + 0xCC4); break;
 	}
 
-	// If a case from above is fulfilled, copy the corresponding value of ptr + offset from memory and return it
-	if(offset != -1 && ptr != 0) memcpy(&result, (void*)(ptr + offset), 4);
-	return result;
+	return val;
+}
+
+int ccPlayer::GetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop)
+{
+	int* val = GetPlayerIntPointer(p, s, prop);
+	return *val;
+}
+
+// Gets the player position in a Vector3
+Vector3 ccPlayer::GetPlayerPosition(uintptr_t p, uintptr_t s)
+{
+	return Vector3
+	(
+		GetPlayerFloatProperty(p, s, "posx"),
+		GetPlayerFloatProperty(p, s, "posy"),
+		GetPlayerFloatProperty(p, s, "posz")
+	);
+}
+
+// Calculates the distance between two given players
+float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es)
+{
+	return Vector3::Distance(GetPlayerPosition(p, s), GetPlayerPosition(ep, es));
 }
 #pragma endregion
 
 #pragma region SetPlayer Functions
+// The function below sets a float property from the player to a specific value
 void ccPlayer::SetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop, float value)
 {
-	uintptr_t ptr = 0;
+	float* ptr = GetPlayerFloatPointer(p, s, prop);
 
-	if (s == 0 || p == 0) return;
+	if (ptr == 0) return;
 
-	switch (ccPlayer::str2int(prop))
+	*ptr = value;
+}
+
+void ccPlayer::SetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop, int value)
+{
+	int* val = GetPlayerIntPointer(p, s, prop);
+	*val = value;
+}
+#pragma endregion
+
+#pragma region Character Functions
+void ccPlayer::InitializeCharacter(int c, int plNum)
+{
+	uintptr_t plm = 0;
+	switch (c)
 	{
-		case ccPlayer::str2int("posx"): ptr = p + 0x70; break;
-		case ccPlayer::str2int("posz"): ptr = p + 0x74; break;
-		case ccPlayer::str2int("posy"): ptr = p + 0x78; break;
-		case ccPlayer::str2int("health"): ptr = s + 0x00; break;
-		case ccPlayer::str2int("maxhealth"): ptr = s + 0x04; break;
-		case ccPlayer::str2int("chakra"): ptr = s + 0x08; break;
-		case ccPlayer::str2int("maxchakra"): ptr = s + 0x0C; break;
-		case ccPlayer::str2int("sub"): ptr = s + 0x10; break;
-		case ccPlayer::str2int("maxsub"): ptr = s + 0x14; break;
-		case ccPlayer::str2int("modelscale"): ptr = p + 0x200; break;
-		case ccPlayer::str2int("anmspeed"): ptr = p + 0x214; break;
-		case ccPlayer::str2int("movespeed"): ptr = p + 0x14174; break;
+		/*case 0x19:
+		{
+			ccPlayerMain_2ITC *c_2itc = (new ccPlayerMain_2ITC(plNum));
+			plm = (DWORD)(c_2itc);
+			plMain[plNum] = plm;
+			break;
+		}*/
 	}
+	cout << "Created pl at " << hex << plm << "\n";
+}
+void ccPlayer::DeleteCharacter(int c, int plNum)
+{
+	uintptr_t plm = plMain[plNum];
+	switch (c)
+	{
+		/*case 0x19:
+			delete &(*(ccPlayerMain_2ITC*)(plm));
+			break;*/
+	}
+	cout << "Deleted pl at " << hex << plm << "\n";
+	plMain[plNum] = 0;
+}
 
-	DWORD dwOld = 0;
-	VirtualProtect((void*)(ptr), 4, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(ptr), &value, 4);
-	VirtualProtect((void*)(ptr), 4, dwOld, &dwOld);
-} 
-#pragma endregion 
+void ccPlayer::DoCharacterLoop(int c, int plNum)
+{
+	uintptr_t plm = plMain[plNum];
+	switch (c)
+	{
+	case 0x19:
+		//(*(ccPlayerMain_2ITC*)(plm)).Loop(plNum);
+		break;
+	}
+}
+
+#pragma endregion

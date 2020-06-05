@@ -7,5 +7,6 @@ namespace moddingApi
 	{
 	public:
 		static uintptr_t TempMalloc(int);
+		static void memcpy(void* Dst, void* Source, size_t count);
 	};
 }
