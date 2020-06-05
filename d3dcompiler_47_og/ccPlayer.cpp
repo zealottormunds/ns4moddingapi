@@ -221,9 +221,13 @@ void ccPlayer::Loop()
 		uintptr_t s = GetPlayerStatus(x);
 		uintptr_t p = GetPlayerInfo(x);
 
+		//if (x == 0) cout << hex << int(GetPlayerIntProperty(s, p, "characode")) << endl; Sleep(1000);
+
+
 		// Get enemy info
 		uintptr_t es = GetPlayerStatus(1 - x);
 		uintptr_t ep = GetPlayerInfo(1 - x);
+
 
 		// If pointers are null, stop the function.
 		if (s == 0 || p == 0) return;
@@ -301,9 +305,9 @@ uintptr_t ccPlayer::GetPlayerStatus(int n)
 
 	// If the memory pointers all copied properly, return the resulting pointer offset by 0x38, if valid
 	p4 = p3 + 0x38;
+
 	return !(p4 == 0) ? p4 : 0;
 }
-
 uintptr_t ccPlayer::GetPlayerInfo(int n)
 {
 	uintptr_t a = ccPlayer::GetPlayerStatus(n);
@@ -311,7 +315,7 @@ uintptr_t ccPlayer::GetPlayerInfo(int n)
 	uintptr_t b = a - 8;
 	uintptr_t c = 0;
 	memcpy(&c, (void*)b, 8);
-	return c;
+	return c + 0x70;
 }
 
 int ccPlayer::GetPlayerStatusNumber(uintptr_t s) { return LoopForNum(2, s, ccPlayer::GetPlayerStatus); }
@@ -328,9 +332,9 @@ float* ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop)
 
 	switch (ccGameProperties::str2int(prop))
 	{
-		case ccPlayer::str2int("posx"): result = (float*)(p + 0x70); break;
-		case ccPlayer::str2int("posz"): result = (float*)(p + 0x74); break;
-		case ccPlayer::str2int("posy"): result = (float*)(p + 0x78); break;
+		case ccPlayer::str2int("posx"): result = (float*)(p + 0x00); break;
+		case ccPlayer::str2int("posz"): result = (float*)(p + 0x04); break;
+		case ccPlayer::str2int("posy"): result = (float*)(p + 0x08); break;
 		case ccPlayer::str2int("health"): result = (float*)(s + 0x00); break;
 		case ccPlayer::str2int("maxhealth"): result = (float*)(s + 0x04); break;
 		case ccPlayer::str2int("chakra"): result = (float*)(s + 0x08); break;
@@ -338,10 +342,10 @@ float* ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop)
 		case ccPlayer::str2int("sub"): result = (float*)(s + 0x10); break;
 		case ccPlayer::str2int("maxsub"): result = (float*)(s + 0x10); break;
 		case ccPlayer::str2int("armorbreak"): result = (float*)(s + 0x20); break;
-		case ccPlayer::str2int("modelscale"): result = (float*)(p + 0x200); break;
-		case ccPlayer::str2int("anmspeed"): result = (float*)(p + 0x210); break;
-		case ccPlayer::str2int("movespeed"): result = (float*)(p + 0x14174); break;
-		case ccPlayer::str2int("armor"): result = (float*)(p + 0x14A60); break;
+		case ccPlayer::str2int("modelscale"): result = (float*)(p + 0x190); break;
+		case ccPlayer::str2int("anmspeed"): result = (float*)(p + 0x1A0); break;
+		case ccPlayer::str2int("movespeed"): result = (float*)(p + 0x14104); break;
+		case ccPlayer::str2int("armor"): result = (float*)(p + 0x149F0); break;
 	}
 
 	return result;
@@ -362,13 +366,13 @@ int* ccPlayer::GetPlayerIntPointer(uintptr_t p, uintptr_t s, char* prop)
 
 	switch (ccPlayer::str2int(prop))
 	{
-		case ccPlayer::str2int("characode"): val = (int*)(p + 0xC8C); break;
-		case ccPlayer::str2int("enablechar"): val = (int*)(p + 0xCA8); break;
-		case ccPlayer::str2int("cancontrol"): val = (int*)(p + 0xCAC); break;
-		case ccPlayer::str2int("enableanm"): val = (int*)(p + 0xCB0); break;
-		case ccPlayer::str2int("displaymdl"): val = (int*)(p + 0xCB8); break;
-		case ccPlayer::str2int("atkid"): val = (int*)(p + 0xCC0); break;
-		case ccPlayer::str2int("prevatkid"): val = (int*)(p + 0xCC4); break;
+		case ccPlayer::str2int("characode"): val = (int*)(p + 0xC1C); break;
+		case ccPlayer::str2int("enablechar"): val = (int*)(p + 0xC38); break;
+		case ccPlayer::str2int("cancontrol"): val = (int*)(p + 0xC3C); break;
+		case ccPlayer::str2int("enableanm"): val = (int*)(p + 0xC40); break;
+		case ccPlayer::str2int("displaymdl"): val = (int*)(p + 0xC48); break;
+		case ccPlayer::str2int("pstate"): val = (int*)(p + 0xC50); break;
+		case ccPlayer::str2int("prevpstate"): val = (int*)(p + 0xC54); break;
 	}
 
 	return val;
@@ -440,7 +444,6 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 	std::cout << "Deleted pl at " << hex << plm << "\n";
 	plMain[plNum] = 0;
 }
-
 void ccPlayer::DoCharacterLoop(int c, int plNum)
 {
 	uintptr_t plm = plMain[plNum];
