@@ -64,6 +64,48 @@
     <Filter Include="Lua">
       <UniqueIdentifier>{a788ee58-3cc1-4776-9753-755fb0d828ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Player\Characters\1">
+      <UniqueIdentifier>{d1310440-b1b8-45ff-bd2a-434aa53880f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\2">
+      <UniqueIdentifier>{0dc980ff-c9a4-4e0e-8d3d-36c88b24bf76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\3">
+      <UniqueIdentifier>{46adb70c-94c7-4ce6-b576-7c7e1a554ea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\4">
+      <UniqueIdentifier>{270f0990-a73d-49e8-9b52-4d42071d31b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\5">
+      <UniqueIdentifier>{561ebfdc-ca42-4562-aee3-164054bbc175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\6 - 8">
+      <UniqueIdentifier>{dda5ef92-63fe-471d-954b-e202fca0fb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\Story">
+      <UniqueIdentifier>{d6ed3fff-f9e7-430b-ad88-8aaa747cc615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\1">
+      <UniqueIdentifier>{a12ff495-25b3-4281-a4ad-d95331e3a1e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\2">
+      <UniqueIdentifier>{9a7ba251-0787-4178-9dc1-3e812fde2978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\3">
+      <UniqueIdentifier>{20404b69-c595-4ecb-86ec-5bc42df0c171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\4">
+      <UniqueIdentifier>{07421ef6-3fb4-4e63-9b52-cac15ecb4aa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\5">
+      <UniqueIdentifier>{4783b07f-1317-49ab-9c25-a97e69be35c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\6 - 8">
+      <UniqueIdentifier>{7bd1bce3-a093-4e4d-a984-20b18c59bc8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\Story">
+      <UniqueIdentifier>{021d81d1-c41c-4f6d-953d-8a175699be00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MultiMatch.cpp">
@@ -107,9 +149,6 @@
     </ClCompile>
     <ClCompile Include="HookFunctions.cpp">
       <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="c1CMN.cpp">
-      <Filter>Source Files\Player\Characters</Filter>
     </ClCompile>
     <ClCompile Include="BoxCollider.cpp">
       <Filter>Source Files\Rpg\Collision</Filter>
@@ -255,8 +294,698 @@
     <ClCompile Include="lua\src\print.c">
       <Filter>Lua</Filter>
     </ClCompile>
+    <ClCompile Include="c1CMN.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
     <ClCompile Include="c1NRT.cpp">
-      <Filter>Source Files\Player\Characters</Filter>
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1AKM.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1FIR.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1GAR.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1HAK.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1HKG.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1HNT.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1INO.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1JBR.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1KIB.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1KMM.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1KNK.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1KRS.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1NEJ.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1ROC.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1SEC.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1SIK.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1SIN.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1SKR.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1SSK.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1TEN.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1TMR.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1TYO.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c1ZBZ.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
+    </ClCompile>
+    <ClCompile Include="c2AKM.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2ASM.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2CYB.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2DDR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2DNZ.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2FOU.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2GAR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2GAV.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2GUY.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2HDN.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2HNT.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2INO.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2ITC.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2JBR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2JRY.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2JUG.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KAR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KBT.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KBX.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KIB.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KKG.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KKS.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KKX.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KLB.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KNK.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KNN.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KRS.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KSM.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2KZU.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2MDR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2MKG.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2NEJ.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2NRG.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2NRT.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2NRX.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2OBT.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2OBX.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2ORC.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2PAR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2PEA.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2RKG.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2ROC.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SAI.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SCO.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SCX.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SGT.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SIK.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SIN.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SKR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SSK.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SSY.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2SSZ.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2TEN.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2TKG.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2TMR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2TND.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2TOB.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2TYO.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2YMT.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c3DRI.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3GAR.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3GUY.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3HAN.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3HNZ.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3HSM.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3IRK.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3JBR.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3KBT.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3KHM.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3KKS.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3KLB.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3KSN.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3MDR.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3MDR_2.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3MFN.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3MNT.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3NGT.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3NRT.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3NYG.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3OBT.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3RUS.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3SSK.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3TOB.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3TYO.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3UTK.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3WHO.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c3YGR.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
+    <ClCompile Include="c4JBR.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4KKG.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4MKG.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4MNR.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4MUU.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4NRT.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4RIN.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4RKG.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c4SSI.cpp">
+      <Filter>Source Files\Player\Characters\4</Filter>
+    </ClCompile>
+    <ClCompile Include="c5JBR.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5JRB.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5KDM.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5KGY.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5KRS.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5MDR.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5NRT.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5OBT.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5SKN.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5SSK.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c5TYY.cpp">
+      <Filter>Source Files\Player\Characters\5</Filter>
+    </ClCompile>
+    <ClCompile Include="c6HNB.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c6HNT.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c6JBR.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c6NRT.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c6SKR.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c6SSK.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7BRN.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7BRT.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7BRX.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7GAR.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7KHM.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7KIN.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7MMS.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7MMV.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7MTK.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7NRN.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7NRT.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7SKD.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7SKR.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7SLD.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7SLN.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7SSK.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7SSX.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c7YRI.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8AEM.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8INO.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8KIB.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8KIN.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8KNK.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8MMS.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8ROC.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8SAI.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8SIK.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8SIN.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8TEN.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8TMR.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="c8TYO.cpp">
+      <Filter>Source Files\Player\Characters\6 - 8</Filter>
+    </ClCompile>
+    <ClCompile Include="cABRT.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cB1NR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cB1SS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cB2NR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cB3HS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cB4NR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cB5OB.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cB6BT.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBAOD.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBGKT.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBGRG.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBGRN.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBGUY.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBGYU.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBHSM.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBISS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBJB1.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBJB2.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBJB3.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBJB4.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBJYD.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBJYG.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKGV.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKGY.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKKK.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKKS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKKU.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKKX.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKMS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKRL.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKRS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKSR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBKTY.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBMDJ.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBMDK.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBMDR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBMDT.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBMHR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBMKJ.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBMNK.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBNRC.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBNRG.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBNRT.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBNRX.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBOBK.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBOBR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBOBS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBOBT.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBOBZ.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBRMD.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBRSK.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBSSC.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBSSK.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBSSN.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBSSX.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBSSZ.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cBTSK.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cGFSA.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cGMHR.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cGZTU.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cJKKS.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="cTYYP.cpp">
+      <Filter>Source Files\Player\Characters\Story</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -301,9 +1030,6 @@
     </ClInclude>
     <ClInclude Include="d3dcompiler_47_og.h">
       <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="c1CMN.h">
-      <Filter>Header Files\Player\Characters</Filter>
     </ClInclude>
     <ClInclude Include="ztRpgMain.h">
       <Filter>Header Files\Rpg</Filter>
@@ -422,8 +1148,698 @@
     <ClInclude Include="lua\src\lzio.h">
       <Filter>Lua</Filter>
     </ClInclude>
+    <ClInclude Include="c1CMN.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
     <ClInclude Include="c1NRT.h">
-      <Filter>Header Files\Player\Characters</Filter>
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1AKM.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1FIR.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1GAR.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1HAK.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1HKG.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1HNT.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1INO.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1JBR.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1KIB.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1KMM.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1KNK.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1KRS.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1NEJ.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1ROC.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1SEC.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1SIK.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1SIN.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1SKR.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1SSK.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1TEN.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1TMR.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1TYO.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c1ZBZ.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="c2AKM.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2ASM.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2CYB.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2DDR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2DNZ.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2FOU.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2GAR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2GAV.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2GUY.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2HDN.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2HNT.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2INO.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2ITC.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2JBR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2JRY.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2JUG.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KAR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KBT.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KBX.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KIB.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KKG.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KKS.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KKX.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KLB.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KNK.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KNN.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KRS.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KSM.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2KZU.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2MDR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2MKG.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2NEJ.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2NRG.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2NRT.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2NRX.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2OBT.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2OBX.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2ORC.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2PAR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2PEA.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2RKG.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2ROC.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SAI.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SCO.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SCX.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SGT.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SIK.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SIN.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SKR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SSK.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SSY.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2SSZ.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TEN.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TKG.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TMR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TND.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TOB.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TYO.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2YMT.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c3DRI.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3GAR.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3GUY.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3HAN.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3HNZ.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3HSM.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3IRK.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3JBR.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3KBT.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3KHM.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3KKS.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3KLB.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3KSN.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3MDR.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3MDR_2.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3MFN.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3MNT.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3NGT.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3NRT.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3NYG.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3OBT.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3RUS.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3SSK.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3TOB.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3TYO.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3UTK.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3WHO.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c3YGR.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="c4JBR.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4KKG.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4MKG.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4MNR.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4MUU.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4NRT.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4RIN.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4RKG.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c4SSI.h">
+      <Filter>Header Files\Player\Characters\4</Filter>
+    </ClInclude>
+    <ClInclude Include="c5JBR.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5JRB.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5KDM.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5KGY.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5KRS.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5MDR.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5NRT.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5OBT.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5SKN.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5SSK.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c5TYY.h">
+      <Filter>Header Files\Player\Characters\5</Filter>
+    </ClInclude>
+    <ClInclude Include="c6HNB.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c6HNT.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c6JBR.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c6NRT.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c6SKR.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c6SSK.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7BRN.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7BRT.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7BRX.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7GAR.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7KHM.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7KIN.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7MMS.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7MMV.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7MTK.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7NRN.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7NRT.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7SKD.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7SKR.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7SLD.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7SLN.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7SSK.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7SSX.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c7YRI.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8AEM.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8INO.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8KIB.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8KIN.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8KNK.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8MMS.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8ROC.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8SAI.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8SIK.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8SIN.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8TEN.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8TMR.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="c8TYO.h">
+      <Filter>Header Files\Player\Characters\6 - 8</Filter>
+    </ClInclude>
+    <ClInclude Include="cABRT.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cB1NR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cB1SS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cB2NR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cB3HS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cB4NR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cB5OB.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cB6BT.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBAOD.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBGKT.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBGRG.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBGRN.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBGUY.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBGYU.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBHSM.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBISS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBJB1.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBJB2.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBJB3.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBJB4.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBJYD.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBJYG.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKGV.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKGY.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKKK.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKKS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKKU.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKKX.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKMS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKRL.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKRS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKSR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBKTY.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBMDJ.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBMDK.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBMDR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBMDT.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBMHR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBMKJ.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBMNK.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBNRC.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBNRG.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBNRT.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBNRX.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBOBK.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBOBR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBOBS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBOBT.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBOBZ.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBRMD.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBRSK.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBSSC.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBSSK.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBSSN.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBSSX.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBSSZ.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cBTSK.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cTYYP.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cGFSA.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cGMHR.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cGZTU.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="cJKKS.h">
+      <Filter>Header Files\Player\Characters\Story</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

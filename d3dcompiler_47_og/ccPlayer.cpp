@@ -21,145 +21,250 @@
 #include "LuaHook_Commands.h"
 #pragma endregion
 #pragma region Character Imports
+// 1
 #include "c1CMN.h"
-
-// S1 Character IDs
+#include "c1AKM.h"
+#include "c1FIR.h"
+#include "c1GAR.h"
+#include "c1HAK.h"
+#include "c1HKG.h"
+#include "c1HNT.h"
+#include "c1INO.h"
+#include "c1JBR.h"
+#include "c1KIB.h"
+#include "c1KMM.h"
+#include "c1KNK.h"
+#include "c1KRS.h"
+#include "c1NEJ.h"
 #include "c1NRT.h"
-//#include "ccPlayerMain_1SSK.h"
-//#include "ccPlayerMain_1SKR.h"
-//#include "ccPlayerMain_1ROC.h"
-//#include "ccPlayerMain_1NEJ.h"
-//#include "ccPlayerMain_1HNT.h"
-//#include "ccPlayerMain_1GAR.h"
-//#include "ccPlayerMain_1HKG.h"
-//#include "ccPlayerMain_1KMM.h"
-//#include "ccPlayerMain_1ZBZ.h"
-//#include "ccPlayerMain_1HAK.h"
-//#include "ccPlayerMain_1FIR.h"
-//#include "ccPlayerMain_1SEC.h"
-//#include "ccPlayerMain_1TEN.h"
-//#include "ccPlayerMain_1INO.h"
-//#include "ccPlayerMain_1SIK.h"
-//#include "ccPlayerMain_1TYO.h"
-//#include "ccPlayerMain_1KIB.h"
-//#include "ccPlayerMain_1AKM.h"
-//#include "ccPlayerMain_1SIN.h"
-//#include "ccPlayerMain_1TMR.h"
-//#include "ccPlayerMain_1KNK.h"
-//#include "ccPlayerMain_1KRS.h"
-//#include "ccPlayerMain_1KRN.h"
-//#include "ccPlayerMain_1ANK.h"
-//#include "ccPlayerMain_1SZN.h"
-//#include "ccPlayerMain_1JRB.h"
-//#include "ccPlayerMain_1KDM.h"
-//#include "ccPlayerMain_1SKN.h"
-//#include "ccPlayerMain_1TYY.h"
-//
-//// S2 - Gen Character IDs
-//#include "ccPlayerMain_2NRT.h"
-//#include "ccPlayerMain_2NRX.h"
-//#include "ccPlayerMain_2SSK.h"
-//#include "ccPlayerMain_2SSY.h"
-//#include "ccPlayerMain_2SKR.h"
-//#include "ccPlayerMain_2ROC.h"
-//#include "ccPlayerMain_2NEJ.h"
-//#include "ccPlayerMain_2TEN.h"
-//#include "ccPlayerMain_2INO.h"
-//#include "ccPlayerMain_2SIK.h"
-//#include "ccPlayerMain_2TYO.h"
-//#include "ccPlayerMain_2KIB.h"
-//#include "ccPlayerMain_2SIN.h"
-//#include "ccPlayerMain_2HNT.h"
-//#include "ccPlayerMain_2GAR.h"
-//#include "ccPlayerMain_2KNK.h"
-//#include "ccPlayerMain_2TMR.h"
-//#include "ccPlayerMain_2KKS.h"
-//#include "ccPlayerMain_2GUY.h"
-//#include "ccPlayerMain_2ASM.h"
-//#include "ccPlayerMain_2JRY.h"
-//#include "ccPlayerMain_2TND.h"
-//#include "ccPlayerMain_2ORC.h"
-//#include "ccPlayerMain_2KBT.h"
-//#include "ccPlayerMain_2ITC.h"
-//#include "ccPlayerMain_2KSM.h"
-//#include "ccPlayerMain_2CYB.h"
-//#include "ccPlayerMain_2SAI.h"
-//#include "ccPlayerMain_2YMT.h"
-//#include "ccPlayerMain_2SCO.h"
-//#include "ccPlayerMain_2DDR.h"
-//#include "ccPlayerMain_2HDN.h"
-//#include "ccPlayerMain_2KZU.h"
-//#include "ccPlayerMain_2SGT.h"
-//#include "ccPlayerMain_2JUG.h"
-//#include "ccPlayerMain_2KAR.h"
-//#include "ccPlayerMain_2TOB.h"
-//#include "ccPlayerMain_2KNN.h"
-//#include "ccPlayerMain_2PEA.h"
-//#include "ccPlayerMain_2KLB.h"
-//#include "ccPlayerMain_2AKM.h"
-//#include "ccPlayerMain_2KRS.h"
-//#include "ccPlayerMain_2PAR.h"
-//#include "ccPlayerMain_2KKG.h"
-//#include "ccPlayerMain_2FOU.h"
-//#include "ccPlayerMain_2NRG.h"
-//#include "ccPlayerMain_2SSZ.h"
-//#include "ccPlayerMain_2MDR.h"
-//#include "ccPlayerMain_2DNZ.h"
-//#include "ccPlayerMain_2RKG.h"
-//#include "ccPlayerMain_2TKG.h"
-//#include "ccPlayerMain_2MKG.h"
-//#include "ccPlayerMain_2KKX.h"
-//#include "ccPlayerMain_2OBT.h"
-//#include "ccPlayerMain_2KBX.h"
-//#include "ccPlayerMain_2SEE.h"
-//#include "ccPlayerMain_2TJR.h"
-//#include "ccPlayerMain_2AOX.h"
-//#include "ccPlayerMain_2KRT.h"
-//#include "ccPlayerMain_2AKT.h"
-//#include "ccPlayerMain_2FUU.h"
-//#include "ccPlayerMain_2TRN.h"
-//#include "ccPlayerMain_2SCX.h"
-//#include "ccPlayerMain_2SCS.h"
-//#include "ccPlayerMain_2GAV.h"
-//
-//// S3 Character IDs
-//#include "ccPlayerMain_3MDR.h"
-//#include "ccPlayerMain_3DRI.h"
-//#include "ccPlayerMain_3RUS.h"
-//#include "ccPlayerMain_3TOB.h"
-//#include "ccPlayerMain_3YGR.h"
-//#include "ccPlayerMain_3UTK.h"
-//#include "ccPlayerMain_3MFN.h"
-//#include "ccPlayerMain_3HAN.h"
-//#include "ccPlayerMain_3NYG.h"
-//#include "ccPlayerMain_3WHO.h"
-//#include "ccPlayerMain_3KLB.h"
-//#include "ccPlayerMain_3HNZ.h"
-//#include "ccPlayerMain_3NGT.h"
-//#include "ccPlayerMain_3TYO.h"
-//#include "ccPlayerMain_3NRT.h"
-//#include "ccPlayerMain_3SSK.h"
-//#include "ccPlayerMain_3GAR.h"
-//#include "ccPlayerMain_3KKS.h"
-//#include "ccPlayerMain_3KHM.h"
-//#include "ccPlayerMain_3IRK.h"
-//#include "ccPlayerMain_3KBT.h"
-//#include "ccPlayerMain_3OBT.h"
-//#include "ccPlayerMain_3KSN.h"
-//#include "ccPlayerMain_3MNT.h"
-//#include "ccPlayerMain_3HSM.h"
-//#include "ccPlayerMain_3MDR_2.h"
-//
-//// Rev Character IDs
-//#include "ccPlayerMain_4MKG.h"
-//#include "ccPlayerMain_4MUU.h"
-//#include "ccPlayerMain_4RKG.h"
-//#include "ccPlayerMain_4KKG.h"
-//#include "ccPlayerMain_DKCN.h"
-//#include "ccPlayerMain_TNRT.h"
-//#include "ccPlayerMain_4SSI.h"
-//#include "ccPlayerMain_4NRT.h"
-//#include "ccPlayerMain_4MNR.h"
+#include "c1ROC.h"
+#include "c1SEC.h"
+#include "c1SIK.h"
+#include "c1SIN.h"
+#include "c1SKR.h"
+#include "c1SSK.h"
+#include "c1TEN.h"
+#include "c1TMR.h"
+#include "c1TYO.h"
+#include "c1ZBZ.h"
+
+// 2
+#include "c2AKM.h"
+#include "c2ASM.h"
+#include "c2CYB.h"
+#include "c2DDR.h"
+#include "c2DNZ.h"
+#include "c2FOU.h"
+#include "c2GAR.h"
+#include "c2GAV.h"
+#include "c2GUY.h"
+#include "c2HDN.h"
+#include "c2HNT.h"
+#include "c2INO.h"
+#include "c2ITC.h"
+#include "c2JBR.h"
+#include "c2JRY.h"
+#include "c2JUG.h"
+#include "c2KAR.h"
+#include "c2KBT.h"
+#include "c2KBX.h"
+#include "c2KIB.h"
+#include "c2KKG.h"
+#include "c2KKS.h"
+#include "c2KKX.h"
+#include "c2KLB.h"
+#include "c2KNK.h"
+#include "c2KNN.h"
+#include "c2KRS.h"
+#include "c2KSM.h"
+#include "c2KZU.h"
+#include "c2MDR.h"
+#include "c2MKG.h"
+#include "c2NEJ.h"
+#include "c2NRG.h"
+#include "c2NRT.h"
+#include "c2NRX.h"
+#include "c2OBT.h"
+#include "c2OBX.h"
+#include "c2ORC.h"
+#include "c2PAR.h"
+#include "c2PEA.h"
+#include "c2RKG.h"
+#include "c2ROC.h"
+#include "c2SAI.h"
+#include "c2SCO.h"
+#include "c2SCX.h"
+#include "c2SGT.h"
+#include "c2SIK.h"
+#include "c2SIN.h"
+#include "c2SKR.h"
+#include "c2SSK.h"
+#include "c2SSY.h"
+#include "c2SSZ.h"
+#include "c2TEN.h"
+#include "c2TKG.h"
+#include "c2TMR.h"
+#include "c2TND.h"
+#include "c2TOB.h"
+#include "c2TYO.h"
+#include "c2YMT.h"
+
+// 3
+#include "c3DRI.h"
+#include "c3GAR.h"
+#include "c3GUY.h"
+#include "c3HAN.h"
+#include "c3HNZ.h"
+#include "c3HSM.h"
+#include "c3IRK.h"
+#include "c3JBR.h"
+#include "c3KBT.h"
+#include "c3KHM.h"
+#include "c3KKS.h"
+#include "c3KLB.h"
+#include "c3KSN.h"
+#include "c3MDR.h"
+#include "c3MDR_2.h"
+#include "c3MFN.h"
+#include "c3MNT.h"
+#include "c3NGT.h"
+#include "c3NRT.h"
+#include "c3NYG.h"
+#include "c3OBT.h"
+#include "c3RUS.h"
+#include "c3SSK.h"
+#include "c3TOB.h"
+#include "c3TYO.h"
+#include "c3UTK.h"
+#include "c3WHO.h"
+#include "c3YGR.h"
+
+// 4
+#include "c4JBR.h"
+#include "c4KKG.h"
+#include "c4MKG.h"
+#include "c4MNR.h"
+#include "c4MUU.h"
+#include "c4NRT.h"
+#include "c4RIN.h"
+#include "c4RKG.h"
+#include "c4SSI.h"
+
+// 5
+#include "c5JBR.h"
+#include "c5JRB.h"
+#include "c5KDM.h"
+#include "c5KGY.h"
+#include "c5KRS.h"
+#include "c5MDR.h"
+#include "c5NRT.h"
+#include "c5OBT.h"
+#include "c5SKN.h"
+#include "c5SSK.h"
+#include "c5TYY.h"
+
+// 6 - 8
+#include "c6HNB.h"
+#include "c6HNT.h"
+#include "c6JBR.h"
+#include "c6NRT.h"
+#include "c6SKR.h"
+#include "c6SSK.h"
+#include "c7BRN.h"
+#include "c7BRT.h"
+#include "c7BRX.h"
+#include "c7GAR.h"
+#include "c7KHM.h"
+#include "c7KIN.h"
+#include "c7MMS.h"
+#include "c7MMV.h"
+#include "c7MTK.h"
+#include "c7NRN.h"
+#include "c7NRT.h"
+#include "c7SKD.h"
+#include "c7SKR.h"
+#include "c7SLD.h"
+#include "c7SLN.h"
+#include "c7SSK.h"
+#include "c7SSX.h"
+#include "c7YRI.h"
+#include "c8AEM.h"
+#include "c8INO.h"
+#include "c8KIB.h"
+#include "c8KIN.h"
+#include "c8KNK.h"
+#include "c8MMS.h"
+#include "c8ROC.h"
+#include "c8SAI.h"
+#include "c8SIK.h"
+#include "c8SIN.h"
+#include "c8TEN.h"
+#include "c8TMR.h"
+#include "c8TYO.h"
+
+// Story
+#include "cABRT.h"
+#include "cB1NR.h"
+#include "cB1SS.h"
+#include "cB2NR.h"
+#include "cB3HS.h"
+#include "cB4NR.h"
+#include "cB5OB.h"
+#include "cB6BT.h"
+#include "cBAOD.h"
+#include "cBGKT.h"
+#include "cBGRG.h"
+#include "cBGRN.h"
+#include "cBGUY.h"
+#include "cBGYU.h"
+#include "cBHSM.h"
+#include "cBISS.h"
+#include "cBJB1.h"
+#include "cBJB2.h"
+#include "cBJB3.h"
+#include "cBJB4.h"
+#include "cBJYD.h"
+#include "cBJYG.h"
+#include "cBKGV.h"
+#include "cBKGY.h"
+#include "cBKKK.h"
+#include "cBKKS.h"
+#include "cBKKU.h"
+#include "cBKKX.h"
+#include "cBKMS.h"
+#include "cBKRL.h"
+#include "cBKRS.h"
+#include "cBKSR.h"
+#include "cBKTY.h"
+#include "cBMDJ.h"
+#include "cBMDK.h"
+#include "cBMDR.h"
+#include "cBMDT.h"
+#include "cBMHR.h"
+#include "cBMKJ.h"
+#include "cBMNK.h"
+#include "cBNRC.h"
+#include "cBNRG.h"
+#include "cBNRT.h"
+#include "cBNRX.h"
+#include "cBOBK.h"
+#include "cBOBR.h"
+#include "cBOBS.h"
+#include "cBOBT.h"
+#include "cBOBZ.h"
+#include "cBRMD.h"
+#include "cBRSK.h"
+#include "cBSSC.h"
+#include "cBSSK.h"
+#include "cBSSN.h"
+#include "cBSSX.h"
+#include "cBSSZ.h"
+#include "cBTSK.h"
+#include "cGFSA.h"
+#include "cGMHR.h"
+#include "cGZTU.h"
+#include "cJKKS.h"
+#include "cTYYP.h"
 #pragma endregion
 
 using namespace std;
@@ -440,7 +545,250 @@ void ccPlayer::InitializeCharacter(int c, int plNum)
 	c1CMN* cmn = (new c1CMN(plNum));
 	switch (c)
 	{
-		case 0x2E: c1NRT *c_1nrt = (new c1NRT(plNum)); plm = (DWORD)(c_1nrt); plMain[plNum] = plm; break;
+		#pragma region 1
+		{ case 0x66: c1AKM * c_1akm = (new c1AKM(plNum)); plm = (DWORD)(c_1akm); plMain[plNum] = plm; } break;
+		{ case 0x40: c1FIR * c_1fir = (new c1FIR(plNum)); plm = (DWORD)(c_1fir); plMain[plNum] = plm; } break;
+		{ case 0x34: c1GAR * c_1gar = (new c1GAR(plNum)); plm = (DWORD)(c_1gar); plMain[plNum] = plm; } break;
+		{ case 0x3F: c1HAK * c_1hak = (new c1HAK(plNum)); plm = (DWORD)(c_1hak); plMain[plNum] = plm; } break;
+		{ case 0x35: c1HKG * c_1hkg = (new c1HKG(plNum)); plm = (DWORD)(c_1hkg); plMain[plNum] = plm; } break;
+		{ case 0x33: c1HNT * c_1hnt = (new c1HNT(plNum)); plm = (DWORD)(c_1hnt); plMain[plNum] = plm; } break;
+		{ case 0x62: c1INO * c_1ino = (new c1INO(plNum)); plm = (DWORD)(c_1ino); plMain[plNum] = plm; } break;
+		{ case 0x93: c1JBR * c_1jbr = (new c1JBR(plNum)); plm = (DWORD)(c_1jbr); plMain[plNum] = plm; } break;
+		{ case 0x65: c1KIB * c_1kib = (new c1KIB(plNum)); plm = (DWORD)(c_1kib); plMain[plNum] = plm; } break;
+		{ case 0x36: c1KMM * c_1kmm = (new c1KMM(plNum)); plm = (DWORD)(c_1kmm); plMain[plNum] = plm; } break;
+		{ case 0x69: c1KNK * c_1knk = (new c1KNK(plNum)); plm = (DWORD)(c_1knk); plMain[plNum] = plm; } break;
+		{ case 0x6A: c1KRS * c_1krs = (new c1KRS(plNum)); plm = (DWORD)(c_1krs); plMain[plNum] = plm; } break;
+		{ case 0x32: c1NEJ * c_1nej = (new c1NEJ(plNum)); plm = (DWORD)(c_1nej); plMain[plNum] = plm; } break;
+		{ case 0x2E: c1NRT * c_1nrt = (new c1NRT(plNum)); plm = (DWORD)(c_1nrt); plMain[plNum] = plm; } break;
+		{ case 0x31: c1ROC * c_1roc = (new c1ROC(plNum)); plm = (DWORD)(c_1roc); plMain[plNum] = plm; } break;
+		{ case 0x41: c1SEC * c_1sec = (new c1SEC(plNum)); plm = (DWORD)(c_1sec); plMain[plNum] = plm; } break;
+		{ case 0x63: c1SIK * c_1sik = (new c1SIK(plNum)); plm = (DWORD)(c_1sik); plMain[plNum] = plm; } break;
+		{ case 0x67: c1SIN * c_1sin = (new c1SIN(plNum)); plm = (DWORD)(c_1sin); plMain[plNum] = plm; } break;
+		{ case 0x30: c1SKR * c_1skr = (new c1SKR(plNum)); plm = (DWORD)(c_1skr); plMain[plNum] = plm; } break;
+		{ case 0x2F: c1SSK * c_1ssk = (new c1SSK(plNum)); plm = (DWORD)(c_1ssk); plMain[plNum] = plm; } break;
+		{ case 0x61: c1TEN * c_1ten = (new c1TEN(plNum)); plm = (DWORD)(c_1ten); plMain[plNum] = plm; } break;
+		{ case 0x68: c1TMR * c_1tmr = (new c1TMR(plNum)); plm = (DWORD)(c_1tmr); plMain[plNum] = plm; } break;
+		{ case 0x64: c1TYO * c_1tyo = (new c1TYO(plNum)); plm = (DWORD)(c_1tyo); plMain[plNum] = plm; } break;
+		{ case 0x3E: c1ZBZ * c_1zbz = (new c1ZBZ(plNum)); plm = (DWORD)(c_1zbz); plMain[plNum] = plm; } break;
+		#pragma endregion
+		#pragma region 2
+		{ case 0x29: c2AKM * c_2akm = (new c2AKM(plNum)); plm = (DWORD)(c_2akm); plMain[plNum] = plm; } break;
+		{ case 0x14: c2ASM * c_2asm = (new c2ASM(plNum)); plm = (DWORD)(c_2asm); plMain[plNum] = plm; } break;
+		{ case 0x1B: c2CYB * c_2cyb = (new c2CYB(plNum)); plm = (DWORD)(c_2cyb); plMain[plNum] = plm; } break;
+		{ case 0x1F: c2DDR * c_2ddr = (new c2DDR(plNum)); plm = (DWORD)(c_2ddr); plMain[plNum] = plm; } break;
+		{ case 0x3A: c2DNZ * c_2dnz = (new c2DNZ(plNum)); plm = (DWORD)(c_2dnz); plMain[plNum] = plm; } break;
+		{ case 0x2D: c2FOU * c_2fou = (new c2FOU(plNum)); plm = (DWORD)(c_2fou); plMain[plNum] = plm; } break;
+		{ case 0x0F: c2GAR * c_2gar = (new c2GAR(plNum)); plm = (DWORD)(c_2gar); plMain[plNum] = plm; } break;
+		{ case 0x70: c2GAV * c_2gav = (new c2GAV(plNum)); plm = (DWORD)(c_2gav); plMain[plNum] = plm; } break;
+		{ case 0x13: c2GUY * c_2guy = (new c2GUY(plNum)); plm = (DWORD)(c_2guy); plMain[plNum] = plm; } break;
+		{ case 0x20: c2HDN * c_2hdn = (new c2HDN(plNum)); plm = (DWORD)(c_2hdn); plMain[plNum] = plm; } break;
+		{ case 0x0E: c2HNT * c_2hnt = (new c2HNT(plNum)); plm = (DWORD)(c_2hnt); plMain[plNum] = plm; } break;
+		{ case 0x09: c2INO * c_2ino = (new c2INO(plNum)); plm = (DWORD)(c_2ino); plMain[plNum] = plm; } break;
+		{ case 0x19: c2ITC * c_2itc = (new c2ITC(plNum)); plm = (DWORD)(c_2itc); plMain[plNum] = plm; } break;
+		{ case 0x94: c2JBR * c_2jbr = (new c2JBR(plNum)); plm = (DWORD)(c_2jbr); plMain[plNum] = plm; } break;
+		{ case 0x15: c2JRY * c_2jry = (new c2JRY(plNum)); plm = (DWORD)(c_2jry); plMain[plNum] = plm; } break;
+		{ case 0x23: c2JUG * c_2jug = (new c2JUG(plNum)); plm = (DWORD)(c_2jug); plMain[plNum] = plm; } break;
+		{ case 0x24: c2KAR * c_2kar = (new c2KAR(plNum)); plm = (DWORD)(c_2kar); plMain[plNum] = plm; } break;
+		{ case 0x18: c2KBT * c_2kbt = (new c2KBT(plNum)); plm = (DWORD)(c_2kbt); plMain[plNum] = plm; } break;
+		{ case 0x44: c2KBX * c_2kbx = (new c2KBX(plNum)); plm = (DWORD)(c_2kbx); plMain[plNum] = plm; } break;
+		{ case 0x0C: c2KIB * c_2kib = (new c2KIB(plNum)); plm = (DWORD)(c_2kib); plMain[plNum] = plm; } break;
+		{ case 0x2C: c2KKG * c_2kkg = (new c2KKG(plNum)); plm = (DWORD)(c_2kkg); plMain[plNum] = plm; } break;
+		{ case 0x12: c2KKS * c_2kks = (new c2KKS(plNum)); plm = (DWORD)(c_2kks); plMain[plNum] = plm; } break;
+		{ case 0x42: c2KKX * c_2kkx = (new c2KKX(plNum)); plm = (DWORD)(c_2kkx); plMain[plNum] = plm; } break;
+		{ case 0x28: c2KLB * c_2klb = (new c2KLB(plNum)); plm = (DWORD)(c_2klb); plMain[plNum] = plm; } break;
+		{ case 0x10: c2KNK * c_2knk = (new c2KNK(plNum)); plm = (DWORD)(c_2knk); plMain[plNum] = plm; } break;
+		{ case 0x26: c2KNN * c_2knn = (new c2KNN(plNum)); plm = (DWORD)(c_2knn); plMain[plNum] = plm; } break;
+		{ case 0x2A: c2KRS * c_2krs = (new c2KRS(plNum)); plm = (DWORD)(c_2krs); plMain[plNum] = plm; } break;
+		{ case 0x1A: c2KSM * c_2ksm = (new c2KSM(plNum)); plm = (DWORD)(c_2ksm); plMain[plNum] = plm; } break;
+		{ case 0x21: c2KZU * c_2kzu = (new c2KZU(plNum)); plm = (DWORD)(c_2kzu); plMain[plNum] = plm; } break;
+		{ case 0x39: c2MDR * c_2mdr = (new c2MDR(plNum)); plm = (DWORD)(c_2mdr); plMain[plNum] = plm; } break;
+		{ case 0x3D: c2MKG * c_2mkg = (new c2MKG(plNum)); plm = (DWORD)(c_2mkg); plMain[plNum] = plm; } break;
+		{ case 0x07: c2NEJ * c_2nej = (new c2NEJ(plNum)); plm = (DWORD)(c_2nej); plMain[plNum] = plm; } break;
+		{ case 0x37: c2NRG * c_2nrg = (new c2NRG(plNum)); plm = (DWORD)(c_2nrg); plMain[plNum] = plm; } break;
+		{ case 0x01: c2NRT * c_2nrt = (new c2NRT(plNum)); plm = (DWORD)(c_2nrt); plMain[plNum] = plm; } break;
+		{ case 0x02: c2NRX * c_2nrx = (new c2NRX(plNum)); plm = (DWORD)(c_2nrx); plMain[plNum] = plm; } break;
+		{ case 0x43: c2OBT * c_2obt = (new c2OBT(plNum)); plm = (DWORD)(c_2obt); plMain[plNum] = plm; } break;
+		{ case 0x84: c2OBX * c_2obx = (new c2OBX(plNum)); plm = (DWORD)(c_2obx); plMain[plNum] = plm; } break;
+		{ case 0x17: c2ORC * c_2orc = (new c2ORC(plNum)); plm = (DWORD)(c_2orc); plMain[plNum] = plm; } break;
+		{ case 0x2B: c2PAR * c_2par = (new c2PAR(plNum)); plm = (DWORD)(c_2par); plMain[plNum] = plm; } break;
+		{ case 0x27: c2PEA * c_2pea = (new c2PEA(plNum)); plm = (DWORD)(c_2pea); plMain[plNum] = plm; } break;
+		{ case 0x3B: c2RKG * c_2rkg = (new c2RKG(plNum)); plm = (DWORD)(c_2rkg); plMain[plNum] = plm; } break;
+		{ case 0x06: c2ROC * c_2roc = (new c2ROC(plNum)); plm = (DWORD)(c_2roc); plMain[plNum] = plm; } break;
+		{ case 0x1C: c2SAI * c_2sai = (new c2SAI(plNum)); plm = (DWORD)(c_2sai); plMain[plNum] = plm; } break;
+		{ case 0x1E: c2SCO * c_2sco = (new c2SCO(plNum)); plm = (DWORD)(c_2sco); plMain[plNum] = plm; } break;
+		{ case 0x45: c2SCX * c_2scx = (new c2SCX(plNum)); plm = (DWORD)(c_2scx); plMain[plNum] = plm; } break;
+		{ case 0x22: c2SGT * c_2sgt = (new c2SGT(plNum)); plm = (DWORD)(c_2sgt); plMain[plNum] = plm; } break;
+		{ case 0x0A: c2SIK * c_2sik = (new c2SIK(plNum)); plm = (DWORD)(c_2sik); plMain[plNum] = plm; } break;
+		{ case 0x0D: c2SIN * c_2sin = (new c2SIN(plNum)); plm = (DWORD)(c_2sin); plMain[plNum] = plm; } break;
+		{ case 0x05: c2SKR * c_2skr = (new c2SKR(plNum)); plm = (DWORD)(c_2skr); plMain[plNum] = plm; } break;
+		{ case 0x03: c2SSK * c_2ssk = (new c2SSK(plNum)); plm = (DWORD)(c_2ssk); plMain[plNum] = plm; } break;
+		{ case 0x04: c2SSY * c_2ssy = (new c2SSY(plNum)); plm = (DWORD)(c_2ssy); plMain[plNum] = plm; } break;
+		{ case 0x38: c2SSZ * c_2ssz = (new c2SSZ(plNum)); plm = (DWORD)(c_2ssz); plMain[plNum] = plm; } break;
+		{ case 0x08: c2TEN * c_2ten = (new c2TEN(plNum)); plm = (DWORD)(c_2ten); plMain[plNum] = plm; } break;
+		{ case 0x3C: c2TKG * c_2tkg = (new c2TKG(plNum)); plm = (DWORD)(c_2tkg); plMain[plNum] = plm; } break;
+		{ case 0x11: c2TMR * c_2tmr = (new c2TMR(plNum)); plm = (DWORD)(c_2tmr); plMain[plNum] = plm; } break;
+		{ case 0x16: c2TND * c_2tnd = (new c2TND(plNum)); plm = (DWORD)(c_2tnd); plMain[plNum] = plm; } break;
+		{ case 0x25: c2TOB * c_2tob = (new c2TOB(plNum)); plm = (DWORD)(c_2tob); plMain[plNum] = plm; } break;
+		{ case 0x0B: c2TYO * c_2tyo = (new c2TYO(plNum)); plm = (DWORD)(c_2tyo); plMain[plNum] = plm; } break;
+		{ case 0x1D: c2YMT * c_2ymt = (new c2YMT(plNum)); plm = (DWORD)(c_2ymt); plMain[plNum] = plm; } break;
+		#pragma endregion
+		#pragma region 3
+		{ case 0x47: c3DRI * c_3dri = (new c3DRI(plNum)); plm = (DWORD)(c_3dri); plMain[plNum] = plm; } break;
+		{ case 0x56: c3GAR * c_3gar = (new c3GAR(plNum)); plm = (DWORD)(c_3gar); plMain[plNum] = plm; } break;
+		{ case 0xC4: c3GUY * c_3guy = (new c3GUY(plNum)); plm = (DWORD)(c_3guy); plMain[plNum] = plm; } break;
+		{ case 0x4D: c3HAN * c_3han = (new c3HAN(plNum)); plm = (DWORD)(c_3han); plMain[plNum] = plm; } break;
+		{ case 0x51: c3HNZ * c_3hnz = (new c3HNZ(plNum)); plm = (DWORD)(c_3hnz); plMain[plNum] = plm; } break;
+		{ case 0x6E: c3HSM * c_3hsm = (new c3HSM(plNum)); plm = (DWORD)(c_3hsm); plMain[plNum] = plm; } break;
+		{ case 0x5D: c3IRK * c_3irk = (new c3IRK(plNum)); plm = (DWORD)(c_3irk); plMain[plNum] = plm; } break;
+		{ case 0x95: c3JBR * c_3jbr = (new c3JBR(plNum)); plm = (DWORD)(c_3jbr); plMain[plNum] = plm; } break;
+		{ case 0x5E: c3KBT * c_3kbt = (new c3KBT(plNum)); plm = (DWORD)(c_3kbt); plMain[plNum] = plm; } break;
+		{ case 0x5C: c3KHM * c_3khm = (new c3KHM(plNum)); plm = (DWORD)(c_3khm); plMain[plNum] = plm; } break;
+		{ case 0x5B: c3KKS * c_3kks = (new c3KKS(plNum)); plm = (DWORD)(c_3kks); plMain[plNum] = plm; } break;
+		{ case 0x50: c3KLB * c_3klb = (new c3KLB(plNum)); plm = (DWORD)(c_3klb); plMain[plNum] = plm; } break;
+		{ case 0x6C: c3KSN * c_3ksn = (new c3KSN(plNum)); plm = (DWORD)(c_3ksn); plMain[plNum] = plm; } break;
+		{ case 0x46: c3MDR * c_3mdr = (new c3MDR(plNum)); plm = (DWORD)(c_3mdr); plMain[plNum] = plm; } break;
+		{ case 0x6F: c3MDR_2 * c_3mdr_2 = (new c3MDR_2(plNum)); plm = (DWORD)(c_3mdr_2); plMain[plNum] = plm; } break;
+		{ case 0x4C: c3MFN * c_3mfn = (new c3MFN(plNum)); plm = (DWORD)(c_3mfn); plMain[plNum] = plm; } break;
+		{ case 0x6D: c3MNT * c_3mnt = (new c3MNT(plNum)); plm = (DWORD)(c_3mnt); plMain[plNum] = plm; } break;
+		{ case 0x52: c3NGT * c_3ngt = (new c3NGT(plNum)); plm = (DWORD)(c_3ngt); plMain[plNum] = plm; } break;
+		{ case 0x54: c3NRT * c_3nrt = (new c3NRT(plNum)); plm = (DWORD)(c_3nrt); plMain[plNum] = plm; } break;
+		{ case 0x4E: c3NYG * c_3nyg = (new c3NYG(plNum)); plm = (DWORD)(c_3nyg); plMain[plNum] = plm; } break;
+		{ case 0x5F: c3OBT * c_3obt = (new c3OBT(plNum)); plm = (DWORD)(c_3obt); plMain[plNum] = plm; } break;
+		{ case 0x48: c3RUS * c_3rus = (new c3RUS(plNum)); plm = (DWORD)(c_3rus); plMain[plNum] = plm; } break;
+		{ case 0x55: c3SSK * c_3ssk = (new c3SSK(plNum)); plm = (DWORD)(c_3ssk); plMain[plNum] = plm; } break;
+		{ case 0x49: c3TOB * c_3tob = (new c3TOB(plNum)); plm = (DWORD)(c_3tob); plMain[plNum] = plm; } break;
+		{ case 0x53: c3TYO * c_3tyo = (new c3TYO(plNum)); plm = (DWORD)(c_3tyo); plMain[plNum] = plm; } break;
+		{ case 0x4B: c3UTK * c_3utk = (new c3UTK(plNum)); plm = (DWORD)(c_3utk); plMain[plNum] = plm; } break;
+		{ case 0x4F: c3WHO * c_3who = (new c3WHO(plNum)); plm = (DWORD)(c_3who); plMain[plNum] = plm; } break;
+		{ case 0x4A: c3YGR * c_3ygr = (new c3YGR(plNum)); plm = (DWORD)(c_3ygr); plMain[plNum] = plm; } break;
+		#pragma endregion
+		#pragma region 4
+		{ case 0x96: c4JBR * c_4jbr = (new c4JBR(plNum)); plm = (DWORD)(c_4jbr); plMain[plNum] = plm; } break;
+		{ case 0x5A: c4KKG * c_4kkg = (new c4KKG(plNum)); plm = (DWORD)(c_4kkg); plMain[plNum] = plm; } break;
+		{ case 0x57: c4MKG * c_4mkg = (new c4MKG(plNum)); plm = (DWORD)(c_4mkg); plMain[plNum] = plm; } break;
+		{ case 0xD4: c4MNR * c_4mnr = (new c4MNR(plNum)); plm = (DWORD)(c_4mnr); plMain[plNum] = plm; } break;
+		{ case 0x58: c4MUU * c_4muu = (new c4MUU(plNum)); plm = (DWORD)(c_4muu); plMain[plNum] = plm; } break;
+		{ case 0x6B: c4NRT * c_4nrt = (new c4NRT(plNum)); plm = (DWORD)(c_4nrt); plMain[plNum] = plm; } break;
+		{ case 0x7A: c4RIN * c_4rin = (new c4RIN(plNum)); plm = (DWORD)(c_4rin); plMain[plNum] = plm; } break;
+		{ case 0x59: c4RKG * c_4rkg = (new c4RKG(plNum)); plm = (DWORD)(c_4rkg); plMain[plNum] = plm; } break;
+		{ case 0x60: c4SSI * c_4ssi = (new c4SSI(plNum)); plm = (DWORD)(c_4ssi); plMain[plNum] = plm; } break;
+		#pragma endregion
+		#pragma region 5
+		{ case 0x97: c5JBR * c_5jbr = (new c5JBR(plNum)); plm = (DWORD)(c_5jbr); plMain[plNum] = plm; } break;
+		{ case 0x73: c5JRB * c_5jrb = (new c5JRB(plNum)); plm = (DWORD)(c_5jrb); plMain[plNum] = plm; } break;
+		{ case 0x74: c5KDM * c_5kdm = (new c5KDM(plNum)); plm = (DWORD)(c_5kdm); plMain[plNum] = plm; } break;
+		{ case 0x7C: c5KGY * c_5kgy = (new c5KGY(plNum)); plm = (DWORD)(c_5kgy); plMain[plNum] = plm; } break;
+		{ case 0xB8: c5KRS * c_5krs = (new c5KRS(plNum)); plm = (DWORD)(c_5krs); plMain[plNum] = plm; } break;
+		{ case 0x72: c5MDR * c_5mdr = (new c5MDR(plNum)); plm = (DWORD)(c_5mdr); plMain[plNum] = plm; } break;
+		{ case 0x81: c5NRT * c_5nrt = (new c5NRT(plNum)); plm = (DWORD)(c_5nrt); plMain[plNum] = plm; } break;
+		{ case 0x71: c5OBT * c_5obt = (new c5OBT(plNum)); plm = (DWORD)(c_5obt); plMain[plNum] = plm; } break;
+		{ case 0x75: c5SKN * c_5skn = (new c5SKN(plNum)); plm = (DWORD)(c_5skn); plMain[plNum] = plm; } break;
+		{ case 0x82: c5SSK * c_5ssk = (new c5SSK(plNum)); plm = (DWORD)(c_5ssk); plMain[plNum] = plm; } break;
+		{ case 0x76: c5TYY * c_5tyy = (new c5TYY(plNum)); plm = (DWORD)(c_5tyy); plMain[plNum] = plm; } break;
+		#pragma endregion
+		#pragma region 6 - 8
+		{ case 0x83: c6HNB * c_6hnb = (new c6HNB(plNum)); plm = (DWORD)(c_6hnb); plMain[plNum] = plm; } break;
+		{ case 0x7F: c6HNT * c_6hnt = (new c6HNT(plNum)); plm = (DWORD)(c_6hnt); plMain[plNum] = plm; } break;
+		{ case 0x98: c6JBR * c_6jbr = (new c6JBR(plNum)); plm = (DWORD)(c_6jbr); plMain[plNum] = plm; } break;
+		{ case 0x7B: c6NRT * c_6nrt = (new c6NRT(plNum)); plm = (DWORD)(c_6nrt); plMain[plNum] = plm; } break;
+		{ case 0x80: c6SKR * c_6skr = (new c6SKR(plNum)); plm = (DWORD)(c_6skr); plMain[plNum] = plm; } break;
+		{ case 0x7E: c6SSK * c_6ssk = (new c6SSK(plNum)); plm = (DWORD)(c_6ssk); plMain[plNum] = plm; } break;
+		{ case 0xCD: c7BRN * c_7brn = (new c7BRN(plNum)); plm = (DWORD)(c_7brn); plMain[plNum] = plm; } break;
+		{ case 0x9F: c7BRT * c_7brt = (new c7BRT(plNum)); plm = (DWORD)(c_7brt); plMain[plNum] = plm; } break;
+		{ case 0xCE: c7BRX * c_7brx = (new c7BRX(plNum)); plm = (DWORD)(c_7brx); plMain[plNum] = plm; } break;
+		{ case 0xCB: c7GAR * c_7gar = (new c7GAR(plNum)); plm = (DWORD)(c_7gar); plMain[plNum] = plm; } break;
+		{ case 0xCC: c7KHM * c_7khm = (new c7KHM(plNum)); plm = (DWORD)(c_7khm); plMain[plNum] = plm; } break;
+		{ case 0xD2: c7KIN * c_7kin = (new c7KIN(plNum)); plm = (DWORD)(c_7kin); plMain[plNum] = plm; } break;
+		{ case 0xD1: c7MMS * c_7mms = (new c7MMS(plNum)); plm = (DWORD)(c_7mms); plMain[plNum] = plm; } break;
+		{ case 0xD7: c7MMV * c_7mmv = (new c7MMV(plNum)); plm = (DWORD)(c_7mmv); plMain[plNum] = plm; } break;
+		{ case 0xD8: c7MTK * c_7mtk = (new c7MTK(plNum)); plm = (DWORD)(c_7mtk); plMain[plNum] = plm; } break;
+		{ case 0xC8: c7NRN * c_7nrn = (new c7NRN(plNum)); plm = (DWORD)(c_7nrn); plMain[plNum] = plm; } break;
+		{ case 0xBE: c7NRT * c_7nrt = (new c7NRT(plNum)); plm = (DWORD)(c_7nrt); plMain[plNum] = plm; } break;
+		{ case 0xD0: c7SKD * c_7skd = (new c7SKD(plNum)); plm = (DWORD)(c_7skd); plMain[plNum] = plm; } break;
+		{ case 0xCA: c7SKR * c_7skr = (new c7SKR(plNum)); plm = (DWORD)(c_7skr); plMain[plNum] = plm; } break;
+		{ case 0xA0: c7SLD * c_7sld = (new c7SLD(plNum)); plm = (DWORD)(c_7sld); plMain[plNum] = plm; } break;
+		{ case 0xCF: c7SLN * c_7sln = (new c7SLN(plNum)); plm = (DWORD)(c_7sln); plMain[plNum] = plm; } break;
+		{ case 0xBF: c7SSK * c_7ssk = (new c7SSK(plNum)); plm = (DWORD)(c_7ssk); plMain[plNum] = plm; } break;
+		{ case 0xC9: c7SSX * c_7ssx = (new c7SSX(plNum)); plm = (DWORD)(c_7ssx); plMain[plNum] = plm; } break;
+		{ case 0xD3: c7YRI * c_7yri = (new c7YRI(plNum)); plm = (DWORD)(c_7yri); plMain[plNum] = plm; } break;
+		{ case 0xE6: c8AEM * c_8aem = (new c8AEM(plNum)); plm = (DWORD)(c_8aem); plMain[plNum] = plm; } break;
+		{ case 0xDC: c8INO * c_8ino = (new c8INO(plNum)); plm = (DWORD)(c_8ino); plMain[plNum] = plm; } break;
+		{ case 0xDF: c8KIB * c_8kib = (new c8KIB(plNum)); plm = (DWORD)(c_8kib); plMain[plNum] = plm; } break;
+		{ case 0xDB: c8KIN * c_8kin = (new c8KIN(plNum)); plm = (DWORD)(c_8kin); plMain[plNum] = plm; } break;
+		{ case 0xE3: c8KNK * c_8knk = (new c8KNK(plNum)); plm = (DWORD)(c_8knk); plMain[plNum] = plm; } break;
+		{ case 0xDA: c8MMS * c_8mms = (new c8MMS(plNum)); plm = (DWORD)(c_8mms); plMain[plNum] = plm; } break;
+		{ case 0xE1: c8ROC * c_8roc = (new c8ROC(plNum)); plm = (DWORD)(c_8roc); plMain[plNum] = plm; } break;
+		{ case 0xE5: c8SAI * c_8sai = (new c8SAI(plNum)); plm = (DWORD)(c_8sai); plMain[plNum] = plm; } break;
+		{ case 0xDD: c8SIK * c_8sik = (new c8SIK(plNum)); plm = (DWORD)(c_8sik); plMain[plNum] = plm; } break;
+		{ case 0xE0: c8SIN * c_8sin = (new c8SIN(plNum)); plm = (DWORD)(c_8sin); plMain[plNum] = plm; } break;
+		{ case 0xE2: c8TEN * c_8ten = (new c8TEN(plNum)); plm = (DWORD)(c_8ten); plMain[plNum] = plm; } break;
+		{ case 0xE4: c8TMR * c_8tmr = (new c8TMR(plNum)); plm = (DWORD)(c_8tmr); plMain[plNum] = plm; } break;
+		{ case 0xDE: c8TYO * c_8tyo = (new c8TYO(plNum)); plm = (DWORD)(c_8tyo); plMain[plNum] = plm; } break;
+		#pragma endregion
+		#pragma region Story
+		{ case 0xD9: cABRT * c_abrt = (new cABRT(plNum)); plm = (DWORD)(c_abrt); plMain[plNum] = plm; } break;
+		{ case 0xC2: cB1NR * c_b1nr = (new cB1NR(plNum)); plm = (DWORD)(c_b1nr); plMain[plNum] = plm; } break;
+		{ case 0xC3: cB1SS * c_b1ss = (new cB1SS(plNum)); plm = (DWORD)(c_b1ss); plMain[plNum] = plm; } break;
+		{ case 0x92: cB2NR * c_b2nr = (new cB2NR(plNum)); plm = (DWORD)(c_b2nr); plMain[plNum] = plm; } break;
+		{ case 0xC5: cB3HS * c_b3hs = (new cB3HS(plNum)); plm = (DWORD)(c_b3hs); plMain[plNum] = plm; } break;
+		{ case 0x89: cB4NR * c_b4nr = (new cB4NR(plNum)); plm = (DWORD)(c_b4nr); plMain[plNum] = plm; } break;
+		{ case 0x8B: cB5OB * c_b5ob = (new cB5OB(plNum)); plm = (DWORD)(c_b5ob); plMain[plNum] = plm; } break;
+		{ case 0xB9: cB6BT * c_b6bt = (new cB6BT(plNum)); plm = (DWORD)(c_b6bt); plMain[plNum] = plm; } break;
+		{ case 0x90: cBAOD * c_baod = (new cBAOD(plNum)); plm = (DWORD)(c_baod); plMain[plNum] = plm; } break;
+		{ case 0x8F: cBGKT * c_bgkt = (new cBGKT(plNum)); plm = (DWORD)(c_bgkt); plMain[plNum] = plm; } break;
+		{ case 0xA1: cBGRG * c_bgrg = (new cBGRG(plNum)); plm = (DWORD)(c_bgrg); plMain[plNum] = plm; } break;
+		{ case 0xC7: cBGRN * c_bgrn = (new cBGRN(plNum)); plm = (DWORD)(c_bgrn); plMain[plNum] = plm; } break;
+		{ case 0xC6: cBGUY * c_bguy = (new cBGUY(plNum)); plm = (DWORD)(c_bguy); plMain[plNum] = plm; } break;
+		{ case 0xAA: cBGYU * c_bgyu = (new cBGYU(plNum)); plm = (DWORD)(c_bgyu); plMain[plNum] = plm; } break;
+		{ case 0x77: cBHSM * c_bhsm = (new cBHSM(plNum)); plm = (DWORD)(c_bhsm); plMain[plNum] = plm; } break;
+		{ case 0xD5: cBISS * c_biss = (new cBISS(plNum)); plm = (DWORD)(c_biss); plMain[plNum] = plm; } break;
+		{ case 0x85: cBJB1 * c_bjb1 = (new cBJB1(plNum)); plm = (DWORD)(c_bjb1); plMain[plNum] = plm; } break;
+		{ case 0x86: cBJB2 * c_bjb2 = (new cBJB2(plNum)); plm = (DWORD)(c_bjb2); plMain[plNum] = plm; } break;
+		{ case 0x87: cBJB3 * c_bjb3 = (new cBJB3(plNum)); plm = (DWORD)(c_bjb3); plMain[plNum] = plm; } break;
+		{ case 0x88: cBJB4 * c_bjb4 = (new cBJB4(plNum)); plm = (DWORD)(c_bjb4); plMain[plNum] = plm; } break;
+		{ case 0x9A: cBJYD * c_bjyd = (new cBJYD(plNum)); plm = (DWORD)(c_bjyd); plMain[plNum] = plm; } break;
+		{ case 0xAB: cBJYG * c_bjyg = (new cBJYG(plNum)); plm = (DWORD)(c_bjyg); plMain[plNum] = plm; } break;
+		{ case 0xB0: cBKGV * c_bkgv = (new cBKGV(plNum)); plm = (DWORD)(c_bkgv); plMain[plNum] = plm; } break;
+		{ case 0xAE: cBKGY * c_bkgy = (new cBKGY(plNum)); plm = (DWORD)(c_bkgy); plMain[plNum] = plm; } break;
+		{ case 0xB1: cBKKK * c_bkkk = (new cBKKK(plNum)); plm = (DWORD)(c_bkkk); plMain[plNum] = plm; } break;
+		{ case 0xBA: cBKKS * c_bkks = (new cBKKS(plNum)); plm = (DWORD)(c_bkks); plMain[plNum] = plm; } break;
+		{ case 0x9E: cBKKU * c_bkku = (new cBKKU(plNum)); plm = (DWORD)(c_bkku); plMain[plNum] = plm; } break;
+		{ case 0x8A: cBKKX * c_bkkx = (new cBKKX(plNum)); plm = (DWORD)(c_bkkx); plMain[plNum] = plm; } break;
+		{ case 0xA8: cBKMS * c_bkms = (new cBKMS(plNum)); plm = (DWORD)(c_bkms); plMain[plNum] = plm; } break;
+		{ case 0x8C: cBKRL * c_bkrl = (new cBKRL(plNum)); plm = (DWORD)(c_bkrl); plMain[plNum] = plm; } break;
+		{ case 0x9B: cBKRS * c_bkrs = (new cBKRS(plNum)); plm = (DWORD)(c_bkrs); plMain[plNum] = plm; } break;
+		{ case 0xA9: cBKSR * c_bksr = (new cBKSR(plNum)); plm = (DWORD)(c_bksr); plMain[plNum] = plm; } break;
+		{ case 0x91: cBKTY * c_bkty = (new cBKTY(plNum)); plm = (DWORD)(c_bkty); plMain[plNum] = plm; } break;
+		{ case 0xA5: cBMDJ * c_bmdj = (new cBMDJ(plNum)); plm = (DWORD)(c_bmdj); plMain[plNum] = plm; } break;
+		{ case 0xBC: cBMDK * c_bmdk = (new cBMDK(plNum)); plm = (DWORD)(c_bmdk); plMain[plNum] = plm; } break;
+		{ case 0x78: cBMDR * c_bmdr = (new cBMDR(plNum)); plm = (DWORD)(c_bmdr); plMain[plNum] = plm; } break;
+		{ case 0xBB: cBMDT * c_bmdt = (new cBMDT(plNum)); plm = (DWORD)(c_bmdt); plMain[plNum] = plm; } break;
+		{ case 0xBD: cBMHR * c_bmhr = (new cBMHR(plNum)); plm = (DWORD)(c_bmhr); plMain[plNum] = plm; } break;
+		{ case 0x79: cBMKJ * c_bmkj = (new cBMKJ(plNum)); plm = (DWORD)(c_bmkj); plMain[plNum] = plm; } break;
+		{ case 0xD6: cBMNK * c_bmnk = (new cBMNK(plNum)); plm = (DWORD)(c_bmnk); plMain[plNum] = plm; } break;
+		{ case 0xB4: cBNRC * c_bnrc = (new cBNRC(plNum)); plm = (DWORD)(c_bnrc); plMain[plNum] = plm; } break;
+		{ case 0xC0: cBNRG * c_bnrg = (new cBNRG(plNum)); plm = (DWORD)(c_bnrg); plMain[plNum] = plm; } break;
+		{ case 0xAC: cBNRT * c_bnrt = (new cBNRT(plNum)); plm = (DWORD)(c_bnrt); plMain[plNum] = plm; } break;
+		{ case 0xB2: cBNRX * c_bnrx = (new cBNRX(plNum)); plm = (DWORD)(c_bnrx); plMain[plNum] = plm; } break;
+		{ case 0xB7: cBOBK * c_bobk = (new cBOBK(plNum)); plm = (DWORD)(c_bobk); plMain[plNum] = plm; } break;
+		{ case 0xA3: cBOBR * c_bobr = (new cBOBR(plNum)); plm = (DWORD)(c_bobr); plMain[plNum] = plm; } break;
+		{ case 0xA4: cBOBS * c_bobs = (new cBOBS(plNum)); plm = (DWORD)(c_bobs); plMain[plNum] = plm; } break;
+		{ case 0x8E: cBOBT * c_bobt = (new cBOBT(plNum)); plm = (DWORD)(c_bobt); plMain[plNum] = plm; } break;
+		{ case 0xAF: cBOBZ * c_bobz = (new cBOBZ(plNum)); plm = (DWORD)(c_bobz); plMain[plNum] = plm; } break;
+		{ case 0xA6: cBRMD * c_brmd = (new cBRMD(plNum)); plm = (DWORD)(c_brmd); plMain[plNum] = plm; } break;
+		{ case 0xA7: cBRSK * c_brsk = (new cBRSK(plNum)); plm = (DWORD)(c_brsk); plMain[plNum] = plm; } break;
+		{ case 0xB5: cBSSC * c_bssc = (new cBSSC(plNum)); plm = (DWORD)(c_bssc); plMain[plNum] = plm; } break;
+		{ case 0xAD: cBSSK * c_bssk = (new cBSSK(plNum)); plm = (DWORD)(c_bssk); plMain[plNum] = plm; } break;
+		{ case 0x8D: cBSSN * c_bssn = (new cBSSN(plNum)); plm = (DWORD)(c_bssn); plMain[plNum] = plm; } break;
+		{ case 0xB3: cBSSX * c_bssx = (new cBSSX(plNum)); plm = (DWORD)(c_bssx); plMain[plNum] = plm; } break;
+		{ case 0xC1: cBSSZ * c_bssz = (new cBSSZ(plNum)); plm = (DWORD)(c_bssz); plMain[plNum] = plm; } break;
+		{ case 0x9D: cBTSK * c_btsk = (new cBTSK(plNum)); plm = (DWORD)(c_btsk); plMain[plNum] = plm; } break;
+		{ case 0x99: cGFSA * c_gfsa = (new cGFSA(plNum)); plm = (DWORD)(c_gfsa); plMain[plNum] = plm; } break;
+		{ case 0x9C: cGMHR * c_gmhr = (new cGMHR(plNum)); plm = (DWORD)(c_gmhr); plMain[plNum] = plm; } break;
+		{ case 0xA2: cGZTU * c_gztu = (new cGZTU(plNum)); plm = (DWORD)(c_gztu); plMain[plNum] = plm; } break;
+		{ case 0xB6: cJKKS * c_jkks = (new cJKKS(plNum)); plm = (DWORD)(c_jkks); plMain[plNum] = plm; } break;
+		{ case 0x7D: cTYYP * c_tyyp = (new cTYYP(plNum)); plm = (DWORD)(c_tyyp); plMain[plNum] = plm; } break;
+		#pragma endregion
 	}
 	std::cout << "Created pl at " << hex << plm << "\n";
 }
@@ -451,7 +799,250 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 	delete &(*(c1CMN*)(plm));
 	switch (c)
 	{
-		case 0x2E: delete &(*(c1NRT*)(plm)); break;
+		#pragma region 1
+		case 0x66: delete & (*(c1AKM*)(plm)); break;
+		case 0x40: delete & (*(c1FIR*)(plm)); break;
+		case 0x34: delete & (*(c1GAR*)(plm)); break;
+		case 0x3F: delete & (*(c1HAK*)(plm)); break;
+		case 0x35: delete & (*(c1HKG*)(plm)); break;
+		case 0x33: delete & (*(c1HNT*)(plm)); break;
+		case 0x62: delete & (*(c1INO*)(plm)); break;
+		case 0x93: delete & (*(c1JBR*)(plm)); break;
+		case 0x65: delete & (*(c1KIB*)(plm)); break;
+		case 0x36: delete & (*(c1KMM*)(plm)); break;
+		case 0x69: delete & (*(c1KNK*)(plm)); break;
+		case 0x6A: delete & (*(c1KRS*)(plm)); break;
+		case 0x32: delete & (*(c1NEJ*)(plm)); break;
+		case 0x2E: delete & (*(c1NRT*)(plm)); break;
+		case 0x31: delete & (*(c1ROC*)(plm)); break;
+		case 0x41: delete & (*(c1SEC*)(plm)); break;
+		case 0x63: delete & (*(c1SIK*)(plm)); break;
+		case 0x67: delete & (*(c1SIN*)(plm)); break;
+		case 0x30: delete & (*(c1SKR*)(plm)); break;
+		case 0x2F: delete & (*(c1SSK*)(plm)); break;
+		case 0x61: delete & (*(c1TEN*)(plm)); break;
+		case 0x68: delete & (*(c1TMR*)(plm)); break;
+		case 0x64: delete & (*(c1TYO*)(plm)); break;
+		case 0x3E: delete & (*(c1ZBZ*)(plm)); break;
+		#pragma endregion
+		#pragma region 2
+		case 0x29: delete & (*(c2AKM*)(plm)); break;
+		case 0x14: delete & (*(c2ASM*)(plm)); break;
+		case 0x1B: delete & (*(c2CYB*)(plm)); break;
+		case 0x1F: delete & (*(c2DDR*)(plm)); break;
+		case 0x3A: delete & (*(c2DNZ*)(plm)); break;
+		case 0x2D: delete & (*(c2FOU*)(plm)); break;
+		case 0x0F: delete & (*(c2GAR*)(plm)); break;
+		case 0x70: delete & (*(c2GAV*)(plm)); break;
+		case 0x13: delete & (*(c2GUY*)(plm)); break;
+		case 0x20: delete & (*(c2HDN*)(plm)); break;
+		case 0x0E: delete & (*(c2HNT*)(plm)); break;
+		case 0x09: delete & (*(c2INO*)(plm)); break;
+		case 0x19: delete & (*(c2ITC*)(plm)); break;
+		case 0x94: delete & (*(c2JBR*)(plm)); break;
+		case 0x15: delete & (*(c2JRY*)(plm)); break;
+		case 0x23: delete & (*(c2JUG*)(plm)); break;
+		case 0x24: delete & (*(c2KAR*)(plm)); break;
+		case 0x18: delete & (*(c2KBT*)(plm)); break;
+		case 0x44: delete & (*(c2KBX*)(plm)); break;
+		case 0x0C: delete & (*(c2KIB*)(plm)); break;
+		case 0x2C: delete & (*(c2KKG*)(plm)); break;
+		case 0x12: delete & (*(c2KKS*)(plm)); break;
+		case 0x42: delete & (*(c2KKX*)(plm)); break;
+		case 0x28: delete & (*(c2KLB*)(plm)); break;
+		case 0x10: delete & (*(c2KNK*)(plm)); break;
+		case 0x26: delete & (*(c2KNN*)(plm)); break;
+		case 0x2A: delete & (*(c2KRS*)(plm)); break;
+		case 0x1A: delete & (*(c2KSM*)(plm)); break;
+		case 0x21: delete & (*(c2KZU*)(plm)); break;
+		case 0x39: delete & (*(c2MDR*)(plm)); break;
+		case 0x3D: delete & (*(c2MKG*)(plm)); break;
+		case 0x07: delete & (*(c2NEJ*)(plm)); break;
+		case 0x37: delete & (*(c2NRG*)(plm)); break;
+		case 0x01: delete & (*(c2NRT*)(plm)); break;
+		case 0x02: delete & (*(c2NRX*)(plm)); break;
+		case 0x43: delete & (*(c2OBT*)(plm)); break;
+		case 0x84: delete & (*(c2OBX*)(plm)); break;
+		case 0x17: delete & (*(c2ORC*)(plm)); break;
+		case 0x2B: delete & (*(c2PAR*)(plm)); break;
+		case 0x27: delete & (*(c2PEA*)(plm)); break;
+		case 0x3B: delete & (*(c2RKG*)(plm)); break;
+		case 0x06: delete & (*(c2ROC*)(plm)); break;
+		case 0x1C: delete & (*(c2SAI*)(plm)); break;
+		case 0x1E: delete & (*(c2SCO*)(plm)); break;
+		case 0x45: delete & (*(c2SCX*)(plm)); break;
+		case 0x22: delete & (*(c2SGT*)(plm)); break;
+		case 0x0A: delete & (*(c2SIK*)(plm)); break;
+		case 0x0D: delete & (*(c2SIN*)(plm)); break;
+		case 0x05: delete & (*(c2SKR*)(plm)); break;
+		case 0x03: delete & (*(c2SSK*)(plm)); break;
+		case 0x04: delete & (*(c2SSY*)(plm)); break;
+		case 0x38: delete & (*(c2SSZ*)(plm)); break;
+		case 0x08: delete & (*(c2TEN*)(plm)); break;
+		case 0x3C: delete & (*(c2TKG*)(plm)); break;
+		case 0x11: delete & (*(c2TMR*)(plm)); break;
+		case 0x16: delete & (*(c2TND*)(plm)); break;
+		case 0x25: delete & (*(c2TOB*)(plm)); break;
+		case 0x0B: delete & (*(c2TYO*)(plm)); break;
+		case 0x1D: delete & (*(c2YMT*)(plm)); break;
+		#pragma endregion
+		#pragma region 3
+		case 0x47: delete & (*(c3DRI*)(plm)); break;
+		case 0x56: delete & (*(c3GAR*)(plm)); break;
+		case 0xC4: delete & (*(c3GUY*)(plm)); break;
+		case 0x4D: delete & (*(c3HAN*)(plm)); break;
+		case 0x51: delete & (*(c3HNZ*)(plm)); break;
+		case 0x6E: delete & (*(c3HSM*)(plm)); break;
+		case 0x5D: delete & (*(c3IRK*)(plm)); break;
+		case 0x95: delete & (*(c3JBR*)(plm)); break;
+		case 0x5E: delete & (*(c3KBT*)(plm)); break;
+		case 0x5C: delete & (*(c3KHM*)(plm)); break;
+		case 0x5B: delete & (*(c3KKS*)(plm)); break;
+		case 0x50: delete & (*(c3KLB*)(plm)); break;
+		case 0x6C: delete & (*(c3KSN*)(plm)); break;
+		case 0x46: delete & (*(c3MDR*)(plm)); break;
+		case 0x6F: delete & (*(c3MDR_2*)(plm)); break;
+		case 0x4C: delete & (*(c3MFN*)(plm)); break;
+		case 0x6D: delete & (*(c3MNT*)(plm)); break;
+		case 0x52: delete & (*(c3NGT*)(plm)); break;
+		case 0x54: delete & (*(c3NRT*)(plm)); break;
+		case 0x4E: delete & (*(c3NYG*)(plm)); break;
+		case 0x5F: delete & (*(c3OBT*)(plm)); break;
+		case 0x48: delete & (*(c3RUS*)(plm)); break;
+		case 0x55: delete & (*(c3SSK*)(plm)); break;
+		case 0x49: delete & (*(c3TOB*)(plm)); break;
+		case 0x53: delete & (*(c3TYO*)(plm)); break;
+		case 0x4B: delete & (*(c3UTK*)(plm)); break;
+		case 0x4F: delete & (*(c3WHO*)(plm)); break;
+		case 0x4A: delete & (*(c3YGR*)(plm)); break;
+		#pragma endregion
+		#pragma region 4
+		case 0x96: delete & (*(c4JBR*)(plm)); break;
+		case 0x5A: delete & (*(c4KKG*)(plm)); break;
+		case 0x57: delete & (*(c4MKG*)(plm)); break;
+		case 0xD4: delete & (*(c4MNR*)(plm)); break;
+		case 0x58: delete & (*(c4MUU*)(plm)); break;
+		case 0x6B: delete & (*(c4NRT*)(plm)); break;
+		case 0x7A: delete & (*(c4RIN*)(plm)); break;
+		case 0x59: delete & (*(c4RKG*)(plm)); break;
+		case 0x60: delete & (*(c4SSI*)(plm)); break;
+		#pragma endregion
+		#pragma region 5
+		case 0x97: delete & (*(c5JBR*)(plm)); break;
+		case 0x73: delete & (*(c5JRB*)(plm)); break;
+		case 0x74: delete & (*(c5KDM*)(plm)); break;
+		case 0x7C: delete & (*(c5KGY*)(plm)); break;
+		case 0xB8: delete & (*(c5KRS*)(plm)); break;
+		case 0x72: delete & (*(c5MDR*)(plm)); break;
+		case 0x81: delete & (*(c5NRT*)(plm)); break;
+		case 0x71: delete & (*(c5OBT*)(plm)); break;
+		case 0x75: delete & (*(c5SKN*)(plm)); break;
+		case 0x82: delete & (*(c5SSK*)(plm)); break;
+		case 0x76: delete & (*(c5TYY*)(plm)); break;
+		#pragma endregion
+		#pragma region 6 - 8
+		case 0x83: delete & (*(c6HNB*)(plm)); break;
+		case 0x7F: delete & (*(c6HNT*)(plm)); break;
+		case 0x98: delete & (*(c6JBR*)(plm)); break;
+		case 0x7B: delete & (*(c6NRT*)(plm)); break;
+		case 0x80: delete & (*(c6SKR*)(plm)); break;
+		case 0x7E: delete & (*(c6SSK*)(plm)); break;
+		case 0xCD: delete & (*(c7BRN*)(plm)); break;
+		case 0x9F: delete & (*(c7BRT*)(plm)); break;
+		case 0xCE: delete & (*(c7BRX*)(plm)); break;
+		case 0xCB: delete & (*(c7GAR*)(plm)); break;
+		case 0xCC: delete & (*(c7KHM*)(plm)); break;
+		case 0xD2: delete & (*(c7KIN*)(plm)); break;
+		case 0xD1: delete & (*(c7MMS*)(plm)); break;
+		case 0xD7: delete & (*(c7MMV*)(plm)); break;
+		case 0xD8: delete & (*(c7MTK*)(plm)); break;
+		case 0xC8: delete & (*(c7NRN*)(plm)); break;
+		case 0xBE: delete & (*(c7NRT*)(plm)); break;
+		case 0xD0: delete & (*(c7SKD*)(plm)); break;
+		case 0xCA: delete & (*(c7SKR*)(plm)); break;
+		case 0xA0: delete & (*(c7SLD*)(plm)); break;
+		case 0xCF: delete & (*(c7SLN*)(plm)); break;
+		case 0xBF: delete & (*(c7SSK*)(plm)); break;
+		case 0xC9: delete & (*(c7SSX*)(plm)); break;
+		case 0xD3: delete & (*(c7YRI*)(plm)); break;
+		case 0xE6: delete & (*(c8AEM*)(plm)); break;
+		case 0xDC: delete & (*(c8INO*)(plm)); break;
+		case 0xDF: delete & (*(c8KIB*)(plm)); break;
+		case 0xDB: delete & (*(c8KIN*)(plm)); break;
+		case 0xE3: delete & (*(c8KNK*)(plm)); break;
+		case 0xDA: delete & (*(c8MMS*)(plm)); break;
+		case 0xE1: delete & (*(c8ROC*)(plm)); break;
+		case 0xE5: delete & (*(c8SAI*)(plm)); break;
+		case 0xDD: delete & (*(c8SIK*)(plm)); break;
+		case 0xE0: delete & (*(c8SIN*)(plm)); break;
+		case 0xE2: delete & (*(c8TEN*)(plm)); break;
+		case 0xE4: delete & (*(c8TMR*)(plm)); break;
+		case 0xDE: delete & (*(c8TYO*)(plm)); break;
+		#pragma endregion
+		#pragma region Story
+		case 0xD9: delete & (*(cABRT*)(plm)); break;
+		case 0xC2: delete & (*(cB1NR*)(plm)); break;
+		case 0xC3: delete & (*(cB1SS*)(plm)); break;
+		case 0x92: delete & (*(cB2NR*)(plm)); break;
+		case 0xC5: delete & (*(cB3HS*)(plm)); break;
+		case 0x89: delete & (*(cB4NR*)(plm)); break;
+		case 0x8B: delete & (*(cB5OB*)(plm)); break;
+		case 0xB9: delete & (*(cB6BT*)(plm)); break;
+		case 0x90: delete & (*(cBAOD*)(plm)); break;
+		case 0x8F: delete & (*(cBGKT*)(plm)); break;
+		case 0xA1: delete & (*(cBGRG*)(plm)); break;
+		case 0xC7: delete & (*(cBGRN*)(plm)); break;
+		case 0xC6: delete & (*(cBGUY*)(plm)); break;
+		case 0xAA: delete & (*(cBGYU*)(plm)); break;
+		case 0x77: delete & (*(cBHSM*)(plm)); break;
+		case 0xD5: delete & (*(cBISS*)(plm)); break;
+		case 0x85: delete & (*(cBJB1*)(plm)); break;
+		case 0x86: delete & (*(cBJB2*)(plm)); break;
+		case 0x87: delete & (*(cBJB3*)(plm)); break;
+		case 0x88: delete & (*(cBJB4*)(plm)); break;
+		case 0x9A: delete & (*(cBJYD*)(plm)); break;
+		case 0xAB: delete & (*(cBJYG*)(plm)); break;
+		case 0xB0: delete & (*(cBKGV*)(plm)); break;
+		case 0xAE: delete & (*(cBKGY*)(plm)); break;
+		case 0xB1: delete & (*(cBKKK*)(plm)); break;
+		case 0xBA: delete & (*(cBKKS*)(plm)); break;
+		case 0x9E: delete & (*(cBKKU*)(plm)); break;
+		case 0x8A: delete & (*(cBKKX*)(plm)); break;
+		case 0xA8: delete & (*(cBKMS*)(plm)); break;
+		case 0x8C: delete & (*(cBKRL*)(plm)); break;
+		case 0x9B: delete & (*(cBKRS*)(plm)); break;
+		case 0xA9: delete & (*(cBKSR*)(plm)); break;
+		case 0x91: delete & (*(cBKTY*)(plm)); break;
+		case 0xA5: delete & (*(cBMDJ*)(plm)); break;
+		case 0xBC: delete & (*(cBMDK*)(plm)); break;
+		case 0x78: delete & (*(cBMDR*)(plm)); break;
+		case 0xBB: delete & (*(cBMDT*)(plm)); break;
+		case 0xBD: delete & (*(cBMHR*)(plm)); break;
+		case 0x79: delete & (*(cBMKJ*)(plm)); break;
+		case 0xD6: delete & (*(cBMNK*)(plm)); break;
+		case 0xB4: delete & (*(cBNRC*)(plm)); break;
+		case 0xC0: delete & (*(cBNRG*)(plm)); break;
+		case 0xAC: delete & (*(cBNRT*)(plm)); break;
+		case 0xB2: delete & (*(cBNRX*)(plm)); break;
+		case 0xB7: delete & (*(cBOBK*)(plm)); break;
+		case 0xA3: delete & (*(cBOBR*)(plm)); break;
+		case 0xA4: delete & (*(cBOBS*)(plm)); break;
+		case 0x8E: delete & (*(cBOBT*)(plm)); break;
+		case 0xAF: delete & (*(cBOBZ*)(plm)); break;
+		case 0xA6: delete & (*(cBRMD*)(plm)); break;
+		case 0xA7: delete & (*(cBRSK*)(plm)); break;
+		case 0xB5: delete & (*(cBSSC*)(plm)); break;
+		case 0xAD: delete & (*(cBSSK*)(plm)); break;
+		case 0x8D: delete & (*(cBSSN*)(plm)); break;
+		case 0xB3: delete & (*(cBSSX*)(plm)); break;
+		case 0xC1: delete & (*(cBSSZ*)(plm)); break;
+		case 0x9D: delete & (*(cBTSK*)(plm)); break;
+		case 0x99: delete & (*(cGFSA*)(plm)); break;
+		case 0x9C: delete & (*(cGMHR*)(plm)); break;
+		case 0xA2: delete & (*(cGZTU*)(plm)); break;
+		case 0xB6: delete & (*(cJKKS*)(plm)); break;
+		case 0x7D: delete & (*(cTYYP*)(plm)); break;
+		#pragma endregion
 	}
 	std::cout << "Deleted pl at " << hex << plm << "\n";
 	plMain[plNum] = 0;
@@ -463,7 +1054,250 @@ void ccPlayer::DoCharacterLoop(int c, int plNum)
 	(*(c1CMN*)(plm)).PreLoop(plNum);
 	switch (c)
 	{
+		#pragma region 1
+		case 0x66: (*(c1AKM*)(plm)).Loop(plNum); break;
+		case 0x40: (*(c1FIR*)(plm)).Loop(plNum); break;
+		case 0x34: (*(c1GAR*)(plm)).Loop(plNum); break;
+		case 0x3F: (*(c1HAK*)(plm)).Loop(plNum); break;
+		case 0x35: (*(c1HKG*)(plm)).Loop(plNum); break;
+		case 0x33: (*(c1HNT*)(plm)).Loop(plNum); break;
+		case 0x62: (*(c1INO*)(plm)).Loop(plNum); break;
+		case 0x93: (*(c1JBR*)(plm)).Loop(plNum); break;
+		case 0x65: (*(c1KIB*)(plm)).Loop(plNum); break;
+		case 0x36: (*(c1KMM*)(plm)).Loop(plNum); break;
+		case 0x69: (*(c1KNK*)(plm)).Loop(plNum); break;
+		case 0x6A: (*(c1KRS*)(plm)).Loop(plNum); break;
+		case 0x32: (*(c1NEJ*)(plm)).Loop(plNum); break;
 		case 0x2E: (*(c1NRT*)(plm)).Loop(plNum); break;
+		case 0x31: (*(c1ROC*)(plm)).Loop(plNum); break;
+		case 0x41: (*(c1SEC*)(plm)).Loop(plNum); break;
+		case 0x63: (*(c1SIK*)(plm)).Loop(plNum); break;
+		case 0x67: (*(c1SIN*)(plm)).Loop(plNum); break;
+		case 0x30: (*(c1SKR*)(plm)).Loop(plNum); break;
+		case 0x2F: (*(c1SSK*)(plm)).Loop(plNum); break;
+		case 0x61: (*(c1TEN*)(plm)).Loop(plNum); break;
+		case 0x68: (*(c1TMR*)(plm)).Loop(plNum); break;
+		case 0x64: (*(c1TYO*)(plm)).Loop(plNum); break;
+		case 0x3E: (*(c1ZBZ*)(plm)).Loop(plNum); break;
+		#pragma endregion
+		#pragma region 2
+		case 0x29: (*(c2AKM*)(plm)).Loop(plNum); break;
+		case 0x14: (*(c2ASM*)(plm)).Loop(plNum); break;
+		case 0x1B: (*(c2CYB*)(plm)).Loop(plNum); break;
+		case 0x1F: (*(c2DDR*)(plm)).Loop(plNum); break;
+		case 0x3A: (*(c2DNZ*)(plm)).Loop(plNum); break;
+		case 0x2D: (*(c2FOU*)(plm)).Loop(plNum); break;
+		case 0x0F: (*(c2GAR*)(plm)).Loop(plNum); break;
+		case 0x70: (*(c2GAV*)(plm)).Loop(plNum); break;
+		case 0x13: (*(c2GUY*)(plm)).Loop(plNum); break;
+		case 0x20: (*(c2HDN*)(plm)).Loop(plNum); break;
+		case 0x0E: (*(c2HNT*)(plm)).Loop(plNum); break;
+		case 0x09: (*(c2INO*)(plm)).Loop(plNum); break;
+		case 0x19: (*(c2ITC*)(plm)).Loop(plNum); break;
+		case 0x94: (*(c2JBR*)(plm)).Loop(plNum); break;
+		case 0x15: (*(c2JRY*)(plm)).Loop(plNum); break;
+		case 0x23: (*(c2JUG*)(plm)).Loop(plNum); break;
+		case 0x24: (*(c2KAR*)(plm)).Loop(plNum); break;
+		case 0x18: (*(c2KBT*)(plm)).Loop(plNum); break;
+		case 0x44: (*(c2KBX*)(plm)).Loop(plNum); break;
+		case 0x0C: (*(c2KIB*)(plm)).Loop(plNum); break;
+		case 0x2C: (*(c2KKG*)(plm)).Loop(plNum); break;
+		case 0x12: (*(c2KKS*)(plm)).Loop(plNum); break;
+		case 0x42: (*(c2KKX*)(plm)).Loop(plNum); break;
+		case 0x28: (*(c2KLB*)(plm)).Loop(plNum); break;
+		case 0x10: (*(c2KNK*)(plm)).Loop(plNum); break;
+		case 0x26: (*(c2KNN*)(plm)).Loop(plNum); break;
+		case 0x2A: (*(c2KRS*)(plm)).Loop(plNum); break;
+		case 0x1A: (*(c2KSM*)(plm)).Loop(plNum); break;
+		case 0x21: (*(c2KZU*)(plm)).Loop(plNum); break;
+		case 0x39: (*(c2MDR*)(plm)).Loop(plNum); break;
+		case 0x3D: (*(c2MKG*)(plm)).Loop(plNum); break;
+		case 0x07: (*(c2NEJ*)(plm)).Loop(plNum); break;
+		case 0x37: (*(c2NRG*)(plm)).Loop(plNum); break;
+		case 0x01: (*(c2NRT*)(plm)).Loop(plNum); break;
+		case 0x02: (*(c2NRX*)(plm)).Loop(plNum); break;
+		case 0x43: (*(c2OBT*)(plm)).Loop(plNum); break;
+		case 0x84: (*(c2OBX*)(plm)).Loop(plNum); break;
+		case 0x17: (*(c2ORC*)(plm)).Loop(plNum); break;
+		case 0x2B: (*(c2PAR*)(plm)).Loop(plNum); break;
+		case 0x27: (*(c2PEA*)(plm)).Loop(plNum); break;
+		case 0x3B: (*(c2RKG*)(plm)).Loop(plNum); break;
+		case 0x06: (*(c2ROC*)(plm)).Loop(plNum); break;
+		case 0x1C: (*(c2SAI*)(plm)).Loop(plNum); break;
+		case 0x1E: (*(c2SCO*)(plm)).Loop(plNum); break;
+		case 0x45: (*(c2SCX*)(plm)).Loop(plNum); break;
+		case 0x22: (*(c2SGT*)(plm)).Loop(plNum); break;
+		case 0x0A: (*(c2SIK*)(plm)).Loop(plNum); break;
+		case 0x0D: (*(c2SIN*)(plm)).Loop(plNum); break;
+		case 0x05: (*(c2SKR*)(plm)).Loop(plNum); break;
+		case 0x03: (*(c2SSK*)(plm)).Loop(plNum); break;
+		case 0x04: (*(c2SSY*)(plm)).Loop(plNum); break;
+		case 0x38: (*(c2SSZ*)(plm)).Loop(plNum); break;
+		case 0x08: (*(c2TEN*)(plm)).Loop(plNum); break;
+		case 0x3C: (*(c2TKG*)(plm)).Loop(plNum); break;
+		case 0x11: (*(c2TMR*)(plm)).Loop(plNum); break;
+		case 0x16: (*(c2TND*)(plm)).Loop(plNum); break;
+		case 0x25: (*(c2TOB*)(plm)).Loop(plNum); break;
+		case 0x0B: (*(c2TYO*)(plm)).Loop(plNum); break;
+		case 0x1D: (*(c2YMT*)(plm)).Loop(plNum); break;
+		#pragma endregion
+		#pragma region 3
+		case 0x47: (*(c3DRI*)(plm)).Loop(plNum); break;
+		case 0x56: (*(c3GAR*)(plm)).Loop(plNum); break;
+		case 0xC4: (*(c3GUY*)(plm)).Loop(plNum); break;
+		case 0x4D: (*(c3HAN*)(plm)).Loop(plNum); break;
+		case 0x51: (*(c3HNZ*)(plm)).Loop(plNum); break;
+		case 0x6E: (*(c3HSM*)(plm)).Loop(plNum); break;
+		case 0x5D: (*(c3IRK*)(plm)).Loop(plNum); break;
+		case 0x95: (*(c3JBR*)(plm)).Loop(plNum); break;
+		case 0x5E: (*(c3KBT*)(plm)).Loop(plNum); break;
+		case 0x5C: (*(c3KHM*)(plm)).Loop(plNum); break;
+		case 0x5B: (*(c3KKS*)(plm)).Loop(plNum); break;
+		case 0x50: (*(c3KLB*)(plm)).Loop(plNum); break;
+		case 0x6C: (*(c3KSN*)(plm)).Loop(plNum); break;
+		case 0x46: (*(c3MDR*)(plm)).Loop(plNum); break;
+		case 0x6F: (*(c3MDR_2*)(plm)).Loop(plNum); break;
+		case 0x4C: (*(c3MFN*)(plm)).Loop(plNum); break;
+		case 0x6D: (*(c3MNT*)(plm)).Loop(plNum); break;
+		case 0x52: (*(c3NGT*)(plm)).Loop(plNum); break;
+		case 0x54: (*(c3NRT*)(plm)).Loop(plNum); break;
+		case 0x4E: (*(c3NYG*)(plm)).Loop(plNum); break;
+		case 0x5F: (*(c3OBT*)(plm)).Loop(plNum); break;
+		case 0x48: (*(c3RUS*)(plm)).Loop(plNum); break;
+		case 0x55: (*(c3SSK*)(plm)).Loop(plNum); break;
+		case 0x49: (*(c3TOB*)(plm)).Loop(plNum); break;
+		case 0x53: (*(c3TYO*)(plm)).Loop(plNum); break;
+		case 0x4B: (*(c3UTK*)(plm)).Loop(plNum); break;
+		case 0x4F: (*(c3WHO*)(plm)).Loop(plNum); break;
+		case 0x4A: (*(c3YGR*)(plm)).Loop(plNum); break;
+		#pragma endregion
+		#pragma region 4
+		case 0x96: (*(c4JBR*)(plm)).Loop(plNum); break;
+		case 0x5A: (*(c4KKG*)(plm)).Loop(plNum); break;
+		case 0x57: (*(c4MKG*)(plm)).Loop(plNum); break;
+		case 0xD4: (*(c4MNR*)(plm)).Loop(plNum); break;
+		case 0x58: (*(c4MUU*)(plm)).Loop(plNum); break;
+		case 0x6B: (*(c4NRT*)(plm)).Loop(plNum); break;
+		case 0x7A: (*(c4RIN*)(plm)).Loop(plNum); break;
+		case 0x59: (*(c4RKG*)(plm)).Loop(plNum); break;
+		case 0x60: (*(c4SSI*)(plm)).Loop(plNum); break;
+		#pragma endregion
+		#pragma region 5
+		case 0x97: (*(c5JBR*)(plm)).Loop(plNum); break;
+		case 0x73: (*(c5JRB*)(plm)).Loop(plNum); break;
+		case 0x74: (*(c5KDM*)(plm)).Loop(plNum); break;
+		case 0x7C: (*(c5KGY*)(plm)).Loop(plNum); break;
+		case 0xB8: (*(c5KRS*)(plm)).Loop(plNum); break;
+		case 0x72: (*(c5MDR*)(plm)).Loop(plNum); break;
+		case 0x81: (*(c5NRT*)(plm)).Loop(plNum); break;
+		case 0x71: (*(c5OBT*)(plm)).Loop(plNum); break;
+		case 0x75: (*(c5SKN*)(plm)).Loop(plNum); break;
+		case 0x82: (*(c5SSK*)(plm)).Loop(plNum); break;
+		case 0x76: (*(c5TYY*)(plm)).Loop(plNum); break;
+		#pragma endregion
+		#pragma region 6 - 8
+		case 0x83: (*(c6HNB*)(plm)).Loop(plNum); break;
+		case 0x7F: (*(c6HNT*)(plm)).Loop(plNum); break;
+		case 0x98: (*(c6JBR*)(plm)).Loop(plNum); break;
+		case 0x7B: (*(c6NRT*)(plm)).Loop(plNum); break;
+		case 0x80: (*(c6SKR*)(plm)).Loop(plNum); break;
+		case 0x7E: (*(c6SSK*)(plm)).Loop(plNum); break;
+		case 0xCD: (*(c7BRN*)(plm)).Loop(plNum); break;
+		case 0x9F: (*(c7BRT*)(plm)).Loop(plNum); break;
+		case 0xCE: (*(c7BRX*)(plm)).Loop(plNum); break;
+		case 0xCB: (*(c7GAR*)(plm)).Loop(plNum); break;
+		case 0xCC: (*(c7KHM*)(plm)).Loop(plNum); break;
+		case 0xD2: (*(c7KIN*)(plm)).Loop(plNum); break;
+		case 0xD1: (*(c7MMS*)(plm)).Loop(plNum); break;
+		case 0xD7: (*(c7MMV*)(plm)).Loop(plNum); break;
+		case 0xD8: (*(c7MTK*)(plm)).Loop(plNum); break;
+		case 0xC8: (*(c7NRN*)(plm)).Loop(plNum); break;
+		case 0xBE: (*(c7NRT*)(plm)).Loop(plNum); break;
+		case 0xD0: (*(c7SKD*)(plm)).Loop(plNum); break;
+		case 0xCA: (*(c7SKR*)(plm)).Loop(plNum); break;
+		case 0xA0: (*(c7SLD*)(plm)).Loop(plNum); break;
+		case 0xCF: (*(c7SLN*)(plm)).Loop(plNum); break;
+		case 0xBF: (*(c7SSK*)(plm)).Loop(plNum); break;
+		case 0xC9: (*(c7SSX*)(plm)).Loop(plNum); break;
+		case 0xD3: (*(c7YRI*)(plm)).Loop(plNum); break;
+		case 0xE6: (*(c8AEM*)(plm)).Loop(plNum); break;
+		case 0xDC: (*(c8INO*)(plm)).Loop(plNum); break;
+		case 0xDF: (*(c8KIB*)(plm)).Loop(plNum); break;
+		case 0xDB: (*(c8KIN*)(plm)).Loop(plNum); break;
+		case 0xE3: (*(c8KNK*)(plm)).Loop(plNum); break;
+		case 0xDA: (*(c8MMS*)(plm)).Loop(plNum); break;
+		case 0xE1: (*(c8ROC*)(plm)).Loop(plNum); break;
+		case 0xE5: (*(c8SAI*)(plm)).Loop(plNum); break;
+		case 0xDD: (*(c8SIK*)(plm)).Loop(plNum); break;
+		case 0xE0: (*(c8SIN*)(plm)).Loop(plNum); break;
+		case 0xE2: (*(c8TEN*)(plm)).Loop(plNum); break;
+		case 0xE4: (*(c8TMR*)(plm)).Loop(plNum); break;
+		case 0xDE: (*(c8TYO*)(plm)).Loop(plNum); break;
+		#pragma endregion
+		#pragma region Story
+		case 0xD9: (*(cABRT*)(plm)).Loop(plNum); break;
+		case 0xC2: (*(cB1NR*)(plm)).Loop(plNum); break;
+		case 0xC3: (*(cB1SS*)(plm)).Loop(plNum); break;
+		case 0x92: (*(cB2NR*)(plm)).Loop(plNum); break;
+		case 0xC5: (*(cB3HS*)(plm)).Loop(plNum); break;
+		case 0x89: (*(cB4NR*)(plm)).Loop(plNum); break;
+		case 0x8B: (*(cB5OB*)(plm)).Loop(plNum); break;
+		case 0xB9: (*(cB6BT*)(plm)).Loop(plNum); break;
+		case 0x90: (*(cBAOD*)(plm)).Loop(plNum); break;
+		case 0x8F: (*(cBGKT*)(plm)).Loop(plNum); break;
+		case 0xA1: (*(cBGRG*)(plm)).Loop(plNum); break;
+		case 0xC7: (*(cBGRN*)(plm)).Loop(plNum); break;
+		case 0xC6: (*(cBGUY*)(plm)).Loop(plNum); break;
+		case 0xAA: (*(cBGYU*)(plm)).Loop(plNum); break;
+		case 0x77: (*(cBHSM*)(plm)).Loop(plNum); break;
+		case 0xD5: (*(cBISS*)(plm)).Loop(plNum); break;
+		case 0x85: (*(cBJB1*)(plm)).Loop(plNum); break;
+		case 0x86: (*(cBJB2*)(plm)).Loop(plNum); break;
+		case 0x87: (*(cBJB3*)(plm)).Loop(plNum); break;
+		case 0x88: (*(cBJB4*)(plm)).Loop(plNum); break;
+		case 0x9A: (*(cBJYD*)(plm)).Loop(plNum); break;
+		case 0xAB: (*(cBJYG*)(plm)).Loop(plNum); break;
+		case 0xB0: (*(cBKGV*)(plm)).Loop(plNum); break;
+		case 0xAE: (*(cBKGY*)(plm)).Loop(plNum); break;
+		case 0xB1: (*(cBKKK*)(plm)).Loop(plNum); break;
+		case 0xBA: (*(cBKKS*)(plm)).Loop(plNum); break;
+		case 0x9E: (*(cBKKU*)(plm)).Loop(plNum); break;
+		case 0x8A: (*(cBKKX*)(plm)).Loop(plNum); break;
+		case 0xA8: (*(cBKMS*)(plm)).Loop(plNum); break;
+		case 0x8C: (*(cBKRL*)(plm)).Loop(plNum); break;
+		case 0x9B: (*(cBKRS*)(plm)).Loop(plNum); break;
+		case 0xA9: (*(cBKSR*)(plm)).Loop(plNum); break;
+		case 0x91: (*(cBKTY*)(plm)).Loop(plNum); break;
+		case 0xA5: (*(cBMDJ*)(plm)).Loop(plNum); break;
+		case 0xBC: (*(cBMDK*)(plm)).Loop(plNum); break;
+		case 0x78: (*(cBMDR*)(plm)).Loop(plNum); break;
+		case 0xBB: (*(cBMDT*)(plm)).Loop(plNum); break;
+		case 0xBD: (*(cBMHR*)(plm)).Loop(plNum); break;
+		case 0x79: (*(cBMKJ*)(plm)).Loop(plNum); break;
+		case 0xD6: (*(cBMNK*)(plm)).Loop(plNum); break;
+		case 0xB4: (*(cBNRC*)(plm)).Loop(plNum); break;
+		case 0xC0: (*(cBNRG*)(plm)).Loop(plNum); break;
+		case 0xAC: (*(cBNRT*)(plm)).Loop(plNum); break;
+		case 0xB2: (*(cBNRX*)(plm)).Loop(plNum); break;
+		case 0xB7: (*(cBOBK*)(plm)).Loop(plNum); break;
+		case 0xA3: (*(cBOBR*)(plm)).Loop(plNum); break;
+		case 0xA4: (*(cBOBS*)(plm)).Loop(plNum); break;
+		case 0x8E: (*(cBOBT*)(plm)).Loop(plNum); break;
+		case 0xAF: (*(cBOBZ*)(plm)).Loop(plNum); break;
+		case 0xA6: (*(cBRMD*)(plm)).Loop(plNum); break;
+		case 0xA7: (*(cBRSK*)(plm)).Loop(plNum); break;
+		case 0xB5: (*(cBSSC*)(plm)).Loop(plNum); break;
+		case 0xAD: (*(cBSSK*)(plm)).Loop(plNum); break;
+		case 0x8D: (*(cBSSN*)(plm)).Loop(plNum); break;
+		case 0xB3: (*(cBSSX*)(plm)).Loop(plNum); break;
+		case 0xC1: (*(cBSSZ*)(plm)).Loop(plNum); break;
+		case 0x9D: (*(cBTSK*)(plm)).Loop(plNum); break;
+		case 0x99: (*(cGFSA*)(plm)).Loop(plNum); break;
+		case 0x9C: (*(cGMHR*)(plm)).Loop(plNum); break;
+		case 0xA2: (*(cGZTU*)(plm)).Loop(plNum); break;
+		case 0xB6: (*(cJKKS*)(plm)).Loop(plNum); break;
+		case 0x7D: (*(cTYYP*)(plm)).Loop(plNum); break;
+		#pragma endregion
 	}
 	(*(c1CMN*)(plm)).PostLoop(plNum);
 }
