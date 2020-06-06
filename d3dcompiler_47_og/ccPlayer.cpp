@@ -342,7 +342,7 @@ void ccPlayer::Loop()
 		if (h <= 0) return; // If the health is 0 or less than 0, stop the code.
 
 		// This disables armor break
-		if (GetPlayerFloatProperty(p, s, "armor") < 45) { SetPlayerFloatProperty(p, s, "armor", 45); }
+		if (GetPlayerFloatProperty(p, s, "armor") < 45.0f) { SetPlayerFloatProperty(p, s, "armor", 45.0f); }
 
 		// Custom player code in here
 		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
@@ -446,14 +446,8 @@ float* ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop)
 		case ccPlayer::str2int("maxchakra"): result = (float*)(s + 0x0C); break;
 		case ccPlayer::str2int("sub"): result = (float*)(s + 0x10); break;
 		case ccPlayer::str2int("maxsub"): result = (float*)(s + 0x10); break;
-		case ccPlayer::str2int("storm"): result = (float*)(s + 0x18); break;
-		case ccPlayer::str2int("maxstorm"): result = (float*)(s + 0x1C); break;
 		case ccPlayer::str2int("armor"): result = (float*)(s + 0x20); break;
 		case ccPlayer::str2int("maxarmor"): result = (float*)(s + 0x24); break;
-		case ccPlayer::str2int("uitem"): result = (float*)(s + 0x30); break;
-		case ccPlayer::str2int("ditem"): result = (float*)(s + 0x34); break;
-		case ccPlayer::str2int("litem"): result = (float*)(s + 0x38); break;
-		case ccPlayer::str2int("ritem"): result = (float*)(s + 0x3C); break;
 		case ccPlayer::str2int("gravity"): result = (float*)(p + 0xE8); break;
 		case ccPlayer::str2int("zmomentum"): result = (float*)(p + 0xEC); break;
 		case ccPlayer::str2int("modelscale"): result = (float*)(p + 0x190); break;
@@ -481,6 +475,10 @@ int* ccPlayer::GetPlayerIntPointer(uintptr_t p, uintptr_t s, char* prop)
 
 	switch (ccPlayer::str2int(prop))
 	{
+		case ccPlayer::str2int("uitem"): val = (int*)(s + 0x38); break;
+		case ccPlayer::str2int("ditem"): val = (int*)(s + 0x3C); break;
+		case ccPlayer::str2int("litem"): val = (int*)(s + 0x40); break;
+		case ccPlayer::str2int("ritem"): val = (int*)(s + 0x44); break;
 		case ccPlayer::str2int("characode"): val = (int*)(p + 0xC1C); break;
 		case ccPlayer::str2int("enablechar"): val = (int*)(p + 0xC38); break;
 		case ccPlayer::str2int("cancontrol"): val = (int*)(p + 0xC3C); break;
