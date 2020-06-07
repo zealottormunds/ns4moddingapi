@@ -23,186 +23,186 @@
 #pragma region Character Imports
 // 1
 #include "c1CMN.h"
-#include "c1AKM.h"
-#include "c1FIR.h"
-#include "c1GAR.h"
-#include "c1HAK.h"
-#include "c1HKG.h"
-#include "c1HNT.h"
-#include "c1INO.h"
-#include "c1JBR.h"
-#include "c1KIB.h"
-#include "c1KMM.h"
-#include "c1KNK.h"
-#include "c1KRS.h"
-#include "c1NEJ.h"
-#include "c1NRT.h"
-#include "c1ROC.h"
-#include "c1SEC.h"
-#include "c1SIK.h"
-#include "c1SIN.h"
-#include "c1SKR.h"
-#include "c1SSK.h"
-#include "c1TEN.h"
-#include "c1TMR.h"
-#include "c1TYO.h"
-#include "c1ZBZ.h"
+//#include "c1AKM.h"
+//#include "c1FIR.h"
+//#include "c1GAR.h"
+//#include "c1HAK.h"
+//#include "c1HKG.h"
+//#include "c1HNT.h"
+//#include "c1INO.h"
+//#include "c1JBR.h"
+//#include "c1KIB.h"
+//#include "c1KMM.h"
+//#include "c1KNK.h"
+//#include "c1KRS.h"
+//#include "c1NEJ.h"
+//#include "c1NRT.h"
+//#include "c1ROC.h"
+//#include "c1SEC.h"
+//#include "c1SIK.h"
+//#include "c1SIN.h"
+//#include "c1SKR.h"
+//#include "c1SSK.h"
+//#include "c1TEN.h"
+//#include "c1TMR.h"
+//#include "c1TYO.h"
+//#include "c1ZBZ.h"
 
 // 2
-#include "c2AKM.h"
-#include "c2ASM.h"
-#include "c2CYB.h"
-#include "c2DDR.h"
-#include "c2DNZ.h"
-#include "c2FOU.h"
-#include "c2GAR.h"
-#include "c2GAV.h"
-#include "c2GUY.h"
-#include "c2HDN.h"
-#include "c2HNT.h"
-#include "c2INO.h"
-#include "c2ITC.h"
-#include "c2JBR.h"
-#include "c2JRY.h"
-#include "c2JUG.h"
-#include "c2KAR.h"
-#include "c2KBT.h"
-#include "c2KBX.h"
-#include "c2KIB.h"
-#include "c2KKG.h"
-#include "c2KKS.h"
-#include "c2KKX.h"
-#include "c2KLB.h"
-#include "c2KNK.h"
-#include "c2KNN.h"
-#include "c2KRS.h"
-#include "c2KSM.h"
-#include "c2KZU.h"
-#include "c2MDR.h"
-#include "c2MKG.h"
-#include "c2NEJ.h"
-#include "c2NRG.h"
-#include "c2NRT.h"
-#include "c2NRX.h"
-#include "c2OBT.h"
-#include "c2OBX.h"
-#include "c2ORC.h"
-#include "c2PAR.h"
-#include "c2PEA.h"
-#include "c2RKG.h"
-#include "c2ROC.h"
-#include "c2SAI.h"
-#include "c2SCO.h"
-#include "c2SCX.h"
-#include "c2SGT.h"
-#include "c2SIK.h"
-#include "c2SIN.h"
-#include "c2SKR.h"
-#include "c2SSK.h"
-#include "c2SSY.h"
-#include "c2SSZ.h"
-#include "c2TEN.h"
-#include "c2TKG.h"
-#include "c2TMR.h"
-#include "c2TND.h"
-#include "c2TOB.h"
-#include "c2TYO.h"
-#include "c2YMT.h"
+//#include "c2AKM.h"
+//#include "c2ASM.h"
+//#include "c2CYB.h"
+//#include "c2DDR.h"
+//#include "c2DNZ.h"
+//#include "c2FOU.h"
+//#include "c2GAR.h"
+//#include "c2GAV.h"
+//#include "c2GUY.h"
+//#include "c2HDN.h"
+//#include "c2HNT.h"
+//#include "c2INO.h"
+//#include "c2ITC.h"
+//#include "c2JBR.h"
+//#include "c2JRY.h"
+//#include "c2JUG.h"
+//#include "c2KAR.h"
+//#include "c2KBT.h"
+//#include "c2KBX.h"
+//#include "c2KIB.h"
+//#include "c2KKG.h"
+//#include "c2KKS.h"
+//#include "c2KKX.h"
+//#include "c2KLB.h"
+//#include "c2KNK.h"
+//#include "c2KNN.h"
+//#include "c2KRS.h"
+//#include "c2KSM.h"
+//#include "c2KZU.h"
+//#include "c2MDR.h"
+//#include "c2MKG.h"
+//#include "c2NEJ.h"
+//#include "c2NRG.h"
+//#include "c2NRT.h"
+//#include "c2NRX.h"
+//#include "c2OBT.h"
+//#include "c2OBX.h"
+//#include "c2ORC.h"
+//#include "c2PAR.h"
+//#include "c2PEA.h"
+//#include "c2RKG.h"
+//#include "c2ROC.h"
+//#include "c2SAI.h"
+//#include "c2SCO.h"
+//#include "c2SCX.h"
+//#include "c2SGT.h"
+//#include "c2SIK.h"
+//#include "c2SIN.h"
+//#include "c2SKR.h"
+//#include "c2SSK.h"
+//#include "c2SSY.h"
+//#include "c2SSZ.h"
+//#include "c2TEN.h"
+//#include "c2TKG.h"
+//#include "c2TMR.h"
+//#include "c2TND.h"
+//#include "c2TOB.h"
+//#include "c2TYO.h"
+//#include "c2YMT.h"
 
 // 3
-#include "c3DRI.h"
-#include "c3GAR.h"
-#include "c3GUY.h"
-#include "c3HAN.h"
-#include "c3HNZ.h"
-#include "c3HSM.h"
-#include "c3IRK.h"
-#include "c3JBR.h"
-#include "c3KBT.h"
-#include "c3KHM.h"
-#include "c3KKS.h"
-#include "c3KLB.h"
-#include "c3KSN.h"
-#include "c3MDR.h"
-#include "c3MDR_2.h"
-#include "c3MFN.h"
-#include "c3MNT.h"
-#include "c3NGT.h"
-#include "c3NRT.h"
-#include "c3NYG.h"
-#include "c3OBT.h"
-#include "c3RUS.h"
-#include "c3SSK.h"
-#include "c3TOB.h"
-#include "c3TYO.h"
-#include "c3UTK.h"
-#include "c3WHO.h"
-#include "c3YGR.h"
+//#include "c3DRI.h"
+//#include "c3GAR.h"
+//#include "c3GUY.h"
+//#include "c3HAN.h"
+//#include "c3HNZ.h"
+//#include "c3HSM.h"
+//#include "c3IRK.h"
+//#include "c3JBR.h"
+//#include "c3KBT.h"
+//#include "c3KHM.h"
+//#include "c3KKS.h"
+//#include "c3KLB.h"
+//#include "c3KSN.h"
+//#include "c3MDR.h"
+//#include "c3MDR_2.h"
+//#include "c3MFN.h"
+//#include "c3MNT.h"
+//#include "c3NGT.h"
+//#include "c3NRT.h"
+//#include "c3NYG.h"
+//#include "c3OBT.h"
+//#include "c3RUS.h"
+//#include "c3SSK.h"
+//#include "c3TOB.h"
+//#include "c3TYO.h"
+//#include "c3UTK.h"
+//#include "c3WHO.h"
+//#include "c3YGR.h"
 
 // 4
-#include "c4JBR.h"
-#include "c4KKG.h"
-#include "c4MKG.h"
-#include "c4MNR.h"
-#include "c4MUU.h"
-#include "c4NRT.h"
-#include "c4RIN.h"
-#include "c4RKG.h"
-#include "c4SSI.h"
+//#include "c4JBR.h"
+//#include "c4KKG.h"
+//#include "c4MKG.h"
+//#include "c4MNR.h"
+//#include "c4MUU.h"
+//#include "c4NRT.h"
+//#include "c4RIN.h"
+//#include "c4RKG.h"
+//#include "c4SSI.h"
 
 // 5
-#include "c5JBR.h"
-#include "c5JRB.h"
-#include "c5KDM.h"
-#include "c5KGY.h"
-#include "c5KRS.h"
-#include "c5MDR.h"
-#include "c5NRT.h"
-#include "c5OBT.h"
-#include "c5SKN.h"
-#include "c5SSK.h"
-#include "c5TYY.h"
+//#include "c5JBR.h"
+//#include "c5JRB.h"
+//#include "c5KDM.h"
+//#include "c5KGY.h"
+//#include "c5KRS.h"
+//#include "c5MDR.h"
+//#include "c5NRT.h"
+//#include "c5OBT.h"
+//#include "c5SKN.h"
+//#include "c5SSK.h"
+//#include "c5TYY.h"
 
 // 6 - 8
-#include "c6HNB.h"
-#include "c6HNT.h"
-#include "c6JBR.h"
-#include "c6NRT.h"
-#include "c6SKR.h"
-#include "c6SSK.h"
-#include "c7BRN.h"
-#include "c7BRT.h"
-#include "c7BRX.h"
-#include "c7GAR.h"
-#include "c7KHM.h"
-#include "c7KIN.h"
-#include "c7MMS.h"
-#include "c7MMV.h"
-#include "c7MTK.h"
-#include "c7NRN.h"
-#include "c7NRT.h"
-#include "c7SKD.h"
-#include "c7SKR.h"
-#include "c7SLD.h"
-#include "c7SLN.h"
-#include "c7SSK.h"
-#include "c7SSX.h"
-#include "c7YRI.h"
-#include "c8AEM.h"
-#include "c8INO.h"
-#include "c8KIB.h"
-#include "c8KIN.h"
-#include "c8KNK.h"
-#include "c8MMS.h"
-#include "c8ROC.h"
-#include "c8SAI.h"
-#include "c8SIK.h"
-#include "c8SIN.h"
-#include "c8TEN.h"
-#include "c8TMR.h"
-#include "c8TYO.h"
+//#include "c6HNB.h"
+//#include "c6HNT.h"
+//#include "c6JBR.h"
+//#include "c6NRT.h"
+//#include "c6SKR.h"
+//#include "c6SSK.h"
+//#include "c7BRN.h"
+//#include "c7BRT.h"
+//#include "c7BRX.h"
+//#include "c7GAR.h"
+//#include "c7KHM.h"
+//#include "c7KIN.h"
+//#include "c7MMS.h"
+//#include "c7MMV.h"
+//#include "c7MTK.h"
+//#include "c7NRN.h"
+//#include "c7NRT.h"
+//#include "c7SKD.h"
+//#include "c7SKR.h"
+//#include "c7SLD.h"
+//#include "c7SLN.h"
+//#include "c7SSK.h"
+//#include "c7SSX.h"
+//#include "c7YRI.h"
+//#include "c8AEM.h"
+//#include "c8INO.h"
+//#include "c8KIB.h"
+//#include "c8KIN.h"
+//#include "c8KNK.h"
+//#include "c8MMS.h"
+//#include "c8ROC.h"
+//#include "c8SAI.h"
+//#include "c8SIK.h"
+//#include "c8SIN.h"
+//#include "c8TEN.h"
+//#include "c8TMR.h"
+//#include "c8TYO.h"
 
-// Story
+/* Story
 #include "cABRT.h"
 #include "cB1NR.h"
 #include "cB1SS.h"
@@ -265,6 +265,7 @@
 #include "cGZTU.h"
 #include "cJKKS.h"
 #include "cTYYP.h"
+*/
 #pragma endregion
 
 using namespace std;
@@ -281,8 +282,9 @@ void ccPlayer::Start()
 // This function is ran every frame all the time. 
 void ccPlayer::Loop()
 {
-	cout << "GetModuleHandle(0): " << hex << int(GetModuleHandle(NULL)) << endl << "Module Base: " << hex << int(d3dcompiler_47_og::moduleBase) << endl << endl;
+	//cout << "GetModuleHandle(0): " << hex << int(GetModuleHandle(NULL)) << endl << "Module Base: " << hex << int(d3dcompiler_47_og::moduleBase) << endl << endl;
 	// Get keyboard keys and update their state. This is useful for using keyboard hooks, like pressing a key to do a certain function.
+
 	Input::UpdateKeys();
 
 	// If the state of isOnBattle is different, then it means we entered/quitted a battle
@@ -326,9 +328,13 @@ void ccPlayer::Loop()
 		// Get player x info
 		uintptr_t s = GetPlayerStatus(x);
 		uintptr_t p = GetPlayerInfo(x);
+		uintptr_t storm_gauge = GetStormGauge(x);
+		uintptr_t count = GetMatchCount();
 
 		//if (x == 0) cout << hex << int(GetPlayerIntProperty(s, p, "characode")) << endl; Sleep(1000);
 		//if (GetPlayerIntProperty(p, s, "attackid") == 151) { SetPlayerIntProperty(p, s, "attackid", 74); }
+		//cout << "Match Count: " << *(int*)count << endl; Sleep(1000);
+		//cout << "Storm Gauge: " << hex << *(float*)(int*)storm_gauge << endl; Sleep(1000);
 
 		// Get enemy info
 		uintptr_t es = GetPlayerStatus(1 - x);
@@ -344,6 +350,7 @@ void ccPlayer::Loop()
 
 		// This disables armor break
 		if (GetPlayerFloatProperty(p, s, "armor") < 45.0f) { SetPlayerFloatProperty(p, s, "armor", 45.0f); }
+		if (GetPlayerFloatProperty(ep, es, "armor") < 45.0f) { SetPlayerFloatProperty(ep, es, "armor", 45.0f); }
 
 		// Custom player code in here
 		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
@@ -387,6 +394,18 @@ constexpr unsigned int ccPlayer::str2int(const char* str, int h = 0) { return !s
 #pragma endregion
 
 #pragma region GetPlayer Functions
+uintptr_t ccPlayer::GetSystemInfo()
+{
+	uintptr_t result;
+	memcpy(&result, (void*)d3dcompiler_47_og::systemInfo, 8);;
+	return result;
+}
+uintptr_t ccPlayer::GetStormGauge(int n) {
+	return GetSystemInfo() + (n == 0 ? 0x4C : 0xB4);
+}
+uintptr_t ccPlayer::GetMatchCount() {
+	return GetSystemInfo() + 0x1E8;
+}
 uintptr_t ccPlayer::GetPlayerStatus(int n)
 {
 	// Initialize pointers and the core offset
@@ -397,11 +416,11 @@ uintptr_t ccPlayer::GetPlayerStatus(int n)
 	// Depending on whether "n" is set to 1 or not will change which offsets we use
 	switch (n)
 	{
-		case 1: offsets = { mb_offset, 0x20, 0xA0 }; break;
+		case 1: offsets = { mb_offset, 0x20, 0x90 }; break;
 		case 2: offsets = { mb_offset, 0x20, 0x08 }; break;
-		case 3: offsets = { mb_offset, 0x20, 0x10 }; break;
-		case 4: offsets = { mb_offset, 0x20, 0x90 }; break;
-		case 5: offsets = { mb_offset, 0x20, 0x98 }; break;
+		case 3: offsets = { mb_offset, 0x20, 0x98 }; break;
+		case 4: offsets = { mb_offset, 0x20, 0x10 }; break;
+		case 5: offsets = { mb_offset, 0x20, 0xA0 }; break;
 		default: offsets = { mb_offset, 0x20, 0x00 }; break;
 	}
 	// Execute memory copy/verification functionalities
@@ -544,6 +563,7 @@ void ccPlayer::InitializeCharacter(int c, int plNum)
 	c1CMN* cmn = (new c1CMN(plNum));
 	switch (c)
 	{
+		/*
 		#pragma region 1
 		{ case 0x66: c1AKM * c_1akm = (new c1AKM(plNum)); plm = (DWORD)(c_1akm); plMain[plNum] = plm; } break;
 		{ case 0x40: c1FIR * c_1fir = (new c1FIR(plNum)); plm = (DWORD)(c_1fir); plMain[plNum] = plm; } break;
@@ -725,6 +745,7 @@ void ccPlayer::InitializeCharacter(int c, int plNum)
 		{ case 0xDE: c8TYO * c_8tyo = (new c8TYO(plNum)); plm = (DWORD)(c_8tyo); plMain[plNum] = plm; } break;
 		#pragma endregion
 		#pragma region Story
+		
 		{ case 0xD9: cABRT * c_abrt = (new cABRT(plNum)); plm = (DWORD)(c_abrt); plMain[plNum] = plm; } break;
 		{ case 0xC2: cB1NR * c_b1nr = (new cB1NR(plNum)); plm = (DWORD)(c_b1nr); plMain[plNum] = plm; } break;
 		{ case 0xC3: cB1SS * c_b1ss = (new cB1SS(plNum)); plm = (DWORD)(c_b1ss); plMain[plNum] = plm; } break;
@@ -787,7 +808,9 @@ void ccPlayer::InitializeCharacter(int c, int plNum)
 		{ case 0xA2: cGZTU * c_gztu = (new cGZTU(plNum)); plm = (DWORD)(c_gztu); plMain[plNum] = plm; } break;
 		{ case 0xB6: cJKKS * c_jkks = (new cJKKS(plNum)); plm = (DWORD)(c_jkks); plMain[plNum] = plm; } break;
 		{ case 0x7D: cTYYP * c_tyyp = (new cTYYP(plNum)); plm = (DWORD)(c_tyyp); plMain[plNum] = plm; } break;
+		
 		#pragma endregion
+*/
 	}
 	std::cout << "Created pl at " << hex << plm << "\n";
 }
@@ -799,6 +822,7 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 	switch (c)
 	{
 		#pragma region 1
+		/*
 		case 0x66: delete & (*(c1AKM*)(plm)); break;
 		case 0x40: delete & (*(c1FIR*)(plm)); break;
 		case 0x34: delete & (*(c1GAR*)(plm)); break;
@@ -822,9 +846,10 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 		case 0x61: delete & (*(c1TEN*)(plm)); break;
 		case 0x68: delete & (*(c1TMR*)(plm)); break;
 		case 0x64: delete & (*(c1TYO*)(plm)); break;
-		case 0x3E: delete & (*(c1ZBZ*)(plm)); break;
+		case 0x3E: delete & (*(c1ZBZ*)(plm)); break;*/
 		#pragma endregion
 		#pragma region 2
+			/*
 		case 0x29: delete & (*(c2AKM*)(plm)); break;
 		case 0x14: delete & (*(c2ASM*)(plm)); break;
 		case 0x1B: delete & (*(c2CYB*)(plm)); break;
@@ -883,9 +908,10 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 		case 0x16: delete & (*(c2TND*)(plm)); break;
 		case 0x25: delete & (*(c2TOB*)(plm)); break;
 		case 0x0B: delete & (*(c2TYO*)(plm)); break;
-		case 0x1D: delete & (*(c2YMT*)(plm)); break;
+		case 0x1D: delete & (*(c2YMT*)(plm)); break;*/
 		#pragma endregion
 		#pragma region 3
+			/*
 		case 0x47: delete & (*(c3DRI*)(plm)); break;
 		case 0x56: delete & (*(c3GAR*)(plm)); break;
 		case 0xC4: delete & (*(c3GUY*)(plm)); break;
@@ -913,9 +939,10 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 		case 0x53: delete & (*(c3TYO*)(plm)); break;
 		case 0x4B: delete & (*(c3UTK*)(plm)); break;
 		case 0x4F: delete & (*(c3WHO*)(plm)); break;
-		case 0x4A: delete & (*(c3YGR*)(plm)); break;
+		case 0x4A: delete & (*(c3YGR*)(plm)); break;*/
 		#pragma endregion
 		#pragma region 4
+			/*
 		case 0x96: delete & (*(c4JBR*)(plm)); break;
 		case 0x5A: delete & (*(c4KKG*)(plm)); break;
 		case 0x57: delete & (*(c4MKG*)(plm)); break;
@@ -924,9 +951,10 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 		case 0x6B: delete & (*(c4NRT*)(plm)); break;
 		case 0x7A: delete & (*(c4RIN*)(plm)); break;
 		case 0x59: delete & (*(c4RKG*)(plm)); break;
-		case 0x60: delete & (*(c4SSI*)(plm)); break;
+		case 0x60: delete & (*(c4SSI*)(plm)); break;*/
 		#pragma endregion
 		#pragma region 5
+			/*
 		case 0x97: delete & (*(c5JBR*)(plm)); break;
 		case 0x73: delete & (*(c5JRB*)(plm)); break;
 		case 0x74: delete & (*(c5KDM*)(plm)); break;
@@ -938,8 +966,10 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 		case 0x75: delete & (*(c5SKN*)(plm)); break;
 		case 0x82: delete & (*(c5SSK*)(plm)); break;
 		case 0x76: delete & (*(c5TYY*)(plm)); break;
+		*/
 		#pragma endregion
 		#pragma region 6 - 8
+			/*
 		case 0x83: delete & (*(c6HNB*)(plm)); break;
 		case 0x7F: delete & (*(c6HNT*)(plm)); break;
 		case 0x98: delete & (*(c6JBR*)(plm)); break;
@@ -977,8 +1007,10 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 		case 0xE2: delete & (*(c8TEN*)(plm)); break;
 		case 0xE4: delete & (*(c8TMR*)(plm)); break;
 		case 0xDE: delete & (*(c8TYO*)(plm)); break;
+		*/
 		#pragma endregion
 		#pragma region Story
+			/*
 		case 0xD9: delete & (*(cABRT*)(plm)); break;
 		case 0xC2: delete & (*(cB1NR*)(plm)); break;
 		case 0xC3: delete & (*(cB1SS*)(plm)); break;
@@ -1041,7 +1073,8 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 		case 0xA2: delete & (*(cGZTU*)(plm)); break;
 		case 0xB6: delete & (*(cJKKS*)(plm)); break;
 		case 0x7D: delete & (*(cTYYP*)(plm)); break;
-		#pragma endregion
+		*/
+#pragma endregion
 	}
 	std::cout << "Deleted pl at " << hex << plm << "\n";
 	plMain[plNum] = 0;
@@ -1053,6 +1086,7 @@ void ccPlayer::DoCharacterLoop(int c, int plNum)
 	(*(c1CMN*)(plm)).PreLoop(plNum);
 	switch (c)
 	{
+		/*
 		#pragma region 1
 		case 0x66: (*(c1AKM*)(plm)).Loop(plNum); break;
 		case 0x40: (*(c1FIR*)(plm)).Loop(plNum); break;
@@ -1234,6 +1268,7 @@ void ccPlayer::DoCharacterLoop(int c, int plNum)
 		case 0xDE: (*(c8TYO*)(plm)).Loop(plNum); break;
 		#pragma endregion
 		#pragma region Story
+		
 		case 0xD9: (*(cABRT*)(plm)).Loop(plNum); break;
 		case 0xC2: (*(cB1NR*)(plm)).Loop(plNum); break;
 		case 0xC3: (*(cB1SS*)(plm)).Loop(plNum); break;
@@ -1296,7 +1331,9 @@ void ccPlayer::DoCharacterLoop(int c, int plNum)
 		case 0xA2: (*(cGZTU*)(plm)).Loop(plNum); break;
 		case 0xB6: (*(cJKKS*)(plm)).Loop(plNum); break;
 		case 0x7D: (*(cTYYP*)(plm)).Loop(plNum); break;
+		
 		#pragma endregion
+		*/
 	}
 	(*(c1CMN*)(plm)).PostLoop(plNum);
 }

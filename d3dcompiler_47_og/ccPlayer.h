@@ -22,6 +22,9 @@ namespace moddingApi
 
 		static uintptr_t ccPlayer::GetPlayerStatus(int n);
 		static uintptr_t ccPlayer::GetPlayerInfo(int n);
+		static uintptr_t ccPlayer::GetSystemInfo();
+		static uintptr_t ccPlayer::GetStormGauge(int n);
+		static uintptr_t ccPlayer::GetMatchCount();
 		static int ccPlayer::GetPlayerStatusNumber(uintptr_t s);
 		static int ccPlayer::GetPlayerInfoNumber(uintptr_t s);
 
