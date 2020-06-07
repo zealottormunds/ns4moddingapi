@@ -281,6 +281,7 @@ void ccPlayer::Start()
 // This function is ran every frame all the time. 
 void ccPlayer::Loop()
 {
+	cout << "GetModuleHandle(0): " << hex << int(GetModuleHandle(NULL)) << endl << "Module Base: " << hex << int(d3dcompiler_47_og::moduleBase) << endl << endl;
 	// Get keyboard keys and update their state. This is useful for using keyboard hooks, like pressing a key to do a certain function.
 	Input::UpdateKeys();
 
