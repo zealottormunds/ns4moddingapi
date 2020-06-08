@@ -23,10 +23,15 @@ namespace moddingApi
 		static uintptr_t ccPlayer::GetPlayerStatus(int n);
 		static uintptr_t ccPlayer::GetPlayerInfo(int n);
 		static uintptr_t ccPlayer::GetSystemInfo();
-		static uintptr_t ccPlayer::GetStormGauge(int n);
-		static uintptr_t ccPlayer::GetMatchCount();
 		static int ccPlayer::GetPlayerStatusNumber(uintptr_t s);
 		static int ccPlayer::GetPlayerInfoNumber(uintptr_t s);
+
+		static uintptr_t ccPlayer::GetStormPointer(int n);
+		static float ccPlayer::GetStormGauge(int n);
+		static void ccPlayer::SetStormGauge(int n, float value);
+		static uintptr_t ccPlayer::GetMatchPointer();
+		static int ccPlayer::GetMatchCount();
+		static void ccPlayer::SetMatchCount(int value);
 
 		static int* ccPlayer::GetPlayerIntPointer(uintptr_t p, uintptr_t s, char* prop);
 		static int ccPlayer::GetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop);

@@ -328,8 +328,8 @@ void ccPlayer::Loop()
 		// Get player x info
 		uintptr_t s = GetPlayerStatus(x);
 		uintptr_t p = GetPlayerInfo(x);
-		uintptr_t storm_gauge = GetStormGauge(x);
-		uintptr_t count = GetMatchCount();
+		float storm_gauge = GetStormGauge(x);
+		int count = GetMatchCount();
 
 		//if (x == 0) cout << hex << int(GetPlayerIntProperty(s, p, "characode")) << endl; Sleep(1000);
 		//if (GetPlayerIntProperty(p, s, "attackid") == 151) { SetPlayerIntProperty(p, s, "attackid", 74); }
@@ -400,12 +400,10 @@ uintptr_t ccPlayer::GetSystemInfo()
 	memcpy(&result, (void*)d3dcompiler_47_og::systemInfo, 8);;
 	return result;
 }
-uintptr_t ccPlayer::GetStormGauge(int n) {
-	return GetSystemInfo() + (n == 0 ? 0x4C : 0xB4);
-}
-uintptr_t ccPlayer::GetMatchCount() {
-	return GetSystemInfo() + 0x1E8;
-}
+uintptr_t ccPlayer::GetStormPointer(int n) { return GetSystemInfo() + (n == 0 ? 0x4C : 0xB4); }
+float ccPlayer::GetStormGauge(int n) { return *(float*)GetStormPointer(n); }
+uintptr_t ccPlayer::GetMatchPointer() { return GetSystemInfo() + 0x1E8; }
+int ccPlayer::GetMatchCount() { return *(int*)GetMatchPointer(); }
 uintptr_t ccPlayer::GetPlayerStatus(int n)
 {
 	// Initialize pointers and the core offset
@@ -538,6 +536,16 @@ float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintpt
 #pragma endregion
 
 #pragma region SetPlayer Functions
+void ccPlayer::SetStormGauge(int n, float value) {
+	float* ptr = (float*)(GetSystemInfo() + (n == 0 ? 0x4C : 0xB4));
+	*ptr = value > 0 ? value : 0.01f;
+}
+void ccPlayer::SetMatchCount(int value) {
+	int* ptr = (int*)(GetSystemInfo() + 0x1E8);
+	*ptr = value > 0 ? value : 1;
+	cout << "New Count Value: " << hex << int(*ptr) << endl;
+}
+
 // The function below sets a float property from the player to a specific value
 void ccPlayer::SetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop, float value)
 {
@@ -545,13 +553,13 @@ void ccPlayer::SetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop, floa
 
 	if (ptr == 0) return;
 
-	*ptr = value;
+	*ptr = value > 0 ? value : 0.01f;
 }
 
 void ccPlayer::SetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop, int value)
 {
 	int* val = GetPlayerIntPointer(p, s, prop);
-	*val = value;
+	*val = value > 0 ? value : 1;
 }
 #pragma endregion
 
