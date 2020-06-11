@@ -56,7 +56,6 @@ void ccBattleInputs::GetGamepadState(int n) {
 	std::byte lstick = *(std::byte*)lstick_ptr;
 	std::byte rstick = *(std::byte*)rstick_ptr;
 
-	// TODO: Stick Buttons don't work at all
 	int dpadI = int(dpad);
 	if (dpadI >= 0x80) { dpadAxis[3] = true; dpadI -= 0x80; }
 	if (dpadI >= 0x40) { dpadAxis[2] = true; dpadI -= 0x40; }
@@ -121,6 +120,8 @@ string ccBattleInputs::Btn2Str() {
 	if (guardBtn) result += "Guard, ";
 	if (subBtn) result += "Sub, ";
 
+	if (stickBtns[0]) result += "L3, ";
+	if (stickBtns[1]) result += "R3, ";
 	if (selectBtn) result += "Select, ";
 	if (startBtn) result += "Start";
 
