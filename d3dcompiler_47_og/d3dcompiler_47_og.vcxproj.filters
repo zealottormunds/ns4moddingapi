@@ -297,6 +297,9 @@
     <ClCompile Include="c1CMN.cpp">
       <Filter>Source Files\Player\Characters\1</Filter>
     </ClCompile>
+    <ClCompile Include="ccBattleInputs.cpp">
+      <Filter>Source Files\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MultiMatch.h">
@@ -460,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="c1CMN.h">
       <Filter>Header Files\Player\Characters\1</Filter>
+    </ClInclude>
+    <ClInclude Include="ccBattleInputs.h">
+      <Filter>Header Files\General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

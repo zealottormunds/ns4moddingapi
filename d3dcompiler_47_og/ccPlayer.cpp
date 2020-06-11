@@ -19,6 +19,7 @@
 #include "Vector3.h"
 #include "ccGeneralGameFunctions.h"
 #include "LuaHook_Commands.h"
+#include "ccBattleInputs.h"
 #pragma endregion
 #pragma region Character Imports
 // 1
@@ -273,6 +274,8 @@ using namespace moddingApi;
 
 int prevFrame = 0;
 int prevBattle = 0;
+ccBattleInputs* inputState;
+
 
 void ccPlayer::Start()
 {
@@ -314,6 +317,7 @@ void ccPlayer::Loop()
 				{
 					int charaid = GetPlayerIntProperty(p, s, "characode");
 					InitializeCharacter(charaid, x);
+					inputState = (new ccBattleInputs());
 				}
 			}
 		}
@@ -353,7 +357,10 @@ void ccPlayer::Loop()
 		if (GetPlayerFloatProperty(ep, es, "armor") < 45.0f) { SetPlayerFloatProperty(ep, es, "armor", 45.0f); }
 
 		// Custom player code in here
-		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
+		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) {
+			DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
+			ccBattleInputs::Loop(x, { true, true, true, true });
+		}
 	}
 	// Get next frame
 	prevFrame = ccGeneralGameFunctions::GetCurrentFrame();
@@ -506,6 +513,7 @@ int* ccPlayer::GetPlayerIntPointer(uintptr_t p, uintptr_t s, char* prop)
 		case ccPlayer::str2int("prevpstate"): val = (int*)(p + 0xC54); break;
 		case ccPlayer::str2int("attackid"): val = (int*)(p + 0x1010); break;
 		case ccPlayer::str2int("prevattackid"): val = (int*)(p + 0x1024); break;
+		case ccPlayer::str2int("anmtimer"): val = (int*)(p + 0x14138); break;
 	}
 
 	return val;

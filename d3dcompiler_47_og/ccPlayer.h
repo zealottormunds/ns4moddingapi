@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include "Vector3.h"
+#include "ccBattleInputs.h"
 
 using namespace std;
 
@@ -19,6 +20,8 @@ namespace moddingApi
 		static void ccPlayer::InitializeCharacter(int c, int plNum);
 		static void ccPlayer::DeleteCharacter(int c, int plNum);
 		static void ccPlayer::DoCharacterLoop(int c, int plNum);
+
+		static void ccPlayer::GetGamepadState(int n, std::vector<bool> inputs);
 
 		static uintptr_t ccPlayer::GetPlayerStatus(int n);
 		static uintptr_t ccPlayer::GetPlayerInfo(int n);

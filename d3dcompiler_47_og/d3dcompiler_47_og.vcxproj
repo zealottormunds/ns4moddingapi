@@ -155,6 +155,7 @@
     <ClCompile Include="c1CMN.cpp" />
     <ClCompile Include="API_Console.cpp" />
     <ClCompile Include="ccBattleFunctions.cpp" />
+    <ClCompile Include="ccBattleInputs.cpp" />
     <ClCompile Include="ccCharacterFunctions.cpp" />
     <ClCompile Include="ccBossIAFunctions.cpp" />
     <ClCompile Include="ccGameProperties.cpp" />
@@ -227,6 +228,7 @@
     <ClInclude Include="API_Console.h" />
     <ClInclude Include="c1CMN.h" />
     <ClInclude Include="ccBattleFunctions.h" />
+    <ClInclude Include="ccBattleInputs.h" />
     <ClInclude Include="ccCharacterFunctions.h" />
     <ClInclude Include="ccBossIAFunctions.h" />
     <ClInclude Include="ccGameProperties.h" />
