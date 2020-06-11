@@ -49,7 +49,7 @@ void ccBattleInputs::GetGamepadState(int n) {
 	uintptr_t dpad_ptr = ccPlayer::GetSystemInfo() - 0x2D1FA8;
 	uintptr_t btn_ptr = ccPlayer::GetSystemInfo() - 0x2D1FA7;
 	uintptr_t lstick_ptr = ccPlayer::GetSystemInfo() - 0x2D1FA6;
-	uintptr_t rstick_ptr = ccPlayer::GetSystemInfo() - 0x2D1FA8;
+	uintptr_t rstick_ptr = ccPlayer::GetSystemInfo() - 0x2D1FA5;
 
 	std::byte dpad = *(std::byte*)dpad_ptr;
 	std::byte btn = *(std::byte*)btn_ptr;
@@ -83,12 +83,11 @@ void ccBattleInputs::GetGamepadState(int n) {
 	if (lstickI >= 0x20) { leftStick[1] -= 1; lstickI -= 0x20; }
 	if (lstickI >= 0x10) { leftStick[1] += 1; lstickI -= 0x10; }
 
-	// TODO: This is not functional, it is grabbing D-Pad Values
 	int rstickI = int(rstick);
-	if (rstickI >= 0x80) { rightStick[0] += 1; rstickI -= 0x80; }
-	if (rstickI >= 0x40) { rightStick[0] -= 1; rstickI -= 0x40; }
-	if (rstickI >= 0x20) { rightStick[1] -= 1; rstickI -= 0x20; }
-	if (rstickI >= 0x10) { rightStick[1] += 1; rstickI -= 0x10; }
+	if (rstickI >= 0x8) { rightStick[0] += 1; rstickI -= 0x8; }
+	if (rstickI >= 0x4) { rightStick[0] -= 1; rstickI -= 0x4; }
+	if (rstickI >= 0x2) { rightStick[1] -= 1; rstickI -= 0x2; }
+	if (rstickI >= 0x1) { rightStick[1] += 1; rstickI -= 0x1; }
 }
 
 void ccBattleInputs::Loop(int n) {
