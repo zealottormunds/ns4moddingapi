@@ -14,6 +14,7 @@ namespace moddingApi
 	public:
 		static uintptr_t plMain[6];
 		static int plMainId[6];
+		static vector<string> matchup;
 		static void ccPlayer::Start();
 		static void ccPlayer::Loop();
 
@@ -46,6 +47,12 @@ namespace moddingApi
 
 		static Vector3 ccPlayer::GetPlayerPosition(uintptr_t p, uintptr_t s);
 		static float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es);
+
+		static string ccPlayer::charcode2str(int charcode);
+
+		// Placeholders, change order when functions are done
+		static int ccPlayer::GetCanDoJutsuChakra(uintptr_t p, uintptr_t s);
+		static int ccPlayer::GetAwakenedState(uintptr_t p, uintptr_t s);
 	private:
 		//int prevFrame = 0;
 		//int prevBattle = 0;

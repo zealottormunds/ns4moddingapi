@@ -11,6 +11,12 @@ namespace moddingApi
 {
 	class c2MDR
 	{
+	private:
+		static float maxSub;
+		static float totalSub;
+		static float playerSpeed;
+		static bool init;
+		static bool hasMNT;
 	public:
 		c2MDR(int c);
 		static void Loop(int pln);

@@ -19,6 +19,13 @@ c2MDR::c2MDR(int pln)
 	uintptr_t s = c.GetPlayerStatus(pln);
 	uintptr_t ep = c.GetPlayerInfo(en);
 	uintptr_t es = c.GetPlayerStatus(en);
+
+	maxSub = 25;
+	totalSub = 25;
+	playerSpeed = 1.5;
+	init = false;
+	if (c.matchup[0] == "3mnt" || c.matchup[1] == "3mnt") hasMNT = true;
+	else hasMNT = false;
 }
 
 void c2MDR::Loop(int pln)
@@ -31,4 +38,40 @@ void c2MDR::Loop(int pln)
 	uintptr_t s = c.GetPlayerStatus(pln);
 	uintptr_t ep = c.GetPlayerInfo(en);
 	uintptr_t es = c.GetPlayerStatus(en);
+
+	c.SetPlayerFloatProperty(p, s, "movespeed", playerSpeed);
+
+	if (init == false)
+	{
+		c.SetPlayerFloatProperty(p, s, "maxsub", maxSub);
+		c.SetPlayerFloatProperty(p, s, "sub", totalSub);
+		init = true;
+	}
+	else
+	{
+		if (c.GetPlayerFloatProperty(p, s, "sub") < c.GetPlayerFloatProperty(p, s, "maxsub"))
+		{
+			c.SetPlayerFloatProperty(p, s, "maxsub", c.GetPlayerFloatProperty(p, s, "sub"));
+		}
+
+		/*
+		if ((c.GetMaxSubState(s)) > maxSub)
+		{
+			c.SetMaxSubState(s, maxSub);
+		}
+
+		if ((c.GetSubState(s)) > totalSub)
+		{
+			c.SetSubState(s, totalSub);
+		}
+		else if (c.GetSubState(s) < totalSub)
+		{
+			totalSub = c.GetSubState(s);
+		}
+		*/
+	}
+	if (hasMNT) {
+		c.SetPlayerFloatProperty(p, s, "maxsub", 0);
+		c.SetPlayerFloatProperty(p, s, "sub", 0);
+	}
 }

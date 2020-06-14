@@ -154,6 +154,11 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="c1CMN.cpp" />
     <ClCompile Include="API_Console.cpp" />
+    <ClCompile Include="c2DNZ.cpp" />
+    <ClCompile Include="c2ITC.cpp" />
+    <ClCompile Include="c2MDR.cpp" />
+    <ClCompile Include="c2TOB.cpp" />
+    <ClCompile Include="c3MNT.cpp" />
     <ClCompile Include="ccBattleFunctions.cpp" />
     <ClCompile Include="ccBattleInputs.cpp" />
     <ClCompile Include="ccCharacterFunctions.cpp" />
@@ -227,6 +232,11 @@
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="API_Console.h" />
     <ClInclude Include="c1CMN.h" />
+    <ClInclude Include="c2DNZ.h" />
+    <ClInclude Include="c2ITC.h" />
+    <ClInclude Include="c2MDR.h" />
+    <ClInclude Include="c2TOB.h" />
+    <ClInclude Include="c3MNT.h" />
     <ClInclude Include="ccBattleFunctions.h" />
     <ClInclude Include="ccBattleInputs.h" />
     <ClInclude Include="ccCharacterFunctions.h" />

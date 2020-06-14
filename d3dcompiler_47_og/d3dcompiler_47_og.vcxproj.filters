@@ -300,6 +300,21 @@
     <ClCompile Include="ccBattleInputs.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
+    <ClCompile Include="c2TOB.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2DNZ.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2ITC.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c2MDR.cpp">
+      <Filter>Source Files\Player\Characters\2</Filter>
+    </ClCompile>
+    <ClCompile Include="c3MNT.cpp">
+      <Filter>Source Files\Player\Characters\3</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MultiMatch.h">
@@ -466,6 +481,21 @@
     </ClInclude>
     <ClInclude Include="ccBattleInputs.h">
       <Filter>Header Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="c2DNZ.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2ITC.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2MDR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TOB.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c3MNT.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

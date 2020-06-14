@@ -312,10 +312,15 @@ void ccPlayer::Loop()
 			{
 				uintptr_t s = GetPlayerStatus(x);
 				uintptr_t p = GetPlayerInfo(x);
+				uintptr_t es = GetPlayerStatus(1 - x);
+				uintptr_t ep = GetPlayerInfo(1 - x);
 
 				if (s != 0 && p != 0)
 				{
 					int charaid = GetPlayerIntProperty(p, s, "characode");
+					int echaraid = GetPlayerIntProperty(ep, es, "characode");
+					matchup[0] = charcode2str(charaid);
+					matchup[1] = charcode2str(echaraid);
 					InitializeCharacter(charaid, x);
 					inputState = (new ccBattleInputs());
 				}
@@ -359,7 +364,7 @@ void ccPlayer::Loop()
 		// Custom player code in here
 		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) {
 			DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
-			ccBattleInputs::Loop(x, { true, true, true, true });
+			ccBattleInputs::Loop(x);
 		}
 	}
 	// Get next frame
@@ -398,9 +403,247 @@ int ccPlayer::LoopForNum(int loopAmt, uintptr_t compare, uintptr_t (*f)(int)) {
 	return n;
 }
 constexpr unsigned int ccPlayer::str2int(const char* str, int h = 0) { return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h]; }
+string ccPlayer::charcode2str(int charcode) {
+	switch (charcode) {
+		case 0x01: return "2nrt";
+		case 0x02: return "2nrx";
+		case 0x03: return "2ssk";
+		case 0x04: return "2ssy";
+		case 0x05: return "2skr";
+		case 0x06: return "2roc";
+		case 0x07: return "2nej";
+		case 0x08: return "2ten";
+		case 0x09: return "2ino";
+		case 0x0A: return "2sik";
+		case 0x0B: return "2tyo";
+		case 0x0C: return "2kib";
+		case 0x0D: return "2sin";
+		case 0x0E: return "2hnt";
+		case 0x0F: return "2gar";
+		case 0x10: return "2knk";
+		case 0x11: return "2tmr";
+		case 0x12: return "2kks";
+		case 0x13: return "2guy";
+		case 0x14: return "2asm";
+		case 0x15: return "2jry";
+		case 0x16: return "2tnd";
+		case 0x17: return "2orc";
+		case 0x18: return "2kbt";
+		case 0x19: return "2itc";
+		case 0x1A: return "2ksm";
+		case 0x1B: return "2cyb";
+		case 0x1C: return "2sai";
+		case 0x1D: return "2ymt";
+		case 0x1E: return "2sco";
+		case 0x1F: return "2ddr";
+		case 0x20: return "2hdn";
+		case 0x21: return "2kzu";
+		case 0x22: return "2sgt";
+		case 0x23: return "2jug";
+		case 0x24: return "2kar";
+		case 0x25: return "2tob";
+		case 0x26: return "2knn";
+		case 0x27: return "2pea";
+		case 0x28: return "2klb";
+		case 0x29: return "2akm";
+		case 0x2A: return "2krs";
+		case 0x2B: return "2par";
+		case 0x2C: return "2kkg";
+		case 0x2D: return "2fou";
+		case 0x2E: return "1nrt";
+		case 0x2F: return "1ssk";
+		case 0x30: return "1skr";
+		case 0x31: return "1roc";
+		case 0x32: return "1nej";
+		case 0x33: return "1hnt";
+		case 0x34: return "1gar";
+		case 0x35: return "1hkg";
+		case 0x36: return "1kmm";
+		case 0x37: return "2nrg";
+		case 0x38: return "2ssz";
+		case 0x39: return "2mdr";
+		case 0x3A: return "2dnz";
+		case 0x3B: return "2rkg";
+		case 0x3C: return "2tkg";
+		case 0x3D: return "2mkg";
+		case 0x3E: return "1zbz";
+		case 0x3F: return "1hak";
+		case 0x40: return "1fir";
+		case 0x41: return "1sec";
+		case 0x42: return "2kkx";
+		case 0x43: return "2obt";
+		case 0x44: return "2kbx";
+		case 0x45: return "2scx";
+		case 0x46: return "3mdr";
+		case 0x47: return "3dri";
+		case 0x48: return "3rus";
+		case 0x49: return "3tob";
+		case 0x4A: return "3ygr";
+		case 0x4B: return "3utk";
+		case 0x4C: return "3mfn";
+		case 0x4D: return "3han";
+		case 0x4E: return "3nyg";
+		case 0x4F: return "3who";
+		case 0x50: return "3klb";
+		case 0x51: return "3hnz";
+		case 0x52: return "3ngt";
+		case 0x53: return "3tyo";
+		case 0x54: return "3nrt";
+		case 0x55: return "3ssk";
+		case 0x56: return "3gar";
+		case 0x57: return "4mkg";
+		case 0x58: return "4muu";
+		case 0x59: return "4rkg";
+		case 0x5A: return "4kkg";
+		case 0x5B: return "3kks";
+		case 0x5C: return "3khm";
+		case 0x5D: return "3irk";
+		case 0x5E: return "3kbt";
+		case 0x5F: return "3obt";
+		case 0x60: return "4ssi";
+		case 0x61: return "1ten";
+		case 0x62: return "1ino";
+		case 0x63: return "1sik";
+		case 0x64: return "1tyo";
+		case 0x65: return "1kib";
+		case 0x66: return "1akm";
+		case 0x67: return "1sin";
+		case 0x68: return "1tmr";
+		case 0x69: return "1knk";
+		case 0x6A: return "1krs";
+		case 0x6B: return "4nrt";
+		case 0x6C: return "3ksn";
+		case 0x6D: return "3mnt";
+		case 0x6E: return "3hsm";
+		case 0x6F: return "3mdr_2";
+		case 0x70: return "2gav";
+		case 0x71: return "5obt";
+		case 0x72: return "5mdr";
+		case 0x73: return "5jrb";
+		case 0x74: return "5kdm";
+		case 0x75: return "5skn";
+		case 0x76: return "5tyy";
+		case 0x77: return "bhsm";
+		case 0x78: return "bmdr";
+		case 0x79: return "bmkj";
+		case 0x7A: return "4rin";
+		case 0x7B: return "6nrt";
+		case 0x7C: return "5kgy";
+		case 0x7D: return "tyyp";
+		case 0x7E: return "6ssk";
+		case 0x7F: return "6hnt";
+		case 0x80: return "6skr";
+		case 0x81: return "5nrt";
+		case 0x82: return "5ssk";
+		case 0x83: return "6hnb";
+		case 0x84: return "2obx";
+		case 0x85: return "bjb1";
+		case 0x86: return "bjb2";
+		case 0x87: return "bjb3";
+		case 0x88: return "bjb4";
+		case 0x89: return "b4nr";
+		case 0x8A: return "bkkx";
+		case 0x8B: return "b5ob";
+		case 0x8C: return "bkrl";
+		case 0x8D: return "bssn";
+		case 0x8E: return "bobt";
+		case 0x8F: return "bgkt";
+		case 0x90: return "baod";
+		case 0x91: return "bkty";
+		case 0x92: return "b2nr";
+		case 0x93: return "1jbr";
+		case 0x94: return "2jbr";
+		case 0x95: return "3jbr";
+		case 0x96: return "4jbr";
+		case 0x97: return "5jbr";
+		case 0x98: return "6jbr";
+		case 0x99: return "gfsa";
+		case 0x9A: return "bjyd";
+		case 0x9B: return "bkrs";
+		case 0x9C: return "gmhr";
+		case 0x9D: return "btsk";
+		case 0x9E: return "bkku";
+		case 0x9F: return "7brt";
+		case 0xA0: return "7sld";
+		case 0xA1: return "bgrg";
+		case 0xA2: return "gztu";
+		case 0xA3: return "bobr";
+		case 0xA4: return "bobs";
+		case 0xA5: return "bmdj";
+		case 0xA6: return "brmd";
+		case 0xA7: return "brsk";
+		case 0xA8: return "bkms";
+		case 0xA9: return "bksr";
+		case 0xAA: return "bgyu";
+		case 0xAB: return "bjyg";
+		case 0xAC: return "bnrt";
+		case 0xAD: return "bssk";
+		case 0xAE: return "bkgy";
+		case 0xAF: return "bobz";
+		case 0xB0: return "bkgv";
+		case 0xB1: return "bkkk";
+		case 0xB2: return "bnrx";
+		case 0xB3: return "bssx";
+		case 0xB4: return "bnrc";
+		case 0xB5: return "bssc";
+		case 0xB6: return "jkks";
+		case 0xB7: return "bobk";
+		case 0xB8: return "5krs";
+		case 0xB9: return "b6bt";
+		case 0xBA: return "bkks";
+		case 0xBB: return "bmdt";
+		case 0xBC: return "bmdk";
+		case 0xBD: return "bmhr";
+		case 0xBE: return "7nrt";
+		case 0xBF: return "7ssk";
+		case 0xC0: return "bnrg";
+		case 0xC1: return "bssz";
+		case 0xC2: return "b1nr";
+		case 0xC3: return "b1ss";
+		case 0xC4: return "3guy";
+		case 0xC5: return "b3hs";
+		case 0xC6: return "bguy";
+		case 0xC7: return "bgrn";
+		case 0xC8: return "7nrn";
+		case 0xC9: return "7ssx";
+		case 0xCA: return "7skr";
+		case 0xCB: return "7gar";
+		case 0xCC: return "7khm";
+		case 0xCD: return "7brn";
+		case 0xCE: return "7brx";
+		case 0xCF: return "7sln";
+		case 0xD0: return "7skd";
+		case 0xD1: return "7mms";
+		case 0xD2: return "7kin";
+		case 0xD3: return "7yri";
+		case 0xD4: return "4mnr";
+	case 0xD5: return "biss";
+	case 0xD6: return "bmnk";
+	case 0xD7: return "7mmv";
+	case 0xD8: return "7mtk";
+	case 0xD9: return "abrt";
+	case 0xDA: return "8mms";
+	case 0xDB: return "8kin";
+	case 0xDC: return "8ino";
+	case 0xDD: return "8sik";
+	case 0xDE: return "8tyo";
+	case 0xDF: return "8kib";
+	case 0xE0: return "8sin";
+	case 0xE1: return "8roc";
+	case 0xE2: return "8ten";
+	case 0xE3: return "8knk";
+	case 0xE4: return "8tmr";
+	case 0xE5: return "8sai";
+	case 0xE6: return "8aem";
+	}
+}
 #pragma endregion
 
 #pragma region GetPlayer Functions
+// Placeholder functions
+int ccPlayer::GetCanDoJutsuChakra(uintptr_t p, uintptr_t s) { return 0; }
+int ccPlayer::GetAwakenedState(uintptr_t p, uintptr_t s) { return 0; }
+
 uintptr_t ccPlayer::GetSystemInfo()
 {
 	uintptr_t result;
