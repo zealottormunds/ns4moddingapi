@@ -38,10 +38,10 @@ void c2TOB::Loop(int pln)
 
 	if (init == false)
 	{
-		c.SetMaxSubState(s, maxSub);
-		c.SetSubState(s, totalSub);
+		c.SetPlayerFloatProperty(p, s, "maxsub", maxSub);
+		c.SetPlayerFloatProperty(p, s, "sub", totalSub);
 		//c.SetPlayerMaxHealth(s, 30);
-		c.SetPlayerHealth(s, 30);
+		c.SetPlayerFloatProperty(p, s, "health", 30);
 		init = true;
 		//cout << "Init 2TOB " << pln << endl;
 	}
@@ -52,19 +52,19 @@ void c2TOB::Loop(int pln)
 			c.SetMaxSubState(s, c.GetSubState(s));
 		}*/
 
-		if ((c.GetMaxSubState(s)) > maxSub)
+		if (c.GetPlayerFloatProperty(p, s, "maxsub") > maxSub)
 		{
-			c.SetMaxSubState(s, maxSub);
+			c.SetPlayerFloatProperty(p, s, "maxsub", maxSub);
 		}
 
-		if ((c.GetSubState(s)) > totalSub)
+		if (c.GetPlayerFloatProperty(p, s, "sub") > totalSub)
 		{
-			c.SetSubState(s, totalSub);
+			c.SetPlayerFloatProperty(p, s, "sub", totalSub);
 		}
-		else if (c.GetSubState(s) < totalSub)
+		else if (c.GetPlayerFloatProperty(p, s, "sub") < totalSub)
 		{
 			//c.SetMaxSubState(s, c.GetSubState(s));
-			totalSub = c.GetSubState(s);
+			totalSub = c.GetPlayerFloatProperty(p, s, "sub");
 		}
 	}
 }

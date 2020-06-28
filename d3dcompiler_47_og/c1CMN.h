@@ -13,7 +13,7 @@ namespace moddingApi
 	{
 	public:
 		c1CMN(int c);
-		static void PreLoop(int pln);
-		static void PostLoop(int pln);
+		void PreLoop(int pln);
+		void PostLoop(int pln);
 	};
 }

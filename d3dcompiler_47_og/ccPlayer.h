@@ -14,7 +14,7 @@ namespace moddingApi
 	public:
 		static uintptr_t plMain[6];
 		static int plMainId[6];
-		static vector<string> matchup;
+		// static vector<string> matchup;
 		static void ccPlayer::Start();
 		static void ccPlayer::Loop();
 

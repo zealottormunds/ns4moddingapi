@@ -248,7 +248,25 @@ uintptr_t ccGeneralGameFunctions::Cpk_LoadXfbin(void * path)
 // Get mod list string
 std::string GetModMessage()
 {
-	string st = "<color red>Naruto Storm 4</color> Modding API by Zealot Tormunds\n\n";
+	// Color codes
+	string hex0x009cffff = "<color 0x009cffff>";
+	string hex0x8708c3ff = "<color 0x8708c3ff>";
+	string hex0xc853ee = "<color 0xc853ee>";
+	string endColor = "</color>";
+
+	// Reserve memory for resulting messages
+	string thanks = hex0x009cffff + "Thank You" + endColor + " for " + hex0x009cffff + "Installing & Playing" + endColor +
+		"\n                " + hex0x8708c3ff + "UNS: Gev!" + endColor + "\n\n";
+	string outdated = "      Your game is outdated.\n ";
+	string currentBuild = "           " + hex0xc853ee + "Current Build: v";
+	string yourBuild = "\n             " + hex0x009cffff + "Your Build: v";
+	string corrupt = "The file \"version.txt\" is corrupted. ";
+	string notFound = "The file \"version.txt\" could not be found. ";
+	string dlLatest = "Please download the latest Gev build.";
+	string noServer = "We were unable to check if your game is up-to-date. Please check your internet connection.";
+
+	string st = thanks;
+	st += "<color red>Naruto Storm 4</color> Modding API by Zealot Tormunds\n\n";
 	if (ccMain::ModList.size() > 0)
 	{
 		st = st + "<color yellow>Mod List:</color>\n";

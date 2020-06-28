@@ -12,11 +12,11 @@ namespace moddingApi
 	class c2TOB
 	{
 	private:
-		static float maxSub;
-		static float totalSub;
-		static bool init;
+		float maxSub;
+		float totalSub;
+		bool init;
 	public:
 		c2TOB(int c);
-		static void Loop(int pln);
+		void Loop(int pln);
 	};
 }

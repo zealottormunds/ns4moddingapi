@@ -24,8 +24,8 @@ c2MDR::c2MDR(int pln)
 	totalSub = 25;
 	playerSpeed = 1.5;
 	init = false;
-	if (c.matchup[0] == "3mnt" || c.matchup[1] == "3mnt") hasMNT = true;
-	else hasMNT = false;
+	// if (c.matchup[0] == "3mnt" || c.matchup[1] == "3mnt") hasMNT = true;
+	// else hasMNT = false;
 }
 
 void c2MDR::Loop(int pln)

@@ -12,14 +12,14 @@ namespace moddingApi
 	class c2DNZ
 	{
 	private:
-		static float totalSub = 25;
-		static float maxSub = 250;
-		static int subsLeft = 10;
-		static bool init = false;
-		static int prevState = -1;
-		static float prevSub = 0;
+		float totalSub;
+		float maxSub;
+		int subsLeft;
+		bool init;
+		int prevState;
+		float prevSub;
 	public:
 		c2DNZ(int c);
-		static void Loop(int pln);
+		void Loop(int pln);
 	};
 }

@@ -4,21 +4,21 @@
 #include <fstream>
 #include <string>
 
-//using namespace moddingApi;
-//using namespace std;
+using namespace moddingApi;
+using namespace std;
 
 namespace moddingApi
 {
 	class c2MDR
 	{
 	private:
-		static float maxSub;
-		static float totalSub;
-		static float playerSpeed;
-		static bool init;
-		static bool hasMNT;
+		float maxSub;
+		float totalSub;
+		float playerSpeed;
+		bool init;
+		bool hasMNT;
 	public:
 		c2MDR(int c);
-		static void Loop(int pln);
+		void Loop(int pln);
 	};
 }

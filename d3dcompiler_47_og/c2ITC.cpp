@@ -51,8 +51,6 @@ void c2ITC::Loop(int pln)
 	uintptr_t ep = c.GetPlayerInfo(en);
 	uintptr_t es = c.GetPlayerStatus(en);
 
-	ccPlayer c;
-
 	bool actualButton = inputs.chakBtn;
 	vector<float> actualAxis = inputs.leftStick;
 

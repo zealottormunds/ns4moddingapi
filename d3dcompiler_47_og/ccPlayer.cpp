@@ -319,8 +319,8 @@ void ccPlayer::Loop()
 				{
 					int charaid = GetPlayerIntProperty(p, s, "characode");
 					int echaraid = GetPlayerIntProperty(ep, es, "characode");
-					matchup[0] = charcode2str(charaid);
-					matchup[1] = charcode2str(echaraid);
+					// matchup[0] = charcode2str(charaid);
+					// matchup[1] = charcode2str(echaraid);
 					InitializeCharacter(charaid, x);
 					inputState = (new ccBattleInputs());
 				}

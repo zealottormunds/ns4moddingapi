@@ -132,7 +132,7 @@ void ccMain::ReadApiFiles()
 	GetCurrentDirectory(_MAX_PATH, ApiPath);
 	int ActualLength = strlen(ApiPath);
 
-	strcat(ApiPath, "\\moddingapi\\");
+	strcat(ApiPath, "\\gev_files\\");
 
 	char ConfigPath[_MAX_PATH];
 	strcpy(ConfigPath, ApiPath);
@@ -294,7 +294,7 @@ void ccMain::ReloadParamFiles()
 	GetCurrentDirectory(_MAX_PATH, ApiPath);
 	int ActualLength = strlen(ApiPath);
 
-	strcat(ApiPath, "\\moddingapi\\");
+	strcat(ApiPath, "\\gev_files\\");
 
 	char ConfigPath[_MAX_PATH];
 	strcpy(ConfigPath, ApiPath);

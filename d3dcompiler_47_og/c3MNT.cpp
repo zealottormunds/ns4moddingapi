@@ -24,8 +24,8 @@ c3MNT::c3MNT(int pln)
 	totalSub = 25;
 	playerSpeed = 1.6;
 	init = false;
-	if (c.matchup[0] == "2mdr" || c.matchup[1] == "2mdr") hasMDR = true;
-	else hasMDR = false;
+	// if (c.matchup[0] == "2mdr" || c.matchup[1] == "2mdr") hasMDR = true;
+	// else hasMDR = false;
 }
 
 void c3MNT::Loop(int pln)
