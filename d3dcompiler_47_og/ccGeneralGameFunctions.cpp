@@ -249,8 +249,8 @@ uintptr_t ccGeneralGameFunctions::Cpk_LoadXfbin(void * path)
 std::string GetModMessage()
 {
 	// Color codes
-	string hex0x009cffff = "<color 0x009cffff>";
-	string hex0x8708c3ff = "<color 0x8708c3ff>";
+	string hex0x009cffff = "<color blue>";
+	string hex0x8708c3ff = "<color purple>";
 	string hex0xc853ee = "<color 0xc853ee>";
 	string endColor = "</color>";
 
