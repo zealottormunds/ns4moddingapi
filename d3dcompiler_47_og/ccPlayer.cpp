@@ -637,6 +637,13 @@ string ccPlayer::charcode2str(int charcode) {
 	case 0xE6: return "8aem";
 	}
 }
+void ccPlayer::SetTimerValue(int timerValue, int maxTimer, bool value) {
+	if (timerValue < 0 && !value) timerValue--;
+	if (timerValue >= 0) {
+		value = true;
+		timerValue = maxTimer;
+	}
+}
 #pragma endregion
 
 #pragma region GetPlayer Functions
@@ -754,6 +761,8 @@ int* ccPlayer::GetPlayerIntPointer(uintptr_t p, uintptr_t s, char* prop)
 		case ccPlayer::str2int("displaymdl"): val = (int*)(p + 0xC48); break;
 		case ccPlayer::str2int("pstate"): val = (int*)(p + 0xC50); break;
 		case ccPlayer::str2int("prevpstate"): val = (int*)(p + 0xC54); break;
+		case ccPlayer::str2int("npstate"): val = (int*)(p + 0xC58); break;
+		case ccPlayer::str2int("pstateflag"): val = (int*)(p + 0xC6C); break;
 		case ccPlayer::str2int("attackid"): val = (int*)(p + 0x1010); break;
 		case ccPlayer::str2int("prevattackid"): val = (int*)(p + 0x1024); break;
 		case ccPlayer::str2int("anmtimer"): val = (int*)(p + 0x14138); break;
@@ -811,6 +820,19 @@ void ccPlayer::SetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop, int va
 {
 	int* val = GetPlayerIntPointer(p, s, prop);
 	*val = value > 0 ? value : 1;
+}
+void ccPlayer::SetPlayerStateProperty(uintptr_t p, uintptr_t s, int prop) {
+	int* nps = GetPlayerIntPointer(p, s, "npstate");
+	int* psf = GetPlayerIntPointer(p, s, "pstateflag");
+
+	*psf = 1;
+	*nps = prop;
+}
+// Unfinished, needs a list of all properties we know of
+void ccPlayer::SetPlayerStatePropertyEasy(uintptr_t p, uintptr_t s, char* prop) {
+	int* nps = GetPlayerIntPointer(p, s, "npstate");
+	int* psf = GetPlayerIntPointer(p, s, "pstateflag");
+
 }
 #pragma endregion
 

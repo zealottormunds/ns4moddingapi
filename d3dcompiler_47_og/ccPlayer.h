@@ -40,6 +40,8 @@ namespace moddingApi
 		static int* ccPlayer::GetPlayerIntPointer(uintptr_t p, uintptr_t s, char* prop);
 		static int ccPlayer::GetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop);
 		static void ccPlayer::SetPlayerIntProperty(uintptr_t p, uintptr_t s, char* prop, int value);
+		static void ccPlayer::SetPlayerStatePropertyEasy(uintptr_t p, uintptr_t s, char* prop);
+		static void ccPlayer::SetPlayerStateProperty(uintptr_t p, uintptr_t s, int prop);
 
 		static float* ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop);
 		static float ccPlayer::GetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop);
@@ -49,6 +51,7 @@ namespace moddingApi
 		static float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es);
 
 		static string ccPlayer::charcode2str(int charcode);
+		static void ccPlayer::SetTimerValue(int timerValue, int maxTimer, bool value);
 
 		// Placeholders, change order when functions are done
 		static int ccPlayer::GetCanDoJutsuChakra(uintptr_t p, uintptr_t s);

@@ -250,7 +250,7 @@ std::string GetModMessage()
 {
 	// Color codes
 	string hex0x009cffff = "<color blue>";
-	string hex0x8708c3ff = "<color purple>";
+	string hex0x8708c3ff = "<color red>";
 	string hex0xc853ee = "<color 0xc853ee>";
 	string endColor = "</color>";
 
