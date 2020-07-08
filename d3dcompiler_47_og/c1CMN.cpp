@@ -31,6 +31,9 @@ void c1CMN::PreLoop(int pln)
 	uintptr_t s = c.GetPlayerStatus(pln);
 	uintptr_t ep = c.GetPlayerInfo(en);
 	uintptr_t es = c.GetPlayerStatus(en);
+
+	// Disable Leader Switch
+	c.SetPlayerLSCost(p, 101);
 }
 void c1CMN::PostLoop(int pln)
 {
@@ -42,4 +45,7 @@ void c1CMN::PostLoop(int pln)
 	uintptr_t s = c.GetPlayerStatus(pln);
 	uintptr_t ep = c.GetPlayerInfo(en);
 	uintptr_t es = c.GetPlayerStatus(en);
+
+	// Disable Leader Switch
+	c.SetPlayerLSCost(p, 101);
 }

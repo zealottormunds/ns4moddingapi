@@ -661,6 +661,16 @@ uintptr_t ccPlayer::GetStormPointer(int n) { return GetSystemInfo() + (n == 0 ? 
 float ccPlayer::GetStormGauge(int n) { return *(float*)GetStormPointer(n); }
 uintptr_t ccPlayer::GetMatchPointer() { return GetSystemInfo() + 0x1E8; }
 int ccPlayer::GetMatchCount() { return *(int*)GetMatchPointer(); }
+uintptr_t ccPlayer::GetPlayerLSCostPointer(uintptr_t p) {
+	
+	// Initialize pointers
+	uintptr_t p1 = 0, p2 = 0, p3 = 0;
+	vector<uintptr_t> ptrs, offsets;
+
+	// Execute memory copy/verification functionalities
+	ptrs = memcpy_verify({ p1, p2, p3 }, { p, 0x14E20, 0x10 }, 8);
+	return !(p3 == 0) ? p3 : 0;
+}
 uintptr_t ccPlayer::GetPlayerStatus(int n)
 {
 	// Initialize pointers and the core offset
@@ -796,6 +806,10 @@ float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintpt
 #pragma endregion
 
 #pragma region SetPlayer Functions
+void ccPlayer::SetPlayerLSCost(uintptr_t p, float value) {
+	float* ptr = (float*)GetPlayerLSCostPointer(p);
+	*ptr = value > 0 ? value : 0.01f;
+}
 void ccPlayer::SetStormGauge(int n, float value) {
 	float* ptr = (float*)(GetSystemInfo() + (n == 0 ? 0x4C : 0xB4));
 	*ptr = value > 0 ? value : 0.01f;
