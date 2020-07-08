@@ -668,7 +668,8 @@ uintptr_t ccPlayer::GetPlayerLSCostPointer(uintptr_t p) {
 	vector<uintptr_t> ptrs, offsets;
 
 	// Execute memory copy/verification functionalities
-	ptrs = memcpy_verify({ p1, p2, p3 }, { p, 0x14E20, 0x10 }, 8);
+	memcpy(&p2, (void*)(p + 0x14E20), 8);
+	p3 = p2 + 0x10;
 	return !(p3 == 0) ? p3 : 0;
 }
 uintptr_t ccPlayer::GetPlayerStatus(int n)
