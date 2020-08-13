@@ -8,7 +8,6 @@
 ** implementation for Windows, and a stub for other systems.
 */
 
-
 #include <stdlib.h>
 #include <string.h>
 
@@ -89,6 +88,7 @@ static lua_CFunction ll_sym (lua_State *L, void *lib, const char *sym) {
 ** =======================================================================
 */
 
+#include <Winsock2.h>
 #include <windows.h>
 
 

@@ -1,3 +1,4 @@
+#include <WinSock2.h>
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
@@ -13,21 +14,21 @@
 #include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
 #include "ccMain.h"
+#include <filesystem>
 
 using namespace moddingApi;
 using namespace std;
 
-// This is useless until we figure out a way to load more cpks.
-BYTE ccGeneralGameFunctions::MAX_GAME_VERSION = 9;
+char ccGeneralGameFunctions::MAX_GAME_VERSION = 9;
 
 // GAME INFO HOOK
 void * ccGeneralGameFunctions::PTR_GAMEINFO_00 = 0;
-typedef uintptr_t (__fastcall * gameinfohook)(uintptr_t);
-gameinfohook g_GameInfoHook;
 BYTE originalGameInfoFunction[15];
 void UndoGameInfoHook();
 uintptr_t __fastcall ccGeneralGameFunctions::SetGameInfoPointer(uintptr_t a1)
 {
+	typedef uintptr_t(__fastcall * gameinfohook)(uintptr_t);
+	gameinfohook g_GameInfoHook;
 	UndoGameInfoHook();
 
 	g_GameInfoHook = (gameinfohook)(d3dcompiler_47_og::moduleBase + 0xA03E90);
@@ -39,18 +40,19 @@ uintptr_t __fastcall ccGeneralGameFunctions::SetGameInfoPointer(uintptr_t a1)
 	
 	return result;
 }
+
 uintptr_t GameInfoHookAddress = 0xA03E90;
 void ccGeneralGameFunctions::DoGameInfoHook()
 {
-	memcpy(originalGameInfoFunction, (void*)(d3dcompiler_47_og::moduleBase + 0xA03E90), 15);
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xA03E90), (void*)(ccGeneralGameFunctions::SetGameInfoPointer), 15);
+	memcpy(originalGameInfoFunction, (void*)(d3dcompiler_47_og::moduleBase + GameInfoHookAddress), 15);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + GameInfoHookAddress), (void*)(ccGeneralGameFunctions::SetGameInfoPointer), 15);
 }
 void UndoGameInfoHook()
 {
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xA03E90), 15, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xA03E90), originalGameInfoFunction, 15);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xA03E90), 15, dwOld, &dwOld);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + GameInfoHookAddress), 15, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + GameInfoHookAddress), originalGameInfoFunction, 15);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + GameInfoHookAddress), 15, dwOld, &dwOld);
 }
 
 // CPK LOADING
@@ -120,118 +122,76 @@ int ccGeneralGameFunctions::SetMaxVersion()
 }
 
 // GET VERSION NUMBER
-typedef DWORD(__stdcall * get_version_number)();
-get_version_number g_GetVersionNumber;
 int ccGeneralGameFunctions::GetVersionNumber()
 {
+	typedef DWORD(__stdcall * get_version_number)();
+	get_version_number g_GetVersionNumber;
 	g_GetVersionNumber = (get_version_number)(d3dcompiler_47_og::moduleBase + 0x85CC78);
 	return g_GetVersionNumber();
 }
 
-// GET VERSION STRING
-char* ccGeneralGameFunctions::GetVersionString()
-{
-	int v = GetVersionNumber();
-
-	char * Version[10] = {
-		"1.00",
-		"1.01",
-		"1.02",
-		"1.03",
-		"1.04",
-		"1.05",
-		"1.06",
-		"1.07",
-		"1.08",
-		"1.09",
-	};
-
-	return Version[v];
-}
-
-// GET VERSION STRING API
-char* ccGeneralGameFunctions::GetVersionStringAPI()
-{
-	int v = GetVersionNumber();
-
-	char * Version[10] = {
-		"1.00 (Modding API v1.3 by Zealot Tormunds)",
-		"1.01 (Modding API v1.3 by Zealot Tormunds)",
-		"1.02 (Modding API v1.3 by Zealot Tormunds)",
-		"1.03 (Modding API v1.3 by Zealot Tormunds)",
-		"1.04 (Modding API v1.3 by Zealot Tormunds)",
-		"1.05 (Modding API v1.3 by Zealot Tormunds)",
-		"1.06 (Modding API v1.3 by Zealot Tormunds)",
-		"1.07 (Modding API v1.3 by Zealot Tormunds)",
-		"1.08 (Modding API v1.3 by Zealot Tormunds)",
-		"1.09 (Modding API v1.3 by Zealot Tormunds)",
-	};
-
-	return Version[v];
-}
-
 // GET RYO POINTER
-typedef uintptr_t(__cdecl * get_ryo_pointer)();
-get_ryo_pointer g_GetRyoPointer;
 uintptr_t ccGeneralGameFunctions::GetRyoPointer()
 {
-g_GetRyoPointer = (get_ryo_pointer)(d3dcompiler_47_og::moduleBase + 0x51C11C);
-return g_GetRyoPointer();
+	typedef uintptr_t(__cdecl * get_ryo_pointer)();
+	get_ryo_pointer g_GetRyoPointer;
+	g_GetRyoPointer = (get_ryo_pointer)(d3dcompiler_47_og::moduleBase + 0x51C11C);
+	return g_GetRyoPointer();
 }
 
 // GET GAME MONEY
-typedef int(__cdecl * get_game_money)();
-get_game_money g_GetGameMoney;
 int ccGeneralGameFunctions::GetGameMoney()
 {
+	typedef int(__cdecl * get_game_money)();
+	get_game_money g_GetGameMoney;
 	g_GetGameMoney = (get_game_money)(d3dcompiler_47_og::moduleBase + 0x4DEAB8);
 	return g_GetGameMoney();
 }
 
-// GAME MESSAGE TO STRING
-typedef char *(__fastcall * message_to_string)(char *);
-message_to_string g_MessageToString;
+// GAME MESSAGE TO STRING [FIXED]
 char * ccGeneralGameFunctions::MessageToString(char * msg)
 {
-	//g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E80A4);
-	g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E88F0);
+	typedef char *(__fastcall * message_to_string)(char *);
+	message_to_string g_MessageToString;
+	g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E89C4);
 	return g_MessageToString(msg);
 }
 
 // HOOK OPEN ADV MESSAGE
-typedef int *(__fastcall * openmsg)(char *);
-openmsg g_OpenMsg;
 int ccGeneralGameFunctions::OpenAdvMessageById(char * a)
 {
+	typedef int *(__fastcall * openmsg)(char *);
+	openmsg g_OpenMsg;
 	g_OpenMsg = (openmsg)(d3dcompiler_47_og::moduleBase + 0x4DB9F4);
 	g_OpenMsg(a);
 	return 0;
 }
 
 // START LOAD
-typedef int *(__stdcall * startload)();
-startload g_StartLoad;
 int ccGeneralGameFunctions::StartLoad()
 {
+	typedef int *(__stdcall * startload)();
+	startload g_StartLoad;
 	g_StartLoad = (startload)(d3dcompiler_47_og::moduleBase + 0x65A198);
 	return (int)g_StartLoad();
 }
 
 // END LOAD
-typedef int *(__stdcall * endload)();
-endload g_EndLoad;
 int ccGeneralGameFunctions::EndLoad()
 {
+	typedef int *(__stdcall * endload)();
+	endload g_EndLoad;
 	g_EndLoad = (endload)(d3dcompiler_47_og::moduleBase + 0x32CAE8);
 	return (int)g_EndLoad();
 }
 
 // Load CPK
-typedef uintptr_t(__fastcall * readcpk)(char *, void *, uint16_t);
-readcpk g_ReadCpk;
 int ccGeneralGameFunctions::cpkcount = 0;
 uintptr_t ccGeneralGameFunctions::Cpk_LoadXfbin(void * path)
 {
+	typedef uintptr_t(__fastcall * readcpk)(char *, void *, uint16_t);
+	readcpk g_ReadCpk;
+
 	g_ReadCpk = (readcpk)(d3dcompiler_47_og::moduleBase + 0x56AA4C);
 
 	if (true)
@@ -268,7 +228,7 @@ std::string GetModMessage()
 	return st;
 }
 
-// This function doesn't work in 1.08 yet.
+// This function doesn't work in 1.09 yet.
 void RandomizeBackground()
 {
 	DWORD dwOld = 0;
@@ -308,7 +268,7 @@ void RandomizeBackground()
 // All custom messageinfo functions
 vector<std::string> ccGeneralGameFunctions::MessageID;
 vector<std::string> ccGeneralGameFunctions::MessageStr;
-BYTE ccGeneralGameFunctions::ViewMessageConversions = 0;
+char ccGeneralGameFunctions::ViewMessageConversions = 0;
 
 uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 {
@@ -365,15 +325,6 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 	}
 	else
 	{
-		/*if (string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")
-		{
-			cout << "Message: " << (char*)MessageToDecode << endl;
-			string realstr = string((char*)MessageToDecode);
-			char* res = (char*)realstr.substr(4, realstr.length()).c_str();
-
-			return (uintptr_t)res;
-		}*/
-
 		if (*(char*)MessageToDecode == '+')
 		{
 			return (MessageToDecode + 1);
@@ -459,15 +410,11 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 	}
 }
 
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-
-__int64 __fastcall fc_Xfbin_LoadFile(__int64 FilePath);
-BYTE f_LoadXfbin[15];
+/*BYTE f_LoadXfbin[15];
 
 void ccGeneralGameFunctions::HookLoadXfbin()
 {
+	__int64 __fastcall fc_Xfbin_LoadFile(__int64 FilePath);
 	memcpy(f_LoadXfbin, (void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), 15);
 	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), (void*)(fc_Xfbin_LoadFile), 15);
 }
@@ -480,12 +427,11 @@ void UnhookLoadXfbin()
 	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x5341CC), 15, dwOld, &dwOld);
 }
 
-#include <filesystem>
-typedef __int64(__fastcall * Xfbin_LoadFile)(__int64);
-Xfbin_LoadFile g_Xfbin_LoadFile;
-
 __int64 __fastcall fc_Xfbin_LoadFile(__int64 FilePath)
 {
+	typedef __int64(__fastcall * Xfbin_LoadFile)(__int64);
+	Xfbin_LoadFile g_Xfbin_LoadFile;
+
 	g_Xfbin_LoadFile = (Xfbin_LoadFile)(d3dcompiler_47_og::moduleBase + 0x5341CC);
 
 	string ActualFilePath = string((char*)FilePath);
@@ -538,12 +484,10 @@ void UnhookLoadXfbin2()
 	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x9FEE00), 16, dwOld, &dwOld);
 }
 
-#include <filesystem>
-typedef __int64(__fastcall * Menu_LoadXfbin)(__int64, __int64);
-Menu_LoadXfbin g_Menu_LoadXfbin;
-
 __int64 __fastcall fc_Menu_LoadXfbin(__int64 a1, __int64 FilePath)
 {
+	typedef __int64(__fastcall * Menu_LoadXfbin)(__int64, __int64);
+	Menu_LoadXfbin g_Menu_LoadXfbin;
 	g_Menu_LoadXfbin = (Menu_LoadXfbin)(d3dcompiler_47_og::moduleBase + 0x9FEE00);
 
 	string ActualFilePath = string((char*)FilePath);
@@ -579,11 +523,10 @@ __int64 __fastcall fc_Menu_LoadXfbin(__int64 a1, __int64 FilePath)
 
 ////////////////////////////////////////////////////////////////////////
 
-__int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3);
 BYTE loadCpkFunc1[16];
-
 void ccGeneralGameFunctions::HookCpkLoad()
 {
+	__int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3);
 	memcpy(loadCpkFunc1, (void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), 15);
 	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), (void*)(loadCpkFunc), 15);
 }
@@ -596,7 +539,6 @@ void UnhookCpkLoad()
 	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x56AA4C), 15, dwOld, &dwOld);
 }
 
-#include <filesystem>
 __int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3)
 {
 	typedef __int64(__fastcall * fc_loadCpkFunc)(__int64, __int64, int);
@@ -612,13 +554,10 @@ __int64 __fastcall loadCpkFunc(__int64 a1, __int64 a2, int a3)
 	ccGeneralGameFunctions::HookCpkLoad();
 
 	return result;
-}
-
-
-////////////////////////////////////////////////////////////////////////
+}*/
 
 // GAMEPAD FUNCTIONS
-bool ccGeneralGameFunctions::TestButton(WORD button)
+bool ccGeneralGameFunctions::TestButton(unsigned short button)
 {
 	XINPUT_STATE actualState;
 	XInputGetState(0, &actualState);
@@ -645,12 +584,11 @@ bool ccGeneralGameFunctions::TestButton(WORD button)
 	return (actualState.Gamepad.wButtons & button) != 0;
 }
 
-typedef signed __int64(__fastcall * fc_enableAllPad_00)();
-fc_enableAllPad_00 enableAllPad_00;
 signed __int64 ccGeneralGameFunctions::enablePads()
 {
+	typedef signed __int64(__fastcall * fc_enableAllPad_00)();
+	fc_enableAllPad_00 enableAllPad_00;
 	enableAllPad_00 = (fc_enableAllPad_00)(d3dcompiler_47_og::moduleBase + 0x6582B4);
-
 	return enableAllPad_00();
 }
 
@@ -668,4 +606,30 @@ int ccGeneralGameFunctions::GetFPS()
 	int fps = 0;
 	memcpy(&fps, (void*)(d3dcompiler_47_og::moduleBase + 0x155F498), 4);
 	return fps;
+}
+
+// Is focus
+bool ccGeneralGameFunctions::IsFocus()
+{
+	// 08D30960
+
+	uintptr_t *p1 = 0;
+	uintptr_t *p2 = 0;
+	uintptr_t *p3 = 0;
+	uintptr_t *p4 = 0;
+	int *p5 = 0;
+
+	p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x08D30960);
+	if (*p1 == 0) return 0;
+	p2 = (uintptr_t*)(*p1 + 0x8);
+	if (*p2 == 0) return 0;
+	p3 = (uintptr_t*)(*p2 + 0xB0);
+	if (*p3 == 0) return 0;
+	p4 = (uintptr_t*)(*p3 + 0x48);
+	if (*p4 == 0) return 0;
+	p4 = (uintptr_t*)(*p3 + 0x48);
+	if (*p4 == 0) return 0;
+	p5 = (int*)(*p4 + 0x994);
+
+	return *p5;
 }

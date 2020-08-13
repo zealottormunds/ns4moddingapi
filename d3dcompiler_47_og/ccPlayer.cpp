@@ -1,4 +1,8 @@
+#include "enet/enet.h"
+
+#include <WinSock2.h>
 #include <windows.h>
+
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -10,13 +14,15 @@
 #include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
 #include "ccGameProperties.h"
-#include "Input.h"
+//#include "Input.h"
 #include "LuaHook.h"
 #include "ccMemoryFunctions.h"
 #include "ccPlayerStruct.h"
 #include "Vector3.h"
 #include "ccGeneralGameFunctions.h"
 #include "LuaHook_Commands.h"
+
+#pragma warning( disable: 4307 )
 
 using namespace std;
 using namespace moddingApi;
@@ -30,11 +36,45 @@ void ccPlayer::Start()
 	// Currently this function does nothing.
 }
 
+__int64 __fastcall ccPlayer::meTest(__int64 a1)
+{
+	cout << "The function works! " << hex << a1 << endl;
+
+	if (ccGameProperties::isOnBattle() == 1)
+	{
+		// Get player x info
+		uintptr_t s = GetPlayerStatus(0);
+		uintptr_t p = GetPlayerInfo(0);
+
+		// If pointers are null, stop the function.
+		if (s == 0 || p == 0)
+		{
+			cout << "Null pointers" << endl;
+			return 1;
+		}
+
+		float h = GetPlayerFloatProperty(p, s, "health");
+		SetPlayerFloatProperty(p, s, "health", h + 5);
+		//SetPlayerFloatProperty(p, s, "modelscale", 0.5f);
+	}
+	else
+	{
+		cout << "Not on battle" << endl;
+	}
+
+	return 1;
+}
+
 // This function is ran every frame all the time.
 void ccPlayer::Loop()
 {
 	// Get keyboard keys and update their state. This is useful for using keyboard hooks, like pressing a key to do a certain function.
-	Input::UpdateKeys();
+	/*Input::UpdateKeys();
+
+	if (Input::GetKeyDown('U'))
+	{
+		cout << std::hex << GetPlayerStatus(0) << endl;
+	}*/
 
 	// If the state of isOnBattle is different, then it means we entered/quitted a battle
 	if (ccGameProperties::isOnBattle() != prevBattle)
@@ -43,7 +83,7 @@ void ccPlayer::Loop()
 		if (prevBattle == 0)
 		{
 			// Code for when we quit a battle
-			for (int x = 0; x < 2; x++)
+			for (int x = 0; x < 6; x++)
 			{
 				if (plMain[x] != 0)
 				{
@@ -54,7 +94,7 @@ void ccPlayer::Loop()
 		else
 		{
 			// Code for when we enter a battle
-			for (int x = 0; x < 2; x++)
+			for (int x = 0; x < 6; x++)
 			{
 				uintptr_t s = GetPlayerStatus(x);
 				uintptr_t p = GetPlayerInfo(x);
@@ -63,6 +103,8 @@ void ccPlayer::Loop()
 				{
 					int charaid = GetPlayerIntProperty(p, s, "characode");
 					InitializeCharacter(charaid, x);
+					cout << "P: " << hex << p << endl;
+					cout << "S: " << hex << s << endl;
 				}
 			}
 		}
@@ -72,7 +114,7 @@ void ccPlayer::Loop()
 	if (ccGameProperties::isOnBattle() == 0) return;
 
 	// This is the loop code for every player.
-	for (int x = 0; x < 2; x++)
+	for (int x = 0; x < 6; x++)
 	{
 		// Get player x info
 		uintptr_t s = GetPlayerStatus(x);
@@ -94,6 +136,8 @@ void ccPlayer::Loop()
 		{
 			SetPlayerFloatProperty(p, s, "armorbreak", 45);
 		}
+
+		//SetPlayerFloatProperty(p, s, "modelscale", GetPlayerFloatProperty(p, s, "chakra") / 100);
 
 		// Custom player code in here
 		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
@@ -153,31 +197,37 @@ uintptr_t ccPlayer::GetPlayerStatus(int n)
 	uintptr_t *p3 = 0;
 	uintptr_t *p4 = 0;
 
+	p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x161B738);
+	if (*p1 == 0) return 0;
+	p2 = (uintptr_t*)(*p1 + 0x20);
+	if (*p2 == 0) return 0;
+
 	switch (n)
 	{
 	default:
-		p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x161B738);
-		if (*p1 == 0) return 0;
-		p2 = (uintptr_t*)(*p1 + 0x20);
-		if (*p2 == 0) return 0;
 		p3 = (uintptr_t*)(*p2 + 0x00);
 		if (*p3 == 0) return 0;
-		p4 = (uintptr_t*)(*p3 + 0x38);
-		if (*p4 == 0) return 0;
-
-		return (uintptr_t)p4;
 	case 1:
-		p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x161B738);
-		if (*p1 == 0) return 0;
-		p2 = (uintptr_t*)(*p1 + 0x20);
-		if (*p2 == 0) return 0;
 		p3 = (uintptr_t*)(*p2 + 0xA0);
 		if (*p3 == 0) return 0;
-		p4 = (uintptr_t*)(*p3 + 0x38);
-		if (*p4 == 0) return 0;
-
-		return (uintptr_t)p4;
+	case 2:
+		p3 = (uintptr_t*)(*p2 + 0x08);
+		if (*p3 == 0) return 0;
+	case 3:
+		p3 = (uintptr_t*)(*p2 + 0x10);
+		if (*p3 == 0) return 0;
+	case 4:
+		p3 = (uintptr_t*)(*p2 + 0x90);
+		if (*p3 == 0) return 0;
+	case 5:
+		p3 = (uintptr_t*)(*p2 + 0x98);
+		if (*p3 == 0) return 0;
 	}
+
+	p4 = (uintptr_t*)(*p3 + 0x38);
+	if (*p4 == 0) return 0;
+
+	return (uintptr_t)p4;
 }
 
 // This function gets the player info (world position, scale, speed...)
@@ -195,7 +245,7 @@ uintptr_t ccPlayer::GetPlayerInfo(int n)
 int ccPlayer::GetPlayerStatusNumber(uintptr_t s)
 {
 	int n = -1;
-	for (int x = 0; x < 2; x++)
+	for (int x = 0; x < 6; x++)
 	{
 		if (s == ccPlayer::GetPlayerStatus(x)) n = x;
 	}
@@ -206,7 +256,7 @@ int ccPlayer::GetPlayerStatusNumber(uintptr_t s)
 int ccPlayer::GetPlayerInfoNumber(uintptr_t p)
 {
 	int n = -1;
-	for (int x = 0; x < 2; x++)
+	for (int x = 0; x < 6; x++)
 	{
 		if (p == ccPlayer::GetPlayerInfo(x)) n = x;
 	}
@@ -297,7 +347,7 @@ float * ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop)
 		result = (float*)(s + 0x10);
 		break;
 	case str2int("maxsub"):
-		result = (float*)(s + 0x10);
+		result = (float*)(s + 0x14);
 		break;
 	case str2int("armorbreak"):
 		result = (float*)(s + 0x20);
@@ -353,5 +403,6 @@ Vector3 ccPlayer::GetPlayerPosition(uintptr_t p, uintptr_t s)
 // Calculates the distance between two given players
 float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es)
 {
-	return Vector3::Distance(GetPlayerPosition(p, s), GetPlayerPosition(ep, es));
+	return 0;
+	//return Vector3::Distance(GetPlayerPosition(p, s), GetPlayerPosition(ep, es));
 }

@@ -1,10 +1,9 @@
+#ifndef CCPLAYER_H 
+#define CCPLAYER_H
 #pragma once
 
 #include <stdio.h>
-#include <windows.h>
 #include "Vector3.h"
-
-using namespace std;
 
 namespace moddingApi
 {
@@ -35,5 +34,9 @@ namespace moddingApi
 
 		static Vector3 ccPlayer::GetPlayerPosition(uintptr_t p, uintptr_t s);
 		static float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es);
+
+		static __int64 __fastcall meTest(__int64 a1);
 	};
 }
+
+#endif

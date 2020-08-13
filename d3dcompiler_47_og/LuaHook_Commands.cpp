@@ -1,4 +1,3 @@
-#include <windows.h>
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -64,7 +63,9 @@ fc_ccEntryNameTelop cc_ccEntryNameTelop;
 unsigned __int64 __fastcall LuaHook_Commands::ccEntryNameTelop(char* topString, char* botString, float a1, float a2, float a3, float a4, int a5)
 {
 	//__int64 a0 = cc_ccfc_ret_qword_7FF68DF26C70();
-	cc_ccEntryNameTelop = (fc_ccEntryNameTelop)(d3dcompiler_47_og::moduleBase + 0x535218); // FIXED
+	/*cc_ccEntryNameTelop = (fc_ccEntryNameTelop)(d3dcompiler_47_og::moduleBase + 0x535218); // FIXED
 	__int64 a = 0;
-	return cc_ccEntryNameTelop(topString, botString, a1, a2, a3, a4, a5);
+	return cc_ccEntryNameTelop(topString, botString, a1, a2, a3, a4, a5);*/
+
+	return 0;
 }

@@ -1,14 +1,8 @@
+#ifndef CHARAFUNCTIONS_H 
+#define CHARAFUNCTIONS_H
 #pragma once
 
-#include <windows.h>
-#include <stdio.h>
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <vector>
-#include <filesystem>
-
-using namespace std;
 
 namespace moddingApi
 {
@@ -21,17 +15,19 @@ namespace moddingApi
 
 		int static PartnerCount;
 
-		static vector<uintptr_t> c_partnerFunctions;
-		static vector<int> c_partnerCodes;
+		static std::vector<uintptr_t> c_partnerFunctions;
+		static std::vector<int> c_partnerCodes;
 		static void PartnerFunctions();
 
-		static vector<uintptr_t> c_specialCondFunct;
-		static vector<int> c_specialCondCodes;
+		static std::vector<uintptr_t> c_specialCondFunct;
+		static std::vector<int> c_specialCondCodes;
 		static void SpecialCondFunctions();
 
-		static vector<uintptr_t> charPointer;
-		static vector<long long> charAllocTime;
+		static std::vector<uintptr_t> charPointer;
+		static std::vector<long long> charAllocTime;
 		static void Hook_COND_BKKX();
 		static void EnableControl(int character, int pad);
 	};
 }
+
+#endif

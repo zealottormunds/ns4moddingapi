@@ -7,7 +7,6 @@
 #ifndef lapi_h
 #define lapi_h
 
-
 #include "lobject.h"
 
 

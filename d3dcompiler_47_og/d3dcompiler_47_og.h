@@ -1,3 +1,5 @@
+#ifndef D3DCOMPILER_H 
+#define D3DCOMPILER_H
 #pragma once
 
 namespace moddingApi
@@ -11,3 +13,5 @@ namespace moddingApi
 		static uintptr_t RecalculateAddress(uintptr_t);
 	};
 }
+
+#endif

@@ -1,6 +1,6 @@
+#ifndef VECTOR3_H 
+#define VECTOR3_H
 #pragma once
-
-#include <vector>
 
 namespace moddingApi
 {
@@ -23,6 +23,12 @@ namespace moddingApi
 		static Vector3 sub(Vector3 a, Vector3 b);
 		static Vector3 mag(Vector3 a, float b);
 		static bool cmp(Vector3 a, Vector3 b);
+
+		bool operator==(const Vector3& vector) const;
+		Vector3 operator+(const Vector3& vector) const;
+		Vector3 operator-(const Vector3& vector) const;
+		Vector3 operator*(const float mag) const;
+		Vector3 operator/(const float mag) const;
 	
 		static Vector3 getBlockPos(Vector3 a);
 		static float magnitude(Vector3 a);
@@ -30,3 +36,5 @@ namespace moddingApi
 		static Vector3 lerp(Vector3 a, Vector3 b, float m);
 	};
 }
+
+#endif

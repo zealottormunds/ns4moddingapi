@@ -4,7 +4,6 @@
 ** See Copyright Notice in lua.h
 */
 
-
 #include <errno.h>
 #include <locale.h>
 #include <stdlib.h>

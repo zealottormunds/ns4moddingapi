@@ -1,7 +1,10 @@
+#ifndef CCMAIN_H 
+#define CCMAIN_H
 #pragma once
 
 #include <vector>
-using namespace std;
+#include <WinSock2.h>
+#include <Windows.h>
 
 namespace moddingApi
 {
@@ -15,12 +18,14 @@ namespace moddingApi
 
 		// Mod list variables:
 		static int ModCount;
-		static vector<std::string> ModList;
-		static vector<std::string> ModDesc;
-		static vector<std::string> ModAuth;
-		static vector<BYTE> ModState;
+		static std::vector<std::string> ModList;
+		static std::vector<std::string> ModDesc;
+		static std::vector<std::string> ModAuth;
+		static std::vector<BYTE> ModState;
 
 		// Reload API files
 		static void ReloadParamFiles();
 	};
 }
+
+#endif

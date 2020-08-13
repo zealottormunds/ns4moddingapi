@@ -1,7 +1,8 @@
+#ifndef HOOKFUNCTIONS_H 
+#define HOOKFUNCTIONS_H
 #pragma once
 
 #include <vector>
-using namespace std;
 
 namespace moddingApi
 {
@@ -25,3 +26,5 @@ namespace moddingApi
 		//static void UndoHook(uintptr_t address, void* originalDest, int len);
 	};
 }
+
+#endif

@@ -1,4 +1,3 @@
-#include <windows.h>
 #include <stdio.h>
 #include <string>
 #include <vector>
@@ -106,17 +105,17 @@ void c_ConvertMessage()
 
 void c_GetVersionNumber()
 {
-	cout << ccGeneralGameFunctions::GetVersionNumber();
+	//cout << ccGeneralGameFunctions::GetVersionNumber();
 }
 
 void c_GetVersionString()
 {
-	cout << ccGeneralGameFunctions::GetVersionString();
+	//cout << ccGeneralGameFunctions::GetVersionString();
 }
 
 void c_GetVersionStringAPI()
 {
-	cout << ccGeneralGameFunctions::GetVersionStringAPI();
+	//cout << ccGeneralGameFunctions::GetVersionStringAPI();
 }
 
 void c_GetRyo()
@@ -279,7 +278,7 @@ void c_ccGroupBattleEventCameraMoveLookBegin()
 #include "MultiMatch.h"
 void c_ccGetGpPtr()
 {
-	cout << std::hex << (uintptr_t)MultiMatch::fc_GetGpPtr() << endl;
+	//cout << std::hex << (uintptr_t)MultiMatch::fc_GetGpPtr() << endl;
 }
 
 #include "LuaHook_Commands.h"

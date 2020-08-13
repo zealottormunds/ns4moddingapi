@@ -1,7 +1,8 @@
+#ifndef BATTLEFUNCTIONS_H 
+#define BATTLEFUNCTIONS_H
 #pragma once
 
 #include <stdio.h>
-using namespace std;
 
 namespace moddingApi
 {
@@ -13,3 +14,5 @@ namespace moddingApi
 		static uintptr_t Battle_FillTemp(uintptr_t a1, int a2, float FillRate);
 	};
 }
+
+#endif

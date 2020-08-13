@@ -8,7 +8,6 @@
 #ifndef lobject_h
 #define lobject_h
 
-
 #include <stdarg.h>
 
 

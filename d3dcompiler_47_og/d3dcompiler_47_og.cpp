@@ -1,3 +1,4 @@
+#include <WinSock2.h>
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
@@ -6,6 +7,9 @@
 
 #include "d3dcompiler_47_og.h"
 #include "ccMain.h"
+
+#pragma warning( disable: 4305 )
+#pragma warning( disable: 4307 )
 
 using namespace moddingApi;
 using namespace std;

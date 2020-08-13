@@ -1,6 +1,9 @@
+#ifndef CCGAMEPROPERTIES_H 
+#define CCGAMEPROPERTIES_H
 #pragma once
 
 #include <stdio.h>
+#include <string>
 
 namespace moddingApi
 {
@@ -9,6 +12,7 @@ namespace moddingApi
 	public:
 		static int isOnBattle();
 		static int isOnMenu();
+		static std::string GetActiveWindowTitle();
 
 		static int __fastcall lua_pcallk(void* a1, int a2, int a3, int a4);
 		static int __fastcall lua_getfield(void* a1, int idx, const char *k);
@@ -63,3 +67,5 @@ namespace moddingApi
 		static __int64 __fastcall msgbox2(__int64 a1, char* a2, __int64 a3);
 	};
 }
+
+#endif

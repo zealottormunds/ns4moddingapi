@@ -1,10 +1,12 @@
+#include <WinSock2.h>
 #include "AudioPlayer.h"
-#include <xaudio2.h>
 
 // Windows Media Foundation
 #include <mfapi.h>
 #include <mfidl.h>
 #include <mfreadwrite.h>
+
+#include <vector>
 
 #pragma comment(lib, "mfreadwrite.lib")
 #pragma comment(lib, "mfplat.lib")

@@ -31,44 +31,20 @@
     <Filter Include="Header Files\Player">
       <UniqueIdentifier>{dab8efaf-7263-48f9-8d85-7b415fe3cc28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Multimatch Files">
-      <UniqueIdentifier>{b0166d29-f2f6-4e11-ade7-890e5f6fee6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Rpg">
-      <UniqueIdentifier>{da8b9b5f-2361-4519-a3ba-837900332178}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rpg">
-      <UniqueIdentifier>{79af97e0-9859-4d1c-9826-6c7bcb10d710}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rpg\Scenes">
-      <UniqueIdentifier>{3686f04f-f74f-4432-8999-8ef40c63bab5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rpg\Interactive">
-      <UniqueIdentifier>{625d0ed0-ee23-4623-9985-2e92394375f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rpg\Collision">
-      <UniqueIdentifier>{5d42cc7e-7f23-4b46-ab91-cb985f3fc257}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rpg\Entity">
-      <UniqueIdentifier>{7cdd1fef-7479-4b1c-b617-6b368bbe106f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rpg\Game Engine">
-      <UniqueIdentifier>{4e57a3fe-3533-404c-be22-1acd90904b1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lua">
-      <UniqueIdentifier>{59c4c42a-2c6c-4c3d-bdbb-d4f3f63854d0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Player\Characters">
       <UniqueIdentifier>{448d3aee-dd1a-4301-84b2-ccd798353436}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Player\Characters">
       <UniqueIdentifier>{8ca6b072-a40d-4691-b670-abc33a79e602}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enet">
+      <UniqueIdentifier>{4dfbbbea-3e17-4419-a9f0-b8cf58569ddc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{60ef3c88-2f1c-4a4b-8c5a-c26cdc4e1a9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MultiMatch.cpp">
-      <Filter>Multimatch Files</Filter>
-    </ClCompile>
     <ClCompile Include="API_Console.cpp">
       <Filter>Source Files\API</Filter>
     </ClCompile>
@@ -108,50 +84,35 @@
     <ClCompile Include="HookFunctions.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\Rpg\Scenes</Filter>
+    <ClCompile Include="ccPlayerStruct.cpp">
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="InteractiveMain.cpp">
-      <Filter>Source Files\Rpg\Interactive</Filter>
+    <ClCompile Include="enet\callbacks.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="Interactive_Examine.cpp">
-      <Filter>Source Files\Rpg\Interactive</Filter>
+    <ClCompile Include="enet\compress.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="BoxCollider.cpp">
-      <Filter>Source Files\Rpg\Collision</Filter>
+    <ClCompile Include="enet\host.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="EntityMain.cpp">
-      <Filter>Source Files\Rpg\Entity</Filter>
+    <ClCompile Include="enet\list.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="Entity_Fireball.cpp">
-      <Filter>Source Files\Rpg\Entity</Filter>
+    <ClCompile Include="enet\packet.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Template.cpp">
-      <Filter>Source Files\Rpg\Scenes</Filter>
+    <ClCompile Include="enet\peer.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+    <ClCompile Include="enet\protocol.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+    <ClCompile Include="enet\unix.c">
+      <Filter>Enet</Filter>
     </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldCollision.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="ztRpgMain.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioPlayer.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+    <ClCompile Include="enet\win32.c">
+      <Filter>Enet</Filter>
     </ClCompile>
     <ClCompile Include="lua\src\lapi.c">
       <Filter>Lua</Filter>
@@ -231,12 +192,6 @@
     <ClCompile Include="lua\src\ltm.c">
       <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="lua\src\lua.c">
-      <Filter>Lua</Filter>
-    </ClCompile>
-    <ClCompile Include="lua\src\luac.c">
-      <Filter>Lua</Filter>
-    </ClCompile>
     <ClCompile Include="lua\src\lundump.c">
       <Filter>Lua</Filter>
     </ClCompile>
@@ -249,14 +204,14 @@
     <ClCompile Include="lua\src\print.c">
       <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="ccPlayerStruct.cpp">
+    <ClCompile Include="lua\src\lua.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="PrmFunctions.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MultiMatch.h">
-      <Filter>Multimatch Files</Filter>
-    </ClInclude>
     <ClInclude Include="API_Console.h">
       <Filter>Header Files\API</Filter>
     </ClInclude>
@@ -296,50 +251,35 @@
     <ClInclude Include="d3dcompiler_47_og.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="ztRpgMain.h">
-      <Filter>Header Files\Rpg</Filter>
+    <ClInclude Include="ccPlayerStruct.h">
+      <Filter>Source Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Source Files\Rpg\Scenes</Filter>
+    <ClInclude Include="enet\callbacks.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="InteractiveMain.h">
-      <Filter>Source Files\Rpg\Interactive</Filter>
+    <ClInclude Include="enet\enet.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="Interactive_Examine.h">
-      <Filter>Source Files\Rpg\Interactive</Filter>
+    <ClInclude Include="enet\list.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="BoxCollider.h">
-      <Filter>Source Files\Rpg\Collision</Filter>
+    <ClInclude Include="enet\protocol.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="EntityMain.h">
-      <Filter>Source Files\Rpg\Entity</Filter>
+    <ClInclude Include="enet\time.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="Entity_Fireball.h">
-      <Filter>Source Files\Rpg\Entity</Filter>
+    <ClInclude Include="enet\types.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Template.h">
-      <Filter>Source Files\Rpg\Scenes</Filter>
+    <ClInclude Include="enet\unix.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+    <ClInclude Include="enet\utility.h">
+      <Filter>Enet</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldCollision.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioPlayer.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+    <ClInclude Include="enet\win32.h">
+      <Filter>Enet</Filter>
     </ClInclude>
     <ClInclude Include="lua\src\lapi.h">
       <Filter>Lua</Filter>
@@ -392,9 +332,6 @@
     <ClInclude Include="lua\src\ltm.h">
       <Filter>Lua</Filter>
     </ClInclude>
-    <ClInclude Include="lua\src\lua.h">
-      <Filter>Lua</Filter>
-    </ClInclude>
     <ClInclude Include="lua\src\luaconf.h">
       <Filter>Lua</Filter>
     </ClInclude>
@@ -410,8 +347,11 @@
     <ClInclude Include="lua\src\lzio.h">
       <Filter>Lua</Filter>
     </ClInclude>
-    <ClInclude Include="ccPlayerStruct.h">
-      <Filter>Source Files\Player</Filter>
+    <ClInclude Include="lua\src\lua.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="PrmFunctions.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
