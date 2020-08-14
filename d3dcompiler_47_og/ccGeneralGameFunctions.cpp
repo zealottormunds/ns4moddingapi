@@ -380,14 +380,13 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 					{
 						if (msg == MessageID[x])
 						{
-							strcpy(result, MessageStr[x].c_str());
-							//result = (char*)(MessageStr[x].c_str());
+							result = (char*)MessageStr[x].c_str();
 						}
 					}
 				}
+				if (msg != (std::string)(char*)MessageToDecode) result = (char*)msg.c_str();
 			}
 		}
-
 		return (uintptr_t)result;
 	}
 	else
