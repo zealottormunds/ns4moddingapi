@@ -19,6 +19,8 @@
 using namespace moddingApi;
 using namespace std;
 
+
+//Patch Notes
 char ccGeneralGameFunctions::MAX_GAME_VERSION = 9;
 
 // GAME INFO HOOK
@@ -207,19 +209,17 @@ uintptr_t ccGeneralGameFunctions::Cpk_LoadXfbin(void * path)
 // Get mod list string
 std::string GetModMessage()
 {
-	string st = "<color red>Naruto Storm 4</color> Modding API by Zealot Tormunds\n\n";
+	// Color codes
+	string blue = "<color blue>";
+	string red = "<color red>";
+	string yellow = "<color yellow>";
+	string reset = "</color>";
+
+	//Credits
+	string st = "lol";
 	if (ccMain::ModList.size() > 0)
 	{
-		st = st + "<color yellow>Mod List:</color>\n";
-		for (int x = 0; x < ccMain::ModCount; x++)
-		{
-			st = st + "> " + ccMain::ModList[x];
-			if (ccMain::ModAuth[x] != "") st = st + " <color yellow>(" + ccMain::ModAuth[x] + ")</color>\n";
-			else st = st + "\n";
-		}
-
-		st = st + "\n";
-		st = st + "<color yellow>" + to_string(ccMain::ModList.size()) + " mods installed</color>";
+		st = yellow + "Perfect Storm Version 1.0" + reset + "\n\n" + red + "Mod Pack Credits:" + reset + "\nLead Developer - Exavadeathwitch \nLead Designer - PlaycoArmboy \nTesters - Raghbir, Poisoned, Malice \nCostume Modders - Hydrabladez, Chakrawarrior2012, akiaki, Haikal \nMoveset Modders - Eliteace, TobiisTenten, Valant96 \nEngine Modders - Nighlin \nSound Modder - TheOneOfAll \nSpecial thanks to Zealot and R.A.G. for the modding API. \nSuper special thanks to TheWalkingAmongTheDead, Theovanua, Typhonua, Crownclown, Portable Productions, and UltimateOmbuStorm for providing code and models.";
 	}
 	else
 	{
@@ -299,14 +299,14 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 				result = "";
 				finished = true;
 			}
-
+			// Patch Notes Stuff/After Credits Screen
 			if (finished == false)
 			{
 				string msg((char*)MessageToDecode);
-
-				if (msg == "network_agreement_select") result = "Press any button to continue";
-				else if (msg == "network_agreement_ok") result = "";
-				else if (msg == "network_agreement_ng") result = "<icon btn_2 />";
+				if (msg == "network_agreement_select") result = "Thanks for Playing!";
+				else if (msg == "network_agreement_ok") result = "Patch Notes";
+				else if (msg == "network_agreement_ng") result = "Continue to Game!";
+				else if (msg == "network_privacy_s-A") result = "patchnotes";
 				else
 				{
 					for (int x = 0; x < MessageID.size(); x++)
