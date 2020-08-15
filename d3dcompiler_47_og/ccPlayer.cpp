@@ -196,7 +196,6 @@ uintptr_t ccPlayer::GetPlayerStatus(int n)
 	uintptr_t *p2 = 0;
 	uintptr_t *p3 = 0;
 	uintptr_t *p4 = 0;
-
 	p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x161B738);
 	if (*p1 == 0) return 0;
 	p2 = (uintptr_t*)(*p1 + 0x20);
