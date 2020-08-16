@@ -15,12 +15,11 @@
 #include "HookFunctions.h"
 #include "ccMain.h"
 #include <filesystem>
-#include "MMSystem.h"
-#include "SDL2/include/SDL.h"
+
 using namespace moddingApi;
 using namespace std;
 
-#define FILE_PATH "./res/audio/testClip.wav"
+
 //Patch Notes
 char ccGeneralGameFunctions::MAX_GAME_VERSION = 9;
 
@@ -220,8 +219,6 @@ std::string GetModMessage()
 	string st = "lol";
 	if (ccMain::ModList.size() > 0)
 	{
-		bool played=PlaySound(TEXT("sounds/test.wav"), NULL, SND_ASYNC);
-		cout << "Success or Not:" << played << endl;
 		st = yellow + "Perfect Storm Version 1.0" + reset + "\n\n" + red + "Mod Pack Credits:" + reset + "\nLead Developer - Exavadeathwitch \nLead Designer - PlaycoArmboy \nTesters - Raghbir, Poisoned, Malice \nCostume Modders - Hydrabladez, Chakrawarrior2012, akiaki, Haikal \nMoveset Modders - Eliteace, TobiisTenten, Valant96 \nEngine Modders - Nighlin \nSound Modder - TheOneOfAll \nSpecial thanks to Zealot and R.A.G. for the modding API. \nSuper special thanks to TheWalkingAmongTheDead, Theovanua, Typhonua, Crownclown, Portable Productions, and UltimateOmbuStorm for providing code and models.";
 	}
 	else
