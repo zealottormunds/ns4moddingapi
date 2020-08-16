@@ -219,7 +219,9 @@ std::string GetModMessage()
 	string st = "lol";
 	if (ccMain::ModList.size() > 0)
 	{
-		st = yellow + "Perfect Storm Version 1.0" + reset + "\n\n" + red + "Mod Pack Credits:" + reset + "\nLead Developer - Exavadeathwitch \nLead Designer - PlaycoArmboy \nTesters - Raghbir, Poisoned, Malice \nCostume Modders - Hydrabladez, Chakrawarrior2012, akiaki, Haikal \nMoveset Modders - Eliteace, TobiisTenten, Valant96 \nEngine Modders - Nighlin \nSound Modder - TheOneOfAll \nSpecial thanks to Zealot and R.A.G. for the modding API. \nSuper special thanks to TheWalkingAmongTheDead, Theovanua, Typhonua, Crownclown, Portable Productions, and UltimateOmbuStorm for providing code and models.";
+		st = yellow + "Perfect Storm Version 1.0" +
+			reset + "\n\n" + red + "Mod Pack Credits:" + 
+			reset + "\nLead Developer - Exavadeathwitch \nLead Designer - PlaycoArmboy \nTesters - Raghbir, Poisoned, Malice \nCostume Modders - Hydrabladez, Chakrawarrior2012, akiaki, Haikal \nMoveset Modders - Eliteace, TobiisTenten, Valant96 \nEngine Modders - Nighlin \nSound Modder - TheOneOfAll \nSpecial thanks to Zealot and R.A.G. for the modding API. \nSuper special thanks to TheWalkingAmongTheDead, Theovanua, Typhonua, Crownclown, Portable Productions, and UltimateOmbuStorm for providing code and models.";
 	}
 	else
 	{
