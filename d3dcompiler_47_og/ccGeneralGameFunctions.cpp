@@ -6,19 +6,18 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-
+#include <filesystem>
 #pragma comment(lib, "XInput.lib")
 #include <Xinput.h>
-
 #include "ccGeneralGameFunctions.h"
 #include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
 #include "ccMain.h"
-#include <filesystem>
-
+#include "SDL.h"
+#include "soloud/include/soloud.h"
+#include "soloud/include/soloud_wav.h"
 using namespace moddingApi;
 using namespace std;
-
 
 //Patch Notes
 char ccGeneralGameFunctions::MAX_GAME_VERSION = 9;
