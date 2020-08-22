@@ -13,9 +13,6 @@
 #include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
 #include "ccMain.h"
-#include "SDL.h"
-#include "soloud/include/soloud.h"
-#include "soloud/include/soloud_wav.h"
 using namespace moddingApi;
 using namespace std;
 
