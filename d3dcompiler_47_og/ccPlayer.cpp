@@ -14,7 +14,7 @@
 #include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
 #include "ccGameProperties.h"
-//#include "Input.h"
+#include "Input.h"
 #include "LuaHook.h"
 #include "ccMemoryFunctions.h"
 #include "ccPlayerStruct.h"
@@ -132,9 +132,9 @@ void ccPlayer::Loop()
 		if (h <= 0) return; // If the health is 0 or less than 0, stop the code.
 
 		// This disables armor break
-		if (GetPlayerFloatProperty(p, s, "armorbreak") < 45)
+		if (GetPlayerFloatProperty(p, s, "armorbreak") < 45.0f)
 		{
-			SetPlayerFloatProperty(p, s, "armorbreak", 45);
+			SetPlayerFloatProperty(p, s, "armorbreak", 45.0f);
 		}
 
 		//SetPlayerFloatProperty(p, s, "modelscale", GetPlayerFloatProperty(p, s, "chakra") / 100);
@@ -196,7 +196,7 @@ uintptr_t ccPlayer::GetPlayerStatus(int n)
 	uintptr_t *p2 = 0;
 	uintptr_t *p3 = 0;
 	uintptr_t *p4 = 0;
-	p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x161B738);
+	p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x16BDA20);
 	if (*p1 == 0) return 0;
 	p2 = (uintptr_t*)(*p1 + 0x20);
 	if (*p2 == 0) return 0;

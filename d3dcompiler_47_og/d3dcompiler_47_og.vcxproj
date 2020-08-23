@@ -173,6 +173,7 @@
     <ClCompile Include="enet\unix.c" />
     <ClCompile Include="enet\win32.c" />
     <ClCompile Include="HookFunctions.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="LuaHook.cpp" />
     <ClCompile Include="LuaHook_Commands.cpp" />
     <ClCompile Include="lua\src\lapi.c" />
@@ -236,6 +237,7 @@
     <ClInclude Include="enet\utility.h" />
     <ClInclude Include="enet\win32.h" />
     <ClInclude Include="HookFunctions.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="LuaHook.h" />
     <ClInclude Include="LuaHook_Commands.h" />
     <ClInclude Include="lua\src\lapi.h" />
