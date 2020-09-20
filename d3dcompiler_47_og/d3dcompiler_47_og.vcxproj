@@ -22,7 +22,7 @@
     <ProjectGuid>{3941E9F8-2E29-4D69-8717-F74562ED5301}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>d3dcompiler_47_og</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>d3dcompiler_47</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -50,7 +50,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -139,6 +139,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;D3DCOMPILER_47_OG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\Ares\Documents\GitHub\Perfect-Storm\d3dcompiler_47_og\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -146,7 +147,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>d3dcompiler_47_og.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\dll\d3dcompiler_47_og;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Ares\Documents\GitHub\Perfect-Storm\d3dcompiler_47_og\SDL2\lib\x64;C:\Program Files %28x86%29\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\dll\d3dcompiler_47_og;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;ws2_32.lib;enet64.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -172,6 +173,7 @@
     <ClCompile Include="enet\unix.c" />
     <ClCompile Include="enet\win32.c" />
     <ClCompile Include="HookFunctions.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="LuaHook.cpp" />
     <ClCompile Include="LuaHook_Commands.cpp" />
     <ClCompile Include="lua\src\lapi.c" />
@@ -235,6 +237,7 @@
     <ClInclude Include="enet\utility.h" />
     <ClInclude Include="enet\win32.h" />
     <ClInclude Include="HookFunctions.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="LuaHook.h" />
     <ClInclude Include="LuaHook_Commands.h" />
     <ClInclude Include="lua\src\lapi.h" />

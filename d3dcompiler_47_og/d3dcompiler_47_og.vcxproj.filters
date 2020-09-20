@@ -210,6 +210,9 @@
     <ClCompile Include="PrmFunctions.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API_Console.h">
@@ -351,6 +354,9 @@
       <Filter>Lua</Filter>
     </ClInclude>
     <ClInclude Include="PrmFunctions.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
