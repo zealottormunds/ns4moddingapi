@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -89,7 +89,7 @@ void ccBossIAFunctions::LoadSwordQTE(uintptr_t a1, char * anmPath, char * anmNam
 	{
 		Sub00(*v4);
 		result = Sub01(*(INT64*)(v3 + 520), anmPath, anmName);
-	}*/
+	}*//*
 }
 
 // Play IA
@@ -113,3 +113,4 @@ int ccBossIAFunctions::ccOpenHudMoney()
 
 	return g_ccOpenHudMoney();
 }
+*/

@@ -1,4 +1,4 @@
-#ifndef PLAYERSTRUCT_H 
+/*#ifndef PLAYERSTRUCT_H 
 #define PLAYERSTRUCT_H
 #pragma once
 
@@ -26,3 +26,4 @@ namespace moddingApi
 }
 
 #endif
+*/

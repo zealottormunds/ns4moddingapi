@@ -31,10 +31,10 @@ BYTE originalInit2Info[17];
 bool Hook2(void*, void*, int);
 bool Hook3(void*, void*, int);
 
-void DoMeHook()
-{
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7F49C8), (void*)ccPlayer::meTest, 18);
-}
+//void DoMeHook()
+//{
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7F49C8), (void*)ccPlayer::meTest, 18);
+//}
 
 int fc_msgtostring = 0xAB8720;
 int fc_msgtostring_3 = 0xAB87D0;

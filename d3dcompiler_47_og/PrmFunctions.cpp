@@ -1,4 +1,4 @@
-#include <Winsock2.h>
+/*#include <Winsock2.h>
 #include <windows.h>
 
 #include "PrmFunctions.h"
@@ -57,3 +57,4 @@ void PrmFunctions::ImplementFunctions()
 	}
 
 }
+*/

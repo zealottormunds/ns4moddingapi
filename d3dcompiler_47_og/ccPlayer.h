@@ -49,7 +49,7 @@ namespace moddingApi
 		// Placeholders, change order when functions are done
 		static int ccPlayer::GetCanDoJutsuChakra(uintptr_t p, uintptr_t s);
 		static int ccPlayer::GetAwakenedState(uintptr_t p, uintptr_t s);
-		static __int64 __fastcall meTest(__int64 a1);
+		// static __int64 __fastcall meTest(__int64 a1);
 	private:
 		static vector<uintptr_t> ccPlayer::memcpy_verify(vector<uintptr_t> ptrs, vector<uintptr_t> offsets, size_t size);
 		static int ccPlayer::LoopForNum(int loopAmt, uintptr_t compare, uintptr_t(*f)(int));

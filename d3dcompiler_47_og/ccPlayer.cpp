@@ -1,4 +1,4 @@
-#include "enet/enet.h"
+/*#include "enet/enet.h"
 
 #include <WinSock2.h>
 #include <windows.h>
@@ -129,11 +129,12 @@ void ccPlayer::Loop()
 
 		// If pointers aren't null, let's check the health of the current player.
 		float h = GetPlayerFloatProperty(p, s, "health");
+		cout << h << endl;
 		if (h <= 0) return; // If the health is 0 or less than 0, stop the code.
 
 		// This disables armor break
-		if (GetPlayerFloatProperty(p, s, "armorbreak") < 45.0f) { SetPlayerFloatProperty(p, s, "armorbreak", 45.0f); }
-		if (GetPlayerFloatProperty(ep, es, "armorbreak") < 45.0f) { SetPlayerFloatProperty(ep, es, "armorbreak", 45.0f); }
+		if (GetPlayerFloatProperty(p, s, "armor") < 45.0f) { SetPlayerFloatProperty(p, s, "armor", 45.0f); }
+		if (GetPlayerFloatProperty(ep, es, "armor") < 45.0f) { SetPlayerFloatProperty(ep, es, "armor", 45.0f); }
 		if (GetPlayerFloatProperty(sp1, ss1, "armor") < 45.0f) { SetPlayerFloatProperty(sp1, ss1, "armor", 45.0f); }
 		if (GetPlayerFloatProperty(esp1, ess1, "armor") < 45.0f) { SetPlayerFloatProperty(esp1, ess1, "armor", 45.0f); }
 		if (GetPlayerFloatProperty(sp2, ss2, "armor") < 45.0f) { SetPlayerFloatProperty(sp2, ss2, "armor", 45.0f); }
@@ -160,6 +161,7 @@ void ccPlayer::InitializeCharacter(int c, int plNum)
 		plMain[plNum] = plm;
 		break;
 	}*/
+/*
 	}
 	cout << "Created pl at " << hex << plm << "\n";
 }
@@ -172,7 +174,7 @@ void ccPlayer::DeleteCharacter(int c, int plNum)
 	/*case 0x19:
 		delete &(*(ccPlayerMain_2ITC*)(plm));
 		break;*/
-	}
+	/*}/*
 	cout << "Deleted pl at " << hex << plm << "\n";
 	plMain[plNum] = 0;
 }
@@ -215,12 +217,12 @@ int ccPlayer::LoopForNum(int loopAmt, uintptr_t compare, uintptr_t(*f)(int)) {
 	}
 	return n;
 }
-// This function gets the player status (health, chakra, subs...)
+// This function gets the player status (health, chakra, subs...) S Value
 uintptr_t ccPlayer::GetPlayerStatus(int n)
 {
 	// Initialize pointers and the core offset
 	uintptr_t p1 = 0, p2 = 0, p3 = 0, p4 = 0;
-	uintptr_t mb_offset = d3dcompiler_47_og::moduleBase - 0xC00 + 0x16BDA20;
+	uintptr_t mb_offset = d3dcompiler_47_og::moduleBase - 0xC00 + 0x161C908;
 	vector<uintptr_t> ptrs, offsets;
 
 	// Depending on whether "n" is set to 1 or not will change which offsets we use
@@ -254,7 +256,7 @@ int ccPlayer::GetPlayerStatusNumber(uintptr_t s) { return LoopForNum(2, s, ccPla
 int ccPlayer::GetPlayerInfoNumber(uintptr_t p) { return LoopForNum(2, p, ccPlayer::GetPlayerInfo); }
 
 
-// This function gets the player info (world position, scale, speed...)
+// This function gets the player info (world position, scale, speed...) P Value
 uintptr_t ccPlayer::GetPlayerInfo(int n)
 {
 	uintptr_t a = ccPlayer::GetPlayerStatus(n);
@@ -364,15 +366,15 @@ void ccPlayer::SetPlayerFloatProperty(uintptr_t p, uintptr_t s, char* prop, floa
 }
 
 // Gets the player position in a Vector3
-Vector3 ccPlayer::GetPlayerPosition(uintptr_t p, uintptr_t s)
-{
-	return Vector3
-	(
-		GetPlayerFloatProperty(p, s, "posx"),
-		GetPlayerFloatProperty(p, s, "posy"),
-		GetPlayerFloatProperty(p, s, "posz")
-	);
-}
+//Vector3 ccPlayer::GetPlayerPosition(uintptr_t p, uintptr_t s)
+//{
+	//return Vector3
+	//(
+	//	GetPlayerFloatProperty(p, s, "posx"),
+	//	GetPlayerFloatProperty(p, s, "posy"),
+	//	GetPlayerFloatProperty(p, s, "posz")
+	//);
+//}
 
 // Calculates the distance between two given players
 float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es)
@@ -380,3 +382,4 @@ float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintpt
 	return 0;
 	//return Vector3::Distance(GetPlayerPosition(p, s), GetPlayerPosition(ep, es));
 }
+*/
