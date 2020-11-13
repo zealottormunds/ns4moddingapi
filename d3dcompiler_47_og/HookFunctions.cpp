@@ -1,4 +1,3 @@
-#include <WinSock2.h>
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
@@ -16,7 +15,6 @@
 #include "LuaHook.h"
 #include "ccCharacterFunctions.h"
 #include "ccGameProperties.h"
-#include "PrmFunctions.h"
 
 using namespace moddingApi;
 using namespace std;
@@ -31,103 +29,73 @@ BYTE originalInit2Info[17];
 bool Hook2(void*, void*, int);
 bool Hook3(void*, void*, int);
 
-//void DoMeHook()
-//{
-	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7F49C8), (void*)ccPlayer::meTest, 18);
-//}
-
-int fc_msgtostring = 0xAB8720;
-int fc_msgtostring_3 = 0xAB87D0;
-
-void CreateVersionString()
-{
-	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x861ACB), 3, PAGE_EXECUTE_READWRITE, &dwOld);
-	BYTE newOffset[] = { 0xE1, 0x7F, 0x88 };
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x861ACB), newOffset, 3);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x861ACB), 3, dwOld, &dwOld);
-
-	dwOld = 0;
-	char* destination = (char*)(d3dcompiler_47_og::RecalculateAddress(0x10E96B0));
-	VirtualProtect((void*)(d3dcompiler_47_og::RecalculateAddress(0x10E96B0)), 0x64, PAGE_EXECUTE_READWRITE, &dwOld);
-	char* version = "1.09 (Storm 4 Modding API by Zealot Tormunds)";
-	strcpy(destination, version);
-	VirtualProtect((void*)(d3dcompiler_47_og::RecalculateAddress(0x10E96B0)), 0x64, dwOld, &dwOld);
-
-	cout << "Created version string in " << std::hex << d3dcompiler_47_og::RecalculateAddress(0x10E96B0) << endl;
-}
-
 // WRITE ALL THE FUNCTIONS YOU WANT TO HOOK IN HERE
 void HookFunctions::InitializeHooks()
 {
-	CreateVersionString();
+	//ccPlayer::InitAwakening();
 
-	//// PrmFunctions::ImplementFunctions();
-	//DoMeHook();
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x85CC80), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14); // GetVersionString hook
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x8607EC), (void*)ccGeneralGameFunctions::GetVersionStringAPI, 14);
 
-	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), 19); // Fixed
+	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19); // Fixed
 	HookFunctions::DoMessageInfoHook();
-	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), 19); // Fixed
+	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19); // Fixed
 	HookFunctions::DoMessageInfoHook2();
 
-	// LuaHook::HookDeclareFunction();
+
+	LuaHook::HookDeclareFunction();
 	// NOT FIXED YET!
 	
-	//// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
-	//// NOT FIXED YET!
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
+	// NOT FIXED YET!
 	
-	//// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450E28), (void*)LuaHook::ccGroupBattleEventCameraMovePosBeginCoop, 14);
+	//HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450E28), (void*)LuaHook::ccGroupBattleEventCameraMovePosBeginCoop, 14);
 
-	//// Hook charsel
-	//// ccCharacterFunctions::DoCharacterSelectParamHook();
+	// Hook charsel
+	//ccCharacterFunctions::DoCharacterSelectParamHook();
 
-	//// Game properties hook
-	//// ccGameProperties::DoGamePropertiesHook();
+	// Game properties hook
+	//ccGameProperties::DoGamePropertiesHook();
 
-	//// Init game hook
-	//// ccGameProperties::DoInitHook();
+	// Init game hook
+	//ccGameProperties::DoInitHook();
 
-	//// AutoSaveCaution
-	//// ccGameProperties::DoAutoSaveHook();
+	// AutoSaveCaution
+	//ccGameProperties::DoAutoSaveHook();
 
-	//// Game Info Hook
-	//// ccGeneralGameFunctions::DoGameInfoHook();
+	// Game Info Hook
+	//ccGeneralGameFunctions::DoGameInfoHook();
 
-	// ccCharacterFunctions::PartnerFunctions();
-	// NOT FIXED YET!!!
-
-	// ccCharacterFunctions::SpecialCondFunctions();
-	// NOT FIXED YET!!!
+	// Test NOT FIXED YET!!!
+	ccCharacterFunctions::PartnerFunctions();
+	ccCharacterFunctions::SpecialCondFunctions();
+	//ccCharacterFunctions::Hook_COND_BKKX();
 }
 
-// Fixed
 void HookFunctions::DoMessageInfoHook()
 {
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), (void*)ccGeneralGameFunctions::Hook_MsgToString, 19);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), (void*)ccGeneralGameFunctions::Hook_MsgToString, 19);
 }
 
-// Fixed
 void HookFunctions::UndoMessageInfoHook()
 {
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), 19, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), originalMsgInfo, 19);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), 19, dwOld, &dwOld);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), originalMsgInfo, 19);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7BF0), 19, dwOld, &dwOld);
 }
 
-// Fixed
 void HookFunctions::DoMessageInfoHook2()
 {
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), (void*)ccGeneralGameFunctions::Hook_MsgToString_Alt, 19);
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), (void*)ccGeneralGameFunctions::Hook_MsgToString_Alt, 19);
 }
 
-// Fixed
 void HookFunctions::UndoMessageInfoHook2()
 {
 	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), 19, PAGE_EXECUTE_READWRITE, &dwOld);
-	memcpy((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), originalMsgInfo2, 19);
-	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), 19, dwOld, &dwOld);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19, PAGE_EXECUTE_READWRITE, &dwOld);
+	memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), originalMsgInfo2, 19);
+	VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xAB7CA0), 19, dwOld, &dwOld);
 }
 
 // FUNCTION TO HOOK

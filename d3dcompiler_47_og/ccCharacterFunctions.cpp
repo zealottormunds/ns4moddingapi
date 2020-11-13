@@ -1,6 +1,4 @@
-#include <Winsock2.h>
 #include <windows.h>
-
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -9,9 +7,6 @@
 #include "ccCharacterFunctions.h"
 #include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
-
-#include <WinSock2.h>
-#include <time.h>
 
 using namespace moddingApi;
 using namespace std;
@@ -232,6 +227,7 @@ void ccCharacterFunctions::SpecialCondFunctions()
 }
 
 // COND_BKKX FOR COOP
+#include <time.h>
 vector<uintptr_t> ccCharacterFunctions::charPointer;
 vector<long long> ccCharacterFunctions::charAllocTime;
 void Unhook_COND_BKKX();

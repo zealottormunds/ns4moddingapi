@@ -1,4 +1,4 @@
-/*#include "Input.h"
+#include "Input.h"
 #include <stdio.h>
 #include <Windows.h>
 
@@ -34,4 +34,3 @@ bool Input::GetKeyUp(char k)
 
 bool Input::pressedKeys[0xFF]{ 0 };
 bool Input::pressedKeysPrev[0xFF]{ 0 };
-*/

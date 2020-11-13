@@ -4,7 +4,6 @@
 ** See Copyright Notice in lua.h
 */
 
-#include <WinSock2.h>
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,4 +1,3 @@
-#include <WinSock2.h>
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
@@ -12,16 +11,14 @@
 #include "API_Console.h"
 #include "d3dcompiler_47_og.h"
 #include "ccGeneralGameFunctions.h"
-#include "ccGameProperties.h"
 #include "ccCharacterFunctions.h"
 #include "ccBossIAFunctions.h"
 #include "HookFunctions.h"
 #include "ccPlayer.h"
-
-#include "FileParser.h"
-
+#include "Memory.h"
 using namespace moddingApi;
 using namespace std;
+using namespace std::experimental;
 
 int Console_GetInt(char*);
 char * Console_GetString(char*);
@@ -33,7 +30,9 @@ DWORD WINAPI ccMain::Main()
 {
 	// Read all the mods and configs
 	ccMain::ReadApiFiles();
-
+	//Establishes Memory
+	External::Memory memory = External::Memory("NSUNS4.exe");
+	cout << "Memory Established";
 	// Initialize the function hooks
 	HookFunctions::InitializeHooks();
 
@@ -41,7 +40,7 @@ DWORD WINAPI ccMain::Main()
 	EnableAPI = true;
 
 	// Read CPK
-	//ReadCpk();
+	ReadCpk();
 
 	// Enable the game thread (this is for player modification in game)
 	CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::LoopGame, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
@@ -81,8 +80,7 @@ DWORD WINAPI ccMain::LoopGame()
 {
 	while (true)
 	{
-		//ccPlayer::Loop();
-
+		ccPlayer::Loop();
 		Sleep(10);
 	}
 	return 0;
@@ -169,10 +167,10 @@ void ccMain::ReadApiFiles()
 		{
 			cout << "Enable mod list" << endl;
 			DWORD dwOld = 0;
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E56CE), 1, PAGE_EXECUTE_READWRITE, &dwOld);
+			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), 1, PAGE_EXECUTE_READWRITE, &dwOld);
 			BYTE a = 0;
-			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x6E56CE), &a, 1);
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E56CE), 1, dwOld, &dwOld);
+			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), &a, 1);
+			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0x6E3C0A), 1, dwOld, &dwOld);
 		}
 
 		cout << "Config finished..." << endl;
@@ -180,7 +178,7 @@ void ccMain::ReadApiFiles()
 		// Start reading mods
 		strcat(ApiPath, "mods\\");
 
-		for (const auto & entry : filesystem::directory_iterator(ApiPath))
+		for (const auto & entry : std::filesystem::directory_iterator(ApiPath))
 		{
 			std::string s = entry.path().string();
 
@@ -195,7 +193,7 @@ void ccMain::ReadApiFiles()
 
 			//cout << InfoPath << endl;
 
-			if (filesystem::exists(InfoPath) == true)
+			if (std::filesystem::exists(InfoPath) == true)
 			{
 				BYTE actual = 0;
 				string modName;
@@ -233,7 +231,7 @@ void ccMain::ReadApiFiles()
 				{
 					// Start reading mod files
 					vector<string> files;
-					for (const auto & f : filesystem::directory_iterator(ModPath))
+					for (const auto & f : std::filesystem::directory_iterator(ModPath))
 					{
 						string _file = f.path().string();
 						string _ext = _file.substr(_file.length() - 4, 4);
@@ -261,11 +259,11 @@ void ccMain::ReadApiFiles()
 						}
 						else if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "partnerSlotParam.xfbin")
 						{
-							//ReadPartnerSlotParam(_file);
+							ReadPartnerSlotParam(_file);
 						}
 						else if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "specialCondParam.xfbin")
 						{
-							//ReadSpecialConditionParam(_file);
+							ReadSpecialConditionParam(_file);
 						}
 					}
 					ccMain::ModCount++;
@@ -312,7 +310,7 @@ void ccMain::ReloadParamFiles()
 	ccCharacterFunctions::c_specialCondCodes.clear();
 	ccCharacterFunctions::c_specialCondFunct.clear();
 
-	for (const auto & entry : filesystem::directory_iterator(ApiPath))
+	for (const auto & entry : std::filesystem::directory_iterator(ApiPath))
 	{
 		std::string s = entry.path().string();
 
@@ -327,7 +325,7 @@ void ccMain::ReloadParamFiles()
 
 		//cout << InfoPath << endl;
 
-		if (filesystem::exists(InfoPath) == true)
+		if (std::filesystem::exists(InfoPath) == true)
 		{
 			BYTE actual = 0;
 			string modName;
@@ -367,7 +365,7 @@ void ccMain::ReloadParamFiles()
 			{
 				// Start reading mod files
 				vector<string> files;
-				for (const auto & f : filesystem::directory_iterator(ModPath))
+				for (const auto & f : std::filesystem::directory_iterator(ModPath))
 				{
 					string _file = f.path().string();
 					string _ext = _file.substr(_file.length() - 4, 4);

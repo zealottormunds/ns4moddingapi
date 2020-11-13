@@ -1,6 +1,4 @@
-#include <Winsock2.h>
 #include <windows.h>
-
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -15,6 +13,7 @@
 #include "ccMain.h"
 #include "ccGeneralGameFunctions.h"
 #include "MultiMatch.h"
+#include "ztRpgMain.h"
 #include "ccGameProperties.h"
 
 using namespace std;
@@ -316,14 +315,6 @@ int __fastcall LuaHook::fc_ccMoveCast(char* a1, float a2, float a3, float a4, fl
 	typedef int(__fastcall * fc_funct)(char* a1, float a2, float a3, float a4, float a5, float a6);
 	fc_funct fc_cc_funct;
 	fc_cc_funct = (fc_funct)(d3dcompiler_47_og::moduleBase + 0x5316B0);
-	return fc_cc_funct(a1, a2, a3, a4, a5, a6);
-}
-
-int __fastcall LuaHook::fc_ccMoveDirection(char* a1, float a2, float a3, float a4, float a5, float a6)
-{
-	typedef int(__fastcall * fc_funct)(char* a1, float a2, float a3, float a4, float a5, float a6);
-	fc_funct fc_cc_funct;
-	fc_cc_funct = (fc_funct)(d3dcompiler_47_og::moduleBase + 0x5317DC);
 	return fc_cc_funct(a1, a2, a3, a4, a5, a6);
 }
 
@@ -802,13 +793,12 @@ INT64 __fastcall DeclareFunctionAPI(INT64 a1, char* a2, INT64 a3)
 	if (isLast)
 	{
 		LuaAddFunct("ccHelloWorld", (void*)lua_test);
-		//LuaAddFunct("ccTestRpg", (void*)ztRpgMain::rpg_test);
+		LuaAddFunct("ccTestRpg", (void*)ztRpgMain::rpg_test);
 		LuaAddFunct("ccCout", (void*)ccCoutLua);
 		LuaAddFunct("ztGetLoadStageName", (void*)LuaHook::ztGetLoadStageName);
 		LuaAddFunct("ztGetStringArraySize", (void*)LuaHook::ztGetStringArraySize);
 		LuaAddFunct("ztGetStringArray", (void*)LuaHook::ztGetStringArray);
 		LuaAddFunct("ztRestartSt", (void*)LuaHook::ztRestartSt);
-		LuaAddFunct("ztLoadFiles", (void*)LuaHook::ztLoadFiles);
 
 		// Old multimatch functions. These will be updated eventually.
 		//LuaAddFunct("ccInitializeMultiMatch", (void*)MultiMatch::ccInitializeMultiMatch);
@@ -921,18 +911,6 @@ int LuaHook::ztRestartSt(__int64 a1)
 	{
 		actualst = 0;
 		cout << "Restarted st" << endl;
-	}
-
-	return 1;
-}
-
-int LuaHook::ztLoadFiles(__int64 a1)
-{
-	__int64 ptr;
-	
-	if (LuaHook::funct_getArgument_noobject(a1, 1, (__int64)&ptr))
-	{
-		//Scene::LoadSceneFiles();
 	}
 
 	return 1;

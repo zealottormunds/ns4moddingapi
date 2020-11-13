@@ -1,7 +1,4 @@
-#ifndef MEMFUNCTIONS_H 
-#define MEMFUNCTIONS_H
 #pragma once
-
 #include <stdio.h>
 
 namespace moddingApi
@@ -13,5 +10,3 @@ namespace moddingApi
 		static void memcpy(void* Dst, void* Source, size_t count);
 	};
 }
-
-#endif

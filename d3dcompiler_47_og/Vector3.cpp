@@ -108,32 +108,3 @@ Vector3 Vector3::lerp(Vector3 a, Vector3 b, float m)
 		a.z + (addtoz * m)
 	);
 }
-
-bool Vector3::operator==(const Vector3& vector) const
-{
-	bool equal = false;
-
-	if (x == vector.x && y == vector.y && z == vector.z) equal = true;
-
-	return equal;
-}
-
-Vector3 Vector3::operator+(const Vector3& vector) const
-{
-	return Vector3(x + vector.x, y + vector.y, z + vector.z);
-}
-
-Vector3 Vector3::operator-(const Vector3 & vector) const
-{
-	return Vector3(x - vector.x, y - vector.y, z - vector.z);
-}
-
-Vector3 Vector3::operator*(const float mag) const
-{
-	return Vector3(x * mag, y * mag, z * mag);
-}
-
-Vector3 Vector3::operator/(const float mag) const
-{
-	return Vector3(x / mag, y / mag, z / mag);
-}

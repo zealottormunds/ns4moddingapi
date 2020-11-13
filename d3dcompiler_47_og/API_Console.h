@@ -1,8 +1,8 @@
-#ifndef API_CONSOLE_H 
-#define API_CONSOLE_H
 #pragma once
 
 #include <vector>
+
+using namespace std;
 
 namespace moddingApi
 {
@@ -10,8 +10,6 @@ namespace moddingApi
 	{
 	public:
 		static void InitializeConsole();
-		static void DoConsoleCommand(std::string cmd);
+		static void DoConsoleCommand(string cmd);
 	};
 }
-
-#endif

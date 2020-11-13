@@ -1,4 +1,3 @@
-/*
 #include <stdio.h>
 #include <iostream>
 
@@ -77,4 +76,3 @@ uintptr_t ccBattleFunctions::Battle_FillSubstitution(uintptr_t a1, int a2, float
 
 	return result;
 }
-*/

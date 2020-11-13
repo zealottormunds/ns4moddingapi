@@ -1,4 +1,3 @@
-#include <WinSock2.h>
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
@@ -32,14 +31,6 @@ int ccGameProperties::isOnBattle()
 	int v = 0;
 	memcpy(&v, (void*)(d3dcompiler_47_og::moduleBase + 0x155F8E4 - 0xC00), 4);
 	return v;
-}
-
-string ccGameProperties::GetActiveWindowTitle()
-{
-	char wnd_title[256];
-	HWND hwnd = GetForegroundWindow(); // get handle of currently active window
-	GetWindowText(hwnd, wnd_title, sizeof(wnd_title));
-	return wnd_title;
 }
 
 constexpr unsigned int ccGameProperties::str2int(const char* str, int h)

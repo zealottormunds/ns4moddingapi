@@ -1,4 +1,3 @@
-#include <WinSock2.h>
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
@@ -8,15 +7,13 @@
 #include "d3dcompiler_47_og.h"
 #include "ccMain.h"
 
-#pragma warning( disable: 4305 )
-#pragma warning( disable: 4307 )
-
 using namespace moddingApi;
 using namespace std;
 
 uintptr_t d3dcompiler_47_og::moduleBase;
 uintptr_t d3dcompiler_47_og::st_hModule;
 uintptr_t d3dcompiler_47_og::datasection;
+uintptr_t d3dcompiler_47_og::systemInfo;
 
 HINSTANCE mHinst = 0, mHinstDLL = 0;
 extern "C" UINT_PTR mProcs[29] = { 0 };
@@ -35,6 +32,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved, HMO
 		d3dcompiler_47_og::st_hModule = (uintptr_t)hModule;
 		d3dcompiler_47_og::moduleBase = (uintptr_t)GetModuleHandle(NULL) + 0xC00;
 		d3dcompiler_47_og::datasection = (uintptr_t)GetModuleHandle(NULL) + 0x13B6000;
+		d3dcompiler_47_og::systemInfo = (uintptr_t)GetModuleHandle(NULL) + 0x161B738;
 		// 7FF716C86000+1416bdd10
 
 		// Start API

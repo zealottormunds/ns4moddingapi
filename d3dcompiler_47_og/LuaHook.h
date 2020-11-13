@@ -1,9 +1,7 @@
-#ifndef LUAHOOK_H 
-#define LUAHOOK_H
 #pragma once
 
 #include <vector>
-
+#include <string>
 namespace moddingApi
 {
 	class LuaHook
@@ -50,7 +48,6 @@ namespace moddingApi
 		static int __fastcall fc_ccSetFaceDirection(char* a1, float a2, float a3, float a4);
 		static int __fastcall fc_ccMoveFaceDirection(char* a1, float a2, float a3, float a4, float a5, float a6);
 		static int __fastcall fc_ccMoveCast(char* a1, float a2, float a3, float a4, float a5, float a6);
-		static int __fastcall fc_ccMoveDirection(char* a1, float a2, float a3, float a4, float a5, float a6);
 		static int __fastcall fc_ccSetCastMotionWithInterpolation(char* a1, char* a2, char* a3, float a4);
 		static int __fastcall fc_ccDispCast(char* a1, bool a2);
 		static int __fastcall fc_ccDeleteCast(char* a1);
@@ -86,8 +83,5 @@ namespace moddingApi
 		static int ztGetStringArraySize(__int64 a1);
 		static int ztGetStringArray(__int64 a1);
 		static int ztRestartSt(__int64 a1);
-		static int ztLoadFiles(__int64 a1);
 	};
 }
-
-#endif

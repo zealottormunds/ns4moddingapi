@@ -1,6 +1,8 @@
-/*#ifndef PLAYERSTRUCT_H 
-#define PLAYERSTRUCT_H
 #pragma once
+
+#include <stdio.h>
+#include <windows.h>
+#include "Vector3.h"
 
 namespace moddingApi
 {
@@ -24,6 +26,3 @@ namespace moddingApi
 		float *chakra;
 	};
 }
-
-#endif
-*/

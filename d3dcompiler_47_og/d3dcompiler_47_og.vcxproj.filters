@@ -31,20 +31,95 @@
     <Filter Include="Header Files\Player">
       <UniqueIdentifier>{dab8efaf-7263-48f9-8d85-7b415fe3cc28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Player\Characters">
-      <UniqueIdentifier>{448d3aee-dd1a-4301-84b2-ccd798353436}</UniqueIdentifier>
+    <Filter Include="Multimatch Files">
+      <UniqueIdentifier>{b0166d29-f2f6-4e11-ade7-890e5f6fee6d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Player\Characters">
-      <UniqueIdentifier>{8ca6b072-a40d-4691-b670-abc33a79e602}</UniqueIdentifier>
+      <UniqueIdentifier>{f76362a0-200e-44e1-af30-96e9e3b50379}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Enet">
-      <UniqueIdentifier>{4dfbbbea-3e17-4419-a9f0-b8cf58569ddc}</UniqueIdentifier>
+    <Filter Include="Source Files\Player\Characters">
+      <UniqueIdentifier>{aaac83f9-7895-406e-b3a6-2d5478fe5b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rpg">
+      <UniqueIdentifier>{09c66212-8bce-40cc-9cba-5040cabf154e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg">
+      <UniqueIdentifier>{e92e932f-a3fb-4207-8233-4b0cd2d96b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Collision">
+      <UniqueIdentifier>{6c8ee1bf-c9a6-48f5-b8ba-073b7cac29ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Entity">
+      <UniqueIdentifier>{53ffa7d9-830c-4214-b200-2ccf0633106a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Game Engine">
+      <UniqueIdentifier>{88da8c40-a883-4954-93d0-df095ed9eb85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Interactive">
+      <UniqueIdentifier>{7cd642d4-fdb8-4f82-bfc4-a1b52533c37b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rpg\Scenes">
+      <UniqueIdentifier>{ccccf8d8-423d-4e4b-84a7-3789d169ef0e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Lua">
-      <UniqueIdentifier>{60ef3c88-2f1c-4a4b-8c5a-c26cdc4e1a9e}</UniqueIdentifier>
+      <UniqueIdentifier>{a788ee58-3cc1-4776-9753-755fb0d828ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\1">
+      <UniqueIdentifier>{d1310440-b1b8-45ff-bd2a-434aa53880f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\2">
+      <UniqueIdentifier>{0dc980ff-c9a4-4e0e-8d3d-36c88b24bf76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\3">
+      <UniqueIdentifier>{46adb70c-94c7-4ce6-b576-7c7e1a554ea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\4">
+      <UniqueIdentifier>{270f0990-a73d-49e8-9b52-4d42071d31b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\5">
+      <UniqueIdentifier>{561ebfdc-ca42-4562-aee3-164054bbc175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\6 - 8">
+      <UniqueIdentifier>{dda5ef92-63fe-471d-954b-e202fca0fb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Characters\Story">
+      <UniqueIdentifier>{d6ed3fff-f9e7-430b-ad88-8aaa747cc615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\1">
+      <UniqueIdentifier>{a12ff495-25b3-4281-a4ad-d95331e3a1e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\2">
+      <UniqueIdentifier>{9a7ba251-0787-4178-9dc1-3e812fde2978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\3">
+      <UniqueIdentifier>{20404b69-c595-4ecb-86ec-5bc42df0c171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\4">
+      <UniqueIdentifier>{07421ef6-3fb4-4e63-9b52-cac15ecb4aa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\5">
+      <UniqueIdentifier>{4783b07f-1317-49ab-9c25-a97e69be35c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\6 - 8">
+      <UniqueIdentifier>{7bd1bce3-a093-4e4d-a984-20b18c59bc8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\Characters\Story">
+      <UniqueIdentifier>{021d81d1-c41c-4f6d-953d-8a175699be00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CasualGamer">
+      <UniqueIdentifier>{71ec0b92-301b-4f6c-a75b-86248a9dc2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sound">
+      <UniqueIdentifier>{02ccb9d9-80f5-4feb-a11e-d28f1daf8fb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\irrKlang">
+      <UniqueIdentifier>{d18fe0fa-227f-4f02-9e7f-ec448e9193fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MultiMatch.cpp">
+      <Filter>Multimatch Files</Filter>
+    </ClCompile>
     <ClCompile Include="API_Console.cpp">
       <Filter>Source Files\API</Filter>
     </ClCompile>
@@ -84,35 +159,53 @@
     <ClCompile Include="HookFunctions.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Source Files\Rpg\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity_Fireball.cpp">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityMain.cpp">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioPlayer.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldCollision.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ztRpgMain.cpp">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractiveMain.cpp">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactive_Examine.cpp">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Template.cpp">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClCompile>
     <ClCompile Include="ccPlayerStruct.cpp">
       <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\callbacks.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\compress.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\host.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\list.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\packet.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\peer.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\protocol.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\unix.c">
-      <Filter>Enet</Filter>
-    </ClCompile>
-    <ClCompile Include="enet\win32.c">
-      <Filter>Enet</Filter>
     </ClCompile>
     <ClCompile Include="lua\src\lapi.c">
       <Filter>Lua</Filter>
@@ -192,6 +285,12 @@
     <ClCompile Include="lua\src\ltm.c">
       <Filter>Lua</Filter>
     </ClCompile>
+    <ClCompile Include="lua\src\lua.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\src\luac.c">
+      <Filter>Lua</Filter>
+    </ClCompile>
     <ClCompile Include="lua\src\lundump.c">
       <Filter>Lua</Filter>
     </ClCompile>
@@ -204,17 +303,17 @@
     <ClCompile Include="lua\src\print.c">
       <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="lua\src\lua.c">
-      <Filter>Lua</Filter>
+    <ClCompile Include="c1CMN.cpp">
+      <Filter>Source Files\Player\Characters\1</Filter>
     </ClCompile>
-    <ClCompile Include="PrmFunctions.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files\Player</Filter>
+    <ClCompile Include="ccBattleInputs.cpp">
+      <Filter>Source Files\General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MultiMatch.h">
+      <Filter>Multimatch Files</Filter>
+    </ClInclude>
     <ClInclude Include="API_Console.h">
       <Filter>Header Files\API</Filter>
     </ClInclude>
@@ -254,35 +353,53 @@
     <ClInclude Include="d3dcompiler_47_og.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
+    <ClInclude Include="ztRpgMain.h">
+      <Filter>Header Files\Rpg</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Source Files\Rpg\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity_Fireball.h">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityMain.h">
+      <Filter>Source Files\Rpg\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioPlayer.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactive_Examine.h">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractiveMain.h">
+      <Filter>Source Files\Rpg\Interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldCollision.h">
+      <Filter>Source Files\Rpg\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Template.h">
+      <Filter>Source Files\Rpg\Scenes</Filter>
+    </ClInclude>
     <ClInclude Include="ccPlayerStruct.h">
-      <Filter>Source Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\callbacks.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\enet.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\list.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\protocol.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\time.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\types.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\unix.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\utility.h">
-      <Filter>Enet</Filter>
-    </ClInclude>
-    <ClInclude Include="enet\win32.h">
-      <Filter>Enet</Filter>
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="lua\src\lapi.h">
       <Filter>Lua</Filter>
@@ -335,6 +452,9 @@
     <ClInclude Include="lua\src\ltm.h">
       <Filter>Lua</Filter>
     </ClInclude>
+    <ClInclude Include="lua\src\lua.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
     <ClInclude Include="lua\src\luaconf.h">
       <Filter>Lua</Filter>
     </ClInclude>
@@ -350,24 +470,119 @@
     <ClInclude Include="lua\src\lzio.h">
       <Filter>Lua</Filter>
     </ClInclude>
-    <ClInclude Include="lua\src\lua.h">
-      <Filter>Lua</Filter>
+    <ClInclude Include="c1CMN.h">
+      <Filter>Header Files\Player\Characters\1</Filter>
     </ClInclude>
-    <ClInclude Include="PrmFunctions.h">
-      <Filter>Header Files\Player</Filter>
+    <ClInclude Include="ccBattleInputs.h">
+      <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Header Files\Player</Filter>
+    <ClInclude Include="c2DNZ.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2ITC.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2MDR.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c2TOB.h">
+      <Filter>Header Files\Player\Characters\2</Filter>
+    </ClInclude>
+    <ClInclude Include="c3MNT.h">
+      <Filter>Header Files\Player\Characters\3</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory.h">
+      <Filter>Header Files\CasualGamer</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ESoundEngineOptions.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ESoundOutputDrivers.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_EStreamModes.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_IAudioRecorder.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_IAudioStream.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_IAudioStreamLoader.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_IFileFactory.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_IFileReader.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_IRefCounted.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_irrKlangTypes.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ISound.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ISoundDeviceList.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ISoundEffectControl.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ISoundEngine.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ISoundMixedOutputReceiver.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ISoundSource.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_ISoundStopEventReceiver.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_IVirtualRefCounted.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_SAudioStreamFormat.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="ik_vec3d.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="irrKlang.h">
+      <Filter>Header Files\irrKlang</Filter>
+    </ClInclude>
+    <ClInclude Include="Initialize Sound.h">
+      <Filter>Header Files\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="d3dcompiler_47_og.def">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="lua\src\Makefile">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="lib\Winx64-visualStudio\irrKlang.exp">
+      <Filter>Header Files\irrKlang</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="d3dcompiler_47_og_asm.asm">
       <Filter>Resource Files</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\x64\CasualLibrary.lib">
+      <Filter>Header Files\CasualGamer</Filter>
+    </Library>
+    <Library Include="lib\Winx64-visualStudio\irrKlang.lib">
+      <Filter>Header Files\irrKlang</Filter>
+    </Library>
   </ItemGroup>
 </Project>
