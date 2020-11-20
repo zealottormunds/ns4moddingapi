@@ -366,14 +366,18 @@ void ccPlayer::Loop()
 		if (GetPlayerFloatProperty(p, s, "armor") < 45.0f) { SetPlayerFloatProperty(p, s, "armor", 45.0f); }
 		if (GetPlayerFloatProperty(ep, es, "armor") < 45.0f) { SetPlayerFloatProperty(ep, es, "armor", 45.0f); }
 
+		// Storm Gauge Disable
+		SetStormGauge(0, 0.1f);
+		SetStormGauge(1, 0.1f);
+
 		// Test Perfect Cancel
-		if (ccBattleInputs::stickBtns[0] && (GetPlayerFloatProperty(p, s, "chakra") >= 10.0f) && timeflag == 0)
+		if (ccBattleInputs::p1stickBtns[0] && (GetPlayerFloatProperty(p, s, "chakra") >= 10.0f) && timeflag == 0)
 		{ SetPlayerStateProperty(p, s, 1), SetPlayerFloatProperty(p, s, "chakra", c - 10.0f), timeflag++, timer = 15; }
-		if (ccBattleInputs::stickBtns[0] && (GetPlayerFloatProperty(ep, es, "chakra") >= 10.0f) && etimeflag == 0)
+		if (ccBattleInputs::p2stickBtns[0] && (GetPlayerFloatProperty(ep, es, "chakra") >= 10.0f) && etimeflag == 0)
 		{ SetPlayerStateProperty(ep, es, 1), SetPlayerFloatProperty(ep, es, "chakra", c - 10.0f), etimeflag++, etimer = 15; }
-		if (ccBattleInputs::stickBtns[1] && (GetPlayerFloatProperty(p, s, "chakra") >= 10.0f) && timeflag == 0)
+		if (ccBattleInputs::p1stickBtns[1] && (GetPlayerFloatProperty(p, s, "chakra") >= 10.0f) && timeflag == 0)
 		{ SetPlayerStateProperty(p, s, 1), SetPlayerFloatProperty(p, s, "chakra", c - 10.0f), timeflag++, timer = 15; }
-		if (ccBattleInputs::stickBtns[1] && (GetPlayerFloatProperty(ep, es, "chakra") >= 10.0f) && etimeflag == 0)
+		if (ccBattleInputs::p2stickBtns[1] && (GetPlayerFloatProperty(ep, es, "chakra") >= 10.0f) && etimeflag == 0)
 		{ SetPlayerStateProperty(ep, es, 1), SetPlayerFloatProperty(ep, es, "chakra", c - 10.0f), etimeflag++, etimer = 15; }
 
 		// Timer Setup

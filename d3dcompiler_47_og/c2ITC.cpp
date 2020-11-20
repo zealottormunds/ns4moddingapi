@@ -51,8 +51,8 @@ void c2ITC::Loop(int pln)
 	uintptr_t ep = c.GetPlayerInfo(en);
 	uintptr_t es = c.GetPlayerStatus(en);
 
-	bool actualButton = inputs.chakBtn;
-	vector<float> actualAxis = inputs.leftStick;
+	bool actualButton = inputs.p1chakBtn;
+	vector<float> actualAxis = inputs.p1leftStick;
 
 	chakraCharge = c.GetCanDoJutsuChakra(p, s);
 
@@ -67,7 +67,7 @@ void c2ITC::Loop(int pln)
 		framesToDoCD1--;
 	}
 
-	if (chakraCharge && inputs.chakBtn)
+	if (chakraCharge && inputs.p1chakBtn)
 	{
 		if (actualAxis[1] ==  1) framesToDoCU1 = 30;
 		if (actualAxis[1] == -1) framesToDoCD1 = 30;
