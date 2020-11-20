@@ -275,6 +275,10 @@ using namespace moddingApi;
 int prevFrame = 0;
 int prevBattle = 0;
 ccBattleInputs* inputState;
+int timeflag = 0;
+int timer = 300;
+int etimeflag = 0;
+int etimer = 300;
 
 
 void ccPlayer::Start()
@@ -335,12 +339,12 @@ void ccPlayer::Loop()
 	for (int x = 0; x < 2; x++)
 	{
 		// Get player x info
-		uintptr_t s = GetPlayerStatus(x);
-		uintptr_t p = GetPlayerInfo(x);
+		uintptr_t s = GetPlayerStatus(0);
+		uintptr_t p = GetPlayerInfo(0);
 		float storm_gauge = GetStormGauge(x);
 		int count = GetMatchCount();
 
-		//if (x == 0) cout << hex << int(GetPlayerIntProperty(s, p, "characode")) << endl; Sleep(1000);
+		//if (x == 0) cout << hex << int(GetPlayerIntProperty(s, p, "characode")) << endl; Sleep(1000);..
 		//if (GetPlayerIntProperty(p, s, "attackid") == 151) { SetPlayerIntProperty(p, s, "attackid", 74); }
 		//cout << "Match Count: " << *(int*)count << endl; Sleep(1000);
 		//cout << "Storm Gauge: " << hex << *(float*)(int*)storm_gauge << endl; Sleep(1000);
@@ -355,12 +359,78 @@ void ccPlayer::Loop()
 
 		// If pointers aren't null, let's check the health of the current player.
 		float h = GetPlayerFloatProperty(p, s, "health");
+		float c = GetPlayerFloatProperty(p, s, "chakra");
 		if (h <= 0) return; // If the health is 0 or less than 0, stop the code.
 
 		// This disables armor break
 		if (GetPlayerFloatProperty(p, s, "armor") < 45.0f) { SetPlayerFloatProperty(p, s, "armor", 45.0f); }
 		if (GetPlayerFloatProperty(ep, es, "armor") < 45.0f) { SetPlayerFloatProperty(ep, es, "armor", 45.0f); }
 
+		// Test Perfect Cancel
+		if (ccBattleInputs::stickBtns[0] && (GetPlayerFloatProperty(p, s, "chakra") >= 10.0f) && timeflag == 0)
+		{ SetPlayerStateProperty(p, s, 1), SetPlayerFloatProperty(p, s, "chakra", c - 10.0f), timeflag++, timer = 15; }
+		if (ccBattleInputs::stickBtns[0] && (GetPlayerFloatProperty(ep, es, "chakra") >= 10.0f) && etimeflag == 0)
+		{ SetPlayerStateProperty(ep, es, 1), SetPlayerFloatProperty(ep, es, "chakra", c - 10.0f), etimeflag++, etimer = 15; }
+		if (ccBattleInputs::stickBtns[1] && (GetPlayerFloatProperty(p, s, "chakra") >= 10.0f) && timeflag == 0)
+		{ SetPlayerStateProperty(p, s, 1), SetPlayerFloatProperty(p, s, "chakra", c - 10.0f), timeflag++, timer = 15; }
+		if (ccBattleInputs::stickBtns[1] && (GetPlayerFloatProperty(ep, es, "chakra") >= 10.0f) && etimeflag == 0)
+		{ SetPlayerStateProperty(ep, es, 1), SetPlayerFloatProperty(ep, es, "chakra", c - 10.0f), etimeflag++, etimer = 15; }
+
+		// Timer Setup
+#pragma region Timer
+		if (timeflag != 0)
+		{
+			if (timer != 0) timer--;
+			if (timer == 0)
+			{
+				timeflag = 0;
+			}
+		}
+		if (etimeflag != 0)
+		{
+			if (etimer != 0) etimer--;
+			if (etimer == 0)
+			{
+				etimeflag = 0;
+			}
+		}
+#pragma endregion
+		//Sub Test Code
+		//Condense the if statements as Shalashaska commented.
+		/*float sub = GetPlayerFloatProperty(p, s, "sub");
+		//cout << "Flag: " << timeflag << endl;
+		if (GetPlayerIntProperty(p, s, "pstate") == 109 && timeflag == 0)
+		{
+			timeflag++;
+
+			timer = 3000;
+		}
+		if (GetPlayerIntProperty(p, s, "pstate") == 117 && timeflag == 0)
+		{
+			timeflag++;
+			timer = 3000;
+		}
+		if (GetPlayerIntProperty(p, s, "pstate") == 109)
+		{
+			timer = 3000;
+		}
+		if (GetPlayerIntProperty(p, s, "pstate") == 117)
+		{
+			timer = 3000;
+		}
+		if (timeflag !=0)
+		{
+			if (timer != 0) timer--;
+			cout << "Timer: " << timer << endl;
+			SetPlayerFloatProperty(p, s, "maxsub", sub);
+			SetPlayerFloatProperty(p, s, "health", h - 0.02f);
+			if (timer == 0)
+			{
+				timeflag = 0;
+			}	
+		}
+		if (timer == 0) { SetPlayerFloatProperty(p, s, "maxsub", 100.0f); }
+		*/
 		// Custom player code in here
 		if (ccGameProperties::isOnMenu() == false && prevFrame != ccGeneralGameFunctions::GetCurrentFrame()) {
 			DoCharacterLoop(GetPlayerIntProperty(p, s, "characode"), x);
@@ -394,6 +464,12 @@ vector<uintptr_t> ccPlayer::memcpy_verify(vector<uintptr_t> ptrs, vector<uintptr
 		return vector<uintptr_t>(ptrs.size(), 0); // If there's an error, return a list of 0 pointers
 	}
 }
+int ccPlayer::Timer(int timeAmt) {
+	if (timeAmt < 0 ) timeAmt--;
+	if (timeAmt >= 0) return 0;
+}
+
+
 int ccPlayer::LoopForNum(int loopAmt, uintptr_t compare, uintptr_t (*f)(int)) {
 	int n = -1;
 	for (int x = 0; x < loopAmt; x++)
@@ -731,7 +807,7 @@ float* ccPlayer::GetPlayerFloatPointer(uintptr_t p, uintptr_t s, char* prop)
 		case ccPlayer::str2int("chakra"): result = (float*)(s + 0x08); break;
 		case ccPlayer::str2int("maxchakra"): result = (float*)(s + 0x0C); break;
 		case ccPlayer::str2int("sub"): result = (float*)(s + 0x10); break;
-		case ccPlayer::str2int("maxsub"): result = (float*)(s + 0x10); break;
+		case ccPlayer::str2int("maxsub"): result = (float*)(s + 0x14); break;
 		case ccPlayer::str2int("armor"): result = (float*)(s + 0x20); break;
 		case ccPlayer::str2int("maxarmor"): result = (float*)(s + 0x24); break;
 		case ccPlayer::str2int("gravity"): result = (float*)(p + 0xE8); break;

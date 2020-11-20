@@ -53,6 +53,7 @@ namespace moddingApi
 		static float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es);
 
 		static string ccPlayer::charcode2str(int charcode);
+		static int ccPlayer::Timer(int timeAmt);
 		static void ccPlayer::SetTimerValue(int timerValue, int maxTimer, bool value);
 
 		// Placeholders, change order when functions are done
