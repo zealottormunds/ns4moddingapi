@@ -80,6 +80,8 @@ void ccCharacterFunctions::ReloadCharsel()
 uintptr_t partnerAlloc = 0;
 vector<uintptr_t> ccCharacterFunctions::c_partnerFunctions;
 vector<int> ccCharacterFunctions::c_partnerCodes;
+uintptr_t partnerFunctionAddress = 0x7F0454;
+uintptr_t partnerFunctionJumpTo = 0x7F0487;
 void ccCharacterFunctions::PartnerFunctions()
 {
 	vector<uintptr_t> partnerFunctions = ccCharacterFunctions::c_partnerFunctions;
@@ -104,7 +106,7 @@ void ccCharacterFunctions::PartnerFunctions()
 	int char_funct_end_rip = char_funct_end - (main_malloc + 20);
 	int char_functions_rip = char_functions - (main_malloc + 44);
 
-	uintptr_t jump_to = d3dcompiler_47_og::moduleBase + 0x7EEBEB;
+	uintptr_t jump_to = d3dcompiler_47_og::moduleBase + partnerFunctionJumpTo;
 
 	void * writeAddress = &function[0];
 
@@ -125,11 +127,11 @@ void ccCharacterFunctions::PartnerFunctions()
 	}
 
 	// Hook original function to jump to our function
-	if(partnerAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7EEBB8), (void*)main_malloc, 14);
+	if(partnerAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + partnerFunctionAddress), (void*)main_malloc, 14);
 	else
 	{
 		// Fix address for reload
-		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + 0x7EEBB8;
+		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + partnerFunctionAddress;
 
 		DWORD dwOld = 0;
 		VirtualProtect((void*)placeJump, 14, PAGE_EXECUTE_READWRITE, &dwOld);
@@ -146,6 +148,8 @@ void ccCharacterFunctions::PartnerFunctions()
 uintptr_t condAlloc = 0;
 vector<uintptr_t> ccCharacterFunctions::c_specialCondFunct;
 vector<int> ccCharacterFunctions::c_specialCondCodes;
+uintptr_t specialConditionAddress = 0x7C55AD;
+uintptr_t specialConditionJumpTo = 0x7C636D;
 void ccCharacterFunctions::SpecialCondFunctions()
 {
 	//CustomConditionCreate();
@@ -194,7 +198,7 @@ void ccCharacterFunctions::SpecialCondFunctions()
 	memcpy((void*)(&function[0] + 0x12), &lea_rip_address, 0x4); // fix the lea with rip + address (points to the end of the condition list)
 
 	// create jump back
-	uintptr_t jback = d3dcompiler_47_og::moduleBase + 0x7C4651;
+	uintptr_t jback = d3dcompiler_47_og::moduleBase + specialConditionJumpTo;
 	memcpy((void*)(&function[0] + 0x4E), &jback, 8);
 
 	// Copy function to memory, and make executable
@@ -211,11 +215,11 @@ void ccCharacterFunctions::SpecialCondFunctions()
 	}
 
 	// Hook original function
-	if(condAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7C3891), (void*)main_malloc, 15);
+	if(condAlloc == 0) HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + specialConditionAddress), (void*)main_malloc, 15);
 	else
 	{
 		// Fix address for reload
-		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + 0x7C3891;
+		uintptr_t placeJump = d3dcompiler_47_og::moduleBase + specialConditionAddress;
 
 		DWORD dwOld = 0;
 		VirtualProtect((void*)placeJump, 14, PAGE_EXECUTE_READWRITE, &dwOld);

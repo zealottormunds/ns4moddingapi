@@ -30,6 +30,13 @@ namespace moddingApi
 		static void ExecuteLuaFile(char* path);
 		static void* GetLuaState();
 		static int GetProperty(char* prop);
+
+		static void UpdateTiming();
+		static float LastSavedTime;
+		static float ActualSavedTime;
+		static float GetCurrentGameTime();
+		static float GetDeltaTime();
+
 		static __int64 GetQword(__int64 qw);
 		static constexpr unsigned int str2int(const char* str, int h = 0);
 

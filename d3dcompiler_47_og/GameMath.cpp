@@ -21,3 +21,10 @@ int GameMath::FrameToFps(int f)
 	if (ccGeneralGameFunctions::GetFPS() == 30) return f / 2;
 	else return f;
 }
+
+float GameMath::Lerp(float a, float b, float c)
+{
+	float addtoa = b - a;
+
+	return a + (addtoa * c);
+}

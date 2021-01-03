@@ -11,8 +11,8 @@ float z = 0;
 float Vector3::Distance(Vector3 a, Vector3 b)
 {
 	float d = sqrtf(
-		pow((b.x - a.x), 2) + 
-		pow((b.y - a.y), 2) + 
+		pow((b.x - a.x), 2) +
+		pow((b.y - a.y), 2) +
 		pow((b.z - a.z), 2)
 	);
 	return d;
@@ -83,7 +83,7 @@ float Vector3::magnitude(Vector3 a)
 	float mag = sqrtf(
 		pow(a.x, 2) + pow(a.y, 2) + pow(a.z, 2)
 	);
-	
+
 	return mag;
 }
 

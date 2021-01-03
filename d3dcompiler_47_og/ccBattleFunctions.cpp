@@ -15,7 +15,7 @@ getplayerinfo2 g_GetPlayerInfo2;
 
 uintptr_t ccBattleFunctions::Battle_FillChakra(uintptr_t a1, int a2, float FillRate)
 {
-	g_GetPlayerInfo = (getplayerinfo)(d3dcompiler_47_og::moduleBase + 0x746098);
+	g_GetPlayerInfo = (getplayerinfo)(d3dcompiler_47_og::moduleBase + 0x74A71C); // UPDATED TO 12
 
 	uintptr_t result;
 	float *MaxState;
@@ -45,7 +45,7 @@ uintptr_t ccBattleFunctions::Battle_FillChakra(uintptr_t a1, int a2, float FillR
 
 uintptr_t ccBattleFunctions::Battle_FillSubstitution(uintptr_t a1, int a2, float FillRate)
 {
-	g_GetPlayerInfo2 = (getplayerinfo)(d3dcompiler_47_og::moduleBase + 0x7460E8);
+	g_GetPlayerInfo2 = (getplayerinfo)(d3dcompiler_47_og::moduleBase + 0x74A76C); // UPDATED TO 12
 
 	uintptr_t result;
 	float *MaxState;

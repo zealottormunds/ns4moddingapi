@@ -29,7 +29,7 @@ namespace moddingApi
 		Vector3 operator-(const Vector3& vector) const;
 		Vector3 operator*(const float mag) const;
 		Vector3 operator/(const float mag) const;
-	
+
 		static Vector3 getBlockPos(Vector3 a);
 		static float magnitude(Vector3 a);
 		static Vector3 normalize(Vector3 a);

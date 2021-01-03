@@ -160,14 +160,75 @@ int ccGameProperties::GetProperty(char* prop)
 	switch (str2int(prop))
 	{
 	case str2int("ResolutionX"):
-		memcpy(&propvalue, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x1560068), 4);
+		memcpy(&propvalue, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x1561108), 4);
 		break;
 	case str2int("ResolutionY"):
-		memcpy(&propvalue, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x1560068 + 4), 4);
+		memcpy(&propvalue, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x1561108 + 4), 4);
 		break;
 	}
 
 	return propvalue;
+}
+
+float ccGameProperties::LastSavedTime = 0;
+float ccGameProperties::ActualSavedTime = 0;
+
+void ccGameProperties::UpdateTiming()
+{
+	if (ActualSavedTime == 0)
+	{
+		ActualSavedTime = GetCurrentGameTime();
+	}
+	else
+	{
+		LastSavedTime = ActualSavedTime;
+		ActualSavedTime = GetCurrentGameTime();
+	}
+}
+
+float ccGameProperties::GetCurrentGameTime()
+{
+	uintptr_t p1 = 0;
+	uintptr_t p2 = 0;
+	uintptr_t p3 = 0;
+	uintptr_t p4 = 0;
+	uintptr_t p5 = 0;
+	uintptr_t p6 = 0;
+	uintptr_t p7 = 0;
+	uintptr_t p8 = 0;
+
+	memcpy(&p1, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x0161B830), 8);
+	if (p1 == 0) return 0;
+
+	memcpy(&p2, (void*)(p1 + 0x3A8), 8);
+	if (p2 == 0) return 0;
+
+	memcpy(&p3, (void*)(p2 + 0x100), 8);
+	if (p3 == 0) return 0;
+
+	memcpy(&p4, (void*)(p3 + 0x228), 8);
+	if (p4 == 0) return 0;
+
+	memcpy(&p5, (void*)(p4 + 0xFF8), 8);
+	if (p5 == 0) return 0;
+
+	p6 = p5 + 0x0;
+	if (p6 == 0) return 0;
+
+
+
+	float test = 0;
+
+	cout << "Trying to read time" << endl;
+	memcpy(&test, (void*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x2965B3D64), 4);
+	cout << "Finished reading time" << endl;
+
+	return test;
+}
+
+float ccGameProperties::GetDeltaTime()
+{
+	return ActualSavedTime - LastSavedTime;
 }
 
 // Get a QWORD pointer from the game

@@ -10,6 +10,7 @@ namespace moddingApi
 		static float DegToRad(float deg);
 		static float RadToDeg(float rad);
 		static int FrameToFps(int f);
+		static float Lerp(float a, float b, float t);
 	};
 }
 

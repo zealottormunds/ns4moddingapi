@@ -77,7 +77,7 @@ std::string FileParser::b_ReadString(vector<BYTE> actual, int index, int count)
 	}
 	else
 	{
-		for (int x = index; x < count; x++)
+		for (int x = index; x < index + count; x++)
 		{
 			string str2 = a;
 			char c = (char)actual[x];

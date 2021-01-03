@@ -58,6 +58,10 @@ void CreateVersionString()
 }
 
 // WRITE ALL THE FUNCTIONS YOU WANT TO HOOK IN HERE
+
+void HookFade();
+int HookQuick(unsigned int a1, unsigned int a2);
+
 void HookFunctions::InitializeHooks()
 {
 	CreateVersionString();
@@ -67,11 +71,13 @@ void HookFunctions::InitializeHooks()
 
 	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), 19); // Fixed
 	HookFunctions::DoMessageInfoHook();
-	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), 19); // Fixed
-	HookFunctions::DoMessageInfoHook2();
+	//memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), 19); // Fixed
+	//HookFunctions::DoMessageInfoHook2();
 
-	// LuaHook::HookDeclareFunction();
+	LuaHook::HookDeclareFunction();
 	// NOT FIXED YET!
+
+	//HookFade();
 	
 	//// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
 	//// NOT FIXED YET!
@@ -93,11 +99,21 @@ void HookFunctions::InitializeHooks()
 	//// Game Info Hook
 	//// ccGeneralGameFunctions::DoGameInfoHook();
 
-	// ccCharacterFunctions::PartnerFunctions();
-	// NOT FIXED YET!!!
+	ccCharacterFunctions::PartnerFunctions();
+	ccCharacterFunctions::SpecialCondFunctions();
+}
 
-	// ccCharacterFunctions::SpecialCondFunctions();
-	// NOT FIXED YET!!!
+void HookFade()
+{
+	cout << "Hooking fade" << endl;
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x537470), (void*)HookQuick, 16);
+}
+
+int HookQuick(unsigned int a1, unsigned int a2)
+{
+	cout << "A1: " << a1 << ", A2: " << a2 << endl;
+
+	return 0;
 }
 
 // Fixed

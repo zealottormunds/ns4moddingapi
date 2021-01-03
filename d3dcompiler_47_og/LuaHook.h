@@ -87,6 +87,10 @@ namespace moddingApi
 		static int ztGetStringArray(__int64 a1);
 		static int ztRestartSt(__int64 a1);
 		static int ztLoadFiles(__int64 a1);
+
+		static int ztGlobalInt;
+		static int ztGetGlobalInt(__int64 a1);
+		static int SetLuaState(__int64 a1);
 	};
 }
 
