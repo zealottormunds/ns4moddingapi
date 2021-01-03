@@ -339,7 +339,7 @@ message_to_string2 g_MessageToString2;
 
 uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode)
 {
-	g_MessageToString2 = (message_to_string2)(d3dcompiler_47_og::moduleBase + 0xAB7CA0);
+	g_MessageToString2 = (message_to_string2)(d3dcompiler_47_og::moduleBase + 0xAB87D0);
 
 	//bool showDecode = true;
 	//if ((string((char*)MessageToDecode).length() >= 4 && string((char*)MessageToDecode).substr(0, 4) == "####")) showDecode = false;

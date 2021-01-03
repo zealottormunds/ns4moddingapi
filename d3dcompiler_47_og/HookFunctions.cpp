@@ -66,38 +66,23 @@ void HookFunctions::InitializeHooks()
 {
 	CreateVersionString();
 
-	//// PrmFunctions::ImplementFunctions();
-	//DoMeHook();
+	// PrmFunctions::ImplementFunctions();
+	// DoMeHook();
 
 	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), 19); // Fixed
 	HookFunctions::DoMessageInfoHook();
-	//memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), 19); // Fixed
-	//HookFunctions::DoMessageInfoHook2();
+	memcpy(originalMsgInfo2, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring_3), 19); // Fixed
+	HookFunctions::DoMessageInfoHook2();
 
 	LuaHook::HookDeclareFunction();
-	// NOT FIXED YET!
 
-	//HookFade();
-	
-	//// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);
-	//// NOT FIXED YET!
-	
-	//// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450E28), (void*)LuaHook::ccGroupBattleEventCameraMovePosBeginCoop, 14);
-
-	//// Hook charsel
-	//// ccCharacterFunctions::DoCharacterSelectParamHook();
-
-	//// Game properties hook
-	//// ccGameProperties::DoGamePropertiesHook();
-
-	//// Init game hook
-	//// ccGameProperties::DoInitHook();
-
-	//// AutoSaveCaution
-	//// ccGameProperties::DoAutoSaveHook();
-
-	//// Game Info Hook
-	//// ccGeneralGameFunctions::DoGameInfoHook();
+	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);	
+	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450E28), (void*)LuaHook::ccGroupBattleEventCameraMovePosBeginCoop, 14);
+	// ccCharacterFunctions::DoCharacterSelectParamHook();
+	// ccGameProperties::DoGamePropertiesHook();
+	// ccGameProperties::DoInitHook();
+	// ccGameProperties::DoAutoSaveHook();
+	// ccGeneralGameFunctions::DoGameInfoHook();
 
 	ccCharacterFunctions::PartnerFunctions();
 	ccCharacterFunctions::SpecialCondFunctions();
