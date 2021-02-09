@@ -35,10 +35,10 @@ By using this API you will be able to replace and add message IDs to the game wi
 
 ## Configuring the API:
 ### For players:
-No need to do anything at all!
+By default, the API is configured for modders instead of players. This means that the modding console is enabled. To disable it, you need to edit the "config.ini" file located in "/ROOT/moddingapi/". Open the file and find the property called "EnableConsole=1". Set it to 0, and you're ready to go.
 
 ### For modders:
-By default, the API is configured for players instead of modders. This means that the modding console is disabled. To enable it, you need to edit the "config.ini" file located in "/Root folder of Naruto Storm 4/moddingapi/". Open the file and find the property called "EnableConsole=0". Set it as 1, and you're ready to go.
+No need to do anything at all!
 
 ### How to create mods using the API?
 You can find all documentation in the API's wiki: https://github.com/zealottormunds/ns4moddingapi/wiki
@@ -48,3 +48,6 @@ You can find all documentation in the API's wiki: https://github.com/zealottormu
 * Kuroha Saenoki
 * Xuan Thai
 * TheLeonX
+* Exavadeathwitch
+* Eliteace170
+* R.A.G
