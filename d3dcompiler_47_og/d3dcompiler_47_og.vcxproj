@@ -154,10 +154,8 @@
     <ClCompile Include="API_Console.cpp" />
     <ClCompile Include="BattleFunctions.cpp" />
     <ClCompile Include="CameraControl.cpp" />
-    <ClCompile Include="ccBattleFunctions.cpp" />
     <ClCompile Include="ccBoss02_2Phase01Manager.cpp" />
     <ClCompile Include="ccCharacterFunctions.cpp" />
-    <ClCompile Include="ccBossIAFunctions.cpp" />
     <ClCompile Include="ccGameProperties.cpp" />
     <ClCompile Include="ccGeneralGameFunctions.cpp" />
     <ClCompile Include="ccMain.cpp" />
@@ -225,10 +223,8 @@
     <ClInclude Include="API_Console.h" />
     <ClInclude Include="BattleFunctions.h" />
     <ClInclude Include="CameraControl.h" />
-    <ClInclude Include="ccBattleFunctions.h" />
     <ClInclude Include="ccBoss02_2Phase01Manager.h" />
     <ClInclude Include="ccCharacterFunctions.h" />
-    <ClInclude Include="ccBossIAFunctions.h" />
     <ClInclude Include="ccGameProperties.h" />
     <ClInclude Include="ccGeneralGameFunctions.h" />
     <ClInclude Include="ccMain.h" />
@@ -276,7 +272,6 @@
     <ClInclude Include="lua\src\lundump.h" />
     <ClInclude Include="lua\src\lvm.h" />
     <ClInclude Include="lua\src\lzio.h" />
-    <ClInclude Include="PrmFunctions.h" />
     <ClInclude Include="Vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

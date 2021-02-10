@@ -72,12 +72,6 @@
     <ClCompile Include="ccPlayer.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="ccBattleFunctions.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="ccBossIAFunctions.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
     <ClCompile Include="ccCharacterFunctions.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
@@ -266,12 +260,6 @@
     <ClInclude Include="ccPlayer.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="ccBattleFunctions.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="ccBossIAFunctions.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
     <ClInclude Include="ccCharacterFunctions.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
@@ -388,9 +376,6 @@
     </ClInclude>
     <ClInclude Include="lua\src\lua.h">
       <Filter>Lua</Filter>
-    </ClInclude>
-    <ClInclude Include="PrmFunctions.h">
-      <Filter>Header Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>Source Files\Game Engine</Filter>

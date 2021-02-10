@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <math.h>
 
 #include "d3dcompiler_47_og.h"
 #include "LuaHook_Commands.h"
 
-using namespace std;
 using namespace moddingApi;
 
-void __fastcall LuaHook_Commands::ccSetGroupBattleCharPos(float a1, string a2, float a3, float a4, float a5, float a6, float a7, float a8)
+void __fastcall LuaHook_Commands::ccSetGroupBattleCharPos(float a1, std::string a2, float a3, float a4, float a5, float a6, float a7, float a8)
 {
-	typedef void *(__fastcall * fc_ccSetGroupBattleCharPos)(float a1, string a2, float a3, float a4, float a5, float a6, float a7, float a8);
+	typedef void *(__fastcall * fc_ccSetGroupBattleCharPos)(float a1, std::string a2, float a3, float a4, float a5, float a6, float a7, float a8);
 	fc_ccSetGroupBattleCharPos cc_ccSetGroupBattleCharPos;
 	cc_ccSetGroupBattleCharPos = (fc_ccSetGroupBattleCharPos)(d3dcompiler_47_og::moduleBase + 0x4521F0); // UPDATED
 	cc_ccSetGroupBattleCharPos(a1, a2, a3, a4, a5, a6, a7, a8);
@@ -60,7 +57,6 @@ signed __int64 cc_ccfc_ret_qword_7FF68DF26C70()
 
 unsigned __int64 __fastcall LuaHook_Commands::ccEntryNameTelop(char* topString, char* botString, float a1, float a2, float a3, float a4, int a5)
 {
-	//__int64 a0 = cc_ccfc_ret_qword_7FF68DF26C70();
 	typedef signed __int64(__fastcall * fc_ccEntryNameTelop)(char* topString, char* botString, float a1, float a2, float a3, float a4, int a5);
 	fc_ccEntryNameTelop cc_ccEntryNameTelop;
 	cc_ccEntryNameTelop = (fc_ccEntryNameTelop)(d3dcompiler_47_og::moduleBase + 0x535ACC); // UPDATED

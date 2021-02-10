@@ -1,8 +1,5 @@
-#include <WinSock2.h>
-#include <windows.h>
 #include <stdio.h>
 #include <iostream>
-#include <fstream>
 #include <string>
 
 #include "HookFunctions.h"
@@ -10,8 +7,6 @@
 #include "ccMain.h"
 #include "d3dcompiler_47_og.h"
 #include "ccGeneralGameFunctions.h"
-#include "ccBossIAFunctions.h"
-#include "ccBattleFunctions.h"
 #include "ccPlayer.h"
 #include "LuaHook.h"
 #include "ccCharacterFunctions.h"

@@ -145,21 +145,56 @@ int moddingApi::GameSettings::LoadCpkInitial()
 
 	if (region != 1)
 	{
-		if (region == 19)
+		switch (region)
 		{
-			v6 = "disc:data/launch/spa/dataRegion.cpk";
-		}
-		else
-		{
-			if (!ccGameProperties::GetQword(0x1416759C8))
-				goto LABEL_17;
-			
-			// 0xA31EB0
-			typedef signed __int64(__fastcall * sub_140A32AB0)(__int64 a, __int64 b, __int64 c);
-			sub_140A32AB0 sub_140A32AB0_f = (sub_140A32AB0)(d3dcompiler_47_og::moduleBase + 0xA31EB0);
-			sub_140A32AB0_f(ccGameProperties::GetQword(0x1416759C8), (__int64)"disc:data/launch/LANG/dataRegion.cpk", (__int64)&v27);
+		default:
+			{
+				cout << "ERROR LOADING LANGUAGE :: REGION ID IS " << std::hex << region << "! REPORT ERROR TO ZEALOT" << endl;
 
-			v6 = (const char*)&v27;
+				if (!ccGameProperties::GetQword(0x1416759C8))
+					goto LABEL_17;
+
+				// 0xA31EB0
+				typedef signed __int64(__fastcall * sub_140A32AB0)(__int64 a, __int64 b, __int64 c);
+				sub_140A32AB0 sub_140A32AB0_f = (sub_140A32AB0)(d3dcompiler_47_og::moduleBase + 0xA31EB0);
+				sub_140A32AB0_f(ccGameProperties::GetQword(0x1416759C8), (__int64)"disc:data/launch/LANG/dataRegion.cpk", (__int64)&v27);
+
+				v6 = (const char*)&v27;
+			}
+			break;
+		case 0x2:
+			v6 = "disc:data/launch/fre/dataRegion.cpk";
+			break;
+		case 0x3:
+			v6 = "disc:data/launch/spa/dataRegion.cpk";
+			break;
+		case 0x4:
+			v6 = "disc:data/launch/ger/dataRegion.cpk";
+			break;
+		case 0x5:
+			v6 = "disc:data/launch/ita/dataRegion.cpk";
+			break;
+		case 0x8:
+			v6 = "disc:data/launch/rus/dataRegion.cpk";
+			break;
+		case 0x9:
+			v6 = "disc:data/launch/kokr/dataRegion.cpk";
+			break;
+		case 0xA:
+			v6 = "disc:data/launch/chi/dataRegion.cpk";
+			break;
+		case 0x10:
+			v6 = "disc:data/launch/por/dataRegion.cpk";
+			break;
+		case 0x12:
+			v6 = "disc:data/launch/pol/dataRegion.cpk";
+			break;
+		case 0x13:
+			v6 = "disc:data/launch/spa/dataRegion.cpk";
+			break;
+		case 0x14:
+			v6 = "disc:data/launch/arae/dataRegion.cpk";
+			break;
 		}
 
 		cpkdata *c = (cpkdata*)malloc(sizeof(cpkdata));

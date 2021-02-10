@@ -1,27 +1,11 @@
-#include "enet/enet.h"
-
-#include <WinSock2.h>
-#include <windows.h>
-
 #include <stdio.h>
 #include <iostream>
-#include <fstream>
-#include <string>
 #include <vector>
-#include <filesystem>
 
 #include "ccPlayer.h"
 #include "d3dcompiler_47_og.h"
-#include "HookFunctions.h"
 #include "ccGameProperties.h"
-//#include "Input.h"
-#include "LuaUtilities.h"
-#include "LuaHook.h"
-#include "ccMemoryFunctions.h"
-#include "ccPlayerStruct.h"
-#include "Vector3.h"
 #include "ccGeneralGameFunctions.h"
-#include "LuaHook_Commands.h"
 
 #pragma warning( disable: 4307 )
 

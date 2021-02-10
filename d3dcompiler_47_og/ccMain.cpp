@@ -14,7 +14,6 @@
 #include "ccGeneralGameFunctions.h"
 #include "ccGameProperties.h"
 #include "ccCharacterFunctions.h"
-#include "ccBossIAFunctions.h"
 #include "HookFunctions.h"
 #include "ccPlayer.h"
 

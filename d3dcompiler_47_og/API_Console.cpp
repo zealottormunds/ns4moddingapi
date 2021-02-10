@@ -8,9 +8,6 @@
 #include "ccMain.h"
 #include "d3dcompiler_47_og.h"
 #include "ccGeneralGameFunctions.h"
-#include "ccCharacterFunctions.h"
-#include "ccBossIAFunctions.h"
-#include "HookFunctions.h"
 
 using namespace std;
 using namespace moddingApi;
@@ -24,49 +21,14 @@ int GetCommandIndex(string);
 
 // Command Functions
 void c_ConvertMessage();
-void c_GetVersionNumber();
-void c_GetVersionString();
-void c_GetVersionStringAPI();
-void c_GetRyo();
-void c_StartLoad();
-void c_EndLoad();
 void c_ViewMessageConversions();
 void c_Help();
-void c_ViewAwakeningDebug();
-void c_ReloadCharsel();
-void c_ReloadProperties();
-void c_ReloadInit();
-void c_LoadScene();
-void c_ReloadParamFiles();
-void c_EnableAllPad();
-void c_ControlNpc();
-void c_ccGroupBattleEventCameraBegin();
-void c_ccGroupBattleEventCameraMovePosBegin();
-void c_ccGroupBattleEventCameraMoveLookBegin();
-void c_ccGetGpPtr();
-void c_ccMultiMatchShowPlayerStatus();
-void c_ccGetCastPointer();
 
 void API_Console::InitializeConsole()
 {
 	AddCommand("ConvertMessage", (uintptr_t)c_ConvertMessage, 1);
-	//AddCommand("GetVersionNumber", (uintptr_t)c_GetVersionNumber, 0);
-	//AddCommand("GetVersionString", (uintptr_t)c_GetVersionString, 0);
-	//AddCommand("GetVersionStringAPI", (uintptr_t)c_GetVersionStringAPI, 0);
-	/*AddCommand("GetRyo", (uintptr_t)c_GetRyo, 0);
-	AddCommand("StartLoad", (uintptr_t)c_StartLoad, 0);
-	AddCommand("EndLoad", (uintptr_t)c_EndLoad, 0);*/
 	AddCommand("ViewMessageConversions", (uintptr_t)c_ViewMessageConversions, 0);
 	AddCommand("Help", (uintptr_t)c_Help, 0);
-	/*AddCommand("ReloadParamFiles", (uintptr_t)c_ReloadParamFiles, 0);
-	AddCommand("EnableAllPad", (uintptr_t)c_EnableAllPad, 0);
-	AddCommand("ControlNpc", (uintptr_t)c_ControlNpc, 2);
-	AddCommand("ccGroupBattleEventCameraBegin", (uintptr_t)c_ccGroupBattleEventCameraBegin, 0);
-	AddCommand("ccGroupBattleEventCameraMovePosBegin", (uintptr_t)c_ccGroupBattleEventCameraMovePosBegin, 4);
-	AddCommand("ccGroupBattleEventCameraMoveLookBegin", (uintptr_t)c_ccGroupBattleEventCameraMoveLookBegin, 4);
-	AddCommand("ccGetGpPtr", (uintptr_t)c_ccGetGpPtr, 0);
-	AddCommand("ccMultiMatchShowPlayerStatus", (uintptr_t)c_ccMultiMatchShowPlayerStatus, 0);*/
-	AddCommand("GetCastPointer", (uintptr_t)c_ccGetCastPointer, 1);
 
 	// Load plugin commands
 	for (int actualPlugin = 0; actualPlugin < ccMain::PluginList.size(); actualPlugin++)
@@ -112,36 +74,6 @@ void c_ConvertMessage()
 	cout << ccGeneralGameFunctions::MessageToString(param1_c);
 }
 
-void c_GetVersionNumber()
-{
-	//cout << ccGeneralGameFunctions::GetVersionNumber();
-}
-
-void c_GetVersionString()
-{
-	//cout << ccGeneralGameFunctions::GetVersionString();
-}
-
-void c_GetVersionStringAPI()
-{
-	//cout << ccGeneralGameFunctions::GetVersionStringAPI();
-}
-
-void c_GetRyo()
-{
-	cout << ccGeneralGameFunctions::GetGameMoney();
-}
-
-void c_StartLoad()
-{
-	ccGeneralGameFunctions::StartLoad();
-}
-
-void c_EndLoad()
-{
-	ccGeneralGameFunctions::EndLoad();
-}
-
 void c_ViewMessageConversions()
 {
 	if (ccGeneralGameFunctions::ViewMessageConversions == 0)
@@ -159,156 +91,11 @@ void c_ViewMessageConversions()
 void c_Help()
 {
 	cout << endl;
-
-	cout << "A: " << std::hex << (d3dcompiler_47_og::moduleBase - 0xC00 + 0x16BDA28) << endl;
-	cout << "TEST: " << std::hex << *(__int64*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x16BDA28) << endl;
-	/*cout << endl;
 	cout << "Available commands:" << endl;
 	for (int x = 0; x < consoleCommands.size(); x++)
 	{
 		cout << consoleCommands[x] << endl;
-	}*/
-}
-
-#include "ccPlayer.h"
-void c_ViewAwakeningDebug()
-{
-	//ccPlayer::AwakeDebugEnabled = !ccPlayer::AwakeDebugEnabled;
-}
-
-#include "ccCharacterFunctions.h"
-void c_ReloadCharsel()
-{
-	ccCharacterFunctions::ReloadCharsel();
-}
-
-#include "ccGameProperties.h"
-void c_ReloadProperties()
-{
-	ccGameProperties::ReloadProperties();
-}
-
-void c_ReloadInit()
-{
-	ccGameProperties::ReloadInit();
-}
-
-void c_LoadScene()
-{
-	std::string param1;
-
-	cout << "SCENE >> ";
-	cin >> param1;
-	char * param1_c = strcpy(new char[param1.length() + 1], param1.c_str());
-
-	ccGameProperties::ccLoadScene(param1_c);
-}
-
-void c_ReloadParamFiles()
-{
-	cout << "Reloading API's parameter files (specialCondParam, partnerSlotParam)..." << endl;
-	ccMain::ReloadParamFiles();
-	cout << "Files reloaded correctly" << endl;
-}
-
-void c_EnableAllPad()
-{
-	ccGeneralGameFunctions::enablePads();
-}
-
-void c_ControlNpc()
-{
-	std::string param1;
-	cout << "CHAR >> ";
-	cin >> param1;
-	char * param1_c = strcpy(new char[param1.length() + 1], param1.c_str());
-
-	std::string param2;
-	cout << "PAD >> ";
-	cin >> param2;
-	char * param2_c = strcpy(new char[param2.length() + 1], param2.c_str());
-
-	//cout << ccGeneralGameFunctions::MessageToString(param1_c);
-	ccCharacterFunctions::EnableControl(stoi(param1), stoi(param2));
-}
-
-#include "LuaHook.h"
-void c_ccGroupBattleEventCameraBegin()
-{
-	LuaHook::ccGroupBattleEventCameraBegin();
-}
-
-void c_ccGroupBattleEventCameraMovePosBegin()
-{
-	std::string param1;
-	cout << "X >> ";
-	cin >> param1;
-	float param1_c = stof(param1);
-
-	std::string param2;
-	cout << "Z >> ";
-	cin >> param2;
-	float param2_c = stof(param2);
-
-	std::string param3;
-	cout << "Y >> ";
-	cin >> param3;
-	float param3_c = stof(param3);
-
-	std::string param4;
-	cout << "A >> ";
-	cin >> param4;
-	float param4_c = stof(param4);
-
-	LuaHook::ccGroupBattleEventCameraMovePosBegin(param1_c, param2_c, param3_c, param4_c);
-}
-
-void c_ccGroupBattleEventCameraMoveLookBegin()
-{
-	std::string param1;
-	cout << "X >> ";
-	cin >> param1;
-	float param1_c = stof(param1);
-
-	std::string param2;
-	cout << "Z >> ";
-	cin >> param2;
-	float param2_c = stof(param2);
-
-	std::string param3;
-	cout << "Y >> ";
-	cin >> param3;
-	float param3_c = stof(param3);
-
-	std::string param4;
-	cout << "A >> ";
-	cin >> param4;
-	float param4_c = stof(param4);
-
-	LuaHook::ccGroupBattleEventCameraMovePosBegin(param1_c, param2_c, param3_c, param4_c);
-}
-
-#include "MultiMatch.h"
-void c_ccGetGpPtr()
-{
-	//cout << std::hex << (uintptr_t)MultiMatch::fc_GetGpPtr() << endl;
-}
-
-#include "LuaHook_Commands.h"
-void c_ccMultiMatchShowPlayerStatus()
-{
-	LuaHook_Commands::ccEntryNameTelop("P4 > HP: 100 / CHK: 100", "", 570, 500, 0, 0, 120);
-}
-
-void c_ccGetCastPointer()
-{
-	std::string param1;
-
-	cout << "CAST >> ";
-	cin >> param1;
-	char * param1_c = strcpy(new char[param1.length() + 1], param1.c_str());
-
-	cout << "CHAR: " << hex << LuaHook::fc_ccGetCastPointer(param1_c) << endl;
+	}
 }
 
 void AddCommand(string command, uintptr_t function, int paramCount)
@@ -324,7 +111,6 @@ int GetCommandIndex(string command)
 
 	for (int x = 0; x < consoleCommands.size(); x++)
 	{
-		//cout << command << " " << consoleCommands[x] << endl;
 		if (command == consoleCommands[x])
 		{
 			cmd = x;

@@ -14,7 +14,6 @@
 #include "d3dcompiler_47_og.h"
 #include "ccMain.h"
 #include "ccGeneralGameFunctions.h"
-#include "MultiMatch.h"
 #include "ccGameProperties.h"
 
 using namespace std;
@@ -77,10 +76,6 @@ int __fastcall LuaHook::funct_sendIntToLua(__int64 a1, __int64 a2)
 	fc_sendIntLua = (sendIntLua)(d3dcompiler_47_og::moduleBase + 0x9AB2F0); // UPDATED
 	return fc_sendIntLua(a1, a2);
 }
-
-////////////////////////////////////////////////////////////////////////
-
-// These are some C++ equivalents of Lua commands that you can use from the API. Most of them are useful only on specific instances, though.
 
 uintptr_t __fastcall LuaHook::ccGroupBattleEventCameraBegin()
 {
@@ -555,9 +550,6 @@ int __fastcall LuaHook::fc_ccCreateStage(__int64 a1, bool a2)
 }
 
 
-////////////////////////////////////////////////////////////////////////
-
-// My RPG engine
 int lua_test(__int64 a1)
 {
 	__int64 ptr;
@@ -648,136 +640,6 @@ bool __fastcall LuaHook::GetPadState(char * a)
 	return ToReturn;
 }
 
-// This function is useless.
-int ccSetEntryModelPath(__int64 a1)
-{
-	__int64 ptr;
-
-	if (LuaHook::funct_getArgument_string(a1, 1, 0, (__int64)&ptr) &&
-		LuaHook::funct_getArgument_string(a1, 2, 0, (__int64)&ptr) &&
-		LuaHook::funct_getArgument_string(a1, 3, 0, (__int64)&ptr) &&
-		LuaHook::funct_getArgument_string(a1, 4, 0, (__int64)&ptr) &&
-		LuaHook::funct_getArgument_noobject(a1, 5, (__int64)&ptr))
-	{
-		string modelPath = string((char*)LuaHook::funct_returnArgument_string(a1, 1, 0));
-		string modelAnmPath = string((char*)LuaHook::funct_returnArgument_string(a1, 2, 0));
-		string modelName = string((char*)LuaHook::funct_returnArgument_string(a1, 3, 0));
-		string modelAnmName = string((char*)LuaHook::funct_returnArgument_string(a1, 4, 0));
-
-		if (modelPath.length() <= 0x1B	&&
-			modelAnmPath.length() <= 0x21 &&
-			modelName.length() <= 0x8 &&
-			modelAnmName.length() <= 0x8)
-		{
-			BYTE modelPathBytes[0x1B];
-			char* modelPathC = (char*)modelPath.c_str();
-			for (int x = 0; x < modelPath.length(); x++) modelPathBytes[x] = modelPathC[x];
-			for (int x = modelPath.length(); x < 0x1B; x++) modelPathBytes[x] = 0x0;
-
-			BYTE modelAnmPathBytes[0x21];
-			char* modelAnmPathC = (char*)modelAnmPath.c_str();
-			for (int x = 0; x < modelAnmPath.length(); x++) modelAnmPathBytes[x] = modelAnmPathC[x];
-			for (int x = modelAnmPath.length(); x < 0x21; x++) modelAnmPathBytes[x] = 0x0;
-
-			BYTE modelNameBytes[0x8];
-			char* modelNameC = (char*)modelName.c_str();
-			for (int x = 0; x < modelName.length(); x++) modelNameBytes[x] = modelNameC[x];
-			for (int x = modelName.length(); x < 0x8; x++) modelNameBytes[x] = 0x0;
-
-			BYTE modelAnmNameBytes[0x8];
-			char* modelAnmNameC = (char*)modelAnmName.c_str();
-			for (int x = 0; x < modelAnmName.length(); x++) modelAnmNameBytes[x] = modelAnmNameC[x];
-			for (int x = modelAnmName.length(); x < 0x8; x++) modelAnmNameBytes[x] = 0x0;
-
-			DWORD dwOld = 0;
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DD8), 0x1B, PAGE_EXECUTE_READWRITE, &dwOld);
-			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xF36DD8), modelPathBytes, 0x1B);
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DD8), 0x1B, dwOld, &dwOld);
-
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DF8), 0x21, PAGE_EXECUTE_READWRITE, &dwOld);
-			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xF36DF8), modelAnmPathBytes, 0x21);
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DF8), 0x21, dwOld, &dwOld);
-
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC28), 0x8, PAGE_EXECUTE_READWRITE, &dwOld);
-			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC28), modelNameBytes, 0x8);
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC28), 0x8, dwOld, &dwOld);
-
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC38), 0x8, PAGE_EXECUTE_READWRITE, &dwOld);
-			memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC38), modelAnmNameBytes, 0x8);
-			VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC38), 0x8, dwOld, &dwOld);
-
-			cout << "Replaced model" << endl;
-		}
-		else
-		{
-			cout << "Incorrect sizes" << endl;
-		}
-
-	}
-
-	return 0;
-}
-
-// This function is also useless.
-int ccRestoreEntryModelPath(__int64 a1)
-{
-	__int64 ptr;
-
-	string modelPath = "data/boss/02/gfsabod1.xfbin";
-	string modelAnmPath = "data/boss/02/b0203_gfsa_anm.xfbin";
-	string modelName = "gfsabod1";
-	string modelAnmName = "gfsanut0";
-
-	if (modelPath.length() <= 0x1B &&
-		modelAnmPath.length() <= 0x21 &&
-		modelName.length() <= 0x8 &&
-		modelAnmName.length() <= 0x8)
-	{
-		BYTE modelPathBytes[0x1B];
-		char* modelPathC = (char*)modelPath.c_str();
-		for (int x = 0; x < modelPath.length(); x++) modelPathBytes[x] = modelPathC[x];
-		for (int x = modelPath.length(); x < 0x1B; x++) modelPathBytes[x] = 0x0;
-
-		BYTE modelAnmPathBytes[0x21];
-		char* modelAnmPathC = (char*)modelAnmPath.c_str();
-		for (int x = 0; x < modelAnmPath.length(); x++) modelAnmPathBytes[x] = modelAnmPathC[x];
-		for (int x = modelAnmPath.length(); x < 0x21; x++) modelAnmPathBytes[x] = 0x0;
-
-		BYTE modelNameBytes[0x8];
-		char* modelNameC = (char*)modelName.c_str();
-		for (int x = 0; x < modelName.length(); x++) modelNameBytes[x] = modelNameC[x];
-		for (int x = modelName.length(); x < 0x8; x++) modelNameBytes[x] = 0x0;
-
-		BYTE modelAnmNameBytes[0x8];
-		char* modelAnmNameC = (char*)modelAnmName.c_str();
-		for (int x = 0; x < modelAnmName.length(); x++) modelAnmNameBytes[x] = modelAnmNameC[x];
-		for (int x = modelAnmName.length(); x < 0x8; x++) modelAnmNameBytes[x] = 0x0;
-
-		DWORD dwOld = 0;
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DD8), 0x1B, PAGE_EXECUTE_READWRITE, &dwOld);
-		memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xF36DD8), modelPathBytes, 0x1B);
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DD8), 0x1B, dwOld, &dwOld);
-
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DF8), 0x21, PAGE_EXECUTE_READWRITE, &dwOld);
-		memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xF36DF8), modelAnmPathBytes, 0x21);
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xF36DF8), 0x21, dwOld, &dwOld);
-
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC28), 0x8, PAGE_EXECUTE_READWRITE, &dwOld);
-		memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC28), modelNameBytes, 0x8);
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC28), 0x8, dwOld, &dwOld);
-
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC38), 0x8, PAGE_EXECUTE_READWRITE, &dwOld);
-		memcpy((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC38), modelAnmNameBytes, 0x8);
-		VirtualProtect((void*)(d3dcompiler_47_og::moduleBase + 0xFEFC38), 0x8, dwOld, &dwOld);
-
-		cout << "Restored original model" << endl;
-	}
-
-	return 0;
-}
-
-////////////////////////////////////////////////////////////////////////
-
 vector<string> commandList;
 vector<INT64> functionList;
 // Adds a custom Lua function to lua_state*
@@ -863,7 +725,6 @@ BYTE DeclareFunctionBytes[16];
 int LuaHook_ToLua_DeclareFunction = 0x9AA9C0;
 void LuaHook::HookDeclareFunction()
 {
-	//cout << "Hooking declare function" << endl;
 	memcpy(DeclareFunctionBytes, (void*)(d3dcompiler_47_og::moduleBase + LuaHook_ToLua_DeclareFunction), 16);
 	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + LuaHook_ToLua_DeclareFunction), (void*)DeclareFunctionAPI, 16);
 }
@@ -984,7 +845,3 @@ int LuaHook::SetLuaState(__int64 a1)
 	ccGameProperties::LStateGame = a1;
 	return 1;
 }
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
