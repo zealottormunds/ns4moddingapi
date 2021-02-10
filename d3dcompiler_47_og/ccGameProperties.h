@@ -38,6 +38,9 @@ namespace moddingApi
 		static float GetDeltaTime();
 
 		static __int64 GetQword(__int64 qw);
+		static int GetDword(__int64 dw);
+		static __int64 GetOffset(__int64 of);
+
 		static constexpr unsigned int str2int(const char* str, int h = 0);
 
 		static void DoGamePropertiesHook();

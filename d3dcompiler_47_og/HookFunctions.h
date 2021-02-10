@@ -22,6 +22,9 @@ namespace moddingApi
 
 		static bool Hook(void*, void*, int);
 
+		static void HookFade();
+		static uintptr_t HookQuick(char* a1);
+
 		//static void DoHook(uintptr_t address, void* originalDest, int len, void* funct);
 		//static void UndoHook(uintptr_t address, void* originalDest, int len);
 	};

@@ -16,7 +16,11 @@
 #include "LuaHook.h"
 #include "ccCharacterFunctions.h"
 #include "ccGameProperties.h"
-#include "PrmFunctions.h"
+
+#include "CameraControl.h"
+#include "BattleFunctions.h"
+#include "GameSettings.h"
+#include "ccBoss02_2Phase01Manager.h"
 
 using namespace moddingApi;
 using namespace std;
@@ -29,12 +33,6 @@ BYTE originalInit2Info[17];
 
 //bool Hook(void*, void*, int);
 bool Hook2(void*, void*, int);
-bool Hook3(void*, void*, int);
-
-void DoMeHook()
-{
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7F49C8), (void*)ccPlayer::meTest, 18);
-}
 
 int fc_msgtostring = 0xAB8720;
 int fc_msgtostring_3 = 0xAB87D0;
@@ -58,16 +56,9 @@ void CreateVersionString()
 }
 
 // WRITE ALL THE FUNCTIONS YOU WANT TO HOOK IN HERE
-
-void HookFade();
-int HookQuick(unsigned int a1, unsigned int a2);
-
 void HookFunctions::InitializeHooks()
 {
 	CreateVersionString();
-
-	// PrmFunctions::ImplementFunctions();
-	// DoMeHook();
 
 	memcpy(originalMsgInfo, (void*)(d3dcompiler_47_og::moduleBase + fc_msgtostring), 19); // Fixed
 	HookFunctions::DoMessageInfoHook();
@@ -76,29 +67,66 @@ void HookFunctions::InitializeHooks()
 
 	LuaHook::HookDeclareFunction();
 
-	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450A14), (void*)LuaHook::GetPadState, 20);	
-	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x450E28), (void*)LuaHook::ccGroupBattleEventCameraMovePosBeginCoop, 14);
-	// ccCharacterFunctions::DoCharacterSelectParamHook();
-	// ccGameProperties::DoGamePropertiesHook();
-	// ccGameProperties::DoInitHook();
-	// ccGameProperties::DoAutoSaveHook();
-	// ccGeneralGameFunctions::DoGameInfoHook();
+	// Hook Cpk Load
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x854F3C), GameSettings::LoadCpkInitial, 15);
+
+	// Hook Boss
+	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x27F0A0), ccBoss02_2Phase01Manager::BossBattleBKKU_Loop00, 20);
+
+	// Hook Substitution Modifier
+	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7DE9C0), BattleFunctions::ChangeSubstitutionState, 18);
+
+	// Hook Camera Controller
+	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x74353C), CameraControl::CameraControllerMain, 14);
 
 	ccCharacterFunctions::PartnerFunctions();
 	ccCharacterFunctions::SpecialCondFunctions();
+
+	// Load plugin hooks
+	for (int actualPlugin = 0; actualPlugin < ccMain::PluginList.size(); actualPlugin++)
+	{
+		HINSTANCE hGetProcIDDLL = ccMain::PluginList.at(actualPlugin);
+
+		typedef void(__stdcall *hookfunct)(__int64 moduleBase, __int64 hookFunction);
+		hookfunct funct = (hookfunct)GetProcAddress(hGetProcIDDLL, "InitializeHooks");
+
+		if (funct) funct(d3dcompiler_47_og::moduleBase, (__int64)HookFunctions::Hook);
+	}
 }
 
-void HookFade()
+void HookFunctions::HookFade()
 {
-	cout << "Hooking fade" << endl;
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x537470), (void*)HookQuick, 16);
+	cout << "Hooking" << endl;
+	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x6E07C4), (void*)HookQuick, 20);
 }
 
-int HookQuick(unsigned int a1, unsigned int a2)
-{
-	cout << "A1: " << a1 << ", A2: " << a2 << endl;
+int sceneToLoad = 2;
+char* sceneName[] = { "ccSceneTitle", "ccSceneGameModeSelect", "ccSceneAdventure" };
+int sceneMalloc[] = { 0x140, 0x168, 0x1608 };
+int sceneAddress[] = { 0x71BA70, 0x6EAB74, 0x6CAAAC };
 
-	return 0;
+uintptr_t HookFunctions::HookQuick(char* a1)
+{
+	cout << "A1: " << a1 << endl;
+
+	void * v2 = malloc(sceneMalloc[sceneToLoad]);
+	void * v3 = 0;
+
+	// 0x71BA70 ccSceneTitle_00
+	typedef void*(__fastcall * funct)(void * m);
+	funct ccSceneInit;
+	ccSceneInit = (funct)(d3dcompiler_47_og::moduleBase + sceneAddress[sceneToLoad]);
+	v3 = ccSceneInit(v2);
+
+	// 0xAB3950 fc_ccSceneLoader_00
+	typedef void(__fastcall * funct1)(void * p1, char * p2);
+	funct1 fc_ccSceneLoader_00;
+	fc_ccSceneLoader_00 = (funct1)(d3dcompiler_47_og::moduleBase + sceneAddress[sceneToLoad]);
+	fc_ccSceneLoader_00(v3, sceneName[sceneToLoad]);
+
+	cout << "V3: " << std::hex << v3 << endl;
+
+	return (uintptr_t)v3;
 }
 
 // Fixed

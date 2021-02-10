@@ -65,3 +65,12 @@ int moddingApi::ccAdvSelectWindowAddItem(char * item)
 	fc = (funct)(d3dcompiler_47_og::moduleBase + 0x4DCA2C); // UPDATED
 	return fc(item);
 }
+
+void moddingApi::ccDisableFcv()
+{
+	// 0x536260
+	typedef void(__fastcall * funct)();
+	funct fc;
+	fc = (funct)(d3dcompiler_47_og::moduleBase + 0x536260);
+	fc();
+}

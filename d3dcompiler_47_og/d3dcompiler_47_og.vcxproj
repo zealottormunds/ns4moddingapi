@@ -152,7 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="API_Console.cpp" />
+    <ClCompile Include="BattleFunctions.cpp" />
+    <ClCompile Include="CameraControl.cpp" />
     <ClCompile Include="ccBattleFunctions.cpp" />
+    <ClCompile Include="ccBoss02_2Phase01Manager.cpp" />
     <ClCompile Include="ccCharacterFunctions.cpp" />
     <ClCompile Include="ccBossIAFunctions.cpp" />
     <ClCompile Include="ccGameProperties.cpp" />
@@ -173,11 +176,9 @@
     <ClCompile Include="enet\win32.c" />
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="GameMath.cpp" />
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="HookFunctions.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="Interface_Background.cpp" />
-    <ClCompile Include="Interface_Text.cpp" />
     <ClCompile Include="LuaHook.cpp" />
     <ClCompile Include="LuaHook_Commands.cpp" />
     <ClCompile Include="LuaUtilities.cpp" />
@@ -212,13 +213,7 @@
     <ClCompile Include="lua\src\lvm.c" />
     <ClCompile Include="lua\src\lzio.c" />
     <ClCompile Include="lua\src\print.c" />
-    <ClCompile Include="PrmFunctions.cpp" />
-    <ClCompile Include="Rigidbody.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector3.cpp" />
-    <ClCompile Include="WorldCollision.cpp" />
-    <ClCompile Include="ztRpgMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="d3dcompiler_47_og.def" />
@@ -228,7 +223,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API_Console.h" />
+    <ClInclude Include="BattleFunctions.h" />
+    <ClInclude Include="CameraControl.h" />
     <ClInclude Include="ccBattleFunctions.h" />
+    <ClInclude Include="ccBoss02_2Phase01Manager.h" />
     <ClInclude Include="ccCharacterFunctions.h" />
     <ClInclude Include="ccBossIAFunctions.h" />
     <ClInclude Include="ccGameProperties.h" />
@@ -249,11 +247,9 @@
     <ClInclude Include="enet\win32.h" />
     <ClInclude Include="FileParser.h" />
     <ClInclude Include="GameMath.h" />
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="HookFunctions.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="Interface_Background.h" />
-    <ClInclude Include="Interface_Text.h" />
     <ClInclude Include="LuaHook.h" />
     <ClInclude Include="LuaHook_Commands.h" />
     <ClInclude Include="LuaUtilities.h" />
@@ -281,12 +277,7 @@
     <ClInclude Include="lua\src\lvm.h" />
     <ClInclude Include="lua\src\lzio.h" />
     <ClInclude Include="PrmFunctions.h" />
-    <ClInclude Include="Rigidbody.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector3.h" />
-    <ClInclude Include="WorldCollision.h" />
-    <ClInclude Include="ztRpgMain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

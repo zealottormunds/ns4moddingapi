@@ -16,7 +16,6 @@
 #include "ccGeneralGameFunctions.h"
 #include "MultiMatch.h"
 #include "ccGameProperties.h"
-#include "ztRpgMain.h"
 
 using namespace std;
 using namespace moddingApi;
@@ -334,6 +333,23 @@ int __fastcall LuaHook::fc_ccSetCastMotionWithInterpolation(char* a1, char* a2, 
 	fc_funct fc_cc_funct;
 	fc_cc_funct = (fc_funct)(d3dcompiler_47_og::moduleBase + 0x5333CC); // UPDATED
 	return fc_cc_funct(a1, a2, a3, a4);
+}
+
+int __fastcall LuaHook::fc_ccSetCastMotion2WithInterpolation(char* id, char* path1, char* anm1, int frame1, char* path2, char* anm2, int frame2)
+{
+	typedef int(__fastcall * fc_funct)(char* id, char* path1, char* anm1, int frame1, char* path2, char* anm2, int frame2);
+	fc_funct fc_cc_funct;
+	fc_cc_funct = (fc_funct)(d3dcompiler_47_og::moduleBase + 0x532EA8); // UPDATED
+	return fc_cc_funct(id, path1, anm1, frame1, path2, anm2, frame2);
+}
+
+// 0x532E40
+int __fastcall LuaHook::fc_ccSetCastMotion2Frame(char* a1, int frame)
+{
+	typedef int(__fastcall * fc_funct)(char* a1, int frame);
+	fc_funct fc_cc_funct;
+	fc_cc_funct = (fc_funct)(d3dcompiler_47_og::moduleBase + 0x532E40); // UPDATED
+	return fc_cc_funct(a1, frame);
 }
 
 int __fastcall LuaHook::fc_ccDispCast(char* a1, bool a2)
@@ -804,7 +820,7 @@ INT64 __fastcall DeclareFunctionAPI(INT64 a1, char* a2, INT64 a3)
 	// Declare all new Lua functions
 	if (isLast)
 	{
-		LuaAddFunct("ccHelloWorld", (void*)lua_test);
+		/*LuaAddFunct("ccHelloWorld", (void*)lua_test);
 		LuaAddFunct("ccTestRpg", (void*)ztRpgMain::rpg_test);
 		LuaAddFunct("ccCout", (void*)ccCoutLua);
 		LuaAddFunct("ztGetLoadStageName", (void*)LuaHook::ztGetLoadStageName);
@@ -813,14 +829,18 @@ INT64 __fastcall DeclareFunctionAPI(INT64 a1, char* a2, INT64 a3)
 		LuaAddFunct("ztRestartSt", (void*)LuaHook::ztRestartSt);
 		LuaAddFunct("ztLoadFiles", (void*)LuaHook::ztLoadFiles);
 		LuaAddFunct("ztGetGlobalInt", (void*)LuaHook::ztGetGlobalInt);
-		LuaAddFunct("SetLuaState", (void*)LuaHook::SetLuaState);
+		LuaAddFunct("SetLuaState", (void*)LuaHook::SetLuaState);*/
 
-		// Old multimatch functions. These will be updated eventually.
-		//LuaAddFunct("ccInitializeMultiMatch", (void*)MultiMatch::ccInitializeMultiMatch);
-		//LuaAddFunct("ccMultiMatchCameraLoop", (void*)MultiMatch::ccMultiMatchCameraLoop);
-		//LuaAddFunct("ccSetEntryModelPath", (void*)ccSetEntryModelPath);
-		//LuaAddFunct("ccRestoreEntryModelPath", (void*)ccRestoreEntryModelPath);
-		//LuaAddFunct("ccMultiMatchShowPlayerStatus", (void*)MultiMatch::ccMultiMatchShowPlayerStatus);
+		// Load plugin lua commands
+		for (int actualPlugin = 0; actualPlugin < ccMain::PluginList.size(); actualPlugin++)
+		{
+			HINSTANCE hGetProcIDDLL = ccMain::PluginList.at(actualPlugin);
+
+			typedef void(__stdcall *cmdfunct)(__int64 moduleBase, __int64 cmdFunction);
+			cmdfunct funct = (cmdfunct)GetProcAddress(hGetProcIDDLL, "InitializeLuaCommands");
+
+			if (funct) funct(d3dcompiler_47_og::moduleBase, (__int64)LuaAddFunct);
+		}
 
 		for (int x = 0; x < functionList.size(); x++)
 		{
@@ -828,7 +848,6 @@ INT64 __fastcall DeclareFunctionAPI(INT64 a1, char* a2, INT64 a3)
 			cout << "Declared lua function: " << commandList[x] << endl;
 		}
 
-		//cout << "Set lua_State to " << std::hex << a1;
 		ccGameProperties::LStateGame = a1;
 		ccGameProperties::LState = a1;
 		ccGameProperties::ExecuteLuaInitial();
@@ -933,7 +952,7 @@ int LuaHook::ztRestartSt(__int64 a1)
 	return 1;
 }
 
-#include "Scene.h"
+/*#include "Scene.h"
 int LuaHook::ztLoadFiles(__int64 a1)
 {
 	__int64 ptr;
@@ -944,7 +963,7 @@ int LuaHook::ztLoadFiles(__int64 a1)
 	}
 
 	return 1;
-}
+}*/
 
 int LuaHook::ztGlobalInt = 0;
 

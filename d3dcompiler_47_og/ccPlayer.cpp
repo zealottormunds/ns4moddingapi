@@ -15,6 +15,7 @@
 #include "HookFunctions.h"
 #include "ccGameProperties.h"
 //#include "Input.h"
+#include "LuaUtilities.h"
 #include "LuaHook.h"
 #include "ccMemoryFunctions.h"
 #include "ccPlayerStruct.h"
@@ -36,46 +37,9 @@ void ccPlayer::Start()
 	// Currently this function does nothing.
 }
 
-__int64 __fastcall ccPlayer::meTest(__int64 a1)
-{
-	cout << "The function works! " << hex << a1 << endl;
-
-	if (ccGameProperties::isOnBattle() == 1)
-	{
-		// Get player x info
-		uintptr_t s = GetPlayerStatus(0);
-		uintptr_t p = GetPlayerInfo(0);
-
-		// If pointers are null, stop the function.
-		if (s == 0 || p == 0)
-		{
-			cout << "Null pointers" << endl;
-			return 1;
-		}
-
-		float h = GetPlayerFloatProperty(p, s, "health");
-		SetPlayerFloatProperty(p, s, "health", h + 5);
-		//SetPlayerFloatProperty(p, s, "modelscale", 0.5f);
-	}
-	else
-	{
-		cout << "Not on battle" << endl;
-	}
-
-	return 1;
-}
-
 // This function is ran every frame all the time.
 void ccPlayer::Loop()
 {
-	// Get keyboard keys and update their state. This is useful for using keyboard hooks, like pressing a key to do a certain function.
-	/*Input::UpdateKeys();
-
-	if (Input::GetKeyDown('U'))
-	{
-		cout << std::hex << GetPlayerStatus(0) << endl;
-	}*/
-
 	// If the state of isOnBattle is different, then it means we entered/quitted a battle
 	if (ccGameProperties::isOnBattle() != prevBattle)
 	{

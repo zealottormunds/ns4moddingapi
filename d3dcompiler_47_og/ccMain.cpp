@@ -26,8 +26,7 @@ using namespace std;
 int Console_GetInt(char*);
 char * Console_GetString(char*);
 bool EnableAPI = false;
-
-void ReadCpk();
+vector<BYTE> ReadAllBytes(string);
 
 DWORD WINAPI ccMain::Main()
 {
@@ -77,14 +76,66 @@ DWORD WINAPI ccMain::LoopConsole()
 }
 
 // Process the player
+#include "Input.h"
 DWORD WINAPI ccMain::LoopGame()
 {
 	while (true)
 	{
+		//Input::UpdateKeys();
+
+		/*if (Input::GetKeyDown('N'))
+		{
+			HookFunctions::HookQuick("ccSceneTitle");
+		}
+
+		if (Input::GetKeyDown('M'))
+		{
+			typedef float(__fastcall * funct)();
+			funct fc;
+			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51AE0); // UPDATED
+			cout << "Value: " << fc() << endl;
+		}
+
+		if (Input::GetKeyDown('B'))
+		{
+			typedef float(__fastcall * funct)(float f);
+			funct fc;
+			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51B00); // UPDATED
+			fc(2);
+		}
+		if (Input::GetKeyDown('V'))
+		{
+			typedef float(__fastcall * funct)(float f);
+			funct fc;
+			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51B00); // UPDATED
+			fc(1);
+		}
+		if (Input::GetKeyDown('C'))
+		{
+			typedef float(__fastcall * funct)(float f);
+			funct fc;
+			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51B00); // UPDATED
+			fc(0.5);
+		}*/
+
 		//ccPlayer::Loop();
 		//cout << d3dcompiler_47_og::moduleBase - 0xC00 + 0x2965B3D64 << endl;
 		//cout << (d3dcompiler_47_og::moduleBase - 0xC00 + 0x1561108) << endl;
 		//cout << ccGameProperties::GetProperty("ResolutionX") << endl;
+
+		// Load plugin commands
+		for (int actualPlugin = 0; actualPlugin < ccMain::PluginList.size(); actualPlugin++)
+		{
+			HINSTANCE hGetProcIDDLL = ccMain::PluginList.at(actualPlugin);
+
+			if (PluginLoop.at(actualPlugin) != 0)
+			{
+				typedef void(__stdcall *loopfunct)(__int64 moduleBase);
+				loopfunct funct = (loopfunct)(PluginLoop.at(actualPlugin));
+				if (funct) funct(d3dcompiler_47_og::moduleBase);
+			}
+		}
+
 		Sleep(10);
 	}
 	return 0;
@@ -117,6 +168,8 @@ vector<std::string> ccMain::ModList;
 vector<std::string> ccMain::ModDesc;
 vector<std::string> ccMain::ModAuth;
 vector<BYTE> ccMain::ModState;
+std::vector<HINSTANCE> ccMain::PluginList;
+std::vector<__int64> ccMain::PluginLoop;
 
 // Initialize game functions
 typedef uintptr_t(__fastcall * initializegame)(uintptr_t);
@@ -132,6 +185,7 @@ void DoInstruction(string instruction, vector<string> params, string _file);
 void ReadPartnerSlotParam(string _file);
 void ReadSpecialConditionParam(string _file);
 
+#include "GameSettings.h"
 void ccMain::ReadApiFiles()
 {
 	char ApiPath[_MAX_PATH];
@@ -233,41 +287,130 @@ void ccMain::ReadApiFiles()
 
 				if (modName != "")
 				{
-					// Start reading mod files
-					vector<string> files;
+					// Read plugins first
 					for (const auto & f : filesystem::directory_iterator(ModPath))
 					{
 						string _file = f.path().string();
 						string _ext = _file.substr(_file.length() - 4, 4);
 
-						if (_ext == "ns4s")
+						if (_ext == ".dll")
 						{
-							//cout << "Message file" << endl;
-							vector<string> msg = ReadMessageFile(_file);
+							char* a = new char[_file.length() + 1];
+							strcpy(a, _file.c_str());
+							HINSTANCE hGetProcIDDLL = LoadLibrary(a);
 
-							for (int x = 0; x + 1 < msg.size(); x = x + 2)
+							if (!hGetProcIDDLL)
 							{
-								//cout << "Added Message ID: " << msg[x] << endl;
-								ccGeneralGameFunctions::MessageID.push_back(msg[x]);
-								ccGeneralGameFunctions::MessageStr.push_back(msg[x + 1]);
+								cout << "PluginSystem :: Error loading plugin " << _file.c_str() << ": ERROR CODE " << std::dec << GetLastError() << endl;
+							}
+							else
+							{
+								string pluginname = string(ModName) + "/" + filesystem::path(_file).filename().string();
+								PluginList.push_back(hGetProcIDDLL);
+								cout << "PluginSystem :: Loaded plugin " << pluginname << endl;
+
+								vector<__int64> functionExport;
+								functionExport.push_back((__int64)Input::UpdateKeys);
+								functionExport.push_back((__int64)Input::GetKey);
+								functionExport.push_back((__int64)Input::GetKeyDown);
+								functionExport.push_back((__int64)Input::GetKeyUp);
+
+								// Get InitializePlugin
+								typedef void(__stdcall *initfunct)(__int64 moduleBase, vector<__int64> functs);
+								initfunct funct = (initfunct)GetProcAddress(hGetProcIDDLL, "InitializePlugin");
+
+								if (funct) funct(d3dcompiler_47_og::moduleBase, functionExport);
+								else cout << "PluginSystem :: Init not found in plugin" << endl;
+
+								// Get GameLoop
+								typedef void(__stdcall *initfunctloop)(__int64 moduleBase);
+								initfunctloop functloop = (initfunctloop)GetProcAddress(hGetProcIDDLL, "GameLoop");
+
+								if (functloop) PluginLoop.push_back((__int64)functloop);
+								else
+								{
+									cout << "PluginSystem :: Loop not found in plugin" << endl;
+									PluginLoop.push_back(0);
+								}
 							}
 						}
-						else if (_ext == "ns4p")
+					}
+
+					// Read API files
+					for (const auto & f : filesystem::directory_iterator(ModPath))
+					{
+						string _file = f.path().string();
+						string _ext = _file.substr(_file.length() - 4, 4);
+						bool fileManagedByPlugin = false;
+
+						// Send file to plugin
+						for (int actualPlugin = 0; actualPlugin < ccMain::PluginList.size(); actualPlugin++)
 						{
-							//cout << "Patch file" << endl;
-							ReadPatchFile(_file);
+							HINSTANCE hGetProcIDDLL = ccMain::PluginList.at(actualPlugin);
+
+							typedef bool(__stdcall *filefunct)(__int64 moduleBase, std::string path, vector<BYTE> file);
+							filefunct funct = (filefunct)GetProcAddress(hGetProcIDDLL, "ParseApiFiles");
+							if (funct)
+							{
+								fileManagedByPlugin = funct(d3dcompiler_47_og::moduleBase, _file, ReadAllBytes(_file));
+							}
+
+							if (fileManagedByPlugin) actualPlugin = ccMain::PluginList.size();
 						}
-						else if (_ext == "ns4e")
+
+						if (fileManagedByPlugin == false)
 						{
-							ReadScriptFile(_file);
-						}
-						else if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "partnerSlotParam.xfbin")
-						{
-							ReadPartnerSlotParam(_file);
-						}
-						else if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "specialCondParam.xfbin")
-						{
-							ReadSpecialConditionParam(_file);
+							if (_ext == "ns4s")
+							{
+								vector<string> msg = ReadMessageFile(_file);
+
+								for (int x = 0; x + 1 < msg.size(); x = x + 2)
+								{
+									ccGeneralGameFunctions::MessageID.push_back(msg[x]);
+									ccGeneralGameFunctions::MessageStr.push_back(msg[x + 1]);
+								}
+							}
+							else if (_ext == "ns4p")
+							{
+								ReadPatchFile(_file);
+							}
+							else if (_ext == "ns4e")
+							{
+								ReadScriptFile(_file);
+							}
+							else if (_ext == ".cpk")
+							{
+								string cpkinfo = filesystem::path(_file).replace_extension("cpk.info").string();
+								if (filesystem::exists(cpkinfo))
+								{
+									vector<BYTE> fileBytes1 = ReadAllBytes(cpkinfo);
+									int priority = fileBytes1[0] + (fileBytes1[1] * 0x100) + (fileBytes1[2] * 0x10000) + (fileBytes1[3] * 0x1000000);
+
+									cout << "CpkLoader :: Priority set for cpk " << string(ModName) << "/" << filesystem::path(_file).filename() << " to " << std::dec << priority << "." << endl;
+									string cpkpath = "moddingapi/mods/" + string(ModName) + "/" + filesystem::path(_file).filename().string();
+									char* a = new char[cpkpath.length() + 1];
+									strcpy(a, cpkpath.c_str());
+									GameSettings::CpkToLoad.push_back(a);
+									GameSettings::CpkPriority.push_back(priority);
+								}
+								else
+								{
+									cout << "CpkLoader :: Info file for cpk " << string(ModName) << "/" << filesystem::path(_file).filename() << " was not found. Setting priority to default (13)." << endl;
+									string cpkpath = "moddingapi/mods/" + string(ModName) + "/" + filesystem::path(_file).filename().string();
+									char* a = new char[cpkpath.length() + 1];
+									strcpy(a, cpkpath.c_str());
+									GameSettings::CpkToLoad.push_back(a);
+									GameSettings::CpkPriority.push_back(13);
+								}
+							}
+							else if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "partnerSlotParam.xfbin")
+							{
+								ReadPartnerSlotParam(_file);
+							}
+							else if (_file.length() > 0x16 && _file.substr(_file.length() - 0x16, 0x16) == "specialCondParam.xfbin")
+							{
+								ReadSpecialConditionParam(_file);
+							}
 						}
 					}
 					ccMain::ModCount++;
@@ -725,8 +868,6 @@ void DoInstruction(string instruction, vector<string> params, string _file)
 	}
 }
 
-vector<BYTE> ReadAllBytes(string);
-
 void ReadPartnerSlotParam(string _file)
 {
 	vector<BYTE> fileBytes = ReadAllBytes(_file);
@@ -773,6 +914,11 @@ void ReadPartnerSlotParam(string _file)
 	}
 }
 
+bool finishedReadingSpecialCondition = false;
+uintptr_t addressArea = 0;
+vector<uintptr_t> addressList;
+vector<string> condName;
+
 void ReadSpecialConditionParam(string _file)
 {
 	vector<BYTE> fileBytes = ReadAllBytes(_file);
@@ -798,10 +944,23 @@ void ReadSpecialConditionParam(string _file)
 			}
 		}
 
-		//cout << "stuff: " << std::hex << (uintptr_t)fileBytes[actual] << " " << (uintptr_t)fileBytes[actual + 1] << endl;
 		condCharacter = (fileBytes[actual] * 0x1) + (fileBytes[actual + 1] * 0x100);
 
 		uintptr_t condFunct = 0x0;
+		int actualConditionIndex = -1;
+		bool found = false;
+		
+		for (int x = 0; x < condName.size(); x++)
+		{
+			if (slotType == condName[x])
+			{
+				found = true;
+				x = 0x5C;
+				condFunct = addressList[x];
+			}
+		}
+
+		int basecond = 0x7C4B7C;
 
 		if (slotType == "COND_1CMN") condFunct = 0x7C4B7C;
 		else if (slotType == "COND_2SIK") condFunct = 0x7C4BE4;
@@ -897,10 +1056,8 @@ void ReadSpecialConditionParam(string _file)
 		else if (slotType == "COND_7MMV") condFunct = 0x7C4B14;
 
 		ccCharacterFunctions::c_specialCondFunct.push_back(d3dcompiler_47_og::RecalculateAddress(condFunct));
-		//ccCharacterFunctions::c_specialCondFunct.push_back(condFunct);
 		ccCharacterFunctions::c_specialCondCodes.push_back(condCharacter);
 
-		//cout << "CharacterType = " << slotType.c_str() << ", Chara = " << std::hex << condCharacter << endl;
 	}
 }
 
@@ -919,7 +1076,6 @@ vector<BYTE> ReadAllBytes(string _file)
 	f.close();
 	f.open(_file, ios::binary);
 
-	//cout << _file.c_str() << endl;
 	std::vector<BYTE> result(FileSize);
 
 	f.seekg(0, ios::beg);
@@ -930,8 +1086,6 @@ vector<BYTE> ReadAllBytes(string _file)
 		memcpy((void*)&result[0 + x], &a, 1);
 	}
 
-	//f.read(&result[0], FileSize);
-
 	f.close();
 
 	return result;
@@ -939,138 +1093,3 @@ vector<BYTE> ReadAllBytes(string _file)
 
 #include "ccGameProperties.h"
 #include "ccMemoryFunctions.h"
-void ReadCpk()
-{
-	BYTE cpkCount = 6;
-
-	char* cpkList[] =
-	{
-		"sim:data/launch/data1.cpk",
-		"sim:data/launch/stage1.cpk",
-		"disc:data/launch/dataRegion.cpk",
-		"sim:data/launch/sound.cpk",
-		"disc:data/launch/adx2.cpk",
-		"disc:data/launch/movie1.cpk",
-		"sim:data/launch/test.cpk"
-	};
-
-	void* cpkMode1v = malloc(8);
-	BYTE cpkMode1[] =
-	{
-		0x01, 0x00, 0x00, 0x00, 0xF6, 0x7F, 0x00, 0x00
-	};
-	memcpy(cpkMode1v, &cpkMode1[0], 8);
-
-	void* cpkMode2v = malloc(8);
-	BYTE cpkMode2[] =
-	{
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	};
-	memcpy(cpkMode2v, &cpkMode2[0], 8);
-
-	void* cpkMode3v = malloc(8);
-	BYTE cpkMode3[] =
-	{
-		0x00, 0x00, 0x00, 0x00, 0xF6, 0x7F, 0x00, 0x00
-	};
-	memcpy(cpkMode3v, &cpkMode3[0], 8);
-
-	void* cpkMode4v = malloc(8);
-	BYTE cpkMode4[] =
-	{
-		0x00, 0x00, 0x00, 0x00, 0x53, 0x00, 0x00, 0x00
-	};
-	memcpy(cpkMode4v, &cpkMode4[0], 8);
-
-	void* arrayMalloc = malloc(0x10 * cpkCount);
-	
-	for (int x = 0; x < cpkCount; x++)
-	{
-		void* actual = (void*)((__int64)arrayMalloc + (x * 0x10));
-		memcpy(actual, &cpkList[x], 0x8);
-	}
-
-	cout << "Address: " << std::hex << arrayMalloc << endl;
-
-	// This will be placed in the game exe, 0x853D6B
-	BYTE jmp_[]
-	{
-		0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // 0x0
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-		0x90 // 0x6
-	};
-
-	void* jmp = VirtualAlloc(0, 14, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
-	memcpy(jmp, &jmp_[0], 14);
-
-	// This is the function that will get executed
-	BYTE function_[]{
-		0x48, 0x8D, 0x1D, 0x13, 0x00, 0x00, 0x00, // 0x0, mov rbx, [rip+0x13]
-		0xBF, cpkCount, 0x00, 0x00, 0x00, // 0x7, mov edi, 6
-		0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // 0xC, jmp
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // 0x12, back to 0x853DC8
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // 0x1A
-	};
-
-	void *function = VirtualAlloc(0, 34 + (cpkCount * 0x10) - 0x10, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
-	memcpy(function, &function_[0], 34);
-
-	// Paste function address in jmp
-	memcpy((void*)((_int64)jmp + 0x6), &function, 8);
-
-	// Calculate jmp back
-	__int64 back = d3dcompiler_47_og::moduleBase + 0x853DC8;
-
-	// Paste jmp back in function + 0x12
-	memcpy((void*)((__int64)function + 0x12), &back, 8);
-
-	// Paste address of strings in function + 0x1A
-	for (int x = 0; x < cpkCount; x++)
-	{
-		memcpy((void*)((__int64)function + 0x1A + (x * 0x10)), (void*)((__int64)arrayMalloc + (x * 0x10)), 8);
-
-		switch (x)
-		{
-		case 0:
-		case 1:
-		case 2:
-			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode1v, 8);
-			break;
-		case 3:
-			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode2v, 8);
-			break;
-		case 4:
-			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode3v, 8);
-			break;
-		case 5:
-			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode4v, 8);
-			break;
-		case 6:
-		case 7:
-		case 8:
-			memcpy((void*)((__int64)function + 0x1A + (x * 0x10) + 0x8), cpkMode4v, 8);
-			break;
-		}
-	}
-
-	// Make executable memory
-	DWORD dwOld = 0;
-	VirtualProtect(function, 34, PAGE_EXECUTE_READWRITE, &dwOld);
-
-	// Paste jmp in original function
-	void* test = malloc(1);
-	BYTE test1 = 0x48;
-	memcpy(test, &test1, 1);
-
-	void * oriFunct = (void*)(d3dcompiler_47_og::moduleBase + 0x853D6B);
-
-	DWORD dwOld1 = 0;
-	VirtualProtect(oriFunct, 15, PAGE_EXECUTE_READWRITE, &dwOld1);
-	//memcpy(oriFunct, jmp, 15); // DISABLE CPK READ
-	VirtualProtect(oriFunct, 15, dwOld1, &dwOld1);
-	//ccMemoryFunctions::memcpy((void*)(d3dcompiler_47_og::moduleBase + 0x853D6B), test, 1);
-
-	cout << "stuff" << endl;
-	cout << std::hex << (__int64)(jmp) << endl;
-	cout << std::hex << (__int64)(function) << endl;
-}

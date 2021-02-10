@@ -52,6 +52,8 @@ namespace moddingApi
 		static int __fastcall fc_ccMoveCast(char* a1, float a2, float a3, float a4, float a5, float a6);
 		static int __fastcall fc_ccMoveDirection(char* a1, float a2, float a3, float a4, float a5, float a6);
 		static int __fastcall fc_ccSetCastMotionWithInterpolation(char* a1, char* a2, char* a3, float a4);
+		static int __fastcall fc_ccSetCastMotion2WithInterpolation(char* id, char* path1, char* anm1, int frame1, char* path2, char* anm2, int frame2);
+		static int __fastcall fc_ccSetCastMotion2Frame(char* id, int frame);
 		static int __fastcall fc_ccDispCast(char* a1, bool a2);
 		static int __fastcall fc_ccDeleteCast(char* a1);
 		static int __fastcall fc_ccDeleteAnm(char* a1);

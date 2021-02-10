@@ -7,4 +7,5 @@ namespace moddingApi
 	int ccAdvPlaySound_2D(int sound);
 	int ccAdvYesNoSelectWindowOpen(char* title);
 	int ccAdvSelectWindowAddItem(char* item);
+	void ccDisableFcv();
 }

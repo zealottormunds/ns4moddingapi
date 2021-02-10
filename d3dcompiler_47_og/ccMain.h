@@ -23,6 +23,10 @@ namespace moddingApi
 		static std::vector<std::string> ModAuth;
 		static std::vector<BYTE> ModState;
 
+		// Plugins
+		static std::vector<HINSTANCE> PluginList;
+		static std::vector<__int64> PluginLoop;
+
 		// Reload API files
 		static void ReloadParamFiles();
 	};

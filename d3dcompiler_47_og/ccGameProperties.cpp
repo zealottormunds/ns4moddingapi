@@ -234,15 +234,22 @@ float ccGameProperties::GetDeltaTime()
 // Get a QWORD pointer from the game
 __int64 ccGameProperties::GetQword(__int64 qw)
 {
-	//__int64 result = 0;
 	__int64 qwr = qw - 0x140000C00;
-
-	cout << "mdl: " << std::hex << d3dcompiler_47_og::moduleBase + qwr << endl;
-	//memcpy(&result, (void*)(d3dcompiler_47_og::moduleBase + qwr), 8);
-
 	return *(__int64*)(d3dcompiler_47_og::moduleBase + qwr);
+}
 
-	//return result;
+// Get a DWORD pointer from the game
+int ccGameProperties::GetDword(__int64 dw)
+{
+	__int64 dwr = dw - 0x140000C00;
+	return *(int*)(d3dcompiler_47_og::moduleBase + dwr);
+}
+
+// Get a OFFSET pointer from the game
+__int64 ccGameProperties::GetOffset(__int64 of)
+{
+	__int64 ofr = of - 0xC00 + 0x1000;
+	return (d3dcompiler_47_og::moduleBase + ofr);
 }
 
 // Game properties

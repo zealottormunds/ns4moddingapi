@@ -35,7 +35,7 @@ namespace moddingApi
 		static Vector3 ccPlayer::GetPlayerPosition(uintptr_t p, uintptr_t s);
 		static float ccPlayer::GetPlayerDistance(uintptr_t p, uintptr_t s, uintptr_t ep, uintptr_t es);
 
-		static __int64 __fastcall meTest(__int64 a1);
+		static __int64 __fastcall meTest(__int64 a1, __int64 a2);
 	};
 }
 

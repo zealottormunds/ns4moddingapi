@@ -43,19 +43,19 @@
     <Filter Include="Lua">
       <UniqueIdentifier>{60ef3c88-2f1c-4a4b-8c5a-c26cdc4e1a9e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Rpg">
-      <UniqueIdentifier>{e8234304-02c8-4bc1-8de7-53e6eedd50f6}</UniqueIdentifier>
+    <Filter Include="Source Files\Game Decompilation">
+      <UniqueIdentifier>{3f6ae232-0a57-4b57-9d91-191183187d4e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Rpg\Game Engine">
+    <Filter Include="Source Files\Game Decompilation\Match">
+      <UniqueIdentifier>{82d7f3e0-aece-477a-a734-b3dd1f613d33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Decompilation\BossBattle">
+      <UniqueIdentifier>{edbe139d-da74-4e3a-ab9e-82dbb1073013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Engine">
       <UniqueIdentifier>{5f50ccf6-a6c9-46ed-9df8-dfa6c97ab2ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Rpg\Scenes">
-      <UniqueIdentifier>{a3709565-9d83-40ed-963e-188019cdaef1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Storm 4A">
-      <UniqueIdentifier>{5c03e723-3a8f-4bb2-b37e-ca5dbd0f59f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Storm 4A\General">
+    <Filter Include="Source Files\Tools">
       <UniqueIdentifier>{7b6ec042-fd7d-499b-b395-0d859dab2386}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -222,47 +222,32 @@
     <ClCompile Include="lua\src\lua.c">
       <Filter>Lua</Filter>
     </ClCompile>
-    <ClCompile Include="PrmFunctions.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldCollision.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\Rpg\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="Vector3.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="ztRpgMain.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+      <Filter>Source Files\Game Engine</Filter>
     </ClCompile>
     <ClCompile Include="GameMath.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Interface_Background.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Interface_Text.cpp">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+      <Filter>Source Files\Game Engine</Filter>
     </ClCompile>
     <ClCompile Include="FileParser.cpp">
-      <Filter>Source Files\Storm 4A\General</Filter>
+      <Filter>Source Files\Tools</Filter>
     </ClCompile>
     <ClCompile Include="LuaUtilities.cpp">
-      <Filter>Source Files\Storm 4A\General</Filter>
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraControl.cpp">
+      <Filter>Source Files\Game Decompilation\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleFunctions.cpp">
+      <Filter>Source Files\Game Decompilation\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Source Files\Game Decompilation\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="ccBoss02_2Phase01Manager.cpp">
+      <Filter>Source Files\Game Decompilation\BossBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\Game Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -407,44 +392,32 @@
     <ClInclude Include="PrmFunctions.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldCollision.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Source Files\Rpg\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="ztRpgMain.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+      <Filter>Source Files\Game Engine</Filter>
     </ClInclude>
     <ClInclude Include="GameMath.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Interface_Background.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Interface_Text.h">
-      <Filter>Source Files\Rpg\Game Engine</Filter>
+      <Filter>Source Files\Game Engine</Filter>
     </ClInclude>
     <ClInclude Include="FileParser.h">
-      <Filter>Source Files\Storm 4A\General</Filter>
+      <Filter>Source Files\Tools</Filter>
     </ClInclude>
     <ClInclude Include="LuaUtilities.h">
-      <Filter>Source Files\Storm 4A\General</Filter>
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraControl.h">
+      <Filter>Source Files\Game Decompilation\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleFunctions.h">
+      <Filter>Source Files\Game Decompilation\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Source Files\Game Decompilation\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="ccBoss02_2Phase01Manager.h">
+      <Filter>Source Files\Game Decompilation\BossBattle</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Source Files\Game Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

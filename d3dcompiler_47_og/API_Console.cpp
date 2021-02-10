@@ -68,7 +68,16 @@ void API_Console::InitializeConsole()
 	AddCommand("ccMultiMatchShowPlayerStatus", (uintptr_t)c_ccMultiMatchShowPlayerStatus, 0);*/
 	AddCommand("GetCastPointer", (uintptr_t)c_ccGetCastPointer, 1);
 
-	//cout << std::hex << (d3dcompiler_47_og::moduleBase + 0x1653688) << endl;
+	// Load plugin commands
+	for (int actualPlugin = 0; actualPlugin < ccMain::PluginList.size(); actualPlugin++)
+	{
+		HINSTANCE hGetProcIDDLL = ccMain::PluginList.at(actualPlugin);
+
+		typedef void(__stdcall *cmdfunct)(__int64 moduleBase, __int64 cmdFunction);
+		cmdfunct funct = (cmdfunct)GetProcAddress(hGetProcIDDLL, "InitializeCommands");
+
+		if (funct) funct(d3dcompiler_47_og::moduleBase, (__int64)AddCommand);
+	}
 }
 
 typedef void(__stdcall * f)();
@@ -150,11 +159,15 @@ void c_ViewMessageConversions()
 void c_Help()
 {
 	cout << endl;
+
+	cout << "A: " << std::hex << (d3dcompiler_47_og::moduleBase - 0xC00 + 0x16BDA28) << endl;
+	cout << "TEST: " << std::hex << *(__int64*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x16BDA28) << endl;
+	/*cout << endl;
 	cout << "Available commands:" << endl;
 	for (int x = 0; x < consoleCommands.size(); x++)
 	{
 		cout << consoleCommands[x] << endl;
-	}
+	}*/
 }
 
 #include "ccPlayer.h"
