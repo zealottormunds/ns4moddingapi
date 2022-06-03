@@ -51,3 +51,4 @@ You can find all documentation in the API's wiki: https://github.com/zealottormu
 * Exavadeathwitch
 * Eliteace170
 * R.A.G
+* DLL Wrapper Generator by SeanPesce
