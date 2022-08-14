@@ -84,17 +84,11 @@
     <ClCompile Include="ccMain.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
-    <ClCompile Include="ccMemoryFunctions.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
     <ClCompile Include="d3dcompiler_47_og.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
     <ClCompile Include="HookFunctions.cpp">
       <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="ccPlayerStruct.cpp">
-      <Filter>Source Files\Player</Filter>
     </ClCompile>
     <ClCompile Include="enet\callbacks.c">
       <Filter>Enet</Filter>

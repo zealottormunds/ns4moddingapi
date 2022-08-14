@@ -2,27 +2,24 @@
 #define PLAYERSTRUCT_H
 #pragma once
 
-namespace moddingApi
+class ccPlayerStruct
 {
-	class ccPlayerStruct
+public:
+	// THIS CODE IS PRETTY USELESS AT THE MOMENT!
+
+	ccPlayerStruct(__int64 p, __int64 s)
 	{
-	public:
-		// THIS CODE IS PRETTY USELESS AT THE MOMENT!
+		posx = (float*)(p + 0x70);
+		posz = (float*)(p + 0x74);
+		posy = (float*)(p + 0x78);
 
-		ccPlayerStruct(uintptr_t p, uintptr_t s)
-		{
-			posx = (float*)(p + 0x70);
-			posz = (float*)(p + 0x74);
-			posy = (float*)(p + 0x78);
+		chakra = (float*)(p + 0x08);
+	}
 
-			chakra = (float*)(p + 0x08);
-		}
-
-		float *posx;
-		float *posz;
-		float *posy;
-		float *chakra;
-	};
-}
+	float *posx;
+	float *posz;
+	float *posy;
+	float *chakra;
+};
 
 #endif

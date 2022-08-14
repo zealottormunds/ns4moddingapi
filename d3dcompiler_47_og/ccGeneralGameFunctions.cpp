@@ -58,43 +58,6 @@ std::string GetModMessage()
 	return st;
 }
 
-// This function doesn't work in 1.09 yet.
-void RandomizeBackground()
-{
-	DWORD dwOld = 0;
-	VirtualProtect((void*)(d3dcompiler_47_og::RecalculateAddress(0xEE52B0)), 0x20, PAGE_EXECUTE_READWRITE, &dwOld);
-	char * randomBg = "data/ui/max/bg/bg_freebtl1.xfbin";
-	switch (rand() % 7)
-	{
-	case 0:
-		randomBg = "data/ui/max/bg/bg_freebtl1.xfbin";
-		break;
-	case 1:
-		randomBg = "data/ui/max/bg/bg_freebtl2.xfbin";
-		break;
-	case 2:
-		randomBg = "data/ui/max/bg/bg_freebtl3.xfbin";
-		break;
-	case 3:
-		randomBg = "data/ui/max/bg/bg_freebtl4.xfbin";
-		break;
-	case 4:
-		randomBg = "data/ui/max/bg/bg_freebtl5.xfbin";
-		break;
-	case 5:
-		randomBg = "data/ui/max/bg/bg_freebtl6.xfbin";
-		break;
-	case 6:
-		randomBg = "data/ui/max/bg/bg_freebtl7.xfbin";
-		break;
-	case 7:
-		randomBg = "data/ui/max/bg/bg_freebtl7.xfbin";
-		break;
-	}
-	memcpy((void*)(d3dcompiler_47_og::RecalculateAddress(0xEE52B0)), (void*)(randomBg), 0x20);
-	VirtualProtect((void*)(d3dcompiler_47_og::RecalculateAddress(0xEE52B0)), 0x20, dwOld, &dwOld);
-}
-
 // All custom messageinfo functions
 vector<std::string> ccGeneralGameFunctions::MessageID;
 vector<std::string> ccGeneralGameFunctions::MessageStr;

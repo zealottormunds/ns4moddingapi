@@ -159,9 +159,7 @@
     <ClCompile Include="ccGameProperties.cpp" />
     <ClCompile Include="ccGeneralGameFunctions.cpp" />
     <ClCompile Include="ccMain.cpp" />
-    <ClCompile Include="ccMemoryFunctions.cpp" />
     <ClCompile Include="ccPlayer.cpp" />
-    <ClCompile Include="ccPlayerStruct.cpp" />
     <ClCompile Include="d3dcompiler_47_og.cpp" />
     <ClCompile Include="enet\callbacks.c" />
     <ClCompile Include="enet\compress.c" />

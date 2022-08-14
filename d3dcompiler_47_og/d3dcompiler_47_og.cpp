@@ -22,7 +22,8 @@ HINSTANCE mHinst = 0, mHinstDLL = 0;
 extern "C" UINT_PTR mProcs[29] = { 0 };
 
 LPCSTR mImportNames[] = { "D3DAssemble", "D3DCompile", "D3DCompile2", "D3DCompileFromFile", "D3DCompressShaders", "D3DCreateBlob", "D3DCreateFunctionLinkingGraph", "D3DCreateLinker", "D3DDecompressShaders", "D3DDisassemble", "D3DDisassemble10Effect", "D3DDisassemble11Trace", "D3DDisassembleRegion", "D3DGetBlobPart", "D3DGetDebugInfo", "D3DGetInputAndOutputSignatureBlob", "D3DGetInputSignatureBlob", "D3DGetOutputSignatureBlob", "D3DGetTraceInstructionOffsets", "D3DLoadModule", "D3DPreprocess", "D3DReadFileToBlob", "D3DReflect", "D3DReflectLibrary", "D3DReturnFailure1", "D3DSetBlobPart", "D3DStripShader", "D3DWriteBlobToFile", "DebugSetMute" };
-BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved, HMODULE hModule) {
+BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved, HMODULE hModule)
+{
 	mHinst = hinstDLL;
 	if (fdwReason == DLL_PROCESS_ATTACH)
 	{
@@ -38,7 +39,8 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved, HMO
 		// 7FF716C86000+1416bdd10
 
 		// Start API
-		CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::Main, hModule, 0, nullptr));
+		ccMain::Main();
+		//CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::Main, hModule, 0, nullptr));
 	}
 	else if (fdwReason == DLL_PROCESS_DETACH)
 	{

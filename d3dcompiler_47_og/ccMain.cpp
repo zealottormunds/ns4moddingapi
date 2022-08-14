@@ -15,7 +15,6 @@
 #include "ccGameProperties.h"
 #include "ccCharacterFunctions.h"
 #include "HookFunctions.h"
-#include "ccPlayer.h"
 
 #include "FileParser.h"
 
@@ -27,6 +26,7 @@ char * Console_GetString(char*);
 bool EnableAPI = false;
 vector<BYTE> ReadAllBytes(string);
 
+// When the API boots...
 DWORD WINAPI ccMain::Main()
 {
 	// Read all the mods and configs
@@ -45,7 +45,8 @@ DWORD WINAPI ccMain::Main()
 	CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::LoopGame, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr);
 
 	// Loop console
-	ccMain::LoopConsole();
+	//ccMain::LoopConsole();
+	CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ccMain::LoopConsole, (HMODULE)d3dcompiler_47_og::st_hModule, 0, nullptr));
 
 	return 0;
 }
@@ -82,46 +83,6 @@ DWORD WINAPI ccMain::LoopGame()
 	{
 		//Input::UpdateKeys();
 
-		/*if (Input::GetKeyDown('N'))
-		{
-			HookFunctions::HookQuick("ccSceneTitle");
-		}
-
-		if (Input::GetKeyDown('M'))
-		{
-			typedef float(__fastcall * funct)();
-			funct fc;
-			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51AE0); // UPDATED
-			cout << "Value: " << fc() << endl;
-		}
-
-		if (Input::GetKeyDown('B'))
-		{
-			typedef float(__fastcall * funct)(float f);
-			funct fc;
-			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51B00); // UPDATED
-			fc(2);
-		}
-		if (Input::GetKeyDown('V'))
-		{
-			typedef float(__fastcall * funct)(float f);
-			funct fc;
-			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51B00); // UPDATED
-			fc(1);
-		}
-		if (Input::GetKeyDown('C'))
-		{
-			typedef float(__fastcall * funct)(float f);
-			funct fc;
-			fc = (funct)(d3dcompiler_47_og::moduleBase + 0xE51B00); // UPDATED
-			fc(0.5);
-		}*/
-
-		//ccPlayer::Loop();
-		//cout << d3dcompiler_47_og::moduleBase - 0xC00 + 0x2965B3D64 << endl;
-		//cout << (d3dcompiler_47_og::moduleBase - 0xC00 + 0x1561108) << endl;
-		//cout << ccGameProperties::GetProperty("ResolutionX") << endl;
-
 		// Load plugin commands
 		for (int actualPlugin = 0; actualPlugin < ccMain::PluginList.size(); actualPlugin++)
 		{
@@ -141,7 +102,6 @@ DWORD WINAPI ccMain::LoopGame()
 }
 
 // Console base commands
-
 int Console_GetInt(char * CommandPrompt)
 {
 	if (CommandPrompt != "") cout << CommandPrompt << endl;

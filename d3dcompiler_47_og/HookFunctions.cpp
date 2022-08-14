@@ -15,7 +15,6 @@
 #include "CameraControl.h"
 #include "BattleFunctions.h"
 #include "GameSettings.h"
-#include "ccBoss02_2Phase01Manager.h"
 
 using namespace moddingApi;
 using namespace std;
@@ -25,9 +24,6 @@ BYTE originalMsgInfo[19];
 BYTE originalMsgInfo2[19]; 
 BYTE originalInitInfo[14];
 BYTE originalInit2Info[17];
-
-//bool Hook(void*, void*, int);
-bool Hook2(void*, void*, int);
 
 int fc_msgtostring = 0xAB8720;
 int fc_msgtostring_3 = 0xAB87D0;
@@ -65,15 +61,6 @@ void HookFunctions::InitializeHooks()
 	// Hook Cpk Load
 	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x854F3C), GameSettings::LoadCpkInitial, 15);
 
-	// Hook Boss
-	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x27F0A0), ccBoss02_2Phase01Manager::BossBattleBKKU_Loop00, 20);
-
-	// Hook Substitution Modifier
-	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x7DE9C0), BattleFunctions::ChangeSubstitutionState, 18);
-
-	// Hook Camera Controller
-	// HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x74353C), CameraControl::CameraControllerMain, 14);
-
 	ccCharacterFunctions::PartnerFunctions();
 	ccCharacterFunctions::SpecialCondFunctions();
 
@@ -87,41 +74,6 @@ void HookFunctions::InitializeHooks()
 
 		if (funct) funct(d3dcompiler_47_og::moduleBase, (__int64)HookFunctions::Hook);
 	}
-}
-
-void HookFunctions::HookFade()
-{
-	cout << "Hooking" << endl;
-	HookFunctions::Hook((void*)(d3dcompiler_47_og::moduleBase + 0x6E07C4), (void*)HookQuick, 20);
-}
-
-int sceneToLoad = 2;
-char* sceneName[] = { "ccSceneTitle", "ccSceneGameModeSelect", "ccSceneAdventure" };
-int sceneMalloc[] = { 0x140, 0x168, 0x1608 };
-int sceneAddress[] = { 0x71BA70, 0x6EAB74, 0x6CAAAC };
-
-uintptr_t HookFunctions::HookQuick(char* a1)
-{
-	cout << "A1: " << a1 << endl;
-
-	void * v2 = malloc(sceneMalloc[sceneToLoad]);
-	void * v3 = 0;
-
-	// 0x71BA70 ccSceneTitle_00
-	typedef void*(__fastcall * funct)(void * m);
-	funct ccSceneInit;
-	ccSceneInit = (funct)(d3dcompiler_47_og::moduleBase + sceneAddress[sceneToLoad]);
-	v3 = ccSceneInit(v2);
-
-	// 0xAB3950 fc_ccSceneLoader_00
-	typedef void(__fastcall * funct1)(void * p1, char * p2);
-	funct1 fc_ccSceneLoader_00;
-	fc_ccSceneLoader_00 = (funct1)(d3dcompiler_47_og::moduleBase + sceneAddress[sceneToLoad]);
-	fc_ccSceneLoader_00(v3, sceneName[sceneToLoad]);
-
-	cout << "V3: " << std::hex << v3 << endl;
-
-	return (uintptr_t)v3;
 }
 
 // Fixed
@@ -192,126 +144,4 @@ bool HookFunctions::Hook(void * toHook, void * ourFunct, int len)
 	VirtualProtect(toHook, len, dwOld, &dwOld);
 
 	return true;
-}
-
-// FUNCTION TO HOOK 2
-bool Hook2(void * toHook, void * ourFunct, int len)
-{
-	DWORD MinLen = 14;
-
-	if (len < MinLen)
-	{
-		return false;
-	}
-
-	BYTE replace[] = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // jmp qword ptr [$+6]
-					0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 // ptr
-	};
-
-	BYTE newFunc[] = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // jmp qword ptr [$+6]
-					0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // ptr
-
-					0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-					0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-
-					0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, // jmp qword ptr [$+6]
-					0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // ptr
-	};
-
-	void* pTrampoline = VirtualAlloc(0, 42, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
-	DWORD dwOld = 0;
-
-	VirtualProtect(toHook, len, PAGE_EXECUTE_READWRITE, &dwOld);
-
-	DWORD_PTR newFuncEnd_Jmp = (DWORD_PTR)toHook + len;
-
-	// trampoline
-	memcpy(replace + 6, &pTrampoline, 8);
-	memcpy(newFunc + 6, &ourFunct, 8);
-	memcpy(newFunc + 14, toHook, len);
-	memcpy(newFunc + 34, &newFuncEnd_Jmp, 8);
-
-	memcpy((void*)((DWORD_PTR)pTrampoline), &newFunc, 42);
-	memcpy(toHook, replace, sizeof(replace));
-
-	cout << "ourFunct: " << std::hex << (DWORD_PTR)ourFunct << endl;
-	cout << "toHook: " << std::hex << (DWORD_PTR)toHook << endl;
-	cout << "tramp: " << std::hex << (DWORD_PTR)pTrampoline << endl;
-	for (int x = 0; x < 42; x++)
-	{
-		cout << "0x" << std::hex << (int)newFunc[x] << " ";
-	}
-
-	cout << endl;
-
-	for (int i = MinLen; i < len; i++)
-	{
-		*(BYTE*)((DWORD_PTR)toHook + i) = 0x90;
-	}
-	VirtualProtect(toHook, len, dwOld, &dwOld);
-
-	return true;
-}
-
-// DoHook and UndoHook
-vector<string> HookID;
-vector<vector<BYTE>> HookBytes;
-vector<uintptr_t> HookAddress;
-void DoHook(void* toHook, void* ourFunct, int len, string ID)
-{
-	int Count = -1;
-	for (int x = 0; x < HookID.size(); x++)
-	{
-		if (ID == HookID[x])
-		{
-			Count = x;
-		}
-	}
-
-	if (Count == -1)
-	{
-		HookID.push_back(ID);
-		HookAddress.push_back((uintptr_t)toHook);
-		vector<BYTE> originalFunction;
-
-		for (int x = 0; x < len; x++)
-		{
-			originalFunction.push_back(*(BYTE*)((uintptr_t)toHook + x));
-		}
-
-		HookBytes.push_back(originalFunction);
-
-		HookFunctions::Hook(toHook, ourFunct, len);
-	}
-	else
-	{
-		HookFunctions::Hook(toHook, ourFunct, len);
-	}
-}
-void UndoHook(string ID)
-{
-	int Count = -1;
-	for (int x = 0; x < HookID.size(); x++)
-	{
-		if (ID == HookID[x])
-		{
-			Count = x;
-		}
-	}
-
-	if (Count != -1)
-	{
-		DWORD dwOld = 0;
-		VirtualProtect((void*)(HookAddress[Count]), HookBytes[Count].size(), PAGE_EXECUTE_READWRITE, &dwOld);
-
-		cout << "len: " << HookBytes[Count].size() << endl;
-
-		for (int x = 0; x < HookBytes[Count].size(); x++)
-		{
-			memcpy((void*)(HookAddress[Count]), &HookBytes[Count][x], 1);
-		}
-		VirtualProtect((void*)(HookAddress[Count]), HookBytes[Count].size(), dwOld, &dwOld);
-
-		cout << "Unhooked function at " << std::hex << HookAddress[Count] << endl;
-	}
 }
