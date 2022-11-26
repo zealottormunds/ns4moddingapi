@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>d3dcompiler_47_og</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
-    <ProjectName>d3dcompiler_47</ProjectName>
+    <ProjectName>xinput9_1_0</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -90,11 +90,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;D3DCOMPILER_47_OG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>d3dcompiler_47_og.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>xinput9_1_0.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -108,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>d3dcompiler_47_og.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>xinput9_1_0.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -126,7 +127,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ModuleDefinitionFile>d3dcompiler_47_og.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>xinput9_1_0.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,22 +146,25 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ModuleDefinitionFile>d3dcompiler_47_og.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>xinput9_1_0.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\dll\d3dcompiler_47_og;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;ws2_32.lib;enet64.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="API_Console.cpp" />
-    <ClCompile Include="BattleFunctions.cpp" />
-    <ClCompile Include="CameraControl.cpp" />
-    <ClCompile Include="ccBoss02_2Phase01Manager.cpp" />
-    <ClCompile Include="ccCharacterFunctions.cpp" />
-    <ClCompile Include="ccGameProperties.cpp" />
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="ccGeneralGameFunctions.cpp" />
-    <ClCompile Include="ccMain.cpp" />
-    <ClCompile Include="ccPlayer.cpp" />
-    <ClCompile Include="d3dcompiler_47_og.cpp" />
+    <ClCompile Include="DirectX.cpp" />
+    <ClCompile Include="EditorGUI.cpp" />
+    <ClCompile Include="ImGUI\imgui.cpp" />
+    <ClCompile Include="ImGUI\imgui_demo.cpp" />
+    <ClCompile Include="ImGUI\imgui_draw.cpp" />
+    <ClCompile Include="ImGUI\imgui_impl_dx11.cpp" />
+    <ClCompile Include="ImGUI\imgui_impl_win32.cpp" />
+    <ClCompile Include="ImGUI\imgui_tables.cpp" />
+    <ClCompile Include="ImGUI\imgui_widgets.cpp" />
+    <ClCompile Include="NS4Framework.cpp" />
+    <ClCompile Include="xinput9_1_0.cpp" />
     <ClCompile Include="enet\callbacks.c" />
     <ClCompile Include="enet\compress.c" />
     <ClCompile Include="enet\host.c" />
@@ -172,11 +176,9 @@
     <ClCompile Include="enet\win32.c" />
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="GameMath.cpp" />
-    <ClCompile Include="GameSettings.cpp" />
+    <ClCompile Include="CpkLoader.cpp" />
     <ClCompile Include="HookFunctions.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="LuaHook.cpp" />
-    <ClCompile Include="LuaHook_Commands.cpp" />
     <ClCompile Include="LuaUtilities.cpp" />
     <ClCompile Include="lua\src\lapi.c" />
     <ClCompile Include="lua\src\lauxlib.c" />
@@ -209,27 +211,36 @@
     <ClCompile Include="lua\src\lvm.c" />
     <ClCompile Include="lua\src\lzio.c" />
     <ClCompile Include="lua\src\print.c" />
+    <ClCompile Include="PartnerManager.cpp" />
+    <ClCompile Include="PatternScan.cpp" />
+    <ClCompile Include="Plugin.cpp" />
+    <ClCompile Include="SpecialConditionManager.cpp" />
     <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="d3dcompiler_47_og.def" />
-    <MASM Include="d3dcompiler_47_og_asm.asm">
+    <None Include="xinput9_1_0.def" />
+    <MASM Include="xinput9_1_0_asm.asm">
       <FileType>Document</FileType>
     </MASM>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="API_Console.h" />
-    <ClInclude Include="BattleFunctions.h" />
-    <ClInclude Include="CameraControl.h" />
-    <ClInclude Include="ccBoss02_2Phase01Manager.h" />
-    <ClInclude Include="ccCharacterFunctions.h" />
-    <ClInclude Include="ccGameProperties.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="ccGeneralGameFunctions.h" />
-    <ClInclude Include="ccMain.h" />
-    <ClInclude Include="ccMemoryFunctions.h" />
-    <ClInclude Include="ccPlayer.h" />
-    <ClInclude Include="ccPlayerStruct.h" />
-    <ClInclude Include="d3dcompiler_47_og.h" />
+    <ClInclude Include="DirectX.h" />
+    <ClInclude Include="EditorGUI.h" />
+    <ClInclude Include="GraphicSettings.h" />
+    <ClInclude Include="ImGUI\imconfig.h" />
+    <ClInclude Include="ImGUI\imgui.h" />
+    <ClInclude Include="ImGUI\imgui_impl_dx11.h" />
+    <ClInclude Include="ImGUI\imgui_impl_win32.h" />
+    <ClInclude Include="ImGUI\imgui_internal.h" />
+    <ClInclude Include="ImGUI\imstb_rectpack.h" />
+    <ClInclude Include="ImGUI\imstb_textedit.h" />
+    <ClInclude Include="ImGUI\imstb_truetype.h" />
+    <ClInclude Include="MessageManager.h" />
+    <ClInclude Include="Mod.h" />
+    <ClInclude Include="NS4Framework.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="enet\callbacks.h" />
     <ClInclude Include="enet\enet.h" />
     <ClInclude Include="enet\list.h" />
@@ -241,11 +252,9 @@
     <ClInclude Include="enet\win32.h" />
     <ClInclude Include="FileParser.h" />
     <ClInclude Include="GameMath.h" />
-    <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="CpkLoader.h" />
     <ClInclude Include="HookFunctions.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="LuaHook.h" />
-    <ClInclude Include="LuaHook_Commands.h" />
     <ClInclude Include="LuaUtilities.h" />
     <ClInclude Include="lua\src\lapi.h" />
     <ClInclude Include="lua\src\lauxlib.h" />
@@ -270,7 +279,14 @@
     <ClInclude Include="lua\src\lundump.h" />
     <ClInclude Include="lua\src\lvm.h" />
     <ClInclude Include="lua\src\lzio.h" />
+    <ClInclude Include="PartnerManager.h" />
+    <ClInclude Include="PatchManager.h" />
+    <ClInclude Include="PatternScan.h" />
+    <ClInclude Include="Plugin.h" />
+    <ClInclude Include="ModManager.h" />
+    <ClInclude Include="SpecialConditionManager.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="xinput9_1_0.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

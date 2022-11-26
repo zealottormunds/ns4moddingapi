@@ -4,30 +4,28 @@
 
 #include <vector>
 
-namespace moddingApi
+class HookFunctions
 {
-	class HookFunctions
-	{
-	public:
-		static void InitializeHooks();
+public:
+	static void InitializeHooks();
+	static void InitializePluginHooks();
 
-		static void DoMessageInfoHook();
-		static void UndoMessageInfoHook();
+	static __int64 fc_msgtostring;
+	static __int64 fc_msgtostring_3;
 
-		static void DoMessageInfoHook2();
-		static void UndoMessageInfoHook2();
+	static void DoMessageInfoHook(int length);
+	static void UndoMessageInfoHook(int length);
 
-		static void DoMessageInfoHook3();
-		static void UndoMessageInfoHook3();
+	static void DoMessageInfoHook2(int length);
+	static void UndoMessageInfoHook2(int length);
 
-		static bool Hook(void*, void*, int);
+	static bool Hook(void*, void*, int, bool isPlugin = false);
+	static bool HookPlugin(void*, void*, int);
+	static void UnhookPlugins();
 
-		static void HookFade();
-		static uintptr_t HookQuick(char* a1);
-
-		//static void DoHook(uintptr_t address, void* originalDest, int len, void* funct);
-		//static void UndoHook(uintptr_t address, void* originalDest, int len);
-	};
-}
+	static std::vector<__int64> PluginHookAddress;
+	static std::vector<__int64> PluginHookOriginal;
+	static std::vector<int> PluginHookLength;
+};
 
 #endif

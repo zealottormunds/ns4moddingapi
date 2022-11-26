@@ -5,71 +5,40 @@
 #include <string>
 #include <vector>
 
-#pragma comment(lib, "XInput.lib")
-#include <Xinput.h>
+#include "Common.h"
+/*#pragma comment(lib, "XInput.lib")
+#include <Xinput.h>*/
 
 #include "ccGeneralGameFunctions.h"
-#include "d3dcompiler_47_og.h"
 #include "HookFunctions.h"
-#include "ccMain.h"
+#include "ModManager.h"
+#include "MessageManager.h"
 
 using namespace moddingApi;
 using namespace std;
 
-// GET VERSION NUMBER
-int ccGeneralGameFunctions::GetVersionNumber()
-{
-	typedef DWORD(__stdcall * get_version_number)();
-	get_version_number g_GetVersionNumber;
-	g_GetVersionNumber = (get_version_number)(d3dcompiler_47_og::moduleBase + 0x85CC78);
-	return g_GetVersionNumber();
-}
-
-// GAME MESSAGE TO STRING [FIXED]
 char * ccGeneralGameFunctions::MessageToString(char * msg)
 {
 	typedef char *(__fastcall * message_to_string)(char *);
 	message_to_string g_MessageToString;
-	g_MessageToString = (message_to_string)(d3dcompiler_47_og::moduleBase + 0x4E89C4);
+	g_MessageToString = (message_to_string)(moduleBase + HookFunctions::fc_msgtostring);
 	return g_MessageToString(msg);
 }
 
-// Get mod list string
-std::string GetModMessage()
-{
-	string st = "<color red>Naruto Storm 4</color> Modding API by Zealot Tormunds\n\n";
-	if (ccMain::ModList.size() > 0)
-	{
-		st = st + "<color yellow>Mod List:</color>\n";
-		for (int x = 0; x < ccMain::ModCount; x++)
-		{
-			st = st + "> " + ccMain::ModList[x];
-			if (ccMain::ModAuth[x] != "") st = st + " <color yellow>(" + ccMain::ModAuth[x] + ")</color>\n";
-			else st = st + "\n";
-		}
-
-		st = st + "\n";
-		st = st + "<color yellow>" + to_string(ccMain::ModList.size()) + " mods installed</color>";
-	}
-	else
-	{
-		st = st + "<color yellow>No mods installed</color>\n";
-	}
-	return st;
-}
-
 // All custom messageinfo functions
-vector<std::string> ccGeneralGameFunctions::MessageID;
-vector<std::string> ccGeneralGameFunctions::MessageStr;
 char ccGeneralGameFunctions::ViewMessageConversions = 0;
 
 uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 {
 	if (ccGeneralGameFunctions::ViewMessageConversions == 0 && strlen((char*)MessageToDecode) > 0 && *(char*)MessageToDecode != '+')
 	{
-		HookFunctions::UndoMessageInfoHook();
+		if (isDebug == false) HookFunctions::UndoMessageInfoHook(19);
+		else HookFunctions::UndoMessageInfoHook(14);
+
 		char* result = ccGeneralGameFunctions::MessageToString((char*)MessageToDecode);
-		HookFunctions::DoMessageInfoHook();
+
+		if (isDebug == false) HookFunctions::DoMessageInfoHook(19);
+		else HookFunctions::DoMessageInfoHook(14);
 
 		if (MessageToDecode != 0)
 		{
@@ -79,7 +48,7 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 
 			if (message == "network_agreement_EU_s-A" || message == "network_agreement_s-A")
 			{
-				result = (char*)GetModMessage().c_str();
+				result = (char*)MessageManager::GetModMessage().c_str();
 				finished = true;
 			}
 			else if (message == "network_agreementp2_EU_s-A" || message == "network_agreementp2_s-A")
@@ -97,13 +66,13 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString(uintptr_t MessageToDecode)
 				else if (msg == "network_agreement_ng") result = "<icon btn_2 />";
 				else
 				{
-					for (int x = 0; x < MessageID.size(); x++)
+					/*for (int x = 0; x < MessageManager::MessageID.size(); x++)
 					{
-						if (msg == MessageID[x])
+						if (msg == MessageManager::MessageID[x])
 						{
-							result = (char*)MessageStr[x].c_str();
+							result = (char*)MessageManager::MessageStr[x].c_str();
 						}
-					}
+					}*/
 				}
 				if (msg != (std::string)(char*)MessageToDecode) result = (char*)msg.c_str();
 			}
@@ -127,13 +96,17 @@ message_to_string2 g_MessageToString2;
 
 uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode)
 {
-	g_MessageToString2 = (message_to_string2)(d3dcompiler_47_og::moduleBase + 0xAB87D0);
+	g_MessageToString2 = (message_to_string2)(moduleBase + HookFunctions::fc_msgtostring_3);
 
 	if (ccGeneralGameFunctions::ViewMessageConversions == 0 && strlen((char*)MessageToDecode) > 0 && *(char*)MessageToDecode != '+')
 	{
-		HookFunctions::UndoMessageInfoHook2();
+		if(isDebug == false) HookFunctions::UndoMessageInfoHook2(19);
+		else HookFunctions::UndoMessageInfoHook2(14);
+
 		char* result = g_MessageToString2((char*)MessageToDecode);
-		HookFunctions::DoMessageInfoHook2();
+
+		if (isDebug == false) HookFunctions::DoMessageInfoHook2(19);
+		else HookFunctions::UndoMessageInfoHook2(14);
 
 		if (MessageToDecode != 0)
 		{
@@ -143,7 +116,7 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 
 			if (message == "network_agreement_EU_s-A" || message == "network_agreement_s-A")
 			{
-				result = (char*)GetModMessage().c_str();
+				result = (char*)MessageManager::GetModMessage().c_str();
 				finished = true;
 			}
 			else if (message == "network_agreementp2_EU_s-A" || message == "network_agreementp2_s-A")
@@ -161,13 +134,13 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 				else if (msg == "network_agreement_ng") result = "<icon btn_2 />";
 				else
 				{
-					for (int x = 0; x < MessageID.size(); x++)
+					/*for (int x = 0; x < MessageManager::MessageID.size(); x++)
 					{
-						if (msg == MessageID[x])
+						if (msg == MessageManager::MessageID[x])
 						{
-							result = (char*)MessageStr[x].c_str();
+							result = (char*)MessageManager::MessageStr[x].c_str();
 						}
-					}
+					}*/
 				}
 				if (msg != (std::string)(char*)MessageToDecode) result = (char*)msg.c_str();
 			}
@@ -185,82 +158,4 @@ uintptr_t ccGeneralGameFunctions::Hook_MsgToString_Alt(uintptr_t MessageToDecode
 
 		return MessageToDecode;
 	}
-}
-
-// GAMEPAD FUNCTIONS
-bool ccGeneralGameFunctions::TestButton(unsigned short button)
-{
-	XINPUT_STATE actualState;
-	XInputGetState(0, &actualState);
-
-	bool toReturn = false;
-
-	if (button != 0x5000 && button != 0x6000)
-	{
-		if ((actualState.Gamepad.wButtons & button) != 0) toReturn = true;
-	}
-	else
-	{
-		switch (button)
-		{
-		case 0x5000:
-			if (actualState.Gamepad.bLeftTrigger > 20) toReturn = true;
-			break;
-		case 0x6000:
-			if (actualState.Gamepad.bRightTrigger > 20) toReturn = true;
-			break;
-		}
-	}
-
-	return (actualState.Gamepad.wButtons & button) != 0;
-}
-
-signed __int64 ccGeneralGameFunctions::enablePads()
-{
-	typedef signed __int64(__fastcall * fc_enableAllPad_00)();
-	fc_enableAllPad_00 enableAllPad_00;
-	enableAllPad_00 = (fc_enableAllPad_00)(d3dcompiler_47_og::moduleBase + 0x6582B4);
-	return enableAllPad_00();
-}
-
-// Get the current frame of the game
-int ccGeneralGameFunctions::GetCurrentFrame()
-{
-	int frame = 0;
-	memcpy(&frame, (void*)(d3dcompiler_47_og::moduleBase + 0x15AE70C - 0xC00), 4);
-	return frame;
-}
-
-// Get 30 or 60 depending on the settings
-int ccGeneralGameFunctions::GetFPS()
-{
-	int fps = 0;
-	memcpy(&fps, (void*)(d3dcompiler_47_og::moduleBase + 0x155F498), 4);
-	return fps;
-}
-
-// Is focus
-bool ccGeneralGameFunctions::IsFocus()
-{
-	// 08D30960
-
-	uintptr_t *p1 = 0;
-	uintptr_t *p2 = 0;
-	uintptr_t *p3 = 0;
-	uintptr_t *p4 = 0;
-	int *p5 = 0;
-
-	p1 = (uintptr_t*)(d3dcompiler_47_og::moduleBase - 0xC00 + 0x08D30960);
-	if (*p1 == 0) return 0;
-	p2 = (uintptr_t*)(*p1 + 0x8);
-	if (*p2 == 0) return 0;
-	p3 = (uintptr_t*)(*p2 + 0xB0);
-	if (*p3 == 0) return 0;
-	p4 = (uintptr_t*)(*p3 + 0x48);
-	if (*p4 == 0) return 0;
-	p4 = (uintptr_t*)(*p3 + 0x48);
-	if (*p4 == 0) return 0;
-	p5 = (int*)(*p4 + 0x994);
-
-	return *p5;
 }

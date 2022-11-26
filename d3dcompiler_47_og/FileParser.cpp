@@ -7,7 +7,8 @@
 #include <filesystem>
 
 using namespace std;
-using namespace moddingApi;
+
+// This FileParser is a direct translation from my C# library to C++, so it may be a bit slow and is using some unnecesary code.
 
 vector<BYTE> FileParser::b_ReadByteArray(vector<BYTE> actual, int index, int count)
 {
@@ -273,33 +274,6 @@ vector<BYTE> FileParser::ReadAllBytes(string _file)
 
 	f.close();
 	return result;
-
-	/*ifstream f;
-	f.open(_file);
-
-	int FileSize = 0;
-	while (!f.eof())
-	{
-		f.get();
-		FileSize++;
-	}
-
-	f.close();
-	f.open(_file, ios::binary);
-
-	std::vector<BYTE> result(FileSize);
-
-	f.seekg(0, ios::beg);
-
-	for (int x = 0; x < FileSize; x++)
-	{
-		BYTE a = f.get();
-		memcpy((void*)&result[0 + x], &a, 1);
-	}
-
-	f.close();
-
-	return result;*/
 }
 
 vector<string> FileParser::ReadAllLines(string _file)

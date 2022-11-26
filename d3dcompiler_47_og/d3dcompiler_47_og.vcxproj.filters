@@ -5,37 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source Files\API">
-      <UniqueIdentifier>{5b7dc5fb-bed5-4dbb-baa6-b0de153f86c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{6553d74d-479f-4494-8d6d-b27e50d951f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\General">
-      <UniqueIdentifier>{68f04b60-7fae-4336-aa6f-b725d26148f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\API">
-      <UniqueIdentifier>{265c3cfe-4a56-4893-a325-db762c4f9e34}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\General">
-      <UniqueIdentifier>{e52bb380-2242-42fb-8a65-4671b318846c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Player">
-      <UniqueIdentifier>{dab8efaf-7263-48f9-8d85-7b415fe3cc28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Player\Characters">
-      <UniqueIdentifier>{448d3aee-dd1a-4301-84b2-ccd798353436}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Player\Characters">
-      <UniqueIdentifier>{8ca6b072-a40d-4691-b670-abc33a79e602}</UniqueIdentifier>
     </Filter>
     <Filter Include="Enet">
       <UniqueIdentifier>{4dfbbbea-3e17-4419-a9f0-b8cf58569ddc}</UniqueIdentifier>
@@ -43,53 +15,32 @@
     <Filter Include="Lua">
       <UniqueIdentifier>{60ef3c88-2f1c-4a4b-8c5a-c26cdc4e1a9e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game Decompilation">
-      <UniqueIdentifier>{3f6ae232-0a57-4b57-9d91-191183187d4e}</UniqueIdentifier>
+    <Filter Include="Source Files\Framework">
+      <UniqueIdentifier>{5b7dc5fb-bed5-4dbb-baa6-b0de153f86c7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game Decompilation\Match">
-      <UniqueIdentifier>{82d7f3e0-aece-477a-a734-b3dd1f613d33}</UniqueIdentifier>
+    <Filter Include="Source Files\Framework\Mods">
+      <UniqueIdentifier>{fccdf099-a31a-43ba-8c50-117e978cb80d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game Decompilation\BossBattle">
-      <UniqueIdentifier>{edbe139d-da74-4e3a-ab9e-82dbb1073013}</UniqueIdentifier>
+    <Filter Include="Source Files\Framework\DX11">
+      <UniqueIdentifier>{d264ccce-944e-4f11-8776-a2fc0b7ef0b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game Engine">
-      <UniqueIdentifier>{5f50ccf6-a6c9-46ed-9df8-dfa6c97ab2ef}</UniqueIdentifier>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{fd70d2ac-0ffe-4186-844a-24367d7a6af2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Tools">
+    <Filter Include="Source Files\Framework\GUI">
+      <UniqueIdentifier>{e3fa0784-6658-4181-a62d-9f8dd6eaf4ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\General">
+      <UniqueIdentifier>{6af4c9fa-4331-4992-b0ba-5e2241bd8149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Tools">
       <UniqueIdentifier>{7b6ec042-fd7d-499b-b395-0d859dab2386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Game Engine">
+      <UniqueIdentifier>{5f50ccf6-a6c9-46ed-9df8-dfa6c97ab2ef}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="API_Console.cpp">
-      <Filter>Source Files\API</Filter>
-    </ClCompile>
-    <ClCompile Include="LuaHook.cpp">
-      <Filter>Source Files\API</Filter>
-    </ClCompile>
-    <ClCompile Include="LuaHook_Commands.cpp">
-      <Filter>Source Files\API</Filter>
-    </ClCompile>
-    <ClCompile Include="ccPlayer.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="ccCharacterFunctions.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="ccGameProperties.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="ccGeneralGameFunctions.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="ccMain.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="d3dcompiler_47_og.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="HookFunctions.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
     <ClCompile Include="enet\callbacks.c">
       <Filter>Enet</Filter>
     </ClCompile>
@@ -211,70 +162,79 @@
       <Filter>Lua</Filter>
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
-      <Filter>Source Files\Game Engine</Filter>
+      <Filter>Source Files\Framework\Game Engine</Filter>
     </ClCompile>
     <ClCompile Include="GameMath.cpp">
-      <Filter>Source Files\Game Engine</Filter>
+      <Filter>Source Files\Framework\Game Engine</Filter>
     </ClCompile>
     <ClCompile Include="FileParser.cpp">
-      <Filter>Source Files\Tools</Filter>
+      <Filter>Source Files\Framework\Tools</Filter>
     </ClCompile>
     <ClCompile Include="LuaUtilities.cpp">
-      <Filter>Source Files\Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraControl.cpp">
-      <Filter>Source Files\Game Decompilation\Match</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleFunctions.cpp">
-      <Filter>Source Files\Game Decompilation\Match</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSettings.cpp">
-      <Filter>Source Files\Game Decompilation\Match</Filter>
-    </ClCompile>
-    <ClCompile Include="ccBoss02_2Phase01Manager.cpp">
-      <Filter>Source Files\Game Decompilation\BossBattle</Filter>
+      <Filter>Source Files\Framework\Tools</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
-      <Filter>Source Files\Game Engine</Filter>
+      <Filter>Source Files\Framework\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternScan.cpp">
+      <Filter>Source Files\Framework\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="NS4Framework.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX.cpp">
+      <Filter>Source Files\Framework\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_demo.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_dx11.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_win32.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_tables.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorGUI.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CpkLoader.cpp">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClCompile>
+    <ClCompile Include="ccGeneralGameFunctions.cpp">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClCompile>
+    <ClCompile Include="HookFunctions.cpp">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClCompile>
+    <ClCompile Include="PartnerManager.cpp">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialConditionManager.cpp">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Plugin.cpp">
+      <Filter>Source Files\Framework\Mods</Filter>
+    </ClCompile>
+    <ClCompile Include="xinput9_1_0.cpp">
+      <Filter>Source Files\Framework\General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="API_Console.h">
-      <Filter>Header Files\API</Filter>
-    </ClInclude>
-    <ClInclude Include="HookFunctions.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="LuaHook.h">
-      <Filter>Header Files\API</Filter>
-    </ClInclude>
-    <ClInclude Include="LuaHook_Commands.h">
-      <Filter>Header Files\API</Filter>
-    </ClInclude>
-    <ClInclude Include="ccPlayer.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="ccCharacterFunctions.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="ccGameProperties.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="ccGeneralGameFunctions.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="ccMain.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="ccMemoryFunctions.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="d3dcompiler_47_og.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="ccPlayerStruct.h">
-      <Filter>Source Files\Player</Filter>
-    </ClInclude>
     <ClInclude Include="enet\callbacks.h">
       <Filter>Enet</Filter>
     </ClInclude>
@@ -372,41 +332,107 @@
       <Filter>Lua</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.h">
-      <Filter>Source Files\Game Engine</Filter>
+      <Filter>Source Files\Framework\Game Engine</Filter>
     </ClInclude>
     <ClInclude Include="GameMath.h">
-      <Filter>Source Files\Game Engine</Filter>
+      <Filter>Source Files\Framework\Game Engine</Filter>
     </ClInclude>
     <ClInclude Include="FileParser.h">
-      <Filter>Source Files\Tools</Filter>
+      <Filter>Source Files\Framework\Tools</Filter>
     </ClInclude>
     <ClInclude Include="LuaUtilities.h">
-      <Filter>Source Files\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraControl.h">
-      <Filter>Source Files\Game Decompilation\Match</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleFunctions.h">
-      <Filter>Source Files\Game Decompilation\Match</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSettings.h">
-      <Filter>Source Files\Game Decompilation\Match</Filter>
-    </ClInclude>
-    <ClInclude Include="ccBoss02_2Phase01Manager.h">
-      <Filter>Source Files\Game Decompilation\BossBattle</Filter>
+      <Filter>Source Files\Framework\Tools</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
-      <Filter>Source Files\Game Engine</Filter>
+      <Filter>Source Files\Framework\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternScan.h">
+      <Filter>Source Files\Framework\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Plugin.h">
+      <Filter>Source Files\Framework\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="Mod.h">
+      <Filter>Source Files\Framework\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="ModManager.h">
+      <Filter>Source Files\Framework\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="NS4Framework.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX.h">
+      <Filter>Source Files\Framework\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_dx11.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_win32.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_rectpack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorGUI.h">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageManager.h">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchManager.h">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClInclude>
+    <ClInclude Include="CpkLoader.h">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="ccGeneralGameFunctions.h">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClInclude>
+    <ClInclude Include="HookFunctions.h">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PartnerManager.h">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialConditionManager.h">
+      <Filter>Source Files\Framework\General</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicSettings.h">
+      <Filter>Source Files\Framework\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="xinput9_1_0.h">
+      <Filter>Source Files\Framework\General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="d3dcompiler_47_og.def">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="d3dcompiler_47_og_asm.asm">
+    <MASM Include="xinput9_1_0_asm.asm">
       <Filter>Resource Files</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xinput9_1_0.def">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

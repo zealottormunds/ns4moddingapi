@@ -18,8 +18,9 @@ float GameMath::RadToDeg(float rad)
 
 int GameMath::FrameToFps(int f)
 {
-	if (ccGeneralGameFunctions::GetFPS() == 30) return f / 2;
-	else return f;
+	//if (ccGeneralGameFunctions::GetFPS() == 30) return f / 2;
+	//else return f;
+	return f;
 }
 
 float GameMath::Lerp(float a, float b, float c)
